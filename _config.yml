@@ -78,7 +78,7 @@ analytics:
 # Site Author
 author:
   name             : "Dale Seo"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
+  avatar           : "/assets/images/bio-photo.jpg"
   bio              : "Software Engineer | Full-stack Developer"
   location         : "Seoul, Korea"
   email            : dale.seo@gmail.com
