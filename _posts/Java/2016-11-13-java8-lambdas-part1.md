@@ -31,6 +31,23 @@ tags:
 
 이 주제에 대해서 더 깊고 공식적인 설명을 원하시는 분들은 Brian Goetz의 논문(“State of the Lambda: Libraries Edition”)이나 프로젝트 람다 홈페이지에 공개되어 있는 문헌들이 귀중한 참고자료가 되실 겁니다.
 
-## 배경지식 - Functors
+## 배경지식 - 함수형 객체
+
+우리가 자바 커뮤니티에서 함수형 객체의 유용함과 필요성을 과소 평가되도록 격렬하게 노력해왔음도 불구하고, 이에 대한 요구는 항상 있어왔습니다.
+
+자바의 초창기 시절, GUI를 개발할 때, 우리는 창 열기나 닫기, 버튼 클릭, 스크롤바 이동과 같은 사용자 이벤트에 응답하기 위한 코드 블록들이 필요했습니다.
+
+In Java 1.0, Abstract Window Toolkit (AWT) applications were expected, like their C++ predecessors, to extend window classes and override the event method of choice; this was deemed unwieldy and unworkable. So in Java 1.1, Sun gave us a set of “listener” interfaces, each with one or more methods corresponding to an event within the GUI.
+
+자바 1.0에서는 C++처럼 AWT 응용 프로그램은 윈도우 클래스를 확장하고 선택한 이벤트 메서드를 오버라이드했어야 했는데, 이 것은 번거롭고 실용성이 떨어졌었습니다. 그래서 자바 1.1에서 Sun사는 우리에게 일련의 리스너 인터페이스를 제공하였고, 각 인터페이스는 GUI 내부의 이벤트에 하나 이상에 대응하였습니다.
+
+But in order to make it easier to write the classes that must implement these interfaces and their corresponding methods, Sun gave us inner classes, including the ability to write such a class within the body of an existing class without having to specify a name—the ubiquitous anonymous inner class. (By the way, the listeners were hardly the only example of these that appeared during Java’s history. As we’ll see later, other, more “core” interfaces just like them appeared, for example, Runnable and Comparator.)
+
+또한 이 인터페이스와 부합하는 메서드들을 구현하는 클래스들을 쉽게 작성하게 하기 위해서 Sun사는 우리에게 이름을 지정하지 않고도 기존 클래스 바디 내부에 클래스를 구현할 수 있게 해주는 익명 내부 클래스를 제공하였습니다. (덧붙여, 이 리스너들만이 자바 역사에서 등장하는 유일한 예제가 아닙니다. 나중에 보시겠지만, Runnable이나 Comparator처럼 더욱 핵심 인터페이스들도 등장합니다.)
+
+Inner classes had some strangeness to them, both in terms of syntax and semantics. For example, an inner class was either a static inner class or an instance inner class, depending not on any particular keyword (though static inner classes could be explicitly stated as such using the static keyword) but on the lexical context in which the instance was created. What that meant, in practical terms, is that Java developers often got questions such as those in Listing 1 wrong on programming interviews.
+
+내부 클래스들은 구문과 의미론의 모든 측면에서 다소 이상한 점이 있었습니다. 예를 들어, 내부 클래스가 내부 클래스이거나 인스턴스 내부 클래스인지가 어떤 특별한 키워드에 의존하지 않고 인스턴스가 생성되고 있는 어희적인 문맥 상으로 결정되었습니다. (그러나 정적 내부 클래스는 명시적으로 static 키워드를 사용하여 표시가 될 수 있었습니다.)
+이 것은 현실적인 측면에서 자바 개발자들은 프로그래밍 면접에서 자주 일람 1과 같은 질문을 받게 되고 틀렸다라는 것을 의미했습니다.
 
 
