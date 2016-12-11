@@ -50,4 +50,54 @@ Inner classes had some strangeness to them, both in terms of syntax and semantic
 내부 클래스들은 구문과 의미론의 모든 측면에서 다소 이상한 점이 있었습니다. 예를 들어, 내부 클래스가 내부 클래스이거나 인스턴스 내부 클래스인지가 어떤 특별한 키워드에 의존하지 않고 인스턴스가 생성되고 있는 어희적인 문맥 상으로 결정되었습니다. (그러나 정적 내부 클래스는 명시적으로 static 키워드를 사용하여 표시가 될 수 있었습니다.)
 이 것은 현실적인 측면에서 자바 개발자들은 프로그래밍 면접에서 자주 일람 1과 같은 질문을 받게 되고 틀렸다라는 것을 의미했습니다.
 
+### 일람 1
+```
+class InstanceOuter {
+  public InstanceOuter(int xx) { x = xx; }
 
+  private int x;
+
+  class InstanceInner {
+    public void printSomething() {
+      System.out.println("The value of x in my outer is " + x);
+    }
+  }
+}
+
+class StaticOuter {
+  private static int x = 24;
+
+  static class StaticInner {
+    public void printSomething() {
+      System.out.println("The value of x in my outer is " + x);
+    }
+  }
+}
+
+public class InnerClassExamples {
+  public static void main(String... args) {
+    InstanceOuter io = new InstanceOuter(12);
+
+    // Is this a compile error?
+    InstanceOuter.InstanceInner ii = io.new InstanceInner();
+
+    // What does this print?
+    ii.printSomething(); // prints 12
+
+    // What about this?
+    StaticOuter.StaticInner si = new StaticOuter.StaticInner();
+    si.printSomething(); // prints 24
+  }
+} 
+```
+
+내부 클래스와 같은 기능들은 프로그래밍 면접에 어울릴만한 특수 케이스로 취급될 정도로 일반적인 상황에서는 사용하는 않는 기능이라고 생각하도록 자바 개발자들을 확신시켰습니다. 심저어 그 후에는 대부분 내부 클래스 기능은 순전히 이벤트 처리 목적으로만 사용되어 졌습니다.
+
+## 위와 너머 (Above and Beyond)
+
+구문과 의미론이 투박했음에도 불구하고 그 시스템은 작동했습니다.
+자바가 성장하고 성숙해짐에 따라, 우리는 코드 블록을 객체(실제로 데이터)로 취급하는 것이 유용할 뿐만 아니라 필요하는 더 많은 지점들을 발견하였습니다.
+Java SE 1.2에서 개편된 보안 시스템은 다른 보안 문맥 하에서 코드 블록을 전달하는 것이 유용하다는 걸 알아내었습니다.
+같은 릴리즈에서 함께 개편된 컬렉션 클래스는 정렬된 컬렉션에 어떤 정렬 순서를 적용할지 알기위해서 코드 블록을 전달하는 것이 유용하다고 판단하였습니다.
+스윙은 파일 열기나 저장 대화 사장에서 사용자에게 어떤 파일을 표시할지 결정하기 위해서 코드 블록을 전달하는 것달하는 것이 유용한다고 판단하였습니다.
+그리고 오직 작성자 본인 밖에 좋아하지 않을 만한 구문을 통해서 그 것은 해결되었습니다.
