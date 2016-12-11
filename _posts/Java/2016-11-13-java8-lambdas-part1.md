@@ -31,6 +31,7 @@ tags:
 
 이 주제에 대해서 더 깊고 공식적인 설명을 원하시는 분들은 Brian Goetz의 논문(“State of the Lambda: Libraries Edition”)이나 프로젝트 람다 홈페이지에 공개되어 있는 문헌들이 귀중한 참고자료가 되실 겁니다.
 
+
 ## 배경지식 - 함수형 객체
 
 우리가 자바 커뮤니티에서 함수형 객체의 유용함과 필요성을 과소 평가되도록 격렬하게 노력해왔음도 불구하고, 이에 대한 요구는 항상 있어왔습니다.
@@ -51,7 +52,7 @@ Inner classes had some strangeness to them, both in terms of syntax and semantic
 이 것은 현실적인 측면에서 자바 개발자들은 프로그래밍 면접에서 자주 일람 1과 같은 질문을 받게 되고 틀렸다라는 것을 의미했습니다.
 
 ### 일람 1
-```
+```java
 class InstanceOuter {
   public InstanceOuter(int xx) { x = xx; }
 
@@ -93,6 +94,7 @@ public class InnerClassExamples {
 
 내부 클래스와 같은 기능들은 프로그래밍 면접에 어울릴만한 특수 케이스로 취급될 정도로 일반적인 상황에서는 사용하는 않는 기능이라고 생각하도록 자바 개발자들을 확신시켰습니다. 심저어 그 후에는 대부분 내부 클래스 기능은 순전히 이벤트 처리 목적으로만 사용되어 졌습니다.
 
+
 ## 위와 너머 (Above and Beyond)
 
 구문과 의미론이 투박했음에도 불구하고 그 시스템은 작동했습니다.
@@ -101,3 +103,52 @@ Java SE 1.2에서 개편된 보안 시스템은 다른 보안 문맥 하에서 �
 같은 릴리즈에서 함께 개편된 컬렉션 클래스는 정렬된 컬렉션에 어떤 정렬 순서를 적용할지 알기위해서 코드 블록을 전달하는 것이 유용하다고 판단하였습니다.
 스윙은 파일 열기나 저장 대화 사장에서 사용자에게 어떤 파일을 표시할지 결정하기 위해서 코드 블록을 전달하는 것달하는 것이 유용한다고 판단하였습니다.
 그리고 오직 작성자 본인 밖에 좋아하지 않을 만한 구문을 통해서 그 것은 해결되었습니다.
+
+But when concepts of functional programming began to enter mainstream programming, even Mom gave up. Though possible (see this remarkably complete example), functional programming in Java was, by any account, obtuse and awkward. Java needed to grow up and join the host of mainstream programming languages that offer first-class language support for defining, passing, and storing blocks of code for later execution.
+
+하지만 함수형 프로그래밍의 개념이 주류가 되기 시작했을 때, 대부분의 자바 개발자들은 이미 포기하였습니다.
+심지어 가능할지라도 ((여기에 완벽한 사례가 있습니다.)[http://www.functionaljava.org/]) 어찌됐든 자바에서 함수형 프로그래밍은 서투르고 어색하였습니다.
+자바는 진화하여 나중에 실행할 수 있도록 코드 블록을 정의하고 전달하고 저장하기 위한 first-class 언어 지원을 제공하는 주류 프로그래밍 언어에 참여할 필요가 있었습니다. 
+
+
+## 자바8: 람다식, 타입 추론, 어휘 범위
+
+자바8은 그런한 코드 블록을 쉽게 작성하게 하기위해 설계된 몇몇 새로운 언어 기능들을 도입합니다. 
+그 중에서 가장 중요한 기능은 구어체로 클로저또는 익명 함수라고 일켣는 람다식입니다.
+(클로저라고 불리는 이유는 잠시 후 논의할 것입니다.)
+이 것들에 하나 씩 다뤄봅시다.
+
+**람다식** 람다식은 기본적으로 나중에 실행하는 메서드의 구현을 간결하게 기술하는 방법에 불과합니다.
+예를 들어 그러므로 일람 2와 같이 Runnable을 정의하기 위해 익명 내부 함수 문법을 사용하고 간단한 개념 표현을 위해서 너무 많은 코드 줄을 소비하는 문제가 명확하게 나타났던 반면에, 자바8 람다 문법을 이용하면 동일한 내용의 코드를 알람 3과 같이 작성할 수 있습니다.
+
+### 일람 2 
+```java
+public class Lambdas {
+  public static void main(String... args) {
+    Runnable r = new Runnable() {
+      public void run() {
+        System.out.println("Howdy, world!");
+      }
+    };
+    r.run();
+  }
+} 
+```
+
+### 일람 3 
+```java
+public static void main(String... args) {
+  Runnable r2 = () -> System.out.println("Howdy, world!");
+  r2.run();
+}
+```
+
+두 가지 접근법 콘솔에 무언가를 출력하기 위해서 run() 메서드가 호출되고 있는 Runnable을 구현하는 객체라는 점에서 동일한 효과를 냅니다. 
+그러나 내부적으로 자바8 버전은 단지 Runnable 인터페이스를 구현하는 익명 클래스를 생성하는 것 외에도 약간 처리가 추가됩니다.
+그 중 일부는 자바7에서 도입되었던 동적 바이트코드 호출과 관계를 있습니다.
+본 기사에서는 더 깊이 들어가지는 않겠지만, 이 것이 단지 익명 클래스 이상이라는 것만 알아두시기 바랍니다.
+
+
+
+
+
