@@ -1,5 +1,5 @@
 ---
-title: "[문서 번역] 자바8 람다 - 1부"
+title: "[번역] 자바8 람다 - 1부"
 modified: 2016-11-13T11:45:04-04:00
 source: http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html
 categories: 
@@ -8,6 +8,7 @@ tags:
   - Java8
   - Lambda
   - FP
+  - 번역
 ---
 
 ## 자바8의 람다 표현식 알아보기
@@ -118,10 +119,12 @@ But when concepts of functional programming began to enter mainstream programmin
 (클로저라고 불리는 이유는 잠시 후 논의할 것입니다.)
 이 것들에 하나 씩 다뤄봅시다.
 
-**람다식** 람다식은 기본적으로 나중에 실행하는 메서드의 구현을 간결하게 기술하는 방법에 불과합니다.
+### 람다식
+
+람다식은 기본적으로 나중에 실행하는 메서드의 구현을 간결하게 기술하는 방법에 불과합니다.
 예를 들어 그러므로 일람 2와 같이 Runnable을 정의하기 위해 익명 내부 함수 문법을 사용하고 간단한 개념 표현을 위해서 너무 많은 코드 줄을 소비하는 문제가 명확하게 나타났던 반면에, 자바8 람다 문법을 이용하면 동일한 내용의 코드를 알람 3과 같이 작성할 수 있습니다.
 
-### 일람 2 
+#### 일람 2 
 ```java
 public class Lambdas {
   public static void main(String... args) {
@@ -135,7 +138,7 @@ public class Lambdas {
 } 
 ```
 
-### 일람 3 
+#### 일람 3 
 ```java
 public static void main(String... args) {
   Runnable r2 = () -> System.out.println("Howdy, world!");
@@ -147,6 +150,37 @@ public static void main(String... args) {
 그러나 내부적으로 자바8 버전은 단지 Runnable 인터페이스를 구현하는 익명 클래스를 생성하는 것 외에도 약간 처리가 추가됩니다.
 그 중 일부는 자바7에서 도입되었던 동적 바이트코드 호출과 관계를 있습니다.
 본 기사에서는 더 깊이 들어가지는 않겠지만, 이 것이 단지 익명 클래스 이상이라는 것만 알아두시기 바랍니다.
+
+### 함수형 인터페이스
+
+자바 내부에서 이미 정의해놓은 Runnable이나 Callable<T>, Comprator<T> 그리고 수 많은 다른 인터페이스들은 java8에서는 함수형 인터페이스라고 부릅니다.
+이 인터페이스들은 함수현 인터페이스의 요구사항을 만족하기 위해서 구현되어야 할 메소드를 정확히 하나만 가져야합니다.
+람다가 해당 인터페이스의 어떤 메서드를 정의하고 있는지에 대한 모호함이 없기 때문에 문법이 간결해질 수 있는 이유가 됩니다.
+
+자바8의 설계자들은 **@FunctionalInterface**라는 어노테이션을 제공하기로 하였습니다.
+문서화 시 어떤 인터페이스가 람다와 함께 사용되어지도록 설계되었다라는 것에 알려주는 힌트 용도인데, 
+컴파일러는 이 어노테이션이 아니라 인터페이스의 구조로 함수형 인터페이스 여부르르 판단하기 때문이 이 어노테이션이 필요 하지 않습니다.
+
+Throughout the rest of this article, we’ll continue to use the Runnable and Comparator<T> interfaces as working examples, but there is nothing particularly special about them, except that they adhere to this functional interface single-method restriction. Any developer can, at any time, define a new functional interface—such as the following one—that will be the interface target type for a lambda.
+
+이 기사의 남은 부분 동안,  Runnable과 Comparator<T> 인터페이스를 실전 예제로 사용할 것입니다.
+그러나 이 인터페이스들이 함수현 인터페이스의 유일 메서드 제약을 따르는 점 외에는 특별한 점은 없습니다.
+어떤 개발자든지 언제든지 다음과 같이 람다의 인터페이스 타켓 타입이 될 새로운 함수형 인터페이스를 정의할 수 있습니다.
+
+```java
+interface Something {
+  public String doit(Integer i);
+}
+```
+
+The Something interface is every bit as legal and legitimate a functional interface as Runnable or Comparator<T>; we’ll look at it again after getting some lambda syntax under our belt.
+
+위의 Something 인터페이스는 Runnable과 Comparator<T>처럼 유효하고 적절한 함수형 인터페이스입니다.
+이 인터페이스는 몇 가지 람다 문법을 습득 한 후 다시 다루겠습니다.
+
+
+
+
 
 
 
