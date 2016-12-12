@@ -105,8 +105,6 @@ Java SE 1.2에서 개편된 보안 시스템은 다른 보안 문맥 하에서 �
 스윙은 파일 열기나 저장 대화 사장에서 사용자에게 어떤 파일을 표시할지 결정하기 위해서 코드 블록을 전달하는 것달하는 것이 유용한다고 판단하였습니다.
 그리고 오직 작성자 본인 밖에 좋아하지 않을 만한 구문을 통해서 그 것은 해결되었습니다.
 
-But when concepts of functional programming began to enter mainstream programming, even Mom gave up. Though possible (see this remarkably complete example), functional programming in Java was, by any account, obtuse and awkward. Java needed to grow up and join the host of mainstream programming languages that offer first-class language support for defining, passing, and storing blocks of code for later execution.
-
 하지만 함수형 프로그래밍의 개념이 주류가 되기 시작했을 때, 대부분의 자바 개발자들은 이미 포기하였습니다.
 심지어 가능할지라도 ((여기에 완벽한 사례가 있습니다.)[http://www.functionaljava.org/]) 어찌됐든 자바에서 함수형 프로그래밍은 서투르고 어색하였습니다.
 자바는 진화하여 나중에 실행할 수 있도록 코드 블록을 정의하고 전달하고 저장하기 위한 first-class 언어 지원을 제공하는 주류 프로그래밍 언어에 참여할 필요가 있었습니다. 
@@ -178,11 +176,104 @@ The Something interface is every bit as legal and legitimate a functional interf
 위의 Something 인터페이스는 Runnable과 Comparator<T>처럼 유효하고 적절한 함수형 인터페이스입니다.
 이 인터페이스는 몇 가지 람다 문법을 습득 한 후 다시 다루겠습니다.
 
+### 람다 문법
 
+자바에서 람다는 괄호 안의 매개 변수 집합, 화살표 그리고 하나의 표현식이거나 코드 블록이 될 수 있는 바디 이렇게 핵심적인 3개의 부분으로 이루어집니다.
+일람 2와 같은 예제에서 run 메서드가 파라미터를 받지 않았고 void 반환했기 때문에 파라미터와 반환 타입이 없었습니다.
+그러나 일람 4와 같이 Comparator<T>에 대한 예제는 이 문법을 좀 더 명확하게 보여줍니다.
+Comparator는 2개의 문자열을 인수로 받고 정수를 반환하는데 첫 번째 스트링이 더 작을 경우에는 음수, 더 클 경우에는 양수, 같을 경우에는 0을 반환합니다.
 
+#### 일람 4
+```java
+public static void main(String... args) {
+  Comparator<String> c = (String lhs, String rhs) -> lhs.compareTo(rhs);
+  int result = c.compare("Hello", "World");
+}
+```
 
+If the body of the lambda requires more than one expression, the value returned from the expression can be handed back via the return keyword, just as with any block of Java code (see Listing 5).
 
+일람 5처럼 만약에 람다의 바디가 하나보다 많은 표현식을 필요로 한다면, 일반적인 자바 코드와 마찬가지로 반환 값은 return 키워를 통해서 반환되어질 수 있습니다.
 
+#### 일람 5
+```java
+public static void main(String... args) {
+  Comparator<String> c = (String lhs, String rhs) -> {
+    System.out.println("I am comparing" + lhs + " to " + rhs);
+    return lhs.compareTo(rhs);
+  };
+  int result = c.compare("Hello", "World");
+} 
+```
+
+(코드의 어디에 중괄호를 위치시킬지에 대한 논의는 앞으로 수년동안 자바 게시판과 블로그를 수놓을 것 같습니다.)
+람다의 바디에서 실행될 수 있는 것들에 대해서는 약간의 제한이 있는데요.
+대부분은 break나 continue 키워드로 람다 바디 밖으로 탈출할 수 없다거나 람다가 값을 반환한다면 모든 코드 경로에서 값을 반환하거나 예외를 던저야 한다는 등의 직관적인 것들입니다.
+이 것들은 표준 자바 메서드에 대한 규칙과 동일한 부분이 많으며 그래서 그리 놀랄만한 일도 아닙니다.
+
+### 타입 추론
+
+자바 외의 다른 언어에서 내세워온 특징 중 하나는 타입 추론입니다.
+즉, 개발자가 매개 변수의 타입을 매번 명시하도록 강제하기 보다는 컴파일러가 스스로 타입 매개 변수가 무엇인지 알아낼 정도로 똑똑해야 한다는 건데요.
+
+예를 들어 일람 5의 Comparator를 생각해보겠습니다.
+만약 타겟 타입이 Comparator<String>이라면, 람다에 넘어오는 객체들은 문자열 또는 그 하위 타입이여야 합니다.
+그렇지 않으면, 코드는 애초에 컴파일 되지 않을 것입니다.
+(그런데 이 것은 새로운 내용은 아니군요. 상속의 기초 개념입니다.)
+
+이 경우에, 자바8의 향상된 타입 추론 기능 덕분에 **lhs**와 **rhs** 앞에 **Stirng** 선언은 완전히 중복되며, 완전히 선택사항입니다. (일람 6)
+
+#### 일람 6 
+```java
+public static void main(String... args) {
+  Comparator<String> c = (lhs, rhs) -> {
+    System.out.println("I am comparing" + lhs + " to " + rhs);
+    return lhs.compareTo(rhs);
+  };
+  int result = c.compare("Hello", "World");
+}
+``` 
+
+언어 규격은 언제 명시적인 형식적인 타입 선언이 필요한지에 대해서 정확한 규칙을 가질 것입니다.
+그러나 대부분 경우에 대해 람다 표현식에 대해 매개 변수 타입 명시는 완전히 생략하는 것이 예외적인 것이 아니라 표준적이 되어가고 있습니다.
+
+자바 람다 문법의 한가지 재미잇는 부작용은 약간의 조치없이는 Object 참조에 할당할 수 없는 사례가 자바 역사상 처음으로 등장했다는 것입니다. (일람 7)
+
+#### 일람 7
+```java
+public static void main4(String... args) {
+  Object o = () -> System.out.println("Howdy, world!");
+  // 컴파일 에러!
+}
+```
+
+The compiler will complain that Object is not a functional interface, though the real problem is that the compiler can’t quite figure out which functional interface this lambda should implement: Runnable or something else? We can help the compiler with, as always, a cast, as shown in Listing 8.
+
+컴파일러는 Object가 함수형 인터페이스가 아니라고 불평할 것입니다.
+그러나 실제 문제는 컴파일라는 이 람다가 어떤 함수형 인터페이스를 구현하고 있는지 알아낼 길이 없다는 것입니다.
+Runnalbe일까요? 아니면 다른 걸까요? 일람 8처럼 늘 그래왔던 것 처럼 형변환을 통해 컴파일러를 도와줄 수 있습니다.
+
+#### 일람 8 
+```java
+public static void main4(String... args) {
+  Object o = (Runnable) () -> System.out.println("Howdy, world!");
+}
+``` 
+
+Recall from earlier that lambda syntax works with any interface, so a lambda that is inferred to a custom interface will also be inferred just as easily, as shown in Listing 9. Primitive types are equally as viable as their wrapper types in a lambda type signature, by the way.
+
+앞서 언급했듯이 람다 문법은 어떤 인터페이스와도 작동하므로 사용자 인터페이스로 추론되는 람다는 일람 9처럼 마찬가지로 쉽게 유추될 것입니다.
+그런데 원시형 타입들은 각각 대응하는 래퍼 타입들과 동이랗게 작동합니다.
+
+#### 일람 9
+```java
+Something s = (Integer i) -> { return i.toString(); };
+System.out.println(s.doit(4)); 
+```
+
+다시 말씀드리지만, 진짜 아무 것도 진짜 새로운 것은 없습니다. 
+자바8은 자바의 오래된 원칙, 패턴과 새로운 기능에 대한 문법들을 적용하는 것 뿐입니다.
+만약 아직 완전히 이해하지 못하셨다면, 코드를 통해 타입 추론을 이해하기 위해서 몇 분을 사용시면 크게 도움이 됩니다.
 
 
 
