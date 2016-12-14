@@ -1,5 +1,5 @@
 ---
-title: "[번역] 자바8 람다 1부 - 서론"
+title: "[번역] 자바8 람다 1부 - 서론, 배경"
 modified: 2016-11-13T11:45:42+09:00
 source: http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html
 categories: 

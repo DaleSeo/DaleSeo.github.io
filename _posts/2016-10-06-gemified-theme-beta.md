@@ -5,6 +5,7 @@ categories:
   - Jekyll
 tags:
   - update
+published: false
 ---
 
 Hot on the heels of Jekyll v3.3.0 is a beta release of Minimal Mistakes... as a gemified theme.
