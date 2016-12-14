@@ -1,6 +1,6 @@
 ---
-title: "[번역] 자바8 람다 - 1부"
-modified: 2016-11-13T11:45:04-04:00
+title: "[번역] 자바8 람다 1부 - 서론"
+modified: 2016-11-13T11:45:42+09:00
 source: http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html
 categories: 
   - Java
@@ -10,6 +10,8 @@ tags:
   - FP
   - 번역
 ---
+
+> 본 포스트는 오라클 공식 웹사이트에 Ted Neward가 쓴 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
 
 ## 자바8의 람다 표현식 알아보기
 
@@ -39,15 +41,9 @@ tags:
 
 자바의 초창기 시절, GUI를 개발할 때, 우리는 창 열기나 닫기, 버튼 클릭, 스크롤바 이동과 같은 사용자 이벤트에 응답하기 위한 코드 블록들이 필요했습니다.
 
-In Java 1.0, Abstract Window Toolkit (AWT) applications were expected, like their C++ predecessors, to extend window classes and override the event method of choice; this was deemed unwieldy and unworkable. So in Java 1.1, Sun gave us a set of “listener” interfaces, each with one or more methods corresponding to an event within the GUI.
-
 자바 1.0에서는 C++처럼 AWT 응용 프로그램은 윈도우 클래스를 확장하고 선택한 이벤트 메서드를 오버라이드했어야 했는데, 이 것은 번거롭고 실용성이 떨어졌었습니다. 그래서 자바 1.1에서 Sun사는 우리에게 일련의 리스너 인터페이스를 제공하였고, 각 인터페이스는 GUI 내부의 이벤트에 하나 이상에 대응하였습니다.
 
-But in order to make it easier to write the classes that must implement these interfaces and their corresponding methods, Sun gave us inner classes, including the ability to write such a class within the body of an existing class without having to specify a name—the ubiquitous anonymous inner class. (By the way, the listeners were hardly the only example of these that appeared during Java’s history. As we’ll see later, other, more “core” interfaces just like them appeared, for example, Runnable and Comparator.)
-
 또한 이 인터페이스와 부합하는 메서드들을 구현하는 클래스들을 쉽게 작성하게 하기 위해서 Sun사는 우리에게 이름을 지정하지 않고도 기존 클래스 바디 내부에 클래스를 구현할 수 있게 해주는 익명 내부 클래스를 제공하였습니다. (덧붙여, 이 리스너들만이 자바 역사에서 등장하는 유일한 예제가 아닙니다. 나중에 보시겠지만, Runnable이나 Comparator처럼 더욱 핵심 인터페이스들도 등장합니다.)
-
-Inner classes had some strangeness to them, both in terms of syntax and semantics. For example, an inner class was either a static inner class or an instance inner class, depending not on any particular keyword (though static inner classes could be explicitly stated as such using the static keyword) but on the lexical context in which the instance was created. What that meant, in practical terms, is that Java developers often got questions such as those in Listing 1 wrong on programming interviews.
 
 내부 클래스들은 구문과 의미론의 모든 측면에서 다소 이상한 점이 있었습니다. 예를 들어, 내부 클래스가 내부 클래스이거나 인스턴스 내부 클래스인지가 어떤 특별한 키워드에 의존하지 않고 인스턴스가 생성되고 있는 어희적인 문맥 상으로 결정되었습니다. (그러나 정적 내부 클래스는 명시적으로 static 키워드를 사용하여 표시가 될 수 있었습니다.)
 이 것은 현실적인 측면에서 자바 개발자들은 프로그래밍 면접에서 자주 일람 1과 같은 질문을 받게 되고 틀렸다라는 것을 의미했습니다.
@@ -108,172 +104,3 @@ Java SE 1.2에서 개편된 보안 시스템은 다른 보안 문맥 하에서 �
 하지만 함수형 프로그래밍의 개념이 주류가 되기 시작했을 때, 대부분의 자바 개발자들은 이미 포기하였습니다.
 심지어 가능할지라도 ((여기에 완벽한 사례가 있습니다.)[http://www.functionaljava.org/]) 어찌됐든 자바에서 함수형 프로그래밍은 서투르고 어색하였습니다.
 자바는 진화하여 나중에 실행할 수 있도록 코드 블록을 정의하고 전달하고 저장하기 위한 first-class 언어 지원을 제공하는 주류 프로그래밍 언어에 참여할 필요가 있었습니다. 
-
-
-## 자바8: 람다식, 타입 추론, 어휘 범위
-
-자바8은 그런한 코드 블록을 쉽게 작성하게 하기위해 설계된 몇몇 새로운 언어 기능들을 도입합니다. 
-그 중에서 가장 중요한 기능은 구어체로 클로저또는 익명 함수라고 일켣는 람다식입니다.
-(클로저라고 불리는 이유는 잠시 후 논의할 것입니다.)
-이 것들에 하나 씩 다뤄봅시다.
-
-### 람다식
-
-람다식은 기본적으로 나중에 실행하는 메서드의 구현을 간결하게 기술하는 방법에 불과합니다.
-예를 들어 그러므로 일람 2와 같이 Runnable을 정의하기 위해 익명 내부 함수 문법을 사용하고 간단한 개념 표현을 위해서 너무 많은 코드 줄을 소비하는 문제가 명확하게 나타났던 반면에, 자바8 람다 문법을 이용하면 동일한 내용의 코드를 알람 3과 같이 작성할 수 있습니다.
-
-#### 일람 2 
-```java
-public class Lambdas {
-  public static void main(String... args) {
-    Runnable r = new Runnable() {
-      public void run() {
-        System.out.println("Howdy, world!");
-      }
-    };
-    r.run();
-  }
-} 
-```
-
-#### 일람 3 
-```java
-public static void main(String... args) {
-  Runnable r2 = () -> System.out.println("Howdy, world!");
-  r2.run();
-}
-```
-
-두 가지 접근법 콘솔에 무언가를 출력하기 위해서 run() 메서드가 호출되고 있는 Runnable을 구현하는 객체라는 점에서 동일한 효과를 냅니다. 
-그러나 내부적으로 자바8 버전은 단지 Runnable 인터페이스를 구현하는 익명 클래스를 생성하는 것 외에도 약간 처리가 추가됩니다.
-그 중 일부는 자바7에서 도입되었던 동적 바이트코드 호출과 관계를 있습니다.
-본 기사에서는 더 깊이 들어가지는 않겠지만, 이 것이 단지 익명 클래스 이상이라는 것만 알아두시기 바랍니다.
-
-### 함수형 인터페이스
-
-자바 내부에서 이미 정의해놓은 Runnable이나 Callable<T>, Comprator<T> 그리고 수 많은 다른 인터페이스들은 java8에서는 함수형 인터페이스라고 부릅니다.
-이 인터페이스들은 함수현 인터페이스의 요구사항을 만족하기 위해서 구현되어야 할 메소드를 정확히 하나만 가져야합니다.
-람다가 해당 인터페이스의 어떤 메서드를 정의하고 있는지에 대한 모호함이 없기 때문에 문법이 간결해질 수 있는 이유가 됩니다.
-
-자바8의 설계자들은 **@FunctionalInterface**라는 어노테이션을 제공하기로 하였습니다.
-문서화 시 어떤 인터페이스가 람다와 함께 사용되어지도록 설계되었다라는 것에 알려주는 힌트 용도인데, 
-컴파일러는 이 어노테이션이 아니라 인터페이스의 구조로 함수형 인터페이스 여부르르 판단하기 때문이 이 어노테이션이 필요 하지 않습니다.
-
-Throughout the rest of this article, we’ll continue to use the Runnable and Comparator<T> interfaces as working examples, but there is nothing particularly special about them, except that they adhere to this functional interface single-method restriction. Any developer can, at any time, define a new functional interface—such as the following one—that will be the interface target type for a lambda.
-
-이 기사의 남은 부분 동안,  Runnable과 Comparator<T> 인터페이스를 실전 예제로 사용할 것입니다.
-그러나 이 인터페이스들이 함수현 인터페이스의 유일 메서드 제약을 따르는 점 외에는 특별한 점은 없습니다.
-어떤 개발자든지 언제든지 다음과 같이 람다의 인터페이스 타켓 타입이 될 새로운 함수형 인터페이스를 정의할 수 있습니다.
-
-```java
-interface Something {
-  public String doit(Integer i);
-}
-```
-
-The Something interface is every bit as legal and legitimate a functional interface as Runnable or Comparator<T>; we’ll look at it again after getting some lambda syntax under our belt.
-
-위의 Something 인터페이스는 Runnable과 Comparator<T>처럼 유효하고 적절한 함수형 인터페이스입니다.
-이 인터페이스는 몇 가지 람다 문법을 습득 한 후 다시 다루겠습니다.
-
-### 람다 문법
-
-자바에서 람다는 괄호 안의 매개 변수 집합, 화살표 그리고 하나의 표현식이거나 코드 블록이 될 수 있는 바디 이렇게 핵심적인 3개의 부분으로 이루어집니다.
-일람 2와 같은 예제에서 run 메서드가 파라미터를 받지 않았고 void 반환했기 때문에 파라미터와 반환 타입이 없었습니다.
-그러나 일람 4와 같이 Comparator<T>에 대한 예제는 이 문법을 좀 더 명확하게 보여줍니다.
-Comparator는 2개의 문자열을 인수로 받고 정수를 반환하는데 첫 번째 스트링이 더 작을 경우에는 음수, 더 클 경우에는 양수, 같을 경우에는 0을 반환합니다.
-
-#### 일람 4
-```java
-public static void main(String... args) {
-  Comparator<String> c = (String lhs, String rhs) -> lhs.compareTo(rhs);
-  int result = c.compare("Hello", "World");
-}
-```
-
-If the body of the lambda requires more than one expression, the value returned from the expression can be handed back via the return keyword, just as with any block of Java code (see Listing 5).
-
-일람 5처럼 만약에 람다의 바디가 하나보다 많은 표현식을 필요로 한다면, 일반적인 자바 코드와 마찬가지로 반환 값은 return 키워를 통해서 반환되어질 수 있습니다.
-
-#### 일람 5
-```java
-public static void main(String... args) {
-  Comparator<String> c = (String lhs, String rhs) -> {
-    System.out.println("I am comparing" + lhs + " to " + rhs);
-    return lhs.compareTo(rhs);
-  };
-  int result = c.compare("Hello", "World");
-} 
-```
-
-(코드의 어디에 중괄호를 위치시킬지에 대한 논의는 앞으로 수년동안 자바 게시판과 블로그를 수놓을 것 같습니다.)
-람다의 바디에서 실행될 수 있는 것들에 대해서는 약간의 제한이 있는데요.
-대부분은 break나 continue 키워드로 람다 바디 밖으로 탈출할 수 없다거나 람다가 값을 반환한다면 모든 코드 경로에서 값을 반환하거나 예외를 던저야 한다는 등의 직관적인 것들입니다.
-이 것들은 표준 자바 메서드에 대한 규칙과 동일한 부분이 많으며 그래서 그리 놀랄만한 일도 아닙니다.
-
-### 타입 추론
-
-자바 외의 다른 언어에서 내세워온 특징 중 하나는 타입 추론입니다.
-즉, 개발자가 매개 변수의 타입을 매번 명시하도록 강제하기 보다는 컴파일러가 스스로 타입 매개 변수가 무엇인지 알아낼 정도로 똑똑해야 한다는 건데요.
-
-예를 들어 일람 5의 Comparator를 생각해보겠습니다.
-만약 타겟 타입이 Comparator<String>이라면, 람다에 넘어오는 객체들은 문자열 또는 그 하위 타입이여야 합니다.
-그렇지 않으면, 코드는 애초에 컴파일 되지 않을 것입니다.
-(그런데 이 것은 새로운 내용은 아니군요. 상속의 기초 개념입니다.)
-
-이 경우에, 자바8의 향상된 타입 추론 기능 덕분에 **lhs**와 **rhs** 앞에 **Stirng** 선언은 완전히 중복되며, 완전히 선택사항입니다. (일람 6)
-
-#### 일람 6 
-```java
-public static void main(String... args) {
-  Comparator<String> c = (lhs, rhs) -> {
-    System.out.println("I am comparing" + lhs + " to " + rhs);
-    return lhs.compareTo(rhs);
-  };
-  int result = c.compare("Hello", "World");
-}
-``` 
-
-언어 규격은 언제 명시적인 형식적인 타입 선언이 필요한지에 대해서 정확한 규칙을 가질 것입니다.
-그러나 대부분 경우에 대해 람다 표현식에 대해 매개 변수 타입 명시는 완전히 생략하는 것이 예외적인 것이 아니라 표준적이 되어가고 있습니다.
-
-자바 람다 문법의 한가지 재미잇는 부작용은 약간의 조치없이는 Object 참조에 할당할 수 없는 사례가 자바 역사상 처음으로 등장했다는 것입니다. (일람 7)
-
-#### 일람 7
-```java
-public static void main4(String... args) {
-  Object o = () -> System.out.println("Howdy, world!");
-  // 컴파일 에러!
-}
-```
-
-The compiler will complain that Object is not a functional interface, though the real problem is that the compiler can’t quite figure out which functional interface this lambda should implement: Runnable or something else? We can help the compiler with, as always, a cast, as shown in Listing 8.
-
-컴파일러는 Object가 함수형 인터페이스가 아니라고 불평할 것입니다.
-그러나 실제 문제는 컴파일라는 이 람다가 어떤 함수형 인터페이스를 구현하고 있는지 알아낼 길이 없다는 것입니다.
-Runnalbe일까요? 아니면 다른 걸까요? 일람 8처럼 늘 그래왔던 것 처럼 형변환을 통해 컴파일러를 도와줄 수 있습니다.
-
-#### 일람 8 
-```java
-public static void main4(String... args) {
-  Object o = (Runnable) () -> System.out.println("Howdy, world!");
-}
-``` 
-
-Recall from earlier that lambda syntax works with any interface, so a lambda that is inferred to a custom interface will also be inferred just as easily, as shown in Listing 9. Primitive types are equally as viable as their wrapper types in a lambda type signature, by the way.
-
-앞서 언급했듯이 람다 문법은 어떤 인터페이스와도 작동하므로 사용자 인터페이스로 추론되는 람다는 일람 9처럼 마찬가지로 쉽게 유추될 것입니다.
-그런데 원시형 타입들은 각각 대응하는 래퍼 타입들과 동이랗게 작동합니다.
-
-#### 일람 9
-```java
-Something s = (Integer i) -> { return i.toString(); };
-System.out.println(s.doit(4)); 
-```
-
-다시 말씀드리지만, 진짜 아무 것도 진짜 새로운 것은 없습니다. 
-자바8은 자바의 오래된 원칙, 패턴과 새로운 기능에 대한 문법들을 적용하는 것 뿐입니다.
-만약 아직 완전히 이해하지 못하셨다면, 코드를 통해 타입 추론을 이해하기 위해서 몇 분을 사용시면 크게 도움이 됩니다.
-
-
-
