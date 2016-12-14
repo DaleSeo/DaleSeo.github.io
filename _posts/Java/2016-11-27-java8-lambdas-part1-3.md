@@ -11,7 +11,7 @@ tags:
   - 번역
 ---
 
-> 본 포스트는 오라클 공식 웹사이트에 Ted Neward가 기고 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
+> 본 포스트는 오라클 공식 웹사이트에 Ted Neward가 기고한 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
 
 ## 메소드 참조 (Method Reference)
 
@@ -94,7 +94,7 @@ public static void main(String... args) {
 사실 이 메소드를 바로 사용하는 것이 메서드 참조가 정확하게 해주는 일입니다. (일람 18)
 `Person`에 정의된 `compareFirstNames` 메서드가 사용될 것이라고 컴파일러에게 알려주는 콜론 2개가 사용된 메서드 명명 스타일을 주목하세요.
 
-일람 18 
+### 일람 18 
 ```java
 class Person {
   public String firstName;
