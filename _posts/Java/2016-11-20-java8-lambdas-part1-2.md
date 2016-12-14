@@ -11,7 +11,7 @@ tags:
   - 번역
 ---
 
-> 본 포스트는 오라클 공식 웹사이트에 Ted Neward가 쓴 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
+> 본 포스트는 오라클 공식 웹사이트에 Ted Neward가 기고한 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
 
 자바8은 그런한 코드 블록을 쉽게 작성하게 하기위해 설계된 몇몇 새로운 언어 기능들을 도입합니다. 
 그 중에서 가장 중요한 기능은 구어체로 클로저또는 익명 함수라고 일켣는 람다식입니다.
