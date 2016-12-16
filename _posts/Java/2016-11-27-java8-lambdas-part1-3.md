@@ -11,7 +11,7 @@ tags:
   - 번역
 ---
 
-> 본 포스트는 오라클 공식 웹사이트에 Ted Neward가 기고한 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
+> 본 포스트는 [오라클 웹사이트](http://www.oracle.com)에 Ted Neward가 기고한 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
 
 ## 메소드 참조 (Method Reference)
 
