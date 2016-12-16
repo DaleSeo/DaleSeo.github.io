@@ -1,5 +1,5 @@
 ---
-title: "[번역] 자바8 람다 1부 - 메소드 참조, 가상 확장 메소드, 결론"
+title: "자바8: 람다 1부 - 메소드 참조, 가상 확장 메소드, 결론"
 modified: 2016-11-27T19:11:24+09:00
 source: http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html
 categories: 

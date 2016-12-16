@@ -1,5 +1,5 @@
 ---
-title: "[번역] 자바8 람다 1부 - 서론, 배경"
+title: "자바8: 람다 1부 - 서문, 배경"
 modified: 2016-11-13T11:45:42+09:00
 source: http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html
 categories: 
@@ -11,7 +11,7 @@ tags:
   - 번역
 ---
 
-> 본 포스트는 오라클 공식 웹사이트에 Ted Neward가 기고한 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
+> 본 포스트는 [오라클 웹사이트](http://www.oracle.com)에 Ted Neward가 기고한 [Java 8: Lambdas, Part 1](http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html)를 번역하였습니다.
 
 ## 자바8의 람다 표현식 알아보기
 
