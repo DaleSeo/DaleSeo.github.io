@@ -79,10 +79,10 @@ analytics:
 author:
   name             : "Dale Seo"
   avatar           : "/assets/images/bio-photo.jpg"
-  bio              : "Software Engineer | Full-stack Developer"
+  bio              : "Software Engineer"
   location         : "Seoul, Korea"
   email            : dale.seo@gmail.com
-  uri              : https://DaleSeo.github.io/
+  uri              : http://www.daleseo.com
   bitbucket        :
   codepen          :
   dribbble         :
