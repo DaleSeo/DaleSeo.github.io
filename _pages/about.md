@@ -4,12 +4,10 @@ title: "About"
 modified: 2016-11-03T11:55:22-04:00
 ---
 
-Hello, My Name is Dale Seo. I'm a software engineer. I love playing basketball.
-
-## Summary
-
-- Ability to design scalable and maintainable applications and implement them with readable code
-- Over five years of experience in operating global web applications visiting more than 10 countries to localize and publish them
-- Mainly use Java for production grade code but enjoy writing code in Python and Javascript for prototyping or experiment as well
-- Pursue a career as a full-stack developer performing both front-end and back-end development sufficiently
-- Welcome technical challenges, quickly learning new skills and share them with colleagues
+Hello, My name is Dale Seo from Seoul, Korea.
+I'm a software engineer, specifically a back-end developer.
+My job requires me to develop server applications but I'm also interested in front-end development.
+Actually, I pursue a career as a full-stack developer.
+I enjoy learning new skills and share what I've learned.
+That's why I started blogging.
+I try to translate online tutorials to Korean because I'd like to translate a book someday.
