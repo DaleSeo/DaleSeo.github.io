@@ -1,5 +1,5 @@
 ---
-title: "Java8 Optional 1부: Java8 이 전의 null 처리"
+title: "자바8 Optional 1부: Java8 이 전의 null 처리"
 modified: 2017-12-18T16:59:26+09:00
 categories: 
   - Java
