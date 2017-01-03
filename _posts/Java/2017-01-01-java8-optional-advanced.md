@@ -8,7 +8,7 @@ tags:
   - FP
   - Optional
   - Stream
-published: true
+published: false
 ---
 
 > Optional을 좀 더 Java8 API 설계자의 의도에 맞게 쓰는 방법에 대해서 알아봅시다.

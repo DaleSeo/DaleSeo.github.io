@@ -8,7 +8,7 @@ tags:
   - FP
   - Optional
   - Stream
-published: true
+published: false
 ---
 
 > Java8 이 후에는 얼마나 스마트하게 null 처리를 할 수 있는지 알아봅시다.
