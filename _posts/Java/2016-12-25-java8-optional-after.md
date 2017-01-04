@@ -43,11 +43,11 @@ Java8은 이러한 함수형 언어의 접근 방식에서 영감을 받아 `jav
 
 ## Optional의 효과
 
-Optional을 사용해서 객체를 감싸서 사용하시게 되면...
+Optional로 객체를 감싸서 사용하시게 되면...
 
 - NPE를 유발할 수 있는 null을 직접 다루지 않아도 됩니다.
-- 번거로운 null 체크를 직접 하지 않아도 됩니다.
-- 명시적으로 해당 변수가 null일 수도 있다는 가능성을 표현할 수 있습니다. (따라서 방어적인 불필요한 null 체크를 줄일 수 있습니다.)
+- 수고롭게 null 체크를 직접 하지 않아도 됩니다.
+- 명시적으로 해당 변수가 null일 수도 있다는 가능성을 표현할 수 있습니다. (따라서 불필요한 방어 로직을 줄일 수 있습니다.)
 
 ## Optional 기본 사용법
 
@@ -59,9 +59,9 @@ Optional을 사용해서 객체를 감싸서 사용하시게 되면...
 제네릭을 제공하기 때문에, 변수를 선언할 때 명기한 타입 파라미터에 따라서 감쌀 수 있는 객체의 타입이 결정됩니다.
 
 ```java
-Optional<Order> maybeOrder = ... // Order 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
-Optional<Member> optMember = ... // Member 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
-Optional<Address> address = ... // Address 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
+Optional<Order> maybeOrder; // Order 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
+Optional<Member> optMember; // Member 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
+Optional<Address> address; // Address 타입의 객체를 감쌀 수 있는 Optional 타입의 변수
 ```
 
 변수명은 그냥 클래스 이름을 사용하기도 하지만 "maybe"나 "opt"와 같은 접두어를 붙여서 Optional 타입의 변수라는 것을 좀 더 명확히 나타내기도 합니다.
@@ -71,7 +71,7 @@ Optional<Address> address = ... // Address 타입의 객체를 감쌀 수 있는
 
 Optional 클래스는 간편하게 객체 생성을 할 수 있도록 3가지 정적 팩토리 메소드를 제공합니다.
 
-1. `Optional.empty()`
+#### `Optional.empty()`
 
 null을 담고 있는, 한 마디로 비어있는 Optional 객체를 얻어옵니다.
 이 비어있는 객체는 Optional 내부적으로 미리 생성해놓은 싱글턴 인스턴스입니다.
@@ -80,7 +80,7 @@ null을 담고 있는, 한 마디로 비어있는 Optional 객체를 얻어옵�
 Optional<Member> maybeMember = Optional.empty();
 ```
 
-2. `Optional.of(value)`
+#### `Optional.of(value)`
 
 null이 아닌 객체를 담고 있는 Optional 객체를 생성합니다.
 null이 넘어올 경우, NPE를 던지기 때문에 **주의해서 사용해야 합니다**.
@@ -89,7 +89,7 @@ null이 넘어올 경우, NPE를 던지기 때문에 **주의해서 사용해야
 Optional<Member> maybeMember = Optional.of(aMember);
 ```
 
-3. `Optional.ofNullable(value)`
+#### `Optional.ofNullable(value)`
 
 null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다.
 `Optional.empty()`와 `Optional.ofNullable(value)`를 합쳐놓은 메소드라고 생각하시면 됩니다.
