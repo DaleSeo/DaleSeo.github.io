@@ -71,7 +71,7 @@ Optional<Address> address; // Address 타입의 객체를 감쌀 수 있는 Opti
 
 Optional 클래스는 간편하게 객체 생성을 할 수 있도록 3가지 정적 팩토리 메소드를 제공합니다.
 
-#### `Optional.empty()`
+- `Optional.empty()`
 
 null을 담고 있는, 한 마디로 비어있는 Optional 객체를 얻어옵니다.
 이 비어있는 객체는 Optional 내부적으로 미리 생성해놓은 싱글턴 인스턴스입니다.
@@ -80,7 +80,7 @@ null을 담고 있는, 한 마디로 비어있는 Optional 객체를 얻어옵�
 Optional<Member> maybeMember = Optional.empty();
 ```
 
-#### `Optional.of(value)`
+- `Optional.of(value)`
 
 null이 아닌 객체를 담고 있는 Optional 객체를 생성합니다.
 null이 넘어올 경우, NPE를 던지기 때문에 **주의해서 사용해야 합니다**.
@@ -89,7 +89,7 @@ null이 넘어올 경우, NPE를 던지기 때문에 **주의해서 사용해야
 Optional<Member> maybeMember = Optional.of(aMember);
 ```
 
-#### `Optional.ofNullable(value)`
+- `Optional.ofNullable(value)`
 
 null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다.
 `Optional.empty()`와 `Optional.ofNullable(value)`를 합쳐놓은 메소드라고 생각하시면 됩니다.
