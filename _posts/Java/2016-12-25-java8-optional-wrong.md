@@ -131,12 +131,13 @@ Optional 클래스는 담고 있는 객체를 꺼내오기 위해서 다양한 �
 이제부터 이 메소드들을 어떻게 활용하는지에 대해서 얘기해보도록 하겠습니다.
 
 
-## Optional답지 않은 null 체크 
+## Optional의 잘못된 사용
 
 위에서 설명드린 것 처럼 `get()` 메소드는 비어있는 Optional 객체를 대상으로 호출할 경우, 예외를 발생시키므로 다음과 같이 객재 존재 여부를 bool 타입으로 반환하는 `ifPresent()`라는 메소드를 통해 null 체크가 필요합니다.
 
 ```java
-Optional<String> maybeText = getText();
+String text = getText();
+Optional<String> maybeText = Optional.ofNullable(text);
 int length;
 if (maybeText.isPresent()) {
 	length = maybeText.get().length();
@@ -157,8 +158,8 @@ if (text != null) {
 }
 ```
 
-이럴꺼면 뭐하러 Optional을 사용하는 걸까요? Optional을 사용해서 도대체 뭐가 좋아진거죠?! 
-사실 이렇게 코딩하실 거라면 차라리 Optional을 사용하지 않는 편이 나을 것 같습니다.
+위 코드를 보시고 이렇게 말씀하시는 분들이 많으실 겁니다. "이럴꺼면 뭐하러 Optional을 사용하는 걸까요? Optional을 사용해서 도대체 뭐가 좋아진거죠?
+사실 이렇게 코딩하실 거라면 차라리 Optional을 사용하지 않는 편이 나을 것 같습니다."
 
 안타깝게도 Optional 관련해서 개발자들이 제일 많이 하는 질문 중 하나가 "Optional 적용 후 어떻게 null 체크를 해야하나요?" 입니다.
 사실 이 질문에 대한 답변은 "null 체크를 하실 필요가 없으시니 하시면 안 됩니다." 입니다.
@@ -167,6 +168,10 @@ if (text != null) {
 우리가 Optional을 사용하려는 이유는 앞에서 설명드렸던 것 처럼 **고통스러운 null 처리를 직접하지 않고 Optional 클래스에 위임하기** 위함입니다.
 
 따라서 위와 같은 방식으로 Optional을 사용하게 되면 Java8 이 전에 직접 null 체크를 하던 코딩 수준에서 크게 벗어나지 못하게 됩니다.
+
+다른 잘못된 예제로 이 전 포스트에서 보았던 `getMemberCityFromOrder()` 메소드를 같은 스타일로 작성하면 다음과 같습니다.
+이 전 포스트에서 보았던 코드와 별반 다르지 않은 수준의, 사실 오히려 살짝 더 복잡해 보이는 끔찍한 코드가 탄생하였습니다.
+무엇이 어디서부터 어떻게 잘못된 걸까요? :sob:
 
 ```java
 public String getMemberCityFromOrder(Order order) {
@@ -188,9 +193,12 @@ public String getMemberCityFromOrder(Order order) {
 }
 ```
 
-다른 잘못된 예제로 이 전 포스트에서 보았던 `getMemberCityFromOrder()` 메소드를 같은 스타일로 작성해보았습니다.
-이 전 포스트에서 보았던 코드와 별반 다르지 않은 수준의, 사실 오히려 살짝 더 복잡해 보이는 코드가 탄생하였습니다.
-어디서부터 잘못된 걸까요? :sob:
+Optional을 정확히 이해하고 제대로 사용하실 수 있는 개발자라면 첫번째 예제의 코드는 다음과 같이 한 줄의 코드로 작성할 수 있어야 합니다.
+다시 말해서, 기존에 null을 대하던 사고 방식을 완전히 새롭게 바꿔야 합니다.
 
-기존에 null을 대하던 자세를 완전히 바꿔야 할 때입니다.
+```java
+int length = Optional.ofNullable(getText()).map(String:length).orElse(0);
+```
+
+아직은 코드가 어떻게 작동하는 건지 이해가 되지 않으실 수도 있지만 괜찮습니다.
 다음 포스트에서 Optional을 좀 더 Optional답게 사용하는 방법에 대해서 알아보도록 하겠습니다.
