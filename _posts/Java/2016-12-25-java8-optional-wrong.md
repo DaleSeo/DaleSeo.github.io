@@ -111,21 +111,21 @@ Optional 클래스는 담고 있는 객체를 꺼내오기 위해서 다양한 �
 
 - `get()`
 
-비어있는 Optional 객체는 `NoSuchElementException`을 던집니다.
+비어있는 Optional 객체에 대해서, `NoSuchElementException`을 던집니다.
 
 - `orElse(T other)`
 
-비어있는 Optional 객체는 넘어온 인자를 반환합니다.
+비어있는 Optional 객체에 대해서, 넘어온 인자를 반환합니다.
 
 - `orElseGet(Supplier<? extends T> other)`
 
-비어있는 Optional 객체는 넘어온 함수형 인자를 통해 생성된 객체를 반환합니다. 
+비어있는 Optional 객체에 대해서, 넘어온 함수형 인자를 통해 생성된 객체를 반환합니다. 
 `orElse(T other)`의 게으른 버전이라고 보시면 됩니다. 
 비어있는 경우에만 함수가 호출되기 때문에 `orElse(T other)` 대비 성능상 이점을 기대할 수 있습니다.
 
 - `orElseThrow(Supplier<? extends X> exceptionSupplier)`
 
-비어있는 Optional 객체는 넘어온 함수형 인자를 통해 생성된 예외를 던집니다.
+비어있는 Optional 객체에 대해서, 넘어온 함수형 인자를 통해 생성된 예외를 던집니다.
 
 지금까지 Optional에서 제공하는 주요 메소드들에 대해서 퀵하게 알아보았습니다.
 이제부터 이 메소드들을 어떻게 활용하는지에 대해서 얘기해보도록 하겠습니다.
@@ -169,12 +169,13 @@ if (text != null) {
 
 따라서 위와 같은 방식으로 Optional을 사용하게 되면 Java8 이 전에 직접 null 체크를 하던 코딩 수준에서 크게 벗어나지 못하게 됩니다.
 
-다른 잘못된 예제로 이 전 포스트에서 보았던 `getMemberCityFromOrder()` 메소드를 같은 스타일로 작성하면 다음과 같습니다.
+다른 잘못된 예제로 이 전 포스트에서 보았던 `getCityOfMemberFromOrder()` 메소드를 같은 스타일로 작성하면 다음과 같습니다.
 이 전 포스트에서 보았던 코드와 별반 다르지 않은 수준의, 사실 오히려 살짝 더 복잡해 보이는 끔찍한 코드가 탄생하였습니다.
 무엇이 어디서부터 어떻게 잘못된 걸까요? :sob:
 
 ```java
-public String getMemberCityFromOrder(Order order) {
+/* 주문을 한 회원이 살고 있는 도시를 반환한다 */
+public String getCityOfMemberFromOrder(Order order) {
 	Optional<Order> maybeOrder = Optional.ofNullable(order);
 	if (maybeOrder.isPresent()) {
 		Optional<Member> maybeMember = Optional.ofNullable(maybeOrder.get());
@@ -194,11 +195,11 @@ public String getMemberCityFromOrder(Order order) {
 ```
 
 Optional을 정확히 이해하고 제대로 사용하실 수 있는 개발자라면 첫번째 예제의 코드는 다음과 같이 한 줄의 코드로 작성할 수 있어야 합니다.
-다시 말해서, 기존에 null을 대하던 사고 방식을 완전히 새롭게 바꿔야 합니다.
+다시 말해서, 기존에 조건문으로 null을 대하던 생각을 **함형 사고**로 완전히 새롭게 바꿔야 합니다.
 
 ```java
-int length = Optional.ofNullable(getText()).map(String:length).orElse(0);
+int length = Optional.ofNullable(getText()).map(String::length).orElse(0);
 ```
 
 아직은 코드가 어떻게 작동하는 건지 이해가 되지 않으실 수도 있지만 괜찮습니다.
-다음 포스트에서 Optional을 좀 더 Optional답게 사용하는 방법에 대해서 알아보도록 하겠습니다.
+[다음 포스트](/java/java8-optional-right/)에서 Optional을 좀 더 Optional답게 사용하는 방법에 대해서 다뤄보도록 하겠습니다.
