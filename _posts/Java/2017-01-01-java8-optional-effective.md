@@ -13,7 +13,7 @@ published: true
 
 > Optional을 좀 더 Java8 API 설계자의 의도에 맞게 쓰는 방법에 대해서 알아봅시다.
 
-[이 전 포스트](/java/java8-optional-wrong/)를 통해서 Optional에 대해서 소개드렸습니다.
+[이 전 포스트](/java/java8-optional-after/)를 통해서 Optional에 대해서 소개드렸습니다.
 또한 Optional을 Optional답지 않게 사용할 경우, 어떤 부작용이 발생하는지도 살펴보았는데요.
 이 번 포스트에서는 어떻게 코드를 작성해야 Optional을 Optional답게 쓸 수 있는지 알아보도록 하겠습니다.
 
