@@ -195,11 +195,11 @@ public String getCityOfMemberFromOrder(Order order) {
 ```
 
 Optional을 정확히 이해하고 제대로 사용하실 수 있는 개발자라면 첫번째 예제의 코드는 다음과 같이 한 줄의 코드로 작성할 수 있어야 합니다.
-다시 말해서, 기존에 조건문으로 null을 대하던 생각을 **함형 사고**로 완전히 새롭게 바꿔야 합니다.
+다시 말해서, 기존에 조건문으로 null을 대하던 생각을 **함수형 사고**로 완전히 새롭게 바꿔야 합니다.
 
 ```java
 int length = Optional.ofNullable(getText()).map(String::length).orElse(0);
 ```
 
 아직은 코드가 어떻게 작동하는 건지 이해가 되지 않으실 수도 있지만 괜찮습니다.
-[다음 포스트](/java/java8-optional-right/)에서 Optional을 좀 더 Optional답게 사용하는 방법에 대해서 다뤄보도록 하겠습니다.
+[다음 포스트](/java/java8-optional-effective/)에서 Optional을 좀 더 Optional답게 사용하는 방법에 대해서 다뤄보도록 하겠습니다.
