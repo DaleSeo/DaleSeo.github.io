@@ -1,5 +1,5 @@
 ---
-title: "자바8 Optional 3부: Optional을 Optional답게"
+title: "자바8 Optional 3부: Optional을 Optional답게 "
 modified: 2017-01-01T21:21:30+09:00
 categories: 
   - Java
