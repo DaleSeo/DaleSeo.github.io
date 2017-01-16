@@ -1,6 +1,6 @@
 ---
 title: "소켓이란 무엇인가?"
-modified: 2017-12-18T14:23:11+09:00
+modified: 2016-12-18T14:23:11+09:00
 categories: 
   - Java
 tags:
@@ -23,4 +23,4 @@ On the client-side: The client knows the hostname of the machine on which the se
 또한 클라이언트는 서버 상대로 자신을 식별시켜주기 위해서 연결동안 사용될 로컬 포트로 바인딩됩니다.
 이 포트 바인딩 작업은 보통 시스템에 의해서 이뤄집니다.
 
-[5connect](https://docs.oracle.com/javase/tutorial/figures/networking/5connect.gif)
+![5connect](https://docs.oracle.com/javase/tutorial/figures/networking/5connect.gif)
