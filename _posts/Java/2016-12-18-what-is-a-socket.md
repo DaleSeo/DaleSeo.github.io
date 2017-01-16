@@ -4,8 +4,8 @@ modified: 2016-12-18T14:23:11+09:00
 categories: 
   - Java
 tags:
-	- Socket
-	- Network
+  - Socket
+  - Network
 published: true
 ---
 
