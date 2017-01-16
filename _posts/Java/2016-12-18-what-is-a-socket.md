@@ -6,15 +6,13 @@ categories:
 tags:
   - Socket
   - Network
-published: true
+published: false
 ---
 
 > 본 포스트는 오라클 자바 튜토리얼의 [What Is a Socket?](https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html)를 번역하였습니다.
 
 일반적으로 서버는 특정 포트가 바인딩된 소켓를 가지고 특정 컴퓨터 위에서 돌아갑니다. 
 해당 서버는 클라이언트의 연결 요청을 소켓에 리스닝하면서 그냥 기다릴 뿐이죠.
-
-On the client-side: The client knows the hostname of the machine on which the server is running and the port number on which the server is listening. To make a connection request, the client tries to rendezvous with the server on the server's machine and port. The client also needs to identify itself to the server so it binds to a local port number that it will use during this connection. This is usually assigned by the system.
 
 ## 클라이언트 입장
 
