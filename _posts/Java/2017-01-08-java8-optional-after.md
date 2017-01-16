@@ -1,6 +1,6 @@
 ---
 title: "자바8 Optional 2부: null을 대하는 새로운 방법"
-modified: 2017-12-25T16:21:30+09:00
+modified: 2017-01-08T16:21:30+09:00
 categories: 
   - Java
 tags:
