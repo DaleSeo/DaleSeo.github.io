@@ -60,5 +60,5 @@ URL을 통한 Web 통신 관련해서는 [해당 튜토리얼](https://docs.orac
 
 ## 후속 튜토리얼
 
-- https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html
-- https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html
+- [https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html](https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html)
+- [https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html](https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html)
