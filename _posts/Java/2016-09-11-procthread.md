@@ -1,64 +1,264 @@
----
-title: "소켓이란 무엇인가?"
-modified: 2016-12-18T14:23:11+09:00
-categories: 
-  - Java
-tags:
-  - Socket
-  - Network
-published: false
----
-
-> 본 포스트는 오라클 자바 튜토리얼의 [What Is a Socket?](https://docs.oracle.com/javase/tutorial/networking/sockets/definition.html)를 번역하였습니다.
-
-## 소켓 통신
-
-일반적으로 서버는 특정 포트가 바인딩된 소켓를 가지고 특정 컴퓨터 위에서 돌아갑니다. 
-해당 서버는 클라이언트의 연결 요청을 소켓을 통해 리스닝하면서 그냥 기다릴 뿐이죠.
-
-클라이언트는 서버가 떠 있는 머신의 호스트네임과 서버가 리스닝하고 있는 포트 번호를 알고 있습니다. 
-따라서 클라이언트는 이 호스트 네임과 포트를 통해서 서버와 연결을 시도하게 됩니다.
-또한 클라이언트는 서버 상대로 자신을 식별시켜주기 위해서 연결동안 사용될 로컬 포트에 바인딩됩니다.
-이 포트 바인딩 작업은 보통 시스템에 의해서 이뤄집니다.
-
-![5connect](https://docs.oracle.com/javase/tutorial/figures/networking/5connect.gif)
-
-만약에 모든 게 순조롭게 이뤄진다면 서버는 연결을 수락하게 됩니다.
-수락하자마자, 서버는 동일한 로컬 포트에 바인딩된 새로운 소켓을 얻게 되며 클라이언트의 주소와 포트로 세팅된 리모트 엔드 포인트를 가지게 됩니다.
-서버가 별개의 새로운 소켓이 필요한 이유는 연결된 클라이언트의 요청을 처리하면서, 동시에 기존의 소켓을 통해서는 지속적으로 연결 요청을 받아야 하기 때문입니다.
-
-![6connect](https://docs.oracle.com/javase/tutorial/figures/networking/6connect.gif)
-
-클라이언트 입장에서는 만약에 연결이 수락되면 소켓은 성공적으로 생성되며 클라이언트는 서버와 통신하기 위해서 소켓을 사용할 수 있게됩니다.
-
-클라이언트와 서버는 이제 소켓에 데이터를 쓰거나 읽음으로써 통신할 수가 있게됩니다.
-
-## 소켓의 정의
-
-소켓은 네트워크 상에서 돌아가는 두 개의 프로그램 간 양방향 통신의 하나의 엔트 포인트입니다.
-소켓은 포트 번호에 바인딩되어 TCP 레이어에서 데이터가 전달되야하는 어플리케이션을 식별할 수 있게 합니다.
+Welcome to StackEdit!
+===================
 
 
-## 엔드 포인트란?
+Hey! I'm your first Markdown document in **StackEdit**[^stackedit]. Don't delete me, I'm very helpful! I can be recovered anyway in the **Utils** tab of the <i class="icon-cog"></i> **Settings** dialog.
 
-여기서 엔드 포인트라 함은 아이피 주소와 포트 번호의 조합을 의미합니다.
-모든 TCP 연결은 2개의 앤드 포인트로 유일하게 식별되어질 수 있습니다.
-따라서 클라이언트와 서버 간 여러 개의 연결이 맺어질 수 있습니다.
+----------
 
-## Socket 클래스
 
-자바 플랫폼에서 `java.net` 패키지는 네트워크 상에서 두개의 프로그램 간 양방향 통신에서 한쪽 지점을 구현하는 `Socket` 클래스를 제공합니다.
-`Socket` 클래스는 특정 시스템의 세부사항은 감추면서 플랫폼 독립적인 구현의 최상단에 위치합니다.
-네이트브 코드에 의존하는 대신에 `java.net.Socket` 클래스를 이용해서 플랫폼 독립적인 방식으로 네트워크 상에서 통신을 할 수 있습니다.
+Documents
+-------------
 
-추가적으로 `java.net` 패키지는 서버가 클라이언트로 부터 연결을 리스팅하고 수락하는데 사용되는 소켓을 구현하는 `ServerSocket` 클래스도 포함합니다. 본 튜토리얼에서는 `Socket`과 `ServerSocket` 클래스를 어떻게 사용하는지 살펴볼 것입니다.
+StackEdit stores your documents in your browser, which means all your documents are automatically saved locally and are accessible **offline!**
 
-## Web 통신
+> **Note:**
 
-혹시 Web 통신을 하려고 한다면, `URL` 클래스와 관련 클래스(`URLConnection`, `URLEncoder`)들이 아마도 본 소켓 클래스보다 더 적당할 것입니다. 사실상, `URL`은 Web에 대한 상대적으로 고수준의 연결이며 기저 구현으로 소켓을 사용합니다.
-URL을 통한 Web 통신 관련해서는 [해당 튜토리얼](https://docs.oracle.com/javase/tutorial/networking/urls/index.html)을 참고바랍니다.
+> - StackEdit is accessible offline after the application has been loaded for the first time.
+> - Your local documents are not shared between different browsers or computers.
+> - Clearing your browser's data may **delete all your local documents!** Make sure your documents are synchronized with **Google Drive** or **Dropbox** (check out the [<i class="icon-refresh"></i> Synchronization](#synchronization) section).
 
-## 후속 튜토리얼
+#### <i class="icon-file"></i> Create a document
 
-- [https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html](https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html)
-- [https://docs.oracle.com/javase/tutorial/networking/sockets/clientServer.html](https://docs.oracle.com/javase/tutorial/networking/sockets/readingWriting.html)
+The document panel is accessible using the <i class="icon-folder-open"></i> button in the navigation bar. You can create a new document by clicking <i class="icon-file"></i> **New document** in the document panel.
+
+#### <i class="icon-folder-open"></i> Switch to another document
+
+All your local documents are listed in the document panel. You can switch from one to another by clicking a document in the list or you can toggle documents using <kbd>Ctrl+[</kbd> and <kbd>Ctrl+]</kbd>.
+
+#### <i class="icon-pencil"></i> Rename a document
+
+You can rename the current document by clicking the document title in the navigation bar.
+
+#### <i class="icon-trash"></i> Delete a document
+
+You can delete the current document by clicking <i class="icon-trash"></i> **Delete document** in the document panel.
+
+#### <i class="icon-hdd"></i> Export a document
+
+You can save the current document to a file by clicking <i class="icon-hdd"></i> **Export to disk** from the <i class="icon-provider-stackedit"></i> menu panel.
+
+> **Tip:** Check out the [<i class="icon-upload"></i> Publish a document](#publish-a-document) section for a description of the different output formats.
+
+
+----------
+
+
+Synchronization
+-------------------
+
+StackEdit can be combined with <i class="icon-provider-gdrive"></i> **Google Drive** and <i class="icon-provider-dropbox"></i> **Dropbox** to have your documents saved in the *Cloud*. The synchronization mechanism takes care of uploading your modifications or downloading the latest version of your documents.
+
+> **Note:**
+
+> - Full access to **Google Drive** or **Dropbox** is required to be able to import any document in StackEdit. Permission restrictions can be configured in the settings.
+> - Imported documents are downloaded in your browser and are not transmitted to a server.
+> - If you experience problems saving your documents on Google Drive, check and optionally disable browser extensions, such as Disconnect.
+
+#### <i class="icon-refresh"></i> Open a document
+
+You can open a document from <i class="icon-provider-gdrive"></i> **Google Drive** or the <i class="icon-provider-dropbox"></i> **Dropbox** by opening the <i class="icon-refresh"></i> **Synchronize** sub-menu and by clicking **Open from...**. Once opened, any modification in your document will be automatically synchronized with the file in your **Google Drive** / **Dropbox** account.
+
+#### <i class="icon-refresh"></i> Save a document
+
+You can save any document by opening the <i class="icon-refresh"></i> **Synchronize** sub-menu and by clicking **Save on...**. Even if your document is already synchronized with **Google Drive** or **Dropbox**, you can export it to a another location. StackEdit can synchronize one document with multiple locations and accounts.
+
+#### <i class="icon-refresh"></i> Synchronize a document
+
+Once your document is linked to a <i class="icon-provider-gdrive"></i> **Google Drive** or a <i class="icon-provider-dropbox"></i> **Dropbox** file, StackEdit will periodically (every 3 minutes) synchronize it by downloading/uploading any modification. A merge will be performed if necessary and conflicts will be detected.
+
+If you just have modified your document and you want to force the synchronization, click the <i class="icon-refresh"></i> button in the navigation bar.
+
+> **Note:** The <i class="icon-refresh"></i> button is disabled when you have no document to synchronize.
+
+#### <i class="icon-refresh"></i> Manage document synchronization
+
+Since one document can be synchronized with multiple locations, you can list and manage synchronized locations by clicking <i class="icon-refresh"></i> **Manage synchronization** in the <i class="icon-refresh"></i> **Synchronize** sub-menu. This will let you remove synchronization locations that are associated to your document.
+
+> **Note:** If you delete the file from **Google Drive** or from **Dropbox**, the document will no longer be synchronized with that location.
+
+----------
+
+
+Publication
+-------------
+
+Once you are happy with your document, you can publish it on different websites directly from StackEdit. As for now, StackEdit can publish on **Blogger**, **Dropbox**, **Gist**, **GitHub**, **Google Drive**, **Tumblr**, **WordPress** and on any SSH server.
+
+#### <i class="icon-upload"></i> Publish a document
+
+You can publish your document by opening the <i class="icon-upload"></i> **Publish** sub-menu and by choosing a website. In the dialog box, you can choose the publication format:
+
+- Markdown, to publish the Markdown text on a website that can interpret it (**GitHub** for instance),
+- HTML, to publish the document converted into HTML (on a blog for example),
+- Template, to have a full control of the output.
+
+> **Note:** The default template is a simple webpage wrapping your document in HTML format. You can customize it in the **Advanced** tab of the <i class="icon-cog"></i> **Settings** dialog.
+
+#### <i class="icon-upload"></i> Update a publication
+
+After publishing, StackEdit will keep your document linked to that publication which makes it easy for you to update it. Once you have modified your document and you want to update your publication, click on the <i class="icon-upload"></i> button in the navigation bar.
+
+> **Note:** The <i class="icon-upload"></i> button is disabled when your document has not been published yet.
+
+#### <i class="icon-upload"></i> Manage document publication
+
+Since one document can be published on multiple locations, you can list and manage publish locations by clicking <i class="icon-upload"></i> **Manage publication** in the <i class="icon-provider-stackedit"></i> menu panel. This will let you remove publication locations that are associated to your document.
+
+> **Note:** If the file has been removed from the website or the blog, the document will no longer be published on that location.
+
+----------
+
+
+Markdown Extra
+--------------------
+
+StackEdit supports **Markdown Extra**, which extends **Markdown** syntax with some nice features.
+
+> **Tip:** You can disable any **Markdown Extra** feature in the **Extensions** tab of the <i class="icon-cog"></i> **Settings** dialog.
+
+> **Note:** You can find more information about **Markdown** syntax [here][2] and **Markdown Extra** extension [here][3].
+
+
+### Tables
+
+**Markdown Extra** has a special syntax for tables:
+
+Item     | Value
+-------- | ---
+Computer | $1600
+Phone    | $12
+Pipe     | $1
+
+You can specify column alignment with one or two colons:
+
+| Item     | Value | Qty   |
+| :------- | ----: | :---: |
+| Computer | $1600 |  5    |
+| Phone    | $12   |  12   |
+| Pipe     | $1    |  234  |
+
+
+### Definition Lists
+
+**Markdown Extra** has a special syntax for definition lists too:
+
+Term 1
+Term 2
+:   Definition A
+:   Definition B
+
+Term 3
+
+:   Definition C
+
+:   Definition D
+
+	> part of definition D
+
+
+### Fenced code blocks
+
+GitHub's fenced code blocks are also supported with **Highlight.js** syntax highlighting:
+
+```
+// Foo
+var bar = 0;
+```
+
+> **Tip:** To use **Prettify** instead of **Highlight.js**, just configure the **Markdown Extra** extension in the <i class="icon-cog"></i> **Settings** dialog.
+
+> **Note:** You can find more information:
+
+> - about **Prettify** syntax highlighting [here][5],
+> - about **Highlight.js** syntax highlighting [here][6].
+
+
+### Footnotes
+
+You can create footnotes like this[^footnote].
+
+  [^footnote]: Here is the *text* of the **footnote**.
+
+
+### SmartyPants
+
+SmartyPants converts ASCII punctuation characters into "smart" typographic punctuation HTML entities. For example:
+
+|                  | ASCII                        | HTML              |
+ ----------------- | ---------------------------- | ------------------
+| Single backticks | `'Isn't this fun?'`            | 'Isn't this fun?' |
+| Quotes           | `"Isn't this fun?"`            | "Isn't this fun?" |
+| Dashes           | `-- is en-dash, --- is em-dash` | -- is en-dash, --- is em-dash |
+
+
+### Table of contents
+
+You can insert a table of contents using the marker `[TOC]`:
+
+[TOC]
+
+
+### MathJax
+
+You can render *LaTeX* mathematical expressions using **MathJax**, as on [math.stackexchange.com][1]:
+
+The *Gamma function* satisfying $\Gamma(n) = (n-1)!\quad\forall n\in\mathbb N$ is via the Euler integral
+
+$$
+\Gamma(z) = \int_0^\infty t^{z-1}e^{-t}dt\,.
+$$
+
+> **Tip:** To make sure mathematical expressions are rendered properly on your website, include **MathJax** into your template:
+
+```
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+```
+
+> **Note:** You can find more information about **LaTeX** mathematical expressions [here][4].
+
+
+### UML diagrams
+
+You can also render sequence diagrams like this:
+
+```sequence
+Alice->Bob: Hello Bob, how are you?
+Note right of Bob: Bob thinks
+Bob-->Alice: I am good thanks!
+```
+
+And flow charts like this:
+
+```flow
+st=>start: Start
+e=>end
+op=>operation: My Operation
+cond=>condition: Yes or No?
+
+st->op->cond
+cond(yes)->e
+cond(no)->op
+```
+
+> **Note:** You can find more information:
+
+> - about **Sequence diagrams** syntax [here][7],
+> - about **Flow charts** syntax [here][8].
+
+### Support StackEdit
+
+[![](https://cdn.monetizejs.com/resources/button-32.png)](https://monetizejs.com/authorize?client_id=ESTHdCYOi18iLhhO&summary=true)
+
+  [^stackedit]: [StackEdit](https://stackedit.io/) is a full-featured, open-source Markdown editor based on PageDown, the Markdown library used by Stack Overflow and the other Stack Exchange sites.
+
+
+  [1]: http://math.stackexchange.com/
+  [2]: http://daringfireball.net/projects/markdown/syntax "Markdown"
+  [3]: https://github.com/jmcmanus/pagedown-extra "Pagedown Extra"
+  [4]: http://meta.math.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference
+  [5]: https://code.google.com/p/google-code-prettify/
+  [6]: http://highlightjs.org/
+  [7]: http://bramp.github.io/js-sequence-diagrams/
+  [8]: http://adrai.github.io/flowchart.js/
+
