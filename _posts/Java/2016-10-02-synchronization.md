@@ -11,7 +11,7 @@ tags:
 published: false
 ---
 
-> 본 포스트는 오라클 자바 튜토리얼의 [Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)와 [Thread Interference](http://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html), [Memory Consistency Errors](http://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html)를 번역하였습니다.
+> 본 포스트는 오라클 자바 튜토리얼의 [Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)와 [Thread Interference](http://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html), [Memory Consistency Errors](http://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html), [Synchronized Methods](http://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html)를 번역하였습니다.
 
 
 ## 동기화 (Synchronization)
@@ -131,3 +131,59 @@ System.out.println(counter);
 어떤 쓰레드가 종료되어 `Thread.join` 메서드가 다른 쓰레드에서 리턴하도록 만든다면, 종료된 쓰레드에 의해서 수행된 모든 표현식은 성공적인 `join` 메소드를 뒤 따르는 모든 표현식과 먼저 실행 관계를 가집니다.
 쓰레드 내에서 코드의 효과는 `join` 메서드를 수행한 쓰레드에서 이제 인지할 수 있게 됩니다.
 이전에 일어나기 관계를 형상하는 방법 목록은 [java.util.concurrent 패키지의 요약 페이지](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html#MemoryVisibility)를 참고바랍니다.
+
+
+## 동기화된 메소드 (Synchronized Methods)
+
+자바 프로그래밍 언어는 동기화된 메소드(synchronized methods)와 동기화된 표현식(synchronized statements), 2가지 기본 동기화 구문을 제공합니다.
+둘 중에 더 복잡한 동기화된 표현식은 다음 섹션에서 다루겠으며, 본 섹션에서는 동기화된 메소드에 대해서만 살펴보겠습니다.
+
+어떤 메소드를 동기화시키기 위해서는 메소드 선언부에 `synchronized` 키워드만 붙여주면 됩니다.
+
+```java
+public class SynchronizedCounter {
+    private int c = 0;
+
+    public synchronized void increment() {
+        c++;
+    }
+
+    public synchronized void decrement() {
+        c--;
+    }
+
+    public synchronized int value() {
+        return c;
+    }
+}
+```
+
+`count`를 `SynchronizedCounter` 클래스의 인스턴스라고 가정했을 때, 위 메소드들을 동기화시키는 것은 두 가지 효과를 가집니다.
+
+첫번째, 동일 객체 상에서 동기화된 메소드의 두 번의 호출이 서로 간섭할 수 없습니다.
+하나의 쓰레드가 어떤 객체의 동기화된 메소드를 실행하고 있는 중일때, 그 객체의 동기화된 메소드를 호출하려는 다른 모든 쓰레드들은 첫번째 쓰레드가 해당 객체 상의 작업을 끝날 때가지 실행이 차단됩니다.
+
+두번째, 동기화된 메소드는 이어서 발생하는 동일 객체의 동기화된 메소드의 호출을과 자동으로 먼저 실행(happens-before) 관계를 수립합니다. 따라서 모든 쓰레드 이 객체의 상태 변화를 인지할 수 있습니다.
+
+생성자는 동기화할 수 없으며 `synchronized` 키워드를 붙이면 문법 오류가 발생하니 주의하세요.
+객체가 생성되는 동안에는 오직 해당 객체를 생성하는 쓰레드만이 생성자에 접근할 수 있기 때문에 생성자를 동기화시키려는 것은 무의미합니다.
+
+---
+
+### 경고 
+
+쓰레드 간에 공유될 객체를 생성할 때, 객체에 대한 참조가 영구적으로 누수되지 않도록 주의하세요.
+예를 들어, 클래스의 모든 인스턴스를 담고있는 `instances`라는 리스트를 관리하고 싶다고 해봅시다.
+당신은 아마 생성자에 다음 코드를 넣고 싶은 충동이 일어날 것입니다.
+
+```java
+instances.add(this);
+```
+
+그러나 다른 쓰레드들은 그 객체의 생성 작업이 미처 끝나기도 저에 그 객체에 접근하기 위해서 `instances`를 사용할 수도 있습니다.
+---
+
+동기화된 메소드는 쓰레드 간섭과 메모리 일관서 오류를 방지하기 위한 간단한 전략입니다.
+즉, 하나의 객체를 하나 이상의 쓰레드가 접근 가능하다면, 해당 객체의 변수를 대상으로 한 모든 읽기와 쓰기를 동기화된 메소드를 통해서 처리합니다.
+(중요한 예외: 객체가 생성된 후에는 변경될 수 없는 final 필드는 비동기화된 메소드를 통해서도 안전하게 읽을 수 있습니다.)
+이 전략은 효과적이지만 다음 수업에서 살펴볼 liveness 관련 문제를 일으킬 수 있습니다.
