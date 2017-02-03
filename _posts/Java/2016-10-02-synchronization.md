@@ -11,7 +11,7 @@ tags:
 published: false
 ---
 
-> 본 포스트는 오라클 자바 튜토리얼의 [Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)와 [Thread Interference](http://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html), [Memory Consistency Errors](http://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html), [Synchronized Methods](http://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html)를 번역하였습니다.
+> 본 포스트는 오라클 자바 튜토리얼의 [Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)와 [Thread Interference](http://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html), [Memory Consistency Errors](http://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html), [Synchronized Methods](http://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html) [Intrinsic Locks and Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html)를 번역하였습니다.
 
 
 ## 동기화 (Synchronization)
@@ -133,7 +133,7 @@ System.out.println(counter);
 이전에 일어나기 관계를 형상하는 방법 목록은 [java.util.concurrent 패키지의 요약 페이지](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html#MemoryVisibility)를 참고바랍니다.
 
 
-## 동기화된 메소드 (Synchronized Methods)
+관
 
 자바 프로그래밍 언어는 동기화된 메소드(synchronized methods)와 동기화된 표현식(synchronized statements), 2가지 기본 동기화 구문을 제공합니다.
 둘 중에 더 복잡한 동기화된 표현식은 다음 섹션에서 다루겠으며, 본 섹션에서는 동기화된 메소드에 대해서만 살펴보겠습니다.
@@ -187,3 +187,87 @@ instances.add(this);
 즉, 하나의 객체를 하나 이상의 쓰레드가 접근 가능하다면, 해당 객체의 변수를 대상으로 한 모든 읽기와 쓰기를 동기화된 메소드를 통해서 처리합니다.
 (중요한 예외: 객체가 생성된 후에는 변경될 수 없는 final 필드는 비동기화된 메소드를 통해서도 안전하게 읽을 수 있습니다.)
 이 전략은 효과적이지만 다음 수업에서 살펴볼 liveness 관련 문제를 일으킬 수 있습니다.
+
+
+## 락과 동기화 (Intrinsic Locks and Synchronization)
+
+동기화는 intrinsic lock또는 monitor lock으로 알려진 내부 메커니즘에 의해서 동작합니다.
+(API 명세는 이를 그냥 monitor라고 칭하기도 합니다.)
+락은 동기화의 객체 상태에 대한 독점적인 접근을 강제하고 가시성에 핵심적인 먼저 실행(happens-before) 관계의 수립하는 두가지 측면에서 모두 역할을 하고 있습니다.
+
+모든 객체는 락을 가집니다.
+관행에 따르면, 어떤 객체의 필드에 대한 독점적이고 일관적인 접근권이 필요한 쓰레드는 필드에 접근하기 전에 해당 객체의 락을 걸어야 하며 필드를 이용한 작업이 끝나면 락을 풀어줘야 합니다.
+쓰레드는 락을 걸고 락을 풀어주는 시간동안 락을 소유하고 있는 것으로 알려졌습니다.
+어떤 쓰레드가 락을 소유하고 있는 한, 다른 쓰레드는 같은 락을 획득할 수 없습니다.
+다른 쓰레드가 그 락을 얻으려고 할 때 차단당할 것입니다.
+
+어떤 쓰레드가 락을 풀어줄 때, 그 락의 해제와 뒤따르는 그 락의 획득 간에는 먼저 실행 관계가 만들어집니다.
+
+
+### 동기화된 메소드에서 락 (Locks In Synchronized Methods)
+
+쓰레드는 동기화된 메소드를 호출하면서 자동으로 해당 객체에 락을 걸고 해당 메소드가 리턴할 때 락을 풀어줍니다.
+또한 잡히지 않은 예외가 발생했을 때도 해당 락은 해제됩니다.
+
+정적 메소드는 객체가 아닌 클래스와 연관되어 있으니까 동기화된 정적 메소드가 호출될 때는 무엇이 벌어지는지도 궁금하실 겁니다.
+이 경우에는 쓰레드는 해당 클래스 객체에 대해서 락을 겁니다.
+그러므로 이 락은 정적 필드에 대한 접근을 통제하며 이 것이 일반 객체에 대한 락과 다른 부분입니다.
+
+
+### 동기화된 표현식 (Synchronized Statements)
+
+동기화된 코드를 만들어내는 다른 방법은 동기화된 표현식입니다.
+동기화된 메소드와 다르게 동기화된 표현식은 반드시 락을 제공하는 객체를 명시해야 합니다.
+
+```java
+public void addName(String name) {
+    synchronized(this) {
+        lastName = name;
+        nameCount++;
+    }
+    nameList.add(name);
+}
+```
+
+위 예제에서 `addName` 메소드는 `lastName`과 `nameCount`에 대한 변경을 동기화해야 하지만 다른 객체에 대한 메소드 호출은 동기화하면 안 됩니다.
+(다른 객체의 메소드 호출은 Liveness에 관련된 섹션에서 다루게 될 문제들을 발생시킬 수 있습니다.)
+동기화된 표현식이 없었더라면, `nameList.add`만을 호출하기 위한 별도의 동기화 되지 않은 메소드가 있어야 했을 것입니다.
+
+또한 동기화된 표현식은 정교한 동기화로 동시성을 향상시킬 때 유용합니다.
+예를 들어, `MsLunch` 클래스가 절대로 함께 사용되지 않는 두개의 필드, `c1`과 `c2`를 가진다고 해봅시다.
+이 필드의 모든 갱신은 동기화되야 하지만, `c1`의 갱신이 `c2`의 갱신에 간섭받는 것을 막을 이유는 없습니다.
+다시 말해, 그렇게 하는 것은 불필요한 차단을 만들어 냄으로써 동시성을 저해합니다.
+`this`와 연관된 락을 사용하는 동기화된 메소드를 사용하는 대신에, 오직 락을 제공하기 위한 두 개의 객체를 생성합니다.
+
+```java
+public class MsLunch {
+    private long c1 = 0;
+    private long c2 = 0;
+    private Object lock1 = new Object();
+    private Object lock2 = new Object();
+
+    public void inc1() {
+        synchronized(lock1) {
+            c1++;
+        }
+    }
+
+    public void inc2() {
+        synchronized(lock2) {
+            c2++;
+        }
+    }
+}
+```
+
+이러한 구문은 각별히 주의하셔서 사용하세요.
+영향을 받는 필드의 접근에 대한 간섭을 허용하는 것이 정말로 안전한지 완벽하게 확신할 수 있으실 때 사용하셔야 합니다.
+
+
+### 재진입 동기화 (Reentrant Synchronization)
+
+쓰레드는 다른 쓰레드가 소유하고 있는 락을 획득할 수 없다라는 사실을 상기해봅시다.
+그러나 쓰레드는 자신이 아미 소유하고 있는 락은 획득할 수 있습니다.
+쓰레드가 같은 락을 여러 번 획득할 수 있도록 허락하는 것은 재진입 동기화(reentrant synchronization)를 가능하게 합니다.
+이는 동기화된 코드가 진간접적으로 동기화된 코드를 포함하고 있는 또 다른 메소드를 호출하면서 이 두 코드가 모두 같은 락을 사용하고 있는 상황으로 설명됩니다.
+재진입 동기화가 없었더라면 동기화된 코드는 자기 자신을 의해서 차단되는 상황을 피하기 위해서 많은 추가 조치가 필요했을 것입니다.
