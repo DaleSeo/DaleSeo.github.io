@@ -5,7 +5,6 @@ categories:
   - Java
 tags:
   - Concurrency
-  - Process
   - Thread
 published: true
 ---
