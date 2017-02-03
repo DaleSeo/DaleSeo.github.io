@@ -8,10 +8,12 @@ tags:
   - Synchronization
   - Thread Interference
   - Memory Consistency Errors
+  - Intrinsic Locks and Synchronization
+  - Atomic Access
 published: false
 ---
 
-> 본 포스트는 오라클 자바 튜토리얼의 [Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)와 [Thread Interference](http://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html), [Memory Consistency Errors](http://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html), [Synchronized Methods](http://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html) [Intrinsic Locks and Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html)를 번역하였습니다.
+> 본 포스트는 오라클 자바 튜토리얼의 [Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)와 [Thread Interference](http://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html), [Memory Consistency Errors](http://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html), [Synchronized Methods](http://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html), [Intrinsic Locks and Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html), [Atomic Access](http://docs.oracle.com/javase/tutorial/essential/concurrency/atomic.html)를 번역하였습니다.
 
 
 ## 동기화 (Synchronization)
@@ -133,7 +135,7 @@ System.out.println(counter);
 이전에 일어나기 관계를 형상하는 방법 목록은 [java.util.concurrent 패키지의 요약 페이지](https://docs.oracle.com/javase/8/docs/api/java/util/concurrent/package-summary.html#MemoryVisibility)를 참고바랍니다.
 
 
-관
+## 락과 동기화 (Intrinsic Locks and Synchronization)
 
 자바 프로그래밍 언어는 동기화된 메소드(synchronized methods)와 동기화된 표현식(synchronized statements), 2가지 기본 동기화 구문을 제공합니다.
 둘 중에 더 복잡한 동기화된 표현식은 다음 섹션에서 다루겠으며, 본 섹션에서는 동기화된 메소드에 대해서만 살펴보겠습니다.
@@ -271,3 +273,31 @@ public class MsLunch {
 쓰레드가 같은 락을 여러 번 획득할 수 있도록 허락하는 것은 재진입 동기화(reentrant synchronization)를 가능하게 합니다.
 이는 동기화된 코드가 진간접적으로 동기화된 코드를 포함하고 있는 또 다른 메소드를 호출하면서 이 두 코드가 모두 같은 락을 사용하고 있는 상황으로 설명됩니다.
 재진입 동기화가 없었더라면 동기화된 코드는 자기 자신을 의해서 차단되는 상황을 피하기 위해서 많은 추가 조치가 필요했을 것입니다.
+
+
+## 원자적 접근 (Atomic Access)
+
+프로그래밍에서 원자적 행위는 한 번에 유효하게 일어나는 것을 뜻한다.
+원자적 행위는 도중에 멈출 수 없다.
+즉, 이 것은 완전히 발생하거나 전혀 일어나지 않거나 둘 중에 하나다.
+언자적 행위에서는 그 행위가 안료될 때 까지는 그 어떤 부작용도 없다.
+
+우리는 이미 `c++`와 같은 증가 표현식이 원자적 행위가 아니라는 것을 보았습니다.
+심지어 매우 간단한 표현식도 다른 행위들로 분해될 수 있는 복잡한 행위들로 정의될 수 있습니다.
+하지만, 원자적으로라고 다음과 같은 행위들은 명시적입니다.
+
+- 모든 참조형 변수와 `long`과 `doulbe`을 제외한 기본형 변수에 대한 읽기와 쓰기는 원자적입니다.
+- `volatile`로 선언된 모든 변수에 대한 읽기와 쓰기는 `long`과 `doulbe`까지도 포함해서 원자적입니다.
+
+원자적 행위들은 간섭당할 수 없기 때문에 쓰레드 간섭의 두려움없이 사용될 수 있습니다.
+하지만 왜냐하면 메모리 일관성 오류는 여전히 가능하기 때문에 이 사실이 원자적 행위를 동기화하고자 하는 모든 요구를 제거하지는 않습니다.
+`volatile`한 변수에 대한 모든 쓰기는 뒤따르는 해당 변수에 대한 모든 읽기와 happens-before 관계를 형성하기 때문에 `volatile`한 변수를 사용하면 메모리 일관성 문제가 발생하는 위험을 줄여줍니다.
+다시 말해, `volatile`한 변수에 대한 모든 변경은 다른 쓰레드에서 항상 인지할 수 있습니다.
+게다가, 쓰레드가 `volatile`한 변수를 읽을 때, 가장 최근의 변경 사항을 인지할 수 있을 뿐만 아니라 그러한 변경을 가져온 부작용도 탐지할 수 있습니다.
+
+간단한 원자적 변수에 대한 접근을 이용하는 것이 동기화된 코드를 통해서 접근하는 것 보다 더 효율적입니다.
+그러나 메모리 일관성 문제를 피하기 위한 프로그래머의 더 많은 주의를 필요로 합니다.
+그러한 추가적인 노력이 가치가 있는지는 어플리케이션의 규모와 복잡도에 달려있습니다.
+
+`java.util.concurrent` 패키지의 일부 클래스들은 동기화에 의존하지 않는 원자적 메소드를 제공합니다.
+High Level Concurrency Objects 섹션에서 이 부분에 대해서 다뤄보겠습니다.
