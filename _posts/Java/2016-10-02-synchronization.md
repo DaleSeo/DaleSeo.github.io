@@ -10,7 +10,7 @@ tags:
   - Memory Consistency Errors
   - Intrinsic Locks and Synchronization
   - Atomic Access
-published: false
+published: true
 ---
 
 > 본 포스트는 오라클 자바 튜토리얼의 [Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/sync.html)와 [Thread Interference](http://docs.oracle.com/javase/tutorial/essential/concurrency/interfere.html), [Memory Consistency Errors](http://docs.oracle.com/javase/tutorial/essential/concurrency/memconsist.html), [Synchronized Methods](http://docs.oracle.com/javase/tutorial/essential/concurrency/syncmeth.html), [Intrinsic Locks and Synchronization](http://docs.oracle.com/javase/tutorial/essential/concurrency/locksync.html), [Atomic Access](http://docs.oracle.com/javase/tutorial/essential/concurrency/atomic.html)를 번역하였습니다.
