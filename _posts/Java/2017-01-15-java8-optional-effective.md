@@ -1,7 +1,7 @@
 ---
-title: "자바8 Optional 3부: Optional을 Optional답게 "
+title: "자바8 Optional 3부: Optional을 Optional답게"
 modified: 2017-01-15T21:21:30+09:00
-categories: 
+categories:
   - Java
 tags:
   - Java8
@@ -55,7 +55,7 @@ public String getCityOfMemberFromOrder(Order order) {
 
 
 ### `filter()`로 레벨업
- 
+
 Java8 이 전에 NPE 방지를 위해서 다음과 같이 null 체크로 시작하는 if 조건문 패턴을 자주 보셨을 겁니다.
 
 ```java
