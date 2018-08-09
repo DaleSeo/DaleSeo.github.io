@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>웹팩(Webpack) 개발 편의 기능 | DaleSeo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="JavaScript,js,Webpack,webpack-dev-server" />
+    
+    <meta name="description" content="엡팩은 자바스크립트 개발자들이 좀 더 쾌적한 개발 경험을 할 수 있도록 여러가지 개발 편의 기능을 제공합니다. 이번 포스트에서는 웹팩을 사용하면서 개발 편의성을 개선시킬 수 방법에 대해서 알아보겠습니다. 관련 포스트웹팩에 대한 지식이나 경험이 전혀 없으신 분들을 아래 포스트를 먼저 읽어보시면 도움이 되실 겁니다.  웹팩 기본 사용법 웹팩 기본 설정법  실습">
+<meta name="keywords" content="JavaScript,js,Webpack,webpack-dev-server">
+<meta property="og:type" content="article">
+<meta property="og:title" content="웹팩(Webpack) 개발 편의 기능">
+<meta property="og:url" content="http://www.daleseo.com/webpack-development/index.html">
+<meta property="og:site_name" content="DaleSeo">
+<meta property="og:description" content="엡팩은 자바스크립트 개발자들이 좀 더 쾌적한 개발 경험을 할 수 있도록 여러가지 개발 편의 기능을 제공합니다. 이번 포스트에서는 웹팩을 사용하면서 개발 편의성을 개선시킬 수 방법에 대해서 알아보겠습니다. 관련 포스트웹팩에 대한 지식이나 경험이 전혀 없으신 분들을 아래 포스트를 먼저 읽어보시면 도움이 되실 겁니다.  웹팩 기본 사용법 웹팩 기본 설정법  실습">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-08-09T02:22:11.180Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="웹팩(Webpack) 개발 편의 기능">
+<meta name="twitter:description" content="엡팩은 자바스크립트 개발자들이 좀 더 쾌적한 개발 경험을 할 수 있도록 여러가지 개발 편의 기능을 제공합니다. 이번 포스트에서는 웹팩을 사용하면서 개발 편의성을 개선시킬 수 방법에 대해서 알아보겠습니다. 관련 포스트웹팩에 대한 지식이나 경험이 전혀 없으신 분들을 아래 포스트를 먼저 읽어보시면 도움이 되실 겁니다.  웹팩 기본 사용법 웹팩 기본 설정법  실습">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-89095168-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Enjoy programming</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AWS/">AWS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/daleseo">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/JavaScript/">JavaScript</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4212187675547278",
+    enable_page_level_ads: true
+  });
+</script>
+                            <article id="post-webpack-development" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        웹팩(Webpack) 개발 편의 기능
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/webpack-development/" class="article-date">
+            <time datetime="2018-07-21T01:40:01.000Z" itemprop="datePublished">2018-07-21</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Webpack/">Webpack</a>, <a class="tag-link" href="/tags/js/">js</a>, <a class="tag-link" href="/tags/webpack-dev-server/">webpack-dev-server</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>엡팩은 자바스크립트 개발자들이 좀 더 쾌적한 개발 경험을 할 수 있도록 여러가지 개발 편의 기능을 제공합니다. 이번 포스트에서는 웹팩을 사용하면서 개발 편의성을 개선시킬 수 방법에 대해서 알아보겠습니다.</p>
+<h2 id="관련-포스트"><a href="#관련-포스트" class="headerlink" title="관련 포스트"></a>관련 포스트</h2><p>웹팩에 대한 지식이나 경험이 전혀 없으신 분들을 아래 포스트를 먼저 읽어보시면 도움이 되실 겁니다.</p>
+<ul>
+<li><a href="/webpack-basics">웹팩 기본 사용법</a></li>
+<li><a href="/webpack-config">웹팩 기본 설정법</a></li>
+</ul>
+<h2 id="실습-프로젝트"><a href="#실습-프로젝트" class="headerlink" title="실습 프로젝트"></a>실습 프로젝트</h2><p>먼저 실습 프로젝트를 만들겠습니다. 새로운 디렉토리를 만들고 NPN 프로젝트를 초기화 후, 웹팩과 웹팩 CLI 패키지를 설치합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir webpack-devlopment</span><br><span class="line">$ <span class="built_in">cd</span> webpack-devlopment</span><br><span class="line">$ npm init -y</span><br><span class="line">$ npm i -D webpack webpack-cli</span><br></pre></td></tr></table></figure>
+<p>그 다음, 다음과 같이 <code>src/index.js</code>와 <code>dist/index.html</code> 파일을 작성합니다.</p>
+<ul>
+<li>src/index.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> message = <span class="built_in">document</span>.createTextNode(<span class="string">"Hello, Webpack!"</span>)</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(message)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>dist/index.html</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Webpack Development<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"./main.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>자 이제, 터미널에서 웹팩을 커맨드를 실행시켜 번들을 합니다. 웹팩의 디폴트 설정에 따라 <code>src/index.js</code>를 읽어들여 <code>dist/main.js</code>을 만들어냅니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ npx webpack</span><br><span class="line">Hash: b1885542f2ac20f161f3</span><br><span class="line">Version: webpack 4.16.5</span><br><span class="line">Time: 80ms</span><br><span class="line">Built at: 2018-07-20 12:58:38</span><br><span class="line">  Asset        Size  Chunks             Chunk Names</span><br><span class="line">main.js  1010 bytes       0  [emitted]  main</span><br><span class="line">Entrypoint main = main.js</span><br><span class="line">[0] ./src/index.js 93 bytes &#123;0&#125; [built]</span><br></pre></td></tr></table></figure>
+<p>그리고 나서 브라우저에서 <code>dist/index.html</code> 파일을 열어보면 화면에 <code>Hello, Webpack!</code>이라고 표시가 될 것입니다.</p>
+<p>참고로 실습 프로젝트가 제대로 만들어졌다면 다음과 같은 디렉토리 구조를 가지게 될 것입니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── dist</span><br><span class="line">│   ├── index.html</span><br><span class="line">│   └── main.js</span><br><span class="line">├── node_modules</span><br><span class="line">├── package.json</span><br><span class="line">├── src</span><br><span class="line">│   └── index.js</span><br><span class="line">└── webpack.config.js</span><br></pre></td></tr></table></figure>
+<h2 id="코드-수정의-번거로움"><a href="#코드-수정의-번거로움" class="headerlink" title="코드 수정의 번거로움"></a>코드 수정의 번거로움</h2><p><code>Hello, Webpack!</code> 대신에 <code>Bye, Webpack!</code>을 화면에 출력하려고 하고 싶다고 가정해봅시다.</p>
+<p>먼저 <code>src/index.js</code> 파일을 열어서 소스 코드를 수정해야겠죠.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> message = <span class="built_in">document</span>.createTextNode(<span class="string">"Bye, Webpack!"</span>)</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(message)</span><br></pre></td></tr></table></figure>
+<p>여기서 다시 브라우저를 새로고침해보면 여전히 기존 메세지가 화면에 표시됨을 알 수 있습니다. 왜냐하면, <code>dist/index.html</code> 파일은 <code>src/index.js</code>(웹팩 입력)가 아닌 <code>dist/main.js</code>(웹팩 출력) 파일을 참조하고 있기 때문입니다. 따라서 다음과 같이 추가로 터미널에서 웹팩을 실행시켜 번들 파일인 <code>dist/main.js</code>까지 업데이트 해줘야 합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx webpack</span><br></pre></td></tr></table></figure>
+<p>다시 브라우저를 새로고침해보면 의도했던바와 같이 <code>Bye, Webpack!</code>이 화면에 표시될 것입니다. 이처럼 웹팩을 사용하지 않을 때는 그냥 코드를 변경 후 파일을 저장만 하면 되었는데, 웹팩을 사용할 때는 매번 번들 파일까지 만들어줘야 하기 때문에 개발이 상당히 번거로워집니다.</p>
+<h2 id="웹팩-감시-옵션"><a href="#웹팩-감시-옵션" class="headerlink" title="웹팩 감시 옵션"></a>웹팩 감시 옵션</h2><p>다행히도 이렇게 매번 터미널에서 <code>npx webpack</code>이나 <code>npm run build</code>(NPM 스크립트로 등록해놓은 경우) 커맨드를 실행시키지 않고도 프로젝트의 변경 내용을 감시해서 적용해주는 기능이 있습니다. 바로 웹팩 커맨드를 실행할 때 <code>--watch</code> 옵션을 주는 것입니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ npx webpack --watch</span><br><span class="line"></span><br><span class="line">webpack is watching the files…</span><br><span class="line"></span><br><span class="line">Hash: b421c06707b12960c650</span><br><span class="line">Version: webpack 4.16.5</span><br><span class="line">Time: 63ms</span><br><span class="line">Built at: 2018-07-20 13:09:37</span><br><span class="line">  Asset        Size  Chunks             Chunk Names</span><br><span class="line">main.js  1010 bytes       0  [emitted]  main</span><br><span class="line">Entrypoint main = main.js</span><br><span class="line">[0] ./src/index.js 96 bytes &#123;0&#125; [built]</span><br></pre></td></tr></table></figure>
+<p>웹팩을 감시 옵션을 줘서 실행시키면 한 번 번들을 하고 마는 것이 아니라 소스 파일을 감시하는 프로세스가 계속 떠있게 됩니다. 그리고 이 프로세스가 변경 사항을 캐치해서 바로 바로 반영을 해줍니다.</p>
+<p>다음과 같이 <code>src/index.js</code> 파일을 수정해보면 즉시 웹팩이 다시 번들을 수행하는 것을 터미널에서 확인할 수 있습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> message = <span class="built_in">document</span>.createTextNode(<span class="string">"Hi, Webpack!"</span>)</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(message)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Hash: 0e7ac934d3aa452e4967</span><br><span class="line">Version: webpack 4.16.5</span><br><span class="line">Time: 173ms</span><br><span class="line">Built at: 2018-07-20 13:10:49</span><br><span class="line">  Asset        Size  Chunks             Chunk Names</span><br><span class="line">main.js  1010 bytes       0  [emitted]  main</span><br><span class="line">Entrypoint main = main.js</span><br><span class="line">[0] ./src/index.js 90 bytes &#123;0&#125; [built]</span><br></pre></td></tr></table></figure>
+<p>마지막으로 브라우저에서 새로고침을 해보면 <code>Hi, Webpack!</code>이 화면에 표시될 겁니다. 개인적으로는 이 방법으로도 충분하다고 생각하지만 아직까지도 매번 브라우저에서 새로고침을 해줘야 한다는 점이 귀찮게 느껴지실 수도 있습니다.</p>
+<h2 id="웹팩-개발-서버"><a href="#웹팩-개발-서버" class="headerlink" title="웹팩 개발 서버"></a>웹팩 개발 서버</h2><p>웹팩에서 제공하는 개발 서버를 사용하면 <code>live reloading</code>통해, 코드 변경 분이 심지어 브라우저에서 새로고침 조차 할 필요가 없이 반영할 수 있습니다.</p>
+<p>먼저 터미널에서 <code>webpack-dev-server</code> NPM 패키지를 개발 의존성으로 설치 후 웹팩 개발 서버를 구동합니다. <code>index.html</code> 파일이 <code>dist</code> 디렉토리 안에 위치하기 때문에 웹팩 개발 서버 구동 시 <code>--content-base</code> 옵션으로 <code>./dist</code>를 넘겨주어야 합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -D webpack-dev-server</span><br><span class="line">$ npx webpack-dev-server --content-base ./dist</span><br><span class="line">ℹ ｢wds｣: Project is running at http://localhost:8080/</span><br><span class="line">ℹ ｢wds｣: webpack output is served from /</span><br><span class="line">ℹ ｢wds｣: Content not from webpack is served from /work/temp/webpack-devlopment/dist</span><br><span class="line">ℹ ｢wdm｣: <span class="built_in">wait</span> until bundle finished: /</span><br><span class="line">⚠ ｢wdm｣: Hash: ed36e6f00d721fd46354</span><br><span class="line">Version: webpack 4.16.5</span><br><span class="line">Time: 409ms</span><br><span class="line">Built at: 2018-07-20 14:32:49</span><br></pre></td></tr></table></figure>
+<p>그리고 나서 브라우저에서 <code>dist/index.html</code> 파일을 직접 여는 대신에 브라우저 주소창에 <code>http://localhost:8080</code>을 입력하면 <code>Bye, Webpack!</code>이 화면에 표시될 것 입니다.  </p>
+<p><code>src/index.js</code> 파일을 다음과 같이 다시 수정해보면 새로고침을 하지 않아도 변경 사항이 즉시 브라우저 화면에 반영되는 것을 확인할 수 있을 것입니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> message = <span class="built_in">document</span>.createTextNode(<span class="string">"Bye~ Bye, Webpack!"</span>)</span><br><span class="line"><span class="built_in">document</span>.body.appendChild(message)</span><br></pre></td></tr></table></figure>
+<h3 id="주의-사항"><a href="#주의-사항" class="headerlink" title="주의 사항"></a>주의 사항</h3><p>웹팩 개발 서버는 순수 개발용으로 디자인된 서버이기 때문에 따라서 상용 환경에서는 사용을 권장하지 않습니다. 또한 웹팩 개발 서버를 구동한 상태에서 소스 파일인 <code>src/index.js</code> 수정 후 번들 파일인 <code>dist/main.js</code>을 열어보면 변경 사항이 반영되지 않았다는 것을 알 수 있습니다. 실제 최종적으로 <code>npx webpack</code> 커맨드를 실행시키기 전까지는 이 번들 파일은 변경되지 않습니다. 따라서 상용 환경에 배포할 때는 반드시 실제로 웹팩을 실행시켜 번들 파일을 업데이트 해줘야 합니다.</p>
+<h2 id="디버깅의-어려움"><a href="#디버깅의-어려움" class="headerlink" title="디버깅의 어려움"></a>디버깅의 어려움</h2><p>웹팩을 사용할 때 애로사항이 한가지 더 생깁니다. 바로 디버깅인데요. </p>
+<p><code>src/index.js</code> 파일을 열어서 의도적으로 코드에 버그를 넣어보겠습니다. 다음과 같이 <code>appendChild()</code>를 <code>addChild()</code>로 바꿔줍니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> message = <span class="built_in">document</span>.createTextNode(<span class="string">"Bye~ Bye, Webpack!"</span>)</span><br><span class="line"><span class="built_in">document</span>.body.addChild(message)</span><br></pre></td></tr></table></figure>
+<p>브라우저 화면에서는 메세지가 사라질 것이고, 다음과 같이 번들 파일인 <code>main.js</code> 기준으로 에러 정보를 표시합니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">main.js:1 Uncaught TypeError: document.body.addChild is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+<p>웹팩은 기본적으로 여러 자바스크립트 파일들을 하나로 묶어서 번들 파일을 만들어내고, HTML 파일은 웹팩이 만들어낸 번들 파일을 참조합니다. 따라서 브라우저에서 코드 에러가 발생하면 번들 파일 기준으로 에러 정보가 표시됩니다. 게다가 웹팩이 만들어낸 번들 파일은 기본적으로 Uglify/Minify 처리가 되어 있기 때문에 본래 소스 코드으 어느 부분에서 에러가 발생한 건지 찾아내기가 난감해집니다.</p>
+<h2 id="소스-맵"><a href="#소스-맵" class="headerlink" title="소스 맵"></a>소스 맵</h2><p>웹팩의 소스 맵 기능을 이용하면 위와 같은 디버깅 문제를 해결할 수 있습니다.</p>
+<p>먼저 다음과 같이 프로젝트 최상위 디렉토리에 <code>webpack.config.js</code>라는 웹팩 설정 파일을 생성하고 소스 맵 설정을 추가해줍니다.</p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devtool: <span class="string">'inline-source-map'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>그리고 다시 웹팩을 실행하거나 웹팩 개발 서버를 구동해보면 다음과 같이 본래 소스 파일인 <code>index.js</code> 기준으로 에러 정보가 표시될 것입니다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">index.js:2 Uncaught TypeError: document.body.addChild is not a <span class="keyword">function</span></span><br></pre></td></tr></table></figure>
+<p>실제로 <code>dist/main.js</code> 파일을 한 번 열어보면 다음과 같이 번들된 코드 아래에 소스 맵 정보가 추가되어 있는 것을 확인할 수 있습니다.</p>
+<ul>
+<li>dist/main.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;<span class="keyword">var</span> t=&#123;&#125;;<span class="function"><span class="keyword">function</span> <span class="title">n</span>(<span class="params">r</span>)</span>&#123;<span class="keyword">if</span>(t[r])<span class="keyword">return</span> t[r].exports;</span><br><span class="line"><span class="comment">//# sourceMappingURL=data:application/json;charset=utf-8;base64,(...생략...)</span></span><br></pre></td></tr></table></figure>
+<h2 id="마치면서"><a href="#마치면서" class="headerlink" title="마치면서"></a>마치면서</h2><p>지금까지 좀 더 편하게 자바스크립트 웹 개발을 할 수 있도록 도와주는 웹팩의 기능들에 대해서 살펴보았습니다.</p>
+<p>추가 팁으로 덧붙이면, <code>webpack.config.js</code>에 모든 웹팩 설정을 해두고 <code>package.json</code>에 웹팩 커맨드를 스크립트로 등록해놓고 사용하시면 좀 더 편리합니다.</p>
+<ul>
+<li>webpack.config.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  devtool: <span class="string">'inline-source-map'</span>,</span><br><span class="line">  devServer: &#123;</span><br><span class="line">    contentBase: <span class="string">'./dist'</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>package.json</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  (...생략...)</span><br><span class="line">  <span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"build"</span>: <span class="string">"webpack"</span>,</span><br><span class="line">    <span class="string">"watch"</span>: <span class="string">"webpack --watch"</span>,</span><br><span class="line">    <span class="string">"server"</span>: <span class="string">"webpack-dev-server --open"</span></span><br><span class="line">  &#125;,</span><br><span class="line">  (...생략...)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>웹팩 단순 1회 실행</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build</span><br></pre></td></tr></table></figure>
+<ul>
+<li>웹팩 감시 모드 실행</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run watch</span><br></pre></td></tr></table></figure>
+<ul>
+<li>웹팩 개발 서버 구동 (<code>--open</code> 옵션 덕분에 브라우저도 자동으로 실행됨)</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm run server</span><br></pre></td></tr></table></figure>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.daleseo.com/webpack-development/" data-id="cjklxuyub002yn0okinpuswlc" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/dale0713" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/DaleSeo" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/webpack-config/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">웹팩(Webpack) 기본 설정법</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-development/" class="title">웹팩(Webpack) 개발 편의 기능</a></p>
+                            <p class="item-date"><time datetime="2018-07-21T01:40:01.000Z" itemprop="datePublished">2018-07-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-config/" class="title">웹팩(Webpack) 기본 설정법</a></p>
+                            <p class="item-date"><time datetime="2018-07-15T14:01:09.000Z" itemprop="datePublished">2018-07-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-basics/" class="title">웹팩(Webpack) 기본 사용법</a></p>
+                            <p class="item-date"><time datetime="2018-07-06T22:03:53.000Z" itemprop="datePublished">2018-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AWS/">AWS</a></p>
+                            <p class="item-title"><a href="/aws-cli-s3api/" class="title">AWS CLI로 Amazon S3 다루기 - 2</a></p>
+                            <p class="item-date"><time datetime="2018-06-10T08:27:03.000Z" itemprop="datePublished">2018-06-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/python-int-bases/" class="title">[파이썬] 2진수, 8진수, 16진수 다루기</a></p>
+                            <p class="item-date"><time datetime="2018-06-02T09:05:49.000Z" itemprop="datePublished">2018-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AWS/">AWS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">7월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">6월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">5월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">1월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">12월 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">11월 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10월 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">9월 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS-CLI/">AWS CLI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-S3/">Amazon S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-Web-Services/">Amazon Web Services</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ApplicationRunner/">ApplicationRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AssertJ/">AssertJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Access/">Atomic Access</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Authentication/">Authentication</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary/">Binary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChronoUnit/">ChronoUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/">Collections</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommandLineRunner/">CommandLineRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Concurrency/">Concurrency</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDB/">DDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/">Date</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Duration/">Duration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DynamoDB/">DynamoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/">FP</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hoisting/">Hoisting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instant/">Instant</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intrinsic-Locks-and-Synchronization/">Intrinsic Locks and Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java6/">Java6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jetty/">Jetty</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/">Lambda</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDate/">LocalDate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDateTime/">LocalDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalTime/">LocalTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory-Consistency-Errors/">Memory Consistency Errors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multithreading/">Multithreading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optional/">Optional</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Peroid/">Peroid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/S3/">S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Simple-Storage-Service/">Simple Storage Service</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stream/">Stream</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Synchronization/">Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread-Interference/">Thread Interference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Undertow/">Undertow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZonedDateTime/">ZonedDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-dev-server/">webpack-dev-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/다이나모DB/">다이나모DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/멀티쓰레드/">멀티쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배열/">배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/번역/">번역</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링/">스프링</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링부트/">스프링부트</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쓰레드/">쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아마존-웹-서비스/">아마존 웹 서비스</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/언더토우/">언더토우</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/인증/">인증</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바8/">자바8</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바스크립트/">자바스크립트</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/제티/">제티</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진법/">진법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진수/">진수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/톰켓/">톰켓</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/파이썬/">파이썬</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/AWS-CLI/" style="font-size: 15px;">AWS CLI</a> <a href="/tags/Amazon-S3/" style="font-size: 11.67px;">Amazon S3</a> <a href="/tags/Amazon-Web-Services/" style="font-size: 15px;">Amazon Web Services</a> <a href="/tags/ApplicationRunner/" style="font-size: 10px;">ApplicationRunner</a> <a href="/tags/AssertJ/" style="font-size: 10px;">AssertJ</a> <a href="/tags/Atomic-Access/" style="font-size: 10px;">Atomic Access</a> <a href="/tags/Authentication/" style="font-size: 10px;">Authentication</a> <a href="/tags/Binary/" style="font-size: 10px;">Binary</a> <a href="/tags/ChronoUnit/" style="font-size: 10px;">ChronoUnit</a> <a href="/tags/Collections/" style="font-size: 15px;">Collections</a> <a href="/tags/CommandLineRunner/" style="font-size: 10px;">CommandLineRunner</a> <a href="/tags/Concurrency/" style="font-size: 15px;">Concurrency</a> <a href="/tags/DDB/" style="font-size: 10px;">DDB</a> <a href="/tags/Date/" style="font-size: 15px;">Date</a> <a href="/tags/Duration/" style="font-size: 10px;">Duration</a> <a href="/tags/DynamoDB/" style="font-size: 10px;">DynamoDB</a> <a href="/tags/ES2015/" style="font-size: 15px;">ES2015</a> <a href="/tags/FP/" style="font-size: 18.33px;">FP</a> <a href="/tags/Hoisting/" style="font-size: 10px;">Hoisting</a> <a href="/tags/Instant/" style="font-size: 10px;">Instant</a> <a href="/tags/Intrinsic-Locks-and-Synchronization/" style="font-size: 10px;">Intrinsic Locks and Synchronization</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Java6/" style="font-size: 11.67px;">Java6</a> <a href="/tags/Java8/" style="font-size: 20px;">Java8</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jetty/" style="font-size: 10px;">Jetty</a> <a href="/tags/Lambda/" style="font-size: 13.33px;">Lambda</a> <a href="/tags/LocalDate/" style="font-size: 10px;">LocalDate</a> <a href="/tags/LocalDateTime/" style="font-size: 10px;">LocalDateTime</a> <a href="/tags/LocalTime/" style="font-size: 10px;">LocalTime</a> <a href="/tags/Lombok/" style="font-size: 11.67px;">Lombok</a> <a href="/tags/Memory-Consistency-Errors/" style="font-size: 10px;">Memory Consistency Errors</a> <a href="/tags/Multithreading/" style="font-size: 10px;">Multithreading</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Optional/" style="font-size: 13.33px;">Optional</a> <a href="/tags/Peroid/" style="font-size: 10px;">Peroid</a> <a href="/tags/Process/" style="font-size: 11.67px;">Process</a> <a href="/tags/S3/" style="font-size: 11.67px;">S3</a> <a href="/tags/Simple-Storage-Service/" style="font-size: 11.67px;">Simple Storage Service</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 15px;">SpringBoot</a> <a href="/tags/Stream/" style="font-size: 15px;">Stream</a> <a href="/tags/Synchronization/" style="font-size: 10px;">Synchronization</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Thread/" style="font-size: 15px;">Thread</a> <a href="/tags/Thread-Interference/" style="font-size: 10px;">Thread Interference</a> <a href="/tags/Time/" style="font-size: 15px;">Time</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Undertow/" style="font-size: 10px;">Undertow</a> <a href="/tags/Webpack/" style="font-size: 13.33px;">Webpack</a> <a href="/tags/ZonedDateTime/" style="font-size: 10px;">ZonedDateTime</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack-dev-server/" style="font-size: 10px;">webpack-dev-server</a> <a href="/tags/다이나모DB/" style="font-size: 10px;">다이나모DB</a> <a href="/tags/멀티쓰레드/" style="font-size: 10px;">멀티쓰레드</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/번역/" style="font-size: 15px;">번역</a> <a href="/tags/스프링/" style="font-size: 15px;">스프링</a> <a href="/tags/스프링부트/" style="font-size: 15px;">스프링부트</a> <a href="/tags/쓰레드/" style="font-size: 10px;">쓰레드</a> <a href="/tags/아마존-웹-서비스/" style="font-size: 15px;">아마존 웹 서비스</a> <a href="/tags/언더토우/" style="font-size: 10px;">언더토우</a> <a href="/tags/인증/" style="font-size: 10px;">인증</a> <a href="/tags/자바8/" style="font-size: 15px;">자바8</a> <a href="/tags/자바스크립트/" style="font-size: 16.67px;">자바스크립트</a> <a href="/tags/제티/" style="font-size: 10px;">제티</a> <a href="/tags/진법/" style="font-size: 10px;">진법</a> <a href="/tags/진수/" style="font-size: 10px;">진수</a> <a href="/tags/톰켓/" style="font-size: 10px;">톰켓</a> <a href="/tags/파이썬/" style="font-size: 10px;">파이썬</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Dale Seo</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'daleseo';
+    
+    
+    var disqus_url = 'http://www.daleseo.com/webpack-development/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

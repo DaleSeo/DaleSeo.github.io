@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>자바8: 람다 1부 - 메소드 참조, 가상 확장 메소드, 결론 | DaleSeo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Java8,Lambda,FP,번역" />
+    
+    <meta name="description" content="본 포스트는 오라클 웹사이트에 Ted Neward가 기고한 Java 8: Lambdas, Part 1를 번역하였습니다.  메소드 참조 (Method Reference)지금까지 다룬 모든 람다는 사용 시점에 람다를 정의하는 익명 리터럴이였습니다.이는 1회성 행위를 위해서는 훌륭하지만, 이 행위가 여러 곳에서 사용되어야 하는 상황에서는 별로입니다.예를 들어">
+<meta name="keywords" content="Java8,Lambda,FP,번역">
+<meta property="og:type" content="article">
+<meta property="og:title" content="자바8: 람다 1부 - 메소드 참조, 가상 확장 메소드, 결론">
+<meta property="og:url" content="http://www.daleseo.com/java8-lambdas-part1-3/index.html">
+<meta property="og:site_name" content="DaleSeo">
+<meta property="og:description" content="본 포스트는 오라클 웹사이트에 Ted Neward가 기고한 Java 8: Lambdas, Part 1를 번역하였습니다.  메소드 참조 (Method Reference)지금까지 다룬 모든 람다는 사용 시점에 람다를 정의하는 익명 리터럴이였습니다.이는 1회성 행위를 위해서는 훌륭하지만, 이 행위가 여러 곳에서 사용되어야 하는 상황에서는 별로입니다.예를 들어">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-08-07T16:24:39.635Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="자바8: 람다 1부 - 메소드 참조, 가상 확장 메소드, 결론">
+<meta name="twitter:description" content="본 포스트는 오라클 웹사이트에 Ted Neward가 기고한 Java 8: Lambdas, Part 1를 번역하였습니다.  메소드 참조 (Method Reference)지금까지 다룬 모든 람다는 사용 시점에 람다를 정의하는 익명 리터럴이였습니다.이는 1회성 행위를 위해서는 훌륭하지만, 이 행위가 여러 곳에서 사용되어야 하는 상황에서는 별로입니다.예를 들어">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-89095168-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Enjoy programming</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AWS/">AWS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/daleseo">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Java/">Java</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4212187675547278",
+    enable_page_level_ads: true
+  });
+</script>
+                            <article id="post-java8-lambdas-part1-3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        자바8: 람다 1부 - 메소드 참조, 가상 확장 메소드, 결론
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/java8-lambdas-part1-3/" class="article-date">
+            <time datetime="2016-11-27T01:11:24.000Z" itemprop="datePublished">2016-11-27</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/FP/">FP</a>, <a class="tag-link" href="/tags/Java8/">Java8</a>, <a class="tag-link" href="/tags/Lambda/">Lambda</a>, <a class="tag-link" href="/tags/번역/">번역</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <blockquote>
+<p>본 포스트는 <a href="http://www.oracle.com" target="_blank" rel="noopener">오라클 웹사이트</a>에 Ted Neward가 기고한 <a href="http://www.oracle.com/technetwork/articles/java/architect-lambdas-part1-2080972.html" target="_blank" rel="noopener">Java 8: Lambdas, Part 1</a>를 번역하였습니다.</p>
+</blockquote>
+<h2 id="메소드-참조-Method-Reference"><a href="#메소드-참조-Method-Reference" class="headerlink" title="메소드 참조 (Method Reference)"></a>메소드 참조 (Method Reference)</h2><p>지금까지 다룬 모든 람다는 사용 시점에 람다를 정의하는 익명 리터럴이였습니다.<br>이는 1회성 행위를 위해서는 훌륭하지만, 이 행위가 여러 곳에서 사용되어야 하는 상황에서는 별로입니다.<br>예를 들어 다음 <code>Person</code> 클래스를 생각해봅시다. (지금은 부적절한 캡슐화에 대해서는 무시하시죠.)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> String firstName;</span><br><span class="line">  <span class="keyword">public</span> String lastName;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p><code>Person</code> 객체를 <code>SortedSet</code>에 저정하거나 어떤 형태로든 리스트 내에서 정렬될 필요가 있을 때, <code>Persion</code> 인스턴스가 정렬되기 위한 다른 여러가지 방식을 필요로 합니다. 예를 들어, 이름으로 정렬하고 싶을 때도 있고 성으로 정렬하고 싶을 때도 있습니다.<br>이 목적으로 <code>Comparator&lt;T&gt;</code>를 사용하는데 <code>Comparator&lt;T&gt;</code> 인스턴스를 전달함으로써 정렬 방식을 정의할 수 있게 됩니다.</p>
+<p>람다는 일람 15처럼 확실히 정렬 코드를 더 쉽게 작성하게 해줍니다.<br>그러나 <code>Person</code> 인스턴스를 이름에 의해 정렬하는 것은 코드 기반 내에서 여러 번 수행된 필요가 있을지도 모르는데,<br>어러한 종류의 알고리즘을 여러 번 작성하는 것은 분명히 DRY(Don’t Repeat Yourself) 법칙에 위배됩니다.</p>
+<h3 id="일람-15"><a href="#일람-15" class="headerlink" title="일람 15"></a>일람 15</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">  Person[] people = <span class="keyword">new</span> Person[] &#123;</span><br><span class="line">    <span class="keyword">new</span> Person(<span class="string">"Ted"</span>, <span class="string">"Neward"</span>, <span class="number">41</span>),</span><br><span class="line">    <span class="keyword">new</span> Person(<span class="string">"Charlotte"</span>, <span class="string">"Neward"</span>, <span class="number">41</span>),</span><br><span class="line">    <span class="keyword">new</span> Person(<span class="string">"Michael"</span>, <span class="string">"Neward"</span>, <span class="number">19</span>),</span><br><span class="line">    <span class="keyword">new</span> Person(<span class="string">"Matthew"</span>, <span class="string">"Neward"</span>, <span class="number">13</span>)</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// Sort by first name</span></span><br><span class="line">  Arrays.sort(people, (lhs, rhs) -&gt; lhs.firstName.compareTo(rhs.firstName));</span><br><span class="line">  <span class="keyword">for</span> (Person p : people)</span><br><span class="line">    System.out.println(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Comparator</code>는 확실히 <code>Person</code> 자체의 멤버가 될 수도 있습니다. (일람 16)<br>그 다음에 <code>Comparator&lt;T&gt;</code>는 다른 정적 필드 처럼 참조당할 수 있습니다. (일람 17)<br>솔직히 말하면 함수형 프로그래밍의 지지자들은 함수가 여러가지 방식으로 조합될 수 있는 이런 스타일을 선호합니다.</p>
+<h3 id="일람-16"><a href="#일람-16" class="headerlink" title="일람 16"></a>일람 16</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> String firstName;</span><br><span class="line">  <span class="keyword">public</span> String lastName;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> Comparator&lt;Person&gt; compareFirstName =</span><br><span class="line">    (lhs, rhs) -&gt; lhs.firstName.compareTo(rhs.firstName);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> Comparator&lt;Person&gt; compareLastName =</span><br><span class="line">    (lhs, rhs) -&gt; lhs.lastName.compareTo(rhs.lastName);</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String f, String l, <span class="keyword">int</span> a)</span> </span>&#123;</span><br><span class="line">    firstName = f; lastName = l; age = a;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">toString</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">"[Person: firstName:"</span> + firstName + <span class="string">" "</span> +</span><br><span class="line">      <span class="string">"lastName:"</span> + lastName + <span class="string">" "</span> + <span class="string">"age:"</span> + age + <span class="string">"]"</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="일람-17"><a href="#일람-17" class="headerlink" title="일람 17"></a>일람 17</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">  Person[] people = . . .;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// Sort by first name</span></span><br><span class="line">  Arrays.sort(people, Person.compareFirstName);</span><br><span class="line">  <span class="keyword">for</span> (Person p : people)</span><br><span class="line">    System.out.println(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>그러나 간단하게 <code>Comparator&lt;T&gt;</code>의 시그니쳐에 맞는 메서드를 생성했던 전통적인 자바 개발자들은 어색하게 느낄 것입니다.<br>사실 이 메소드를 바로 사용하는 것이 메서드 참조가 정확하게 해주는 일입니다. (일람 18)<br><code>Person</code>에 정의된 <code>compareFirstNames</code> 메서드가 사용될 것이라고 컴파일러에게 알려주는 콜론 2개가 사용된 메서드 명명 스타일을 주목하세요.</p>
+<h3 id="일람-18"><a href="#일람-18" class="headerlink" title="일람 18"></a>일람 18</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</span><br><span class="line">  <span class="keyword">public</span> String firstName;</span><br><span class="line">  <span class="keyword">public</span> String lastName;</span><br><span class="line">  <span class="keyword">public</span> <span class="keyword">int</span> age;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span> <span class="title">compareFirstNames</span><span class="params">(Person lhs, Person rhs)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> lhs.firstName.compareTo(rhs.firstName);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">  Person[] people = . . .;</span><br><span class="line">  <span class="comment">// Sort by first name</span></span><br><span class="line">  Arrays.sort(people, Person::compareFirstNames);</span><br><span class="line">  <span class="keyword">for</span> (Person p : people)</span><br><span class="line">    System.out.println(p);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>궁금해하실 분들의 위한 또 다른 방식은 아래처럼 <code>Comparator&lt;Person&gt;</code> 인스턴스를 생성하기 위해서 <code>compareFirstNames</code> 메서드를 사용하는 것입니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Comparator cf = Person::compareFirstNames;</span><br></pre></td></tr></table></figure>
+<p>또한 더 견갈하게 위해서는 아래와 같이 새로운 라이브러리의 기능을 사용해여 구문 오버헤드를 완전히 회피할 수 있습니다.<br>고차 함수 (함수의 인자로 전달되는 또 다른 함수)를 이용하여 기존 코드를 탈비하고 한 줄짜리 코드로 대체할 수 있게됩니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Arrays.sort(people, comparing(</span><br><span class="line">  Person::getFirstName));</span><br></pre></td></tr></table></figure>
+<p>이 예제는 왜 람다와 람다와 함께 사용되는 함수형 프로그랭이 이토록 강력한지를 설명해줍니다.</p>
+<h2 id="가상-확장-메소드-Virtual-Extention-Mehtod"><a href="#가상-확장-메소드-Virtual-Extention-Mehtod" class="headerlink" title="가상 확장 메소드 (Virtual Extention Mehtod)"></a>가상 확장 메소드 (Virtual Extention Mehtod)</h2><p>하지만 인터페이스에 대해서 자주 지적되는 한가지 단점은 그 구현이 뻔하더라도 기본 구현을 할 수 없다는 점입니다.<br>예를 들어 비교 연산자(&gt;, &lt;, &gt;=, …)를 흉내내는 일련의 메소드를 가지는 가상의 <code>Relational</code> 인터페이스를 생각해봅시다.<br>이 메소드 중에서 어떤 하나라도 정의가 되기만 한다면, 첫 번째 메소드와 관련하여 다른 메소드들이 어떻게 정의될지 쉽게 파악할 수 있습니다.<br>실제로 모든 메소드들은 <code>Comparable&lt;T&gt;</code>의 <code>compare</code> 메소드를 참조하여 정의될 수 있습니다.<br>하지만 인터페이스는 기본 행위를 가질 수 없고, 추상 클래스는 여전히 클래스이며 서브 클래스의 유일한 상속 기회를 차지해 버립니니다.</p>
+<p>하지만 자바8에서는 이러한 함수 리터럴이 더 굉범위하게 사용되어지기 때문에, 인터페이스 다움을 잃지 않고 기본 행위를 기술하는 것이 더 중요하게 되었습니다.<br>따라서 자바8은 이제 가상 확장 메소드를 도입합니다. (이전 초안에서는 defender 메소드라고 불렀습니다.)<br>기상 확장 메소드는 구현 클래스에서 메소드 구현이 기술되지 않는 경우 인터페이스가 기본 동작을 기술할 수 있도록 합니다.</p>
+<p>잠시만 <code>Iterator</code> 인터페이스를 볼까요?<br>현재 이 인터페이스는 <code>hasNext</code>, <code>next</code>, <code>remove</code> 이렇게 3개의 메소드를 가지며, 각 메소드는 정의가 필요합니다.<br>그러나 일부 스트림 반복에서는 다음 객체를 건너뛰는 능력이 도움이 될지도 모릅니다.<br><code>Iterator</code> 구현은 다른 3개의 메소드을 참조해서 쉽게 정의될 수 있기 때문에, 일람 19처럼 <code>skip</code> 메소드를 기본 구현할 수 있습니다.</p>
+<h3 id="알람-19"><a href="#알람-19" class="headerlink" title="알람 19"></a>알람 19</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Iterator</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">boolean</span> <span class="title">hasNext</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function">T <span class="title">next</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">void</span> <span class="title">skip</span><span class="params">(<span class="keyword">int</span> i)</span> <span class="keyword">default</span> </span>&#123;</span><br><span class="line">  	<span class="keyword">for</span> (; i &gt; <span class="number">0</span> &amp;&amp; hasNext(); i--) next();</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>자바 커뮤니티 내에 몇몇 분들은 이 메커니즘이 인터페이스의 선언적인 능력을 약화시키고 자바에서 다중 상속을 허용하는 구조를 양산할 거라고 주장하실 것입니다.<br>특히 이 경우(하나의 클래스가 서로 다른 기본 구현을 가진 동일한 메소드를 가진 여러 개의 인터페이스를 동시에 구현할 때)에 대해서는 기본 구현의 우선순위와 관련된 규칙들에 대해서 앞으로 차근 차근 연구가 필요할 것입니다.</p>
+<p>하지만 가상 확장 메소드는 이름 그대로 기존 상속 구조를 파괴하지 않고 기존의 인터페이스를 확장하기 위한 강력한 수단입니다.<br>이 메커니즘을 활용해서 오라클은 다른 개발자들이 기존 클래스를 변경하지 않게 하면서 기존 라이브러리에 강력한 행위들을 추가시킬 수 있습니다.<br>개발자들이 기존 컬렉션에 새로운 기능을 사용하기 위해서 다운 캐스팅해야하는 <code>SkippingIterator</code> 클래스는 존재하지 않습니다.<br>사실상, 어떤 코드도 바뀔필요가 없고 모든 <code>Iterator&lt;T&gt;</code>에는 언제 작성되었든지 자동으로 건더뛰기 동작이 추가됩니다.</p>
+<p>It is through virtual extension methods that the vast majority of the changes that are happening in the Collection classes are coming. The good news is that your Collection classes are getting new behavior, and the even better news is that your code won’t have to change an iota in the meantime. The bad news is that we have to defer that discussion to the next article in this series.</p>
+<p><code>Collection</code> 관련 클래스에서 나타날 대부분의 변화들이 가상 확장 메소드를 통해서 이루어질 것입니다.<br>좋은 소식은 당신의 <code>Collection</code> 관련 클래스들도 새로운 동작이 추가될 것이고, 더 좋은 소식은 이를 위해 당신의 코드는 전혀 바뀔 필요가 없다는 것이지요.<br>나쁜 소식은 우리는 그 논의를 연재되고 있는 다음 기사까지 기다려야 한다는 것입니다.</p>
+<h2 id="결론"><a href="#결론" class="headerlink" title="결론"></a>결론</h2><p>람다는 자바 코드의 작성과 설계 방식에 커다란 변화를 가져올 것입니다.<br>함수형 언어에 영감을 받은 일부 변화들은 자바 개발자들이 코드 작성에 대해서 생각하는 방식조차 바꿀 것이며 이것은 기회이자 번거로움일 것입니다.</p>
+<p>연재되고 있는 다음 기사에서 이러한 변화들이 자바 라이브러리에 가져올 충격에 대해서 얘기해볼 것입니다.<br>그리고 어떻게 이 새로운 API와 인터페이스 그리고 클래스들이 기존에는 내부 클래스의 어색한 문법 때문에 실용적이지 않았던 새로운 설계 접근 방식을 만들어낼지 얘기하는데 시간을 할애하겠습니다.</p>
+<p>자바8은 매우 흥미로운 릴리스가 될 것입니다. 자 각오를 다지고 새로운 세계로 날아 오릅시다.</p>
+<blockquote>
+<p><strong>저자 소개 :</strong><br>Ted Neward(<a href="https://twitter.com/tedneward" target="_blank" rel="noopener">@tedneward</a>)는 Neudesic 사의 설계 컨설턴트입니다.<br>그는 몇몇 전문가 그룹에서 활동했으며 <em>Effective Enterprise Java (Addison-Wesley Professional, 2004)</em> and <em>Professional F# 2.0 (Wrox, 2010)</em>를 포함한 다수의 저서를 가지고 있습니다.<br>자바와 스칼라를 비롯한 다른 기술에 대한 수 많은 기사를 썼으며 컨퍼런스에서 강연도 많이 하였습니다.</p>
+</blockquote>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.daleseo.com/java8-lambdas-part1-3/" data-id="cjklxuytf000vn0okno9pbkqr" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/dale0713" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/DaleSeo" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/java8-no-more-loops/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            자바8: 반복문에서 벗어나기
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/java8-lambdas-part1-2/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">자바8: 람다 1부 - 람다식, 타입 추론, 어휘 범위</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-development/" class="title">웹팩(Webpack) 개발 편의 기능</a></p>
+                            <p class="item-date"><time datetime="2018-07-21T01:40:01.000Z" itemprop="datePublished">2018-07-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-config/" class="title">웹팩(Webpack) 기본 설정법</a></p>
+                            <p class="item-date"><time datetime="2018-07-15T14:01:09.000Z" itemprop="datePublished">2018-07-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-basics/" class="title">웹팩(Webpack) 기본 사용법</a></p>
+                            <p class="item-date"><time datetime="2018-07-06T22:03:53.000Z" itemprop="datePublished">2018-07-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/AWS/">AWS</a></p>
+                            <p class="item-title"><a href="/aws-cli-s3api/" class="title">AWS CLI로 Amazon S3 다루기 - 2</a></p>
+                            <p class="item-date"><time datetime="2018-06-10T08:27:03.000Z" itemprop="datePublished">2018-06-10</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Python/">Python</a></p>
+                            <p class="item-title"><a href="/python-int-bases/" class="title">[파이썬] 2진수, 8진수, 16진수 다루기</a></p>
+                            <p class="item-date"><time datetime="2018-06-02T09:05:49.000Z" itemprop="datePublished">2018-06-02</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AWS/">AWS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">7월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">6월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">5월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">1월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">12월 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">11월 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10월 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">9월 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS-CLI/">AWS CLI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-S3/">Amazon S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-Web-Services/">Amazon Web Services</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ApplicationRunner/">ApplicationRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AssertJ/">AssertJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Access/">Atomic Access</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Authentication/">Authentication</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary/">Binary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChronoUnit/">ChronoUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/">Collections</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommandLineRunner/">CommandLineRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Concurrency/">Concurrency</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDB/">DDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/">Date</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Duration/">Duration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DynamoDB/">DynamoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/">FP</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hoisting/">Hoisting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instant/">Instant</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intrinsic-Locks-and-Synchronization/">Intrinsic Locks and Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java6/">Java6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jetty/">Jetty</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/">Lambda</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDate/">LocalDate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDateTime/">LocalDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalTime/">LocalTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory-Consistency-Errors/">Memory Consistency Errors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multithreading/">Multithreading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optional/">Optional</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Peroid/">Peroid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/S3/">S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Simple-Storage-Service/">Simple Storage Service</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stream/">Stream</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Synchronization/">Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread-Interference/">Thread Interference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Undertow/">Undertow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZonedDateTime/">ZonedDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-dev-server/">webpack-dev-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/다이나모DB/">다이나모DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/멀티쓰레드/">멀티쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배열/">배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/번역/">번역</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링/">스프링</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링부트/">스프링부트</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쓰레드/">쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아마존-웹-서비스/">아마존 웹 서비스</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/언더토우/">언더토우</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/인증/">인증</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바8/">자바8</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바스크립트/">자바스크립트</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/제티/">제티</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진법/">진법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진수/">진수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/톰켓/">톰켓</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/파이썬/">파이썬</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/AWS-CLI/" style="font-size: 15px;">AWS CLI</a> <a href="/tags/Amazon-S3/" style="font-size: 11.67px;">Amazon S3</a> <a href="/tags/Amazon-Web-Services/" style="font-size: 15px;">Amazon Web Services</a> <a href="/tags/ApplicationRunner/" style="font-size: 10px;">ApplicationRunner</a> <a href="/tags/AssertJ/" style="font-size: 10px;">AssertJ</a> <a href="/tags/Atomic-Access/" style="font-size: 10px;">Atomic Access</a> <a href="/tags/Authentication/" style="font-size: 10px;">Authentication</a> <a href="/tags/Binary/" style="font-size: 10px;">Binary</a> <a href="/tags/ChronoUnit/" style="font-size: 10px;">ChronoUnit</a> <a href="/tags/Collections/" style="font-size: 15px;">Collections</a> <a href="/tags/CommandLineRunner/" style="font-size: 10px;">CommandLineRunner</a> <a href="/tags/Concurrency/" style="font-size: 15px;">Concurrency</a> <a href="/tags/DDB/" style="font-size: 10px;">DDB</a> <a href="/tags/Date/" style="font-size: 15px;">Date</a> <a href="/tags/Duration/" style="font-size: 10px;">Duration</a> <a href="/tags/DynamoDB/" style="font-size: 10px;">DynamoDB</a> <a href="/tags/ES2015/" style="font-size: 15px;">ES2015</a> <a href="/tags/FP/" style="font-size: 18.33px;">FP</a> <a href="/tags/Hoisting/" style="font-size: 10px;">Hoisting</a> <a href="/tags/Instant/" style="font-size: 10px;">Instant</a> <a href="/tags/Intrinsic-Locks-and-Synchronization/" style="font-size: 10px;">Intrinsic Locks and Synchronization</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Java6/" style="font-size: 11.67px;">Java6</a> <a href="/tags/Java8/" style="font-size: 20px;">Java8</a> <a href="/tags/JavaScript/" style="font-size: 15px;">JavaScript</a> <a href="/tags/Jetty/" style="font-size: 10px;">Jetty</a> <a href="/tags/Lambda/" style="font-size: 13.33px;">Lambda</a> <a href="/tags/LocalDate/" style="font-size: 10px;">LocalDate</a> <a href="/tags/LocalDateTime/" style="font-size: 10px;">LocalDateTime</a> <a href="/tags/LocalTime/" style="font-size: 10px;">LocalTime</a> <a href="/tags/Lombok/" style="font-size: 11.67px;">Lombok</a> <a href="/tags/Memory-Consistency-Errors/" style="font-size: 10px;">Memory Consistency Errors</a> <a href="/tags/Multithreading/" style="font-size: 10px;">Multithreading</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Optional/" style="font-size: 13.33px;">Optional</a> <a href="/tags/Peroid/" style="font-size: 10px;">Peroid</a> <a href="/tags/Process/" style="font-size: 11.67px;">Process</a> <a href="/tags/S3/" style="font-size: 11.67px;">S3</a> <a href="/tags/Simple-Storage-Service/" style="font-size: 11.67px;">Simple Storage Service</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 15px;">SpringBoot</a> <a href="/tags/Stream/" style="font-size: 15px;">Stream</a> <a href="/tags/Synchronization/" style="font-size: 10px;">Synchronization</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Thread/" style="font-size: 15px;">Thread</a> <a href="/tags/Thread-Interference/" style="font-size: 10px;">Thread Interference</a> <a href="/tags/Time/" style="font-size: 15px;">Time</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Undertow/" style="font-size: 10px;">Undertow</a> <a href="/tags/Webpack/" style="font-size: 13.33px;">Webpack</a> <a href="/tags/ZonedDateTime/" style="font-size: 10px;">ZonedDateTime</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack-dev-server/" style="font-size: 10px;">webpack-dev-server</a> <a href="/tags/다이나모DB/" style="font-size: 10px;">다이나모DB</a> <a href="/tags/멀티쓰레드/" style="font-size: 10px;">멀티쓰레드</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/번역/" style="font-size: 15px;">번역</a> <a href="/tags/스프링/" style="font-size: 15px;">스프링</a> <a href="/tags/스프링부트/" style="font-size: 15px;">스프링부트</a> <a href="/tags/쓰레드/" style="font-size: 10px;">쓰레드</a> <a href="/tags/아마존-웹-서비스/" style="font-size: 15px;">아마존 웹 서비스</a> <a href="/tags/언더토우/" style="font-size: 10px;">언더토우</a> <a href="/tags/인증/" style="font-size: 10px;">인증</a> <a href="/tags/자바8/" style="font-size: 15px;">자바8</a> <a href="/tags/자바스크립트/" style="font-size: 16.67px;">자바스크립트</a> <a href="/tags/제티/" style="font-size: 10px;">제티</a> <a href="/tags/진법/" style="font-size: 10px;">진법</a> <a href="/tags/진수/" style="font-size: 10px;">진수</a> <a href="/tags/톰켓/" style="font-size: 10px;">톰켓</a> <a href="/tags/파이썬/" style="font-size: 10px;">파이썬</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Dale Seo</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'daleseo';
+    
+    
+    var disqus_url = 'http://www.daleseo.com/java8-lambdas-part1-3/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
