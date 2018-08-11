@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="DaleSeo">
 <meta property="og:description" content="맥이나 리눅스 터미널에서 가장 자주 사용하는 커맨드 중에 하나인 ls에 대해서 알아보도록 하겠습니다. ls는 파일이나 디펙토리 목록을 나열하기 위해서 사용하는 리눅스 커맨드입니다. 파일과 디렉토리 나열하기단순히 현재 디렉토리 내의 어떤 파일과 디렉토리가 있는지를 보려면 터미널에 ls라고 입력합니다. 기본적으로는 알파벳 순으로 나옵니다. 12$ lsREADM">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-08-11T02:46:04.165Z">
+<meta property="og:updated_time" content="2018-08-11T03:07:27.251Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ls 쉘 커맨드 사용법">
 <meta name="twitter:description" content="맥이나 리눅스 터미널에서 가장 자주 사용하는 커맨드 중에 하나인 ls에 대해서 알아보도록 하겠습니다. ls는 파일이나 디펙토리 목록을 나열하기 위해서 사용하는 리눅스 커맨드입니다. 파일과 디렉토리 나열하기단순히 현재 디렉토리 내의 어떤 파일과 디렉토리가 있는지를 보려면 터미널에 ls라고 입력합니다. 기본적으로는 알파벳 순으로 나옵니다. 12$ lsREADM">
@@ -204,15 +204,61 @@ ga('send', 'pageview');
 <p><code>-a</code> 옵션을 사용하면 <code>.</code>와 <code>..</code>까지 함께 출력됩니다.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -a</span><br><span class="line">.            ..           .git         .gitignore      README.md    dist         node_modules package.json run.sh       src</span><br></pre></td></tr></table></figure>
 <p>참고로 여기서 <code>.</code>는 현재 디렉토리 <code>..</code>는 상위 디렉토리를 의미합니다. <code>cd .</code>나 <code>cd ..</code>가 동작하는 이치랑 같습니다.</p>
-<h2 id="상세하게-확인하기"><a href="#상세하게-확인하기" class="headerlink" title="상세하게 확인하기"></a>상세하게 확인하기</h2><p><code>-l</code> 옵션을 사용하면 좀 더 자세한 정보를 확인할 수 있습니다.</p>
+<h2 id="상세하게-확인하기"><a href="#상세하게-확인하기" class="headerlink" title="상세하게 확인하기"></a>상세하게 확인하기</h2><p><code>-l</code> 옵션을 사용하면 좀 더 자세한 정보를 파일이나 디렉토리마다 한줄씩 여러 줄에 출력합니다.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l</span><br><span class="line">total 8</span><br><span class="line">-rw-r--r--    1 dale  staff     51  8 Aug 16:37 README.md</span><br><span class="line">drwxr-xr-x    4 dale  staff    128  7 Aug 16:45 dist</span><br><span class="line">drwxr-xr-x  507 dale  staff  16224  7 Aug 16:46 node_modules</span><br><span class="line">-rw-r--r--    1 dale  staff    371  7 Aug 16:46 package.json</span><br><span class="line">-rwxr--r--    1 dale  staff     33 10 Aug 16:43 run.sh</span><br><span class="line">drwxr-xr-x    3 dale  staff     96  7 Aug 09:15 src</span><br></pre></td></tr></table></figure>
-<h2 id="크기를-쉽게-알아보기"><a href="#크기를-쉽게-알아보기" class="headerlink" title="크기를 쉽게 알아보기"></a>크기를 쉽게 알아보기</h2><p><code>-lh</code> 옵션을 사용하시면 파일이나 디렉토리 크기에 단위가 붙어서 읽기 편한 상태로 표시됩니다. (예. 1K 234M 2G)</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ ll -lh</span><br><span class="line">total 8</span><br><span class="line">-rw-r--r--    1 dale  staff    51B 10 Aug 16:37 README.md</span><br><span class="line">drwxr-xr-x    4 dale  staff   128B  7 Aug 16:45 dist</span><br><span class="line">drwxr-xr-x  507 dale  staff    16K  7 Aug 16:46 node_modules</span><br><span class="line">-rw-r--r--    1 dale  staff   371B  7 Aug 16:46 package.json</span><br><span class="line">-rwxr--r--    1 dale  staff    33B 10 Aug 16:43 run.sh</span><br><span class="line">drwxr-xr-x    3 dale  staff    96B  7 Aug 09:15 src</span><br></pre></td></tr></table></figure>
+<h2 id="크기를-쉽게-알아보기"><a href="#크기를-쉽게-알아보기" class="headerlink" title="크기를 쉽게 알아보기"></a>크기를 쉽게 알아보기</h2><p><code>-hl</code> 옵션을 사용하시면 파일이나 디렉토리 크기에 단위가 붙어서 읽기 편한 상태로 표시됩니다. (예. 1K 234M 2G)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ ll -hl</span><br><span class="line">total 8</span><br><span class="line">-rw-r--r--    1 dale  staff    51B 10 Aug 16:37 README.md</span><br><span class="line">drwxr-xr-x    4 dale  staff   128B  7 Aug 16:45 dist</span><br><span class="line">drwxr-xr-x  507 dale  staff    16K  7 Aug 16:46 node_modules</span><br><span class="line">-rw-r--r--    1 dale  staff   371B  7 Aug 16:46 package.json</span><br><span class="line">-rwxr--r--    1 dale  staff    33B 10 Aug 16:43 run.sh</span><br><span class="line">drwxr-xr-x    3 dale  staff    96B  7 Aug 09:15 src</span><br></pre></td></tr></table></figure>
+<h2 id="디렉토리-자체-정보-보기"><a href="#디렉토리-자체-정보-보기" class="headerlink" title="디렉토리 자체 정보 보기"></a>디렉토리 자체 정보 보기</h2><p><code>ls</code> 커맨드 다음에 파일 이름을 붙이면 파일에 대한 정보를 표시하지만 디렉토리를 붙이면 디렉토리 내부에 있는 파일과 디렉토리를 나열합니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l package.json</span><br><span class="line">-rw-r--r--  1 dale  staff  371  7 Aug 16:46 package.json</span><br><span class="line">$ ls -l dist</span><br><span class="line">total 1488</span><br><span class="line">-rw-r--r--@ 1 dale  staff    2294  7 Aug 22:21 index.html</span><br><span class="line">-rw-r--r--  1 dale  staff  753927  7 Aug 16:45 main.js</span><br></pre></td></tr></table></figure>
+<p>이럴 때는 <code>-d</code> 옵션을 주시면 디렉토리 자체에 대한 정보만을 확인할 수 있습니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls -dl dist</span><br><span class="line">drwxr-xr-x  4 dale  staff  128  7 Aug 16:45 dist</span><br></pre></td></tr></table></figure>
 <h2 id="옵션-조합하기"><a href="#옵션-조합하기" class="headerlink" title="옵션 조합하기"></a>옵션 조합하기</h2><p>위에 나온 옵션들을 다양하게 조합해서 사용할 수 있습니다. 예를 들어 아래는 숨긴 파일까지 포함해서 크기는 읽기 쉬운 형태로 파일과 디렉토리 구분해서 상세하게 표시하기 위한 커맨드입니다.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ ls -ahlF</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x   11 dale  staff   352B 10 Aug 16:55 ./</span><br><span class="line">drwxr-xr-x    8 dale  staff   256B  9 Aug 22:11 ../</span><br><span class="line">drwxr-xr-x    9 dale  staff   288B 10 Aug 17:29 .git/</span><br><span class="line">-rw-r--r--    1 dale  staff   214B 10 Aug 16:55 .gitignore</span><br><span class="line">-rw-r--r--    1 dale  staff    51B 10 Aug 16:37 README.md</span><br><span class="line">drwxr-xr-x    4 dale  staff   128B  7 Aug 16:45 dist/</span><br><span class="line">drwxr-xr-x  507 dale  staff    16K  7 Aug 16:46 node_modules/</span><br><span class="line">-rw-r--r--    1 dale  staff   371B  7 Aug 16:46 package.json</span><br><span class="line">-rwxr--r--    1 dale  staff    33B 10 Aug 16:43 run.sh*</span><br><span class="line">drwxr-xr-x    3 dale  staff    96B  7 Aug 09:15 src/</span><br></pre></td></tr></table></figure>
-<h2 id="추가팁-Alias로-등록하기"><a href="#추가팁-Alias로-등록하기" class="headerlink" title="추가팁. Alias로 등록하기"></a>추가팁. Alias로 등록하기</h2><p><code>ls</code> 커맨드는 워낙 자주 사용하는 커맨드이기 때문에 즐겨쓰는 옵션과 함께 alias로 등록해두면 매번 타이핑할 필요가 없기 때문에 편리합니다.</p>
+<h2 id="추가-Tip-Alias로-등록하기"><a href="#추가-Tip-Alias로-등록하기" class="headerlink" title="추가 Tip. Alias로 등록하기"></a>추가 Tip. Alias로 등록하기</h2><p><code>ls</code> 커맨드는 워낙 자주 사용하는 커맨드이기 때문에 즐겨쓰는 옵션과 함께 alias로 등록해두면 매번 타이핑할 필요가 없기 때문에 편리합니다.</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">alias</span> ll=<span class="string">'ls -ahlF'</span></span><br><span class="line">$ ll</span><br><span class="line">total 8</span><br><span class="line">drwxr-xr-x   11 dale  staff   352B 10 Aug 16:55 ./</span><br><span class="line">drwxr-xr-x    8 dale  staff   256B  9 Aug 22:11 ../</span><br><span class="line">drwxr-xr-x    9 dale  staff   288B 10 Aug 17:29 .git/</span><br><span class="line">-rw-r--r--    1 dale  staff   214B 10 Aug 16:55 .gitignore</span><br><span class="line">-rw-r--r--    1 dale  staff    51B 10 Aug 16:37 README.md</span><br><span class="line">drwxr-xr-x    4 dale  staff   128B  7 Aug 16:45 dist/</span><br><span class="line">drwxr-xr-x  507 dale  staff    16K  7 Aug 16:46 node_modules/</span><br><span class="line">-rw-r--r--    1 dale  staff   371B  7 Aug 16:46 package.json</span><br><span class="line">-rwxr--r--    1 dale  staff    33B 10 Aug 16:43 run.sh*</span><br><span class="line">drwxr-xr-x    3 dale  staff    96B  7 Aug 09:15 src/</span><br></pre></td></tr></table></figure>
-<p>이상으로 <code>ls</code> 커맨드 사용법에 대해서 알아보았습니다.</p>
+<h2 id="마치면서"><a href="#마치면서" class="headerlink" title="마치면서"></a>마치면서</h2><p>이상으로 <code>ls</code> 커맨드 사용법에 대해서 알아보았습니다. 지금까지 다루웠던 옵션들을 최종 정리를 해보면 다음과 같습니다.</p>
+<table>
+<thead>
+<tr>
+<th>옵션</th>
+<th>기능</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-F</td>
+<td>파일/디렉토리 구분</td>
+</tr>
+<tr>
+<td>-t</td>
+<td>시간 정럴</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>크기 정렬</td>
+</tr>
+<tr>
+<td>-r</td>
+<td>역순 정렬</td>
+</tr>
+<tr>
+<td>-A(-a)</td>
+<td>숨긴 파일 보기</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>상세 보기</td>
+</tr>
+<tr>
+<td>-h</td>
+<td>단위 보기</td>
+</tr>
+<tr>
+<td>-d</td>
+<td>디렉토리 자체 보기</td>
+</tr>
+</tbody>
+</table>
 
         </div>
         <footer class="article-footer">
