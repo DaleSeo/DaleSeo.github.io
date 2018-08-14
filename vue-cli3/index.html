@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Vue CLI 3 사용법 | DaleSeo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="JavaScript,JS,VueJS,Vue CLI,Vue CLI 3" />
+    
+    <meta name="description" content="2018년 8월 10일 Vue CLI 3가 정식 릴리즈되었습니다.   Github 릴리즈 페이지: https://github.com/vuejs/vue-cli/releases Evan You의 포스트: https://medium.com/the-vue-point/vue-cli-3-0-is-here-c42bebe28fbb  Vue CLI는 React의 creat">
+<meta name="keywords" content="JavaScript,JS,VueJS,Vue CLI,Vue CLI 3">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vue CLI 3 사용법">
+<meta property="og:url" content="http://www.daleseo.com/vue-cli3/index.html">
+<meta property="og:site_name" content="DaleSeo">
+<meta property="og:description" content="2018년 8월 10일 Vue CLI 3가 정식 릴리즈되었습니다.   Github 릴리즈 페이지: https://github.com/vuejs/vue-cli/releases Evan You의 포스트: https://medium.com/the-vue-point/vue-cli-3-0-is-here-c42bebe28fbb  Vue CLI는 React의 creat">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-08-14T23:41:59.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Vue CLI 3 사용법">
+<meta name="twitter:description" content="2018년 8월 10일 Vue CLI 3가 정식 릴리즈되었습니다.   Github 릴리즈 페이지: https://github.com/vuejs/vue-cli/releases Evan You의 포스트: https://medium.com/the-vue-point/vue-cli-3-0-is-here-c42bebe28fbb  Vue CLI는 React의 creat">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-89095168-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Enjoy programming</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AWS/">AWS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Shell/">Shell</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/daleseo">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/JavaScript/">JavaScript</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4212187675547278",
+    enable_page_level_ads: true
+  });
+</script>
+                            <article id="post-vue-cli3" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        Vue CLI 3 사용법
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/vue-cli3/" class="article-date">
+            <time datetime="2018-08-12T05:33:00.000Z" itemprop="datePublished">2018-08-12</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JS/">JS</a>, <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>, <a class="tag-link" href="/tags/Vue-CLI/">Vue CLI</a>, <a class="tag-link" href="/tags/Vue-CLI-3/">Vue CLI 3</a>, <a class="tag-link" href="/tags/VueJS/">VueJS</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>2018년 8월 10일 Vue CLI 3가 정식 릴리즈되었습니다. </p>
+<ul>
+<li>Github 릴리즈 페이지: <a href="https://github.com/vuejs/vue-cli/releases" target="_blank" rel="noopener">https://github.com/vuejs/vue-cli/releases</a></li>
+<li>Evan You의 포스트: <a href="https://medium.com/the-vue-point/vue-cli-3-0-is-here-c42bebe28fbb" target="_blank" rel="noopener">https://medium.com/the-vue-point/vue-cli-3-0-is-here-c42bebe28fbb</a></li>
+</ul>
+<p>Vue CLI는 React의 <code>create-react-app</code>처럼 Vue 프로젝트를 손쉽게 만들 수 있도록 도와주는 커맨드 라인 도구 입니다. 이번 포스트에서는 Vue CLI 3 사용법에 대해서 간단하게 알아보도록 하겠습니다. </p>
+<h2 id="Vue-CLI-3-설치"><a href="#Vue-CLI-3-설치" class="headerlink" title="Vue CLI 3 설치"></a>Vue CLI 3 설치</h2><p>Vue CLI 패키지 이름이 바뀌었습니다. 기존 Vue CLI 2는 <code>vue-cli</code> 였는데, 이번 Vue CLI 3는 <code>@vue/cli</code>라는 새로운 패키지 이름을 사용하고 있습니다. 참고로 <code>@</code> 마크는 NPM에 최근에 도입된 <a href="https://docs.npmjs.com/misc/scope" target="_blank" rel="noopener">Scoped package</a>를 의미합니다.</p>
+<p>먼저 기존에 Vue CLI 2를 사용하고 있었다면, <code>vue</code>라는 커맨드의 네임스페이스가 꼬일지도 모르니 Vue CLI 2를 제거하겠습니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm r -g vue-cli</span><br></pre></td></tr></table></figure>
+<p>그리고 Vue CLI 3를 전역으로 설치합니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ npm i -g @vue/cli</span><br><span class="line">$ vue --version</span><br><span class="line">3.0.0</span><br></pre></td></tr></table></figure>
+<p>위와 같이 <code>3</code>으로 시작하는 버전이 확인되면 설치가 완료된 것입니다.</p>
+<h2 id="프로젝트-생성"><a href="#프로젝트-생성" class="headerlink" title="프로젝트 생성"></a>프로젝트 생성</h2><p>새로운 프로젝트를 생성해보겠습니다. 저는 프로젝트 이름으로 <code>hello-vue-cli</code>을 사용하겠습니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ vue create hello-vue-cli</span><br><span class="line">Vue CLI v3.0.0</span><br><span class="line">? Please pick a preset: (Use arrow keys)</span><br><span class="line">❯ default (babel, eslint)</span><br><span class="line">  Manually select features</span><br></pre></td></tr></table></figure>
+<p>위와 같이 디폴트 설정으로 갈지 매뉴얼하게 옵션을 선택할지 나오는데요. 나중에 언제든지 옵션 추가가 가능하기 때문에 그냥 디폴트 설정을 선택하겠습니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">✨  Creating project <span class="keyword">in</span> /work/temp/hello-vue-cli.</span><br><span class="line">🗃  Initializing git repository...</span><br><span class="line">⚙  Installing CLI plugins. This might take a <span class="keyword">while</span>...</span><br><span class="line">(... 생략 ...)</span><br><span class="line">🎉  Successfully created project hello-vue-cli.</span><br><span class="line">👉  Get started with the following commands:</span><br><span class="line"></span><br><span class="line"> $ <span class="built_in">cd</span> hello-vue-cli</span><br><span class="line"> $ npm run serve</span><br></pre></td></tr></table></figure>
+<p>그러면 귀여운 아이콘들이 나오면서 프로젝트 생성이 진행되고 금방 설치가 완료됩니다.</p>
+<h2 id="개발-서버-구동"><a href="#개발-서버-구동" class="headerlink" title="개발 서버 구동"></a>개발 서버 구동</h2><p>시키는대로 프로젝트 디렉토리로 들어가서 NPM 커맨드를 날리면 순식간에 웹팩 개발 서버가 구동됩니다. <code>npm run serve</code> 커맨드는 내부적으로 웹팩 개발 서버인 <code>webpack-dev-server</code>를 사용합니다. (웹팩 개발 서버에 대한 부연 설명은 <a href="/webpack-development">관련 포스트</a>를 참고바랍니다.)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ cd hello-vue-cli</span><br><span class="line">$ npm run serve</span><br><span class="line"></span><br><span class="line">&gt; hello-vue-cli@0.1.0 serve /work/temp/hello-vue-cli</span><br><span class="line">&gt; vue-cli-service serve</span><br><span class="line"></span><br><span class="line"> INFO  Starting development server...</span><br><span class="line"> 98% after emitting CopyPlugin                                                </span><br><span class="line"> DONE  Compiled successfully in 2094ms                                  15:09:40</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  App running at:</span><br><span class="line">  - Local:   http://localhost:8080/</span><br><span class="line">  - Network: http://10.2.120.137:8080/</span><br><span class="line"></span><br><span class="line">  Note that the development build is not optimized.</span><br><span class="line">  To create a production build, run npm run build.</span><br></pre></td></tr></table></figure>
+<p>역시 시키는대로 브라우저에서 <code>http://localhost:8080/</code>에 접속해보면 Vue 로고가 뚜둥 뜨면서 <code>Welcome to Your Vue.js App</code>라는 메세지를 보실 수 있을 겁니다.</p>
+<p>여기서 놀랍게도 <code>npm install</code> 커맨드를 통해 NPM 패키지를 설치하지 않았는데도 개발 서버가 작동한다는 것을 알 수 있는데요. 프로젝트 디렉토리를 보시면 Vue CLI가 이미 <code>node_modules</code> 디렉토리를 생성해 놓고 그 안에 라이브러리들이 모두 다운받아 놓았음을 알 수 있습니다.</p>
+<h2 id="플러그인-추가"><a href="#플러그인-추가" class="headerlink" title="플러그인 추가"></a>플러그인 추가</h2><p>기본 프로젝트에서 추가로 필요한 모듈은 플러그인 형태로 나중에 추가가 가능합니다.<br>따라서 처음부터 과도하게 설정할 필요없이 필요할 때마다 플러그인을 추가하면서 개발이 가능합니다.<br>예제 프로젝트에서는 가장 많이 사용되는 Vue Router와 Vuex 플러그인을 추가해보겠습니다.</p>
+<p>먼저 Vue Router 플러그인을 추가해보겠습니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ vue add router</span><br><span class="line">? Use history mode for router? (Requires proper server setup for index fallback in production) (Y/n) No</span><br><span class="line"></span><br><span class="line">🚀  Invoking generator for core:router...</span><br><span class="line">📦  Installing additional dependencies...</span><br><span class="line"></span><br><span class="line">added 1 package from 1 contributor and audited 11785 packages in 11.271s</span><br><span class="line">found 0 vulnerabilities</span><br><span class="line"></span><br><span class="line">✔  Successfully invoked generator for plugin: core:router</span><br><span class="line">   The following files have been updated / added:</span><br><span class="line"></span><br><span class="line">     src/router.js</span><br><span class="line">     src/views/About.vue</span><br><span class="line">     src/views/Home.vue</span><br><span class="line">     package-lock.json</span><br><span class="line">     package.json</span><br><span class="line">     src/App.vue</span><br><span class="line">     src/main.js</span><br><span class="line"></span><br><span class="line">   You should review these changes with git diff and commit them.</span><br></pre></td></tr></table></figure>
+<p>역시 아이콘들이 나오면서 플러그인이 추가됩니다. 플러그인을 추가하면서 어떤 파일들을 변경하거나 추가하였는지 나와서 좋습니다.</p>
+<p>Vue Router 설정 파일인 <code>router.js</code>을 열어보면 <code>/</code>과 <code>/about</code> 경로에 대한 라우팅 정보만 세팅되어 있습니다. 추후로 필요한 경로에 대해서 이 곳에 세팅을 하면 됩니다.</p>
+<ul>
+<li>src/router.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Router <span class="keyword">from</span> <span class="string">'vue-router'</span></span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">'./views/Home.vue'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Router)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Router(&#123;</span><br><span class="line">  routes: [</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/'</span>,</span><br><span class="line">      name: <span class="string">'home'</span>,</span><br><span class="line">      component: Home</span><br><span class="line">    &#125;,</span><br><span class="line">    &#123;</span><br><span class="line">      path: <span class="string">'/about'</span>,</span><br><span class="line">      name: <span class="string">'about'</span>,</span><br><span class="line">      <span class="comment">// route level code-splitting</span></span><br><span class="line">      <span class="comment">// this generates a separate chunk (about.[hash].js) for this route</span></span><br><span class="line">      <span class="comment">// which is lazy-loaded when the route is visited.</span></span><br><span class="line">      component: <span class="function"><span class="params">()</span> =&gt;</span> <span class="keyword">import</span>(<span class="comment">/* webpackChunkName: "about" */</span> <span class="string">'./views/About.vue'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>그리고 <code>main.js</code> 파일에도 라우터 설정을 위한 2줄의 코드가 추가되었음을 확인할 수 있습니다.</p>
+<ul>
+<li>src/main.js</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"> <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line">+<span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></span><br><span class="line"></span><br><span class="line"> Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">+  router,</span><br><span class="line">   render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line"> &#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+<p>다음으로 Vuex 플러그인을 추가하겠습니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ vue add vuex</span><br><span class="line"></span><br><span class="line">🚀  Invoking generator for core:vuex...</span><br><span class="line">📦  Installing additional dependencies...</span><br><span class="line"></span><br><span class="line">added 1 package from 1 contributor and audited 11786 packages in 5.753s</span><br><span class="line">found 0 vulnerabilities</span><br><span class="line"></span><br><span class="line">✔  Successfully invoked generator for plugin: core:vuex</span><br><span class="line">   The following files have been updated / added:</span><br><span class="line"></span><br><span class="line">     src/store.js</span><br><span class="line">     package-lock.json</span><br><span class="line">     package.json</span><br><span class="line">     src/main.js</span><br><span class="line"></span><br><span class="line">   You should review these changes with git diff and commit them.</span><br></pre></td></tr></table></figure>
+<p>마찬가지로 순식간에 Vuex 플러그인이 추가됩니다.</p>
+<p>Vuex 설정 파일인 <code>store.js</code>를 열어보면, Vuex의 구성 요소인 State와 Mutations, Actions을 정의할 수 있는 기본 뼈대가 잡혀져있습니다. (왜 Getters는 빠져있는지 모르겠네요?) 개발하시면서 필요한 코드를 이 곳에 추가해 나가면 됩니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Vuex <span class="keyword">from</span> <span class="string">'vuex'</span></span><br><span class="line"></span><br><span class="line">Vue.use(Vuex)</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> <span class="keyword">new</span> Vuex.Store(&#123;</span><br><span class="line">  state: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  mutations: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;,</span><br><span class="line">  actions: &#123;</span><br><span class="line"></span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>그리고 <code>main.js</code> 파일에도 Vuex 설정을 위한 2줄의 코드가 추가되었음을 확인할 수 있습니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"> <span class="keyword">import</span> App <span class="keyword">from</span> <span class="string">'./App.vue'</span></span><br><span class="line"> <span class="keyword">import</span> router <span class="keyword">from</span> <span class="string">'./router'</span></span><br><span class="line">+<span class="keyword">import</span> store <span class="keyword">from</span> <span class="string">'./store'</span></span><br><span class="line"></span><br><span class="line"> Vue.config.productionTip = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">   router,</span><br><span class="line">+  store,</span><br><span class="line">   render: <span class="function"><span class="params">h</span> =&gt;</span> h(App)</span><br><span class="line"> &#125;).$mount(<span class="string">'#app'</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="상용-빌드"><a href="#상용-빌드" class="headerlink" title="상용 빌드"></a>상용 빌드</h2><p>마지막으로 <code>npm run build</code> 커맨드를 실행하여 상용 배포를 위한 빌드를 해보겠습니다. 빌드를 실행하면 Vue CLI가 웹팩을 통해 프로젝트의 모든 소스 파일들을 번들링하여 <code>dist</code> 디렉토리에 넣어줍니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">$ npm run build</span><br><span class="line"></span><br><span class="line">&gt; hello-vue-cli@<span class="number">0.1</span><span class="number">.0</span> build /work/temp/hello-vue-cli</span><br><span class="line">&gt; vue-cli-service build</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">⠦  Building <span class="keyword">for</span> production...</span><br><span class="line"></span><br><span class="line"> DONE  Compiled successfully <span class="keyword">in</span> <span class="number">4177</span>ms                                                                      <span class="number">15</span>:<span class="number">48</span>:<span class="number">20</span></span><br><span class="line"></span><br><span class="line">  File                                 Size               Gzipped</span><br><span class="line"></span><br><span class="line">  dist/js/chunk-vendors.a0f0536d.js    <span class="number">112.02</span> kb          <span class="number">38.81</span> kb</span><br><span class="line">  dist/js/app<span class="number">.3</span>f1f8529.js              <span class="number">6.10</span> kb            <span class="number">2.29</span> kb</span><br><span class="line">  dist/js/about<span class="number">.7</span>a29333c.js            <span class="number">0.47</span> kb            <span class="number">0.33</span> kb</span><br><span class="line">  dist/css/app.b675258f.css            <span class="number">0.33</span> kb            <span class="number">0.23</span> kb</span><br><span class="line"></span><br><span class="line">  Images and other types <span class="keyword">of</span> assets omitted.</span><br><span class="line"></span><br><span class="line"> DONE  Build complete. The dist directory is ready to be deployed.</span><br><span class="line"> INFO  Check out deployment instructions at https:<span class="comment">//cli.vuejs.org/guide/deployment.html</span></span><br></pre></td></tr></table></figure>
+<p>이 <code>dist</code> 디렉토리를 보면 <code>index.html</code> 파일들을 포함한 웹팩이 번들링한 파일들을 확인할 수 있습니다. 이 파일들을 상용 배포에 적합하도록 웹팩이 최적화 해놓은 것입니다.</p>
+<h2 id="Vue-CLI-Service"><a href="#Vue-CLI-Service" class="headerlink" title="Vue CLI Service"></a>Vue CLI Service</h2><p>개발 서버를 구동하거나 상용 빌드를 할 때 NPM 커맨드를 사용할 수 있었던 이유는 Vue CLI가 관련 <code>vue-cli-service</code> 커맨드를 NPM 스크립트로 <code>package.json</code> 파일에 등록해놓았기 때문입니다.</p>
+<ul>
+<li>package.json</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">  <span class="string">"serve"</span>: <span class="string">"vue-cli-service serve"</span>,</span><br><span class="line">  <span class="string">"build"</span>: <span class="string">"vue-cli-service build"</span>,</span><br><span class="line">  <span class="string">"lint"</span>: <span class="string">"vue-cli-service lint"</span></span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure>
+<p>NPM 커맨드 대신에 Vue CLI Service 커맨드를 직접 사용하고 싶으시면, <code>npx</code> 커맨드를 사용하시면 됩니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npx vue-cli-service serve</span><br><span class="line">$ npx vue-cli-service build</span><br></pre></td></tr></table></figure>
+<h2 id="최종-프로젝트-구조"><a href="#최종-프로젝트-구조" class="headerlink" title="최종 프로젝트 구조"></a>최종 프로젝트 구조</h2><p>여기까지 잘 따라오셨다면 Vue CLI가 다음과 같이 깔끔한 디렉토리 구조를 잡아줬을 것입니다. 이와 같이 Vue CLI를 이용하면 매우 손쉽게 Vue 프로젝트의 기본 골격을 얻을 수 있습니다.</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── .gitignore</span><br><span class="line">├── README.md</span><br><span class="line">├── babel.config.js</span><br><span class="line">├── dist/</span><br><span class="line">├── node_modules/</span><br><span class="line">├── package-lock.json</span><br><span class="line">├── package.json</span><br><span class="line">├── public</span><br><span class="line">│   ├── favicon.ico</span><br><span class="line">│   └── index.html</span><br><span class="line">└── src</span><br><span class="line">    ├── App.vue</span><br><span class="line">    ├── assets</span><br><span class="line">    │   └── logo.png</span><br><span class="line">    ├── components</span><br><span class="line">    │   └── HelloWorld.vue</span><br><span class="line">    ├── main.js</span><br><span class="line">    ├── router.js</span><br><span class="line">    ├── store.js</span><br><span class="line">    └── views</span><br><span class="line">        ├── About.vue</span><br><span class="line">        └── Home.vue</span><br></pre></td></tr></table></figure>
+<h1 id="마치면서"><a href="#마치면서" class="headerlink" title="마치면서"></a>마치면서</h1><p>지금까지 간단하게 Vue CLI 3의 기본적인 사용법에 대해서 살펴보았습니다. 개인적으로 Vue CLI 2도 만족하면서 사용하고 있었는데, Vue CLI 3는 더욱 간결하고 유연해진 느낌입니다. Vue CLI 2를 사용할 때는 똑같은 기능을 위해서 어떤 기술을 사용해야 할지에 대해서 고민했었는데, (예를 들어 webpack을 쓸지 browserify를 쓸지) Vue CLI 3에서는 이런 부분을 모두 추상화 시켜놓아서 단순히 어떤 기능이 필요한지에 대해서만 신경을 쓰면 되서 좋은 것 같습니다. 그리고 그러한 의사결정을 프로젝트 생성할 때 강제받지 않고, 나중에 필요할 때 마다 플러그인 형태로 추가가 가능해서, 처음부터 복잡한 구조의 프로젝트를 만들지 않아도 됩니다. 게다가 Vue CLI 커맨드를 실행하면 NPM 피키지 다운로드까지 해줘서 한층 편해진 것 같습니다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.daleseo.com/vue-cli3/" data-id="cjkuao3hz000hs4ok52fl9ceb" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/dale0713" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/DaleSeo" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/graphql-quick-call/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">GraphQL API 간단하게 호출하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/vue-cli3/" class="title">Vue CLI 3 사용법</a></p>
+                            <p class="item-date"><time datetime="2018-08-12T05:33:00.000Z" itemprop="datePublished">2018-08-12</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/graphql-quick-call/" class="title">GraphQL API 간단하게 호출하기</a></p>
+                            <p class="item-date"><time datetime="2018-08-05T02:40:41.000Z" itemprop="datePublished">2018-08-05</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-development/" class="title">웹팩(Webpack) 개발 편의 기능</a></p>
+                            <p class="item-date"><time datetime="2018-07-21T01:40:01.000Z" itemprop="datePublished">2018-07-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-config/" class="title">웹팩(Webpack) 기본 설정법 (Entry/Output/Loader/Plugins)</a></p>
+                            <p class="item-date"><time datetime="2018-07-15T14:01:09.000Z" itemprop="datePublished">2018-07-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/webpack-basics/" class="title">웹팩(Webpack) 기본 사용법 (CLI)</a></p>
+                            <p class="item-date"><time datetime="2018-07-06T22:03:53.000Z" itemprop="datePublished">2018-07-07</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AWS/">AWS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">7월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">6월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">5월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">1월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">12월 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">11월 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10월 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">9월 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS-CLI/">AWS CLI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-S3/">Amazon S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-Web-Services/">Amazon Web Services</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ApplicationRunner/">ApplicationRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AssertJ/">AssertJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Access/">Atomic Access</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Authentication/">Authentication</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary/">Binary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChronoUnit/">ChronoUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/">Collections</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command/">Command</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommandLineRunner/">CommandLineRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Concurrency/">Concurrency</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDB/">DDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/">Date</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Duration/">Duration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DynamoDB/">DynamoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entry/">Entry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/">FP</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraphQL/">GraphQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hoisting/">Hoisting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instant/">Instant</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intrinsic-Locks-and-Synchronization/">Intrinsic Locks and Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java6/">Java6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">13</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jetty/">Jetty</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/">Lambda</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loader/">Loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDate/">LocalDate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDateTime/">LocalDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalTime/">LocalTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory-Consistency-Errors/">Memory Consistency Errors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multithreading/">Multithreading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optional/">Optional</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Output/">Output</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Peroid/">Peroid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Plugins/">Plugins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/S3/">S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Simple-Storage-Service/">Simple Storage Service</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stream/">Stream</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Synchronization/">Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terminal/">Terminal</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread-Interference/">Thread Interference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Undertow/">Undertow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-CLI/">Vue CLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-CLI-3/">Vue CLI 3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZonedDateTime/">ZonedDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clean-webpack-plugin/">clean-webpack-plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-loader/">css-loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graphql-request/">graphql-request</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ls/">ls</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sh/">sh</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style-loader/">style-loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-cli/">webpack-cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-dev-server/">webpack-dev-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-config-js/">webpack.config.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/다이나모DB/">다이나모DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/리눅스/">리눅스</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/맥/">맥</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/멀티쓰레드/">멀티쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배열/">배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/번역/">번역</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쉘/">쉘</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링/">스프링</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링부트/">스프링부트</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쓰레드/">쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아마존-웹-서비스/">아마존 웹 서비스</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/언더토우/">언더토우</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/인증/">인증</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바8/">자바8</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바스크립트/">자바스크립트</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/제티/">제티</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진법/">진법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진수/">진수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/커맨드/">커맨드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/터미널/">터미널</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/톰켓/">톰켓</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/파이썬/">파이썬</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 15px;">AWS</a> <a href="/tags/AWS-CLI/" style="font-size: 15px;">AWS CLI</a> <a href="/tags/Amazon-S3/" style="font-size: 11.67px;">Amazon S3</a> <a href="/tags/Amazon-Web-Services/" style="font-size: 15px;">Amazon Web Services</a> <a href="/tags/ApplicationRunner/" style="font-size: 10px;">ApplicationRunner</a> <a href="/tags/AssertJ/" style="font-size: 10px;">AssertJ</a> <a href="/tags/Atomic-Access/" style="font-size: 10px;">Atomic Access</a> <a href="/tags/Authentication/" style="font-size: 10px;">Authentication</a> <a href="/tags/Binary/" style="font-size: 10px;">Binary</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ChronoUnit/" style="font-size: 10px;">ChronoUnit</a> <a href="/tags/Collections/" style="font-size: 15px;">Collections</a> <a href="/tags/Command/" style="font-size: 10px;">Command</a> <a href="/tags/CommandLineRunner/" style="font-size: 10px;">CommandLineRunner</a> <a href="/tags/Concurrency/" style="font-size: 15px;">Concurrency</a> <a href="/tags/DDB/" style="font-size: 10px;">DDB</a> <a href="/tags/Date/" style="font-size: 15px;">Date</a> <a href="/tags/Duration/" style="font-size: 10px;">Duration</a> <a href="/tags/DynamoDB/" style="font-size: 10px;">DynamoDB</a> <a href="/tags/ES2015/" style="font-size: 15px;">ES2015</a> <a href="/tags/Entry/" style="font-size: 10px;">Entry</a> <a href="/tags/FP/" style="font-size: 18.33px;">FP</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/Hoisting/" style="font-size: 10px;">Hoisting</a> <a href="/tags/Instant/" style="font-size: 10px;">Instant</a> <a href="/tags/Intrinsic-Locks-and-Synchronization/" style="font-size: 10px;">Intrinsic Locks and Synchronization</a> <a href="/tags/JS/" style="font-size: 11.67px;">JS</a> <a href="/tags/Java/" style="font-size: 11.67px;">Java</a> <a href="/tags/Java6/" style="font-size: 11.67px;">Java6</a> <a href="/tags/Java8/" style="font-size: 20px;">Java8</a> <a href="/tags/JavaScript/" style="font-size: 16.67px;">JavaScript</a> <a href="/tags/Jetty/" style="font-size: 10px;">Jetty</a> <a href="/tags/Lambda/" style="font-size: 13.33px;">Lambda</a> <a href="/tags/Linux/" style="font-size: 10px;">Linux</a> <a href="/tags/Loader/" style="font-size: 10px;">Loader</a> <a href="/tags/LocalDate/" style="font-size: 10px;">LocalDate</a> <a href="/tags/LocalDateTime/" style="font-size: 10px;">LocalDateTime</a> <a href="/tags/LocalTime/" style="font-size: 10px;">LocalTime</a> <a href="/tags/Lombok/" style="font-size: 11.67px;">Lombok</a> <a href="/tags/Mac/" style="font-size: 10px;">Mac</a> <a href="/tags/Memory-Consistency-Errors/" style="font-size: 10px;">Memory Consistency Errors</a> <a href="/tags/Multithreading/" style="font-size: 10px;">Multithreading</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/Optional/" style="font-size: 13.33px;">Optional</a> <a href="/tags/Output/" style="font-size: 10px;">Output</a> <a href="/tags/Peroid/" style="font-size: 10px;">Peroid</a> <a href="/tags/Plugins/" style="font-size: 10px;">Plugins</a> <a href="/tags/Process/" style="font-size: 11.67px;">Process</a> <a href="/tags/S3/" style="font-size: 11.67px;">S3</a> <a href="/tags/Shell/" style="font-size: 10px;">Shell</a> <a href="/tags/Simple-Storage-Service/" style="font-size: 11.67px;">Simple Storage Service</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Spring/" style="font-size: 15px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 15px;">SpringBoot</a> <a href="/tags/Stream/" style="font-size: 15px;">Stream</a> <a href="/tags/Synchronization/" style="font-size: 10px;">Synchronization</a> <a href="/tags/Terminal/" style="font-size: 10px;">Terminal</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Thread/" style="font-size: 15px;">Thread</a> <a href="/tags/Thread-Interference/" style="font-size: 10px;">Thread Interference</a> <a href="/tags/Time/" style="font-size: 15px;">Time</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Undertow/" style="font-size: 10px;">Undertow</a> <a href="/tags/Vue-CLI/" style="font-size: 10px;">Vue CLI</a> <a href="/tags/Vue-CLI-3/" style="font-size: 10px;">Vue CLI 3</a> <a href="/tags/VueJS/" style="font-size: 10px;">VueJS</a> <a href="/tags/Webpack/" style="font-size: 13.33px;">Webpack</a> <a href="/tags/ZonedDateTime/" style="font-size: 10px;">ZonedDateTime</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/clean-webpack-plugin/" style="font-size: 10px;">clean-webpack-plugin</a> <a href="/tags/css-loader/" style="font-size: 10px;">css-loader</a> <a href="/tags/graphql-request/" style="font-size: 10px;">graphql-request</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/ls/" style="font-size: 10px;">ls</a> <a href="/tags/sh/" style="font-size: 10px;">sh</a> <a href="/tags/style-loader/" style="font-size: 10px;">style-loader</a> <a href="/tags/webpack-cli/" style="font-size: 10px;">webpack-cli</a> <a href="/tags/webpack-dev-server/" style="font-size: 10px;">webpack-dev-server</a> <a href="/tags/webpack-config-js/" style="font-size: 10px;">webpack.config.js</a> <a href="/tags/다이나모DB/" style="font-size: 10px;">다이나모DB</a> <a href="/tags/리눅스/" style="font-size: 10px;">리눅스</a> <a href="/tags/맥/" style="font-size: 10px;">맥</a> <a href="/tags/멀티쓰레드/" style="font-size: 10px;">멀티쓰레드</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/번역/" style="font-size: 15px;">번역</a> <a href="/tags/쉘/" style="font-size: 10px;">쉘</a> <a href="/tags/스프링/" style="font-size: 15px;">스프링</a> <a href="/tags/스프링부트/" style="font-size: 15px;">스프링부트</a> <a href="/tags/쓰레드/" style="font-size: 10px;">쓰레드</a> <a href="/tags/아마존-웹-서비스/" style="font-size: 15px;">아마존 웹 서비스</a> <a href="/tags/언더토우/" style="font-size: 10px;">언더토우</a> <a href="/tags/인증/" style="font-size: 10px;">인증</a> <a href="/tags/자바8/" style="font-size: 15px;">자바8</a> <a href="/tags/자바스크립트/" style="font-size: 16.67px;">자바스크립트</a> <a href="/tags/제티/" style="font-size: 10px;">제티</a> <a href="/tags/진법/" style="font-size: 10px;">진법</a> <a href="/tags/진수/" style="font-size: 10px;">진수</a> <a href="/tags/커맨드/" style="font-size: 10px;">커맨드</a> <a href="/tags/터미널/" style="font-size: 10px;">터미널</a> <a href="/tags/톰켓/" style="font-size: 10px;">톰켓</a> <a href="/tags/파이썬/" style="font-size: 10px;">파이썬</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Dale Seo</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'daleseo';
+    
+    
+    var disqus_url = 'http://www.daleseo.com/vue-cli3/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
