@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="DaleSeo">
 <meta property="og:description" content="좀 더 간결한게 불변 컬렉션을 생성할 수 있도록 Java9에서 List, Set, Map 인터페이스에 새로운 팩토리 메서드들이 추가되었습니다. 불변 컬렉션이란?불변(Immutable) 컬렉션(Collection)은 아이템 추가, 수정, 제거가 불가능합니다. 따라서 신규 아이템을 추가하거나 기존 아이템을 수정또는 제거하려고 하면 java.lang.Unsupp">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-08-20T21:26:18.195Z">
+<meta property="og:updated_time" content="2018-08-20T21:40:57.771Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java9의 불변 컬렉션 생성">
 <meta name="twitter:description" content="좀 더 간결한게 불변 컬렉션을 생성할 수 있도록 Java9에서 List, Set, Map 인터페이스에 새로운 팩토리 메서드들이 추가되었습니다. 불변 컬렉션이란?불변(Immutable) 컬렉션(Collection)은 아이템 추가, 수정, 제거가 불가능합니다. 따라서 신규 아이템을 추가하거나 기존 아이템을 수정또는 제거하려고 하면 java.lang.Unsupp">
@@ -216,7 +216,7 @@ ga('send', 'pageview');
 <li>Map.ofEntries()</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;Integer, String&gt; fruits = Map.ofEntries(Map.entry(<span class="number">1</span>, <span class="string">"Apple"</span>), Map.entry(<span class="number">2</span>, <span class="string">"Banana"</span>), Map.entry(<span class="number">3</span>, <span class="string">"Cherry"</span>));</span><br></pre></td></tr></table></figure>
-<p>이상으로 Java9에서 불변 컬렉션 생성할 수 있는 방법에 대해서 알아보았습니다. Guava 없이도 간결한 코드를 작성할 수 있어서 만족스럽습니다.</p>
+<p>이상으로 Java9에서 불변 컬렉션 생성할 수 있는 방법에 대해서 알아보았습니다. 개인적으로 Guava 없이도 간편하게 불편 컬럭센을 만들 수 있어서 만족스러웠고, 단위 테스트를 작성할 때도 코드가 간결해져서 좋았던 것 같습니다.</p>
 
         </div>
         <footer class="article-footer">
