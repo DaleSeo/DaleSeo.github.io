@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>[Java] 객체 정렬하기 1부 - Comparable vs Comparator | DaleSeo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="Java8,자바8,Comparator,Comparable" />
+    
+    <meta name="description" content="자바와 같이 객체 지향 언어를 사용하여 프로그래밍을 하다보면 객체들을 정렬해야하는 경우가 생깁니다.예를 들면, 온라인 게임 서비스에서 게이머들을 높은 점수 순으로 보여주는 게이머 랭킹 페이지를 생각해볼 수 있겠습니다. 정렬 대상 클래스먼저, 각 게이머의 정보를 표현하기 위해 다음과 같은 간단한 클래스를 생각해보겠습니다. 1234567891011public">
+<meta name="keywords" content="Java8,자바8,Comparator,Comparable">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[Java] 객체 정렬하기 1부 - Comparable vs Comparator">
+<meta property="og:url" content="http://www.daleseo.com/java-comparators/index.html">
+<meta property="og:site_name" content="DaleSeo">
+<meta property="og:description" content="자바와 같이 객체 지향 언어를 사용하여 프로그래밍을 하다보면 객체들을 정렬해야하는 경우가 생깁니다.예를 들면, 온라인 게임 서비스에서 게이머들을 높은 점수 순으로 보여주는 게이머 랭킹 페이지를 생각해볼 수 있겠습니다. 정렬 대상 클래스먼저, 각 게이머의 정보를 표현하기 위해 다음과 같은 간단한 클래스를 생각해보겠습니다. 1234567891011public">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2018-11-04T04:32:05.193Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="[Java] 객체 정렬하기 1부 - Comparable vs Comparator">
+<meta name="twitter:description" content="자바와 같이 객체 지향 언어를 사용하여 프로그래밍을 하다보면 객체들을 정렬해야하는 경우가 생깁니다.예를 들면, 온라인 게임 서비스에서 게이머들을 높은 점수 순으로 보여주는 게이머 랭킹 페이지를 생각해볼 수 있겠습니다. 정렬 대상 클래스먼저, 각 게이머의 정보를 표현하기 위해 다음과 같은 간단한 클래스를 생각해보겠습니다. 1234567891011public">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-89095168-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Enjoy programming</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AWS/">AWS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Shell/">Shell</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/daleseo">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/Java/">Java</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4212187675547278",
+    enable_page_level_ads: true
+  });
+</script>
+                            <article id="post-java-comparators" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        [Java] 객체 정렬하기 1부 - Comparable vs Comparator
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/java-comparators/" class="article-date">
+            <time datetime="2018-10-13T05:26:24.000Z" itemprop="datePublished">2018-10-13</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Comparable/">Comparable</a>, <a class="tag-link" href="/tags/Comparator/">Comparator</a>, <a class="tag-link" href="/tags/Java8/">Java8</a>, <a class="tag-link" href="/tags/자바8/">자바8</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>자바와 같이 객체 지향 언어를 사용하여 프로그래밍을 하다보면 객체들을 정렬해야하는 경우가 생깁니다.<br>예를 들면, 온라인 게임 서비스에서 게이머들을 높은 점수 순으로 보여주는 게이머 랭킹 페이지를 생각해볼 수 있겠습니다.</p>
+<h2 id="정렬-대상-클래스"><a href="#정렬-대상-클래스" class="headerlink" title="정렬 대상 클래스"></a>정렬 대상 클래스</h2><p>먼저, 각 게이머의 정보를 표현하기 위해 다음과 같은 간단한 클래스를 생각해보겠습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> String name;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> score;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Player</span><span class="params">(String name, <span class="keyword">int</span> score)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.name = name;</span><br><span class="line">        <span class="keyword">this</span>.score = score;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// Getters, Setters 생략</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>그리고 5 명의 게이머가 담고 있는 리스트를 생성하였습니다. 자, 이제 이 게이머 리스트를 점수 기준으로 어떻게 정렬할 수 있을까요?</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Player&gt; players = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">players.add(<span class="keyword">new</span> Player(<span class="string">"Alice"</span>, <span class="number">899</span>));</span><br><span class="line">players.add(<span class="keyword">new</span> Player(<span class="string">"Bob"</span>, <span class="number">982</span>));</span><br><span class="line">players.add(<span class="keyword">new</span> Player(<span class="string">"Chloe"</span>, <span class="number">1090</span>));</span><br><span class="line">players.add(<span class="keyword">new</span> Player(<span class="string">"Dale"</span>, <span class="number">982</span>));</span><br><span class="line">players.add(<span class="keyword">new</span> Player(<span class="string">"Eric"</span>, <span class="number">1018</span>));</span><br></pre></td></tr></table></figure>
+<p>Chloe 가 일등이기 때문에 리스트의 맨 앞으로 나와야하고, Alice 는 꼴등이기 때문에 리스트의 맨 뒤로 보내야합니다.</p>
+<h2 id="객체-정렬-기준의-필요성"><a href="#객체-정렬-기준의-필요성" class="headerlink" title="객체 정렬 기준의 필요성"></a>객체 정렬 기준의 필요성</h2><p>단순한 숫자나 문자와 같은 기본형(primitive) 데이터는 사람들이 하는 일반적으로 받아드리는 대소 비교라는 개념이 있습니다. (Natural Order)<br>따라서 우리는 <code>1</code>보다는 <code>2</code>가 크며, <code>&#39;A&#39;</code> 보단 <code>&#39;B&#39;</code>가 크다는 것을 알기 때문에 자바는 이런 통념에 따라 정렬을 해줍니다.</p>
+<p>예를 들어, 게이머들의 점수만으로 별도의 배열을 만들면 다음과 같이 <code>Arrays.sort()</code> 메서드를 사용하여 정렬을 할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span>[] scores = &#123;<span class="number">899</span>, <span class="number">982</span>, <span class="number">1090</span>, <span class="number">982</span>, <span class="number">1018</span>&#125;;</span><br><span class="line">Arrays.sort(scores);</span><br><span class="line">System.out.println(Arrays.toString(scores)); <span class="comment">// [899, 982, 982, 1018, 1090]</span></span><br></pre></td></tr></table></figure>
+<p>하지만 특정 타입의 객체는 기본형 데이터와 달리 정렬 기준이 없으면 정렬을 할 수가 없으며, 따라서 정렬 기준을 정의하여 알려줘야 합니다.<br>즉, 다음과 같은 코드는 컴파일 에러를 일으킵니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(players); <span class="comment">// Compile error!</span></span><br></pre></td></tr></table></figure>
+<h2 id="Comparable-인터페이스"><a href="#Comparable-인터페이스" class="headerlink" title="Comparable 인터페이스"></a>Comparable 인터페이스</h2><p>객체의 정렬 기준을 정의하는 첫번째 방법은 정렬 대상 클래스를 자바에서 기본적으로 제공하고 있는 <code>Comparable</code> 인터페이스를 구현하도록 변경하는 것입니다.<br>이를 적용하면 <code>Player</code> 클래스는 다음과 같이 수정됩니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Player</span> <span class="keyword">implements</span> <span class="title">Comparable</span>&lt;<span class="title">Player</span>&gt; </span>&#123;</span><br><span class="line">    <span class="comment">// Fields, Getters, Setters 생략</span></span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compareTo</span><span class="params">(Player o)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> o.getScore() - getScore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>Comparable</code> 인터페이스의 <code>compareTo()</code> 메서드를 통해 인자로 넘어온 같은 타입의 다른 객체와 대소 비교가 가능합니다. 메서드를 호출하는 객체가 인자로 넘어온 객체보다 작을 경우에는 음수를 리턴하고, 크기가 동일하다면 0, 클 경우에는 양수를 리턴해야합니다.</p>
+<p>게이머 랭키 페이지의 경우 높은 점수 순으로 내림 차순 정렬을 원하기 때문에, 인자로 넘어온 게이머의 점수에서 메서드를 호출하는 게이머의 점수를 빼면 됩니다. 예를 들어 인자로 넘어온 게이머의 점수가 <code>982</code>이고 <code>compareTo()</code> 메서드를 호출하는 객체의 점수가 <code>1018</code>이라면, <code>compareTo()</code> 메서드는 음수(<code>982-1018</code>)를 리턴하게 되며, 이는 곧 메서드를 호출하는 게미머가 인자로 넘어온 게이머보다 작다는 것을 의미합니다. 다시 말해, 메서드를 호출를 호출하는 메서드가 점수가 더 크지만, 객체 자체 비교에서는 인자로 넘어온 게이머보다 작은 객체가 됩니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(players);</span><br><span class="line">System.out.println(players); <span class="comment">// [Player(name=Chloe, score=1090), Player(name=Eric, score=1018), Player(name=Bob, score=982), Player(name=Dale, score=982), Player(name=Alice, score=899)]</span></span><br></pre></td></tr></table></figure>
+<p>이제 <code>Collections.sort()</code> 메서드에는 <code>Comparable</code> 인터페이스를 구현한 <code>Comparable</code> 타입의 <code>Player</code> 객체의 리스트가 인자로 넘어가기 때문에 더 이상 컴파일 에러가 발생하지 않습니다.<br>정렬 후 게이머 리스트를 출력해보면 원하는 바와 같이 점수가 제일 높은 Chloe 가 리스트의 맨 앞으로 위치하고, 점수가 제일 낮은 Alice 가 리스트의 맨 뒤에 위치하게 됩니다.</p>
+<h2 id="Comparator-객체-사용"><a href="#Comparator-객체-사용" class="headerlink" title="Comparator 객체 사용"></a>Comparator 객체 사용</h2><p>만약 정렬 대상 클래스의 코드를 직접 수정할 수 없는 경우에는 어떻게 객체의 정렬 기준을 정의할 수 있을까요? 또는 정렬 하고자 하는 객체에 이미 존재하고 있는 정렬 기준과 다른 정렬 기준으로 정렬을 하고 싶을 때는 어떻게 해야할까요?</p>
+<p>이 때 필요한 것이 바로 <code>Comparable</code> 인터페이스와 이름이 유사한 <code>Comparator</code> 인터페이스입니다. <code>Comparator</code> 인터페이스의 구현체를 <code>Arrays.sort()</code>나 <code>Collections.sort()</code>와 같은 정렬 메서드의 추가 인자로 넘기면 정렬 기준을 누락된 클래스의 객체나 기존 정렬 기준을 무시하고 새로운 정렬 기준으로 객체를 정렬할 수 있습니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Comparator&lt;Player&gt; comparator = <span class="keyword">new</span> Comparator&lt;Player&gt;() &#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">compare</span><span class="params">(Player a, Player b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> b.getScore() - a.getScore();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">Collections.sort(players, comparator);</span><br><span class="line">System.out.println(players); <span class="comment">// [Player(name=Chloe, score=1090), Player(name=Eric, score=1018), Player(name=Bob, score=982), Player(name=Dale, score=982), Player(name=Alice, score=899)]</span></span><br></pre></td></tr></table></figure>
+<p>위 코드는 <code>Comparator</code> 객체를 <code>Collections.sort()</code> 메서드의 두번째 인자로 넘겨서 이전 섹션과 동일한 정렬 결과를 만들어 내고 있습니다. 이렇게 <code>Comparator</code> 객체를를 인자로 넘기면, 정렬 대상 객체가 <code>Comparable</code> 인터페이스를 구현 여부와 상관없이, 넘어온 <code>Comparator</code> 구현체의 <code>compare()</code> 메서드 기준으로 정렬을 수행합니다.<br><code>compare()</code> 메서드는 비교 대상 2 개의 객체를 인자를 차례로 인자로 받습니다. 첫번째 인자가 두번째 인자보다 작다면 음수, 같다면 0, 크다면 양수를 리턴하면 됩니다.</p>
+<h2 id="람다-함수로-대체"><a href="#람다-함수로-대체" class="headerlink" title="람다 함수로 대체"></a>람다 함수로 대체</h2><p><code>Comparator</code> 객체는 메서드가 하나 뿐인 함수형 인터페이스를 구현하기 때문에 람다 함수로 대체가 가능합니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Collections.sort(players, (a, b) -&gt; b.getScore() - a.getScore());</span><br><span class="line">System.out.println(players); <span class="comment">// [Player(name=Chloe, score=1090), Player(name=Eric, score=1018), Player(name=Bob, score=982), Player(name=Dale, score=982), Player(name=Alice, score=899)]</span></span><br></pre></td></tr></table></figure>
+<p>람다 함수를 사용하면 코드가 간결해짐을 알 수 있습니다.</p>
+<h2 id="Stream-으로-정렬"><a href="#Stream-으로-정렬" class="headerlink" title="Stream 으로 정렬"></a>Stream 으로 정렬</h2><p><code>Stream</code> 클래스의 <code>sorted()</code> 메서드도 <code>Comparator</code> 객체를 인자로 받아 정렬을 해줍니다.<br>스트림을 사용하면 위에서 살펴본 배열과 리스트의 정렬과 달리 기존 객체의 순서를 변경하지 않고, 새롭게 정렬된 객체를 생성하고자 할 때 사용됩니다.</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">List&lt;Player&gt; sortedPlayers = players.stream()</span><br><span class="line">        .sorted((a, b) -&gt; b.getScore() - a.getScore())</span><br><span class="line">        .collect(Collectors.toList());</span><br><span class="line">System.out.println(sortedPlayers); <span class="comment">// [Player(name=Chloe, score=1090), Player(name=Eric, score=1018), Player(name=Bob, score=982), Player(name=Dale, score=982), Player(name=Alice, score=899)]</span></span><br></pre></td></tr></table></figure>
+<p>이상으로 자바의 <code>Comparable</code>와 <code>Comparator</code> 인터페이스를 사용해서 객체의 배열이나 리스트 그리고 스트림을 정렬하는 방법에 대해서 알아보았습니다.</p>
+
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.daleseo.com/java-comparators/" data-id="cjo2dstzb00014hok4z2duoi6" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/dale0713" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/DaleSeo" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/java-comparable-comparator/" id="article-nav-newer" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">새로운</strong>
+        <p class="article-nav-title">
+        
+            [Java] 객체 정렬하기 1부 - Comparable vs Comparator
+        
+        </p>
+        <i class="icon fa fa-chevron-right" id="icon-chevron-right"></i>
+    </a>
+    
+    
+        <a href="/java-min-max/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">[Java] 최소/최대 원소 구하기 (Loop/Collections/Stream)</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/java-comparable-comparator/" class="title">[Java] 객체 정렬하기 1부 - Comparable vs Comparator</a></p>
+                            <p class="item-date"><time datetime="2018-10-13T05:26:24.000Z" itemprop="datePublished">2018-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/java-comparators/" class="title">[Java] 객체 정렬하기 1부 - Comparable vs Comparator</a></p>
+                            <p class="item-date"><time datetime="2018-10-13T05:26:24.000Z" itemprop="datePublished">2018-10-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/java-min-max/" class="title">[Java] 최소/최대 원소 구하기 (Loop/Collections/Stream)</a></p>
+                            <p class="item-date"><time datetime="2018-10-06T03:02:07.000Z" itemprop="datePublished">2018-10-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/java9-stream-iterate/" class="title">Java9에서 강화된 Stream 클래스의 iterate 정적 메서드</a></p>
+                            <p class="item-date"><time datetime="2018-09-01T07:03:33.000Z" itemprop="datePublished">2018-09-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Java/">Java</a></p>
+                            <p class="item-title"><a href="/java9-optional/" class="title">Java9에서 추가된 Optional 기능 소개</a></p>
+                            <p class="item-date"><time datetime="2018-08-26T06:27:00.000Z" itemprop="datePublished">2018-08-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AWS/">AWS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">16</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">7월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">6월 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">5월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">4월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">1월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">12월 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">11월 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10월 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">9월 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS-CLI/">AWS CLI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-S3/">Amazon S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-Web-Services/">Amazon Web Services</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ApplicationRunner/">ApplicationRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AssertJ/">AssertJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Access/">Atomic Access</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Authentication/">Authentication</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary/">Binary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLI/">CLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChronoUnit/">ChronoUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collection/">Collection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/">Collections</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command/">Command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommandLineRunner/">CommandLineRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/">CommonJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comparable/">Comparable</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comparator/">Comparator</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Concurrency/">Concurrency</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDB/">DDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/">Date</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Duration/">Duration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DynamoDB/">DynamoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entry/">Entry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/">FP</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Functional-Programmking/">Functional Programmking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraphQL/">GraphQL</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hoisting/">Hoisting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Immutable/">Immutable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instant/">Instant</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intrinsic-Locks-and-Synchronization/">Intrinsic Locks and Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK9/">JDK9</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java6/">Java6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java9/">Java9</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">11</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jetty/">Jetty</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/">Lambda</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loader/">Loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDate/">LocalDate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDateTime/">LocalDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalTime/">LocalTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Map/">Map</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory-Consistency-Errors/">Memory Consistency Errors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multithreading/">Multithreading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPX/">NPX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optional/">Optional</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Output/">Output</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Peroid/">Peroid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Plugins/">Plugins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/S3/">S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Set/">Set</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Simple-Storage-Service/">Simple Storage Service</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stream/">Stream</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Synchronization/">Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terminal/">Terminal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread-Interference/">Thread Interference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Undertow/">Undertow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-CLI/">Vue CLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-CLI-3/">Vue CLI 3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZonedDateTime/">ZonedDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clean-webpack-plugin/">clean-webpack-plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clone/">clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-loader/">css-loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deep-clone/">deep clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/export/">export</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/export-default/">export default</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exports/">exports</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graphql-request/">graphql-request</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/import/">import</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iterate/">iterate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ls/">ls</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/max/">max</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/min/">min</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module-exports/">module.exports</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-i/">npm i</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-init/">npm init</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-install/">npm install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-ls/">npm ls</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-r/">npm r</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-run/">npm run</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-start/">npm start</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-test/">npm test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-uninstall/">npm uninstall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/require/">require</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sh/">sh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shallow-clone/">shallow clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style-loader/">style-loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-cli/">webpack-cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-dev-server/">webpack-dev-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-config-js/">webpack.config.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/노드/">노드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/노드JS/">노드JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/다이나모DB/">다이나모DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/리눅스/">리눅스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/맥/">맥</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/멀티쓰레드/">멀티쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/명령어/">명령어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/바벨/">바벨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배열/">배열</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/번역/">번역</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쉘/">쉘</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스트림/">스트림</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링/">스프링</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링부트/">스프링부트</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쓰레드/">쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아마존-웹-서비스/">아마존 웹 서비스</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/언더토우/">언더토우</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/인증/">인증</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바/">자바</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바8/">자바8</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바9/">자바9</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바스크립트/">자바스크립트</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/제티/">제티</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진법/">진법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진수/">진수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/커맨드/">커맨드</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/터미널/">터미널</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/톰켓/">톰켓</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/파이썬/">파이썬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/함수형-프로그래밍/">함수형 프로그래밍</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 13.33px;">AWS</a> <a href="/tags/AWS-CLI/" style="font-size: 13.33px;">AWS CLI</a> <a href="/tags/Amazon-S3/" style="font-size: 11.11px;">Amazon S3</a> <a href="/tags/Amazon-Web-Services/" style="font-size: 13.33px;">Amazon Web Services</a> <a href="/tags/ApplicationRunner/" style="font-size: 10px;">ApplicationRunner</a> <a href="/tags/AssertJ/" style="font-size: 10px;">AssertJ</a> <a href="/tags/Atomic-Access/" style="font-size: 10px;">Atomic Access</a> <a href="/tags/Authentication/" style="font-size: 10px;">Authentication</a> <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Binary/" style="font-size: 10px;">Binary</a> <a href="/tags/CLI/" style="font-size: 10px;">CLI</a> <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/ChronoUnit/" style="font-size: 10px;">ChronoUnit</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/Collections/" style="font-size: 14.44px;">Collections</a> <a href="/tags/Command/" style="font-size: 11.11px;">Command</a> <a href="/tags/CommandLineRunner/" style="font-size: 10px;">CommandLineRunner</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/Comparable/" style="font-size: 11.11px;">Comparable</a> <a href="/tags/Comparator/" style="font-size: 11.11px;">Comparator</a> <a href="/tags/Concurrency/" style="font-size: 13.33px;">Concurrency</a> <a href="/tags/DDB/" style="font-size: 10px;">DDB</a> <a href="/tags/Date/" style="font-size: 13.33px;">Date</a> <a href="/tags/Duration/" style="font-size: 10px;">Duration</a> <a href="/tags/DynamoDB/" style="font-size: 10px;">DynamoDB</a> <a href="/tags/ES2015/" style="font-size: 15.56px;">ES2015</a> <a href="/tags/ES6/" style="font-size: 11.11px;">ES6</a> <a href="/tags/Entry/" style="font-size: 10px;">Entry</a> <a href="/tags/FP/" style="font-size: 17.78px;">FP</a> <a href="/tags/Functional-Programmking/" style="font-size: 10px;">Functional Programmking</a> <a href="/tags/GraphQL/" style="font-size: 10px;">GraphQL</a> <a href="/tags/Hoisting/" style="font-size: 10px;">Hoisting</a> <a href="/tags/Immutable/" style="font-size: 10px;">Immutable</a> <a href="/tags/Instant/" style="font-size: 10px;">Instant</a> <a href="/tags/Intrinsic-Locks-and-Synchronization/" style="font-size: 10px;">Intrinsic Locks and Synchronization</a> <a href="/tags/JDK9/" style="font-size: 12.22px;">JDK9</a> <a href="/tags/JS/" style="font-size: 16.67px;">JS</a> <a href="/tags/Java/" style="font-size: 14.44px;">Java</a> <a href="/tags/Java6/" style="font-size: 11.11px;">Java6</a> <a href="/tags/Java8/" style="font-size: 20px;">Java8</a> <a href="/tags/Java9/" style="font-size: 12.22px;">Java9</a> <a href="/tags/JavaScript/" style="font-size: 18.89px;">JavaScript</a> <a href="/tags/Jetty/" style="font-size: 10px;">Jetty</a> <a href="/tags/Lambda/" style="font-size: 12.22px;">Lambda</a> <a href="/tags/Linux/" style="font-size: 11.11px;">Linux</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/Loader/" style="font-size: 10px;">Loader</a> <a href="/tags/LocalDate/" style="font-size: 10px;">LocalDate</a> <a href="/tags/LocalDateTime/" style="font-size: 10px;">LocalDateTime</a> <a href="/tags/LocalTime/" style="font-size: 10px;">LocalTime</a> <a href="/tags/Lombok/" style="font-size: 11.11px;">Lombok</a> <a href="/tags/Mac/" style="font-size: 11.11px;">Mac</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Memory-Consistency-Errors/" style="font-size: 10px;">Memory Consistency Errors</a> <a href="/tags/Multithreading/" style="font-size: 10px;">Multithreading</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NPX/" style="font-size: 10px;">NPX</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/NodeJS/" style="font-size: 12.22px;">NodeJS</a> <a href="/tags/Optional/" style="font-size: 13.33px;">Optional</a> <a href="/tags/Output/" style="font-size: 10px;">Output</a> <a href="/tags/Peroid/" style="font-size: 10px;">Peroid</a> <a href="/tags/Plugins/" style="font-size: 10px;">Plugins</a> <a href="/tags/Process/" style="font-size: 11.11px;">Process</a> <a href="/tags/S3/" style="font-size: 11.11px;">S3</a> <a href="/tags/Set/" style="font-size: 10px;">Set</a> <a href="/tags/Shell/" style="font-size: 11.11px;">Shell</a> <a href="/tags/Simple-Storage-Service/" style="font-size: 11.11px;">Simple Storage Service</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Spring/" style="font-size: 13.33px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 13.33px;">SpringBoot</a> <a href="/tags/Stream/" style="font-size: 15.56px;">Stream</a> <a href="/tags/Synchronization/" style="font-size: 10px;">Synchronization</a> <a href="/tags/Terminal/" style="font-size: 11.11px;">Terminal</a> <a href="/tags/Test/" style="font-size: 10px;">Test</a> <a href="/tags/Thread/" style="font-size: 13.33px;">Thread</a> <a href="/tags/Thread-Interference/" style="font-size: 10px;">Thread Interference</a> <a href="/tags/Time/" style="font-size: 13.33px;">Time</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Undertow/" style="font-size: 10px;">Undertow</a> <a href="/tags/Vue-CLI/" style="font-size: 10px;">Vue CLI</a> <a href="/tags/Vue-CLI-3/" style="font-size: 10px;">Vue CLI 3</a> <a href="/tags/VueJS/" style="font-size: 10px;">VueJS</a> <a href="/tags/Webpack/" style="font-size: 12.22px;">Webpack</a> <a href="/tags/ZonedDateTime/" style="font-size: 10px;">ZonedDateTime</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/clean-webpack-plugin/" style="font-size: 10px;">clean-webpack-plugin</a> <a href="/tags/clone/" style="font-size: 10px;">clone</a> <a href="/tags/css-loader/" style="font-size: 10px;">css-loader</a> <a href="/tags/deep-clone/" style="font-size: 10px;">deep clone</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/export-default/" style="font-size: 10px;">export default</a> <a href="/tags/exports/" style="font-size: 10px;">exports</a> <a href="/tags/graphql-request/" style="font-size: 10px;">graphql-request</a> <a href="/tags/import/" style="font-size: 11.11px;">import</a> <a href="/tags/iterate/" style="font-size: 10px;">iterate</a> <a href="/tags/js/" style="font-size: 13.33px;">js</a> <a href="/tags/ls/" style="font-size: 10px;">ls</a> <a href="/tags/max/" style="font-size: 10px;">max</a> <a href="/tags/min/" style="font-size: 10px;">min</a> <a href="/tags/module-exports/" style="font-size: 10px;">module.exports</a> <a href="/tags/npm-i/" style="font-size: 10px;">npm i</a> <a href="/tags/npm-init/" style="font-size: 10px;">npm init</a> <a href="/tags/npm-install/" style="font-size: 10px;">npm install</a> <a href="/tags/npm-ls/" style="font-size: 10px;">npm ls</a> <a href="/tags/npm-r/" style="font-size: 10px;">npm r</a> <a href="/tags/npm-run/" style="font-size: 10px;">npm run</a> <a href="/tags/npm-start/" style="font-size: 10px;">npm start</a> <a href="/tags/npm-test/" style="font-size: 10px;">npm test</a> <a href="/tags/npm-uninstall/" style="font-size: 10px;">npm uninstall</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/sh/" style="font-size: 11.11px;">sh</a> <a href="/tags/shallow-clone/" style="font-size: 10px;">shallow clone</a> <a href="/tags/style-loader/" style="font-size: 10px;">style-loader</a> <a href="/tags/webpack-cli/" style="font-size: 10px;">webpack-cli</a> <a href="/tags/webpack-dev-server/" style="font-size: 10px;">webpack-dev-server</a> <a href="/tags/webpack-config-js/" style="font-size: 10px;">webpack.config.js</a> <a href="/tags/노드/" style="font-size: 10px;">노드</a> <a href="/tags/노드JS/" style="font-size: 10px;">노드JS</a> <a href="/tags/다이나모DB/" style="font-size: 10px;">다이나모DB</a> <a href="/tags/리눅스/" style="font-size: 11.11px;">리눅스</a> <a href="/tags/맥/" style="font-size: 11.11px;">맥</a> <a href="/tags/멀티쓰레드/" style="font-size: 10px;">멀티쓰레드</a> <a href="/tags/명령어/" style="font-size: 10px;">명령어</a> <a href="/tags/바벨/" style="font-size: 10px;">바벨</a> <a href="/tags/배열/" style="font-size: 10px;">배열</a> <a href="/tags/번역/" style="font-size: 13.33px;">번역</a> <a href="/tags/쉘/" style="font-size: 11.11px;">쉘</a> <a href="/tags/스트림/" style="font-size: 11.11px;">스트림</a> <a href="/tags/스프링/" style="font-size: 13.33px;">스프링</a> <a href="/tags/스프링부트/" style="font-size: 13.33px;">스프링부트</a> <a href="/tags/쓰레드/" style="font-size: 10px;">쓰레드</a> <a href="/tags/아마존-웹-서비스/" style="font-size: 13.33px;">아마존 웹 서비스</a> <a href="/tags/언더토우/" style="font-size: 10px;">언더토우</a> <a href="/tags/인증/" style="font-size: 10px;">인증</a> <a href="/tags/자바/" style="font-size: 12.22px;">자바</a> <a href="/tags/자바8/" style="font-size: 16.67px;">자바8</a> <a href="/tags/자바9/" style="font-size: 12.22px;">자바9</a> <a href="/tags/자바스크립트/" style="font-size: 17.78px;">자바스크립트</a> <a href="/tags/제티/" style="font-size: 10px;">제티</a> <a href="/tags/진법/" style="font-size: 10px;">진법</a> <a href="/tags/진수/" style="font-size: 10px;">진수</a> <a href="/tags/커맨드/" style="font-size: 12.22px;">커맨드</a> <a href="/tags/터미널/" style="font-size: 11.11px;">터미널</a> <a href="/tags/톰켓/" style="font-size: 10px;">톰켓</a> <a href="/tags/파이썬/" style="font-size: 10px;">파이썬</a> <a href="/tags/함수형-프로그래밍/" style="font-size: 10px;">함수형 프로그래밍</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2018 Dale Seo</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'daleseo';
+    
+    
+    var disqus_url = 'http://www.daleseo.com/java-comparators/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
