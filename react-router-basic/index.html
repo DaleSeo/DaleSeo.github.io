@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    
+    <title>React Router 기본 사용법 | DaleSeo</title>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+        <meta name="keywords" content="JS,자바스크립트,React,리액트,ReactRouter" />
+    
+    <meta name="description" content="React를 이용해서 SPA(Single Page Application)을 개발할 때 흔히 겪는 어려움 중에 하나가 웹페이지 라우팅입니다.이 번 포스트에서는 React Router라는 라이브러리를 사용해서 SPA에서 라우팅을 하는 방법에 대해서 알아보겠습니다. 간단한 라우팅 구현기본적으로 SPA는 index.html 파일에 div 엘리먼트만 하나 두고, 자">
+<meta name="keywords" content="JS,자바스크립트,React,리액트,ReactRouter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React Router 기본 사용법">
+<meta property="og:url" content="http://www.daleseo.com/react-router-basic/index.html">
+<meta property="og:site_name" content="DaleSeo">
+<meta property="og:description" content="React를 이용해서 SPA(Single Page Application)을 개발할 때 흔히 겪는 어려움 중에 하나가 웹페이지 라우팅입니다.이 번 포스트에서는 React Router라는 라이브러리를 사용해서 SPA에서 라우팅을 하는 방법에 대해서 알아보겠습니다. 간단한 라우팅 구현기본적으로 SPA는 index.html 파일에 div 엘리먼트만 하나 두고, 자">
+<meta property="og:locale" content="ko">
+<meta property="og:updated_time" content="2019-06-26T02:42:34.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React Router 기본 사용법">
+<meta name="twitter:description" content="React를 이용해서 SPA(Single Page Application)을 개발할 때 흔히 겪는 어려움 중에 하나가 웹페이지 라우팅입니다.이 번 포스트에서는 React Router라는 라이브러리를 사용해서 SPA에서 라우팅을 하는 방법에 대해서 알아보겠습니다. 간단한 라우팅 구현기본적으로 SPA는 index.html 파일에 div 엘리먼트만 하나 두고, 자">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/titillium-web/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.0.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-89095168-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+
+
+    <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <header id="header">
+    <div id="header-outer" class="outer">
+        <div class="container">
+            <div class="container-inner">
+                <div id="header-title">
+                    <h1 class="logo-wrap">
+                        <a href="/" class="logo"></a>
+                    </h1>
+                    
+                        <h2 class="subtitle-wrap">
+                            <p class="subtitle">Enjoy programming</p>
+                        </h2>
+                    
+                </div>
+                <div id="header-inner" class="nav-container">
+                    <a id="main-nav-toggle" class="nav-icon fa fa-bars"></a>
+                    <div class="nav-container-inner">
+                        <ul id="main-nav">
+                            
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="/">홈</a>
+                                </li>
+                            
+                                        <ul class="main-nav-list"><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/AWS/">AWS</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Algorithm/">Algorithm</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Java/">Java</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/JavaScript/">JavaScript</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Python/">Python</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Shell/">Shell</a></li><li class="main-nav-list-item"><a class="main-nav-list-link" href="/categories/Web/">Web</a></li></ul>
+                                    
+                                <li class="main-nav-list-item" >
+                                    <a class="main-nav-list-link" href="https://about.me/daleseo">About</a>
+                                </li>
+                            
+                        </ul>
+                        <nav id="sub-nav">
+                            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="검색" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '포스트',
+            PAGES: 'Pages',
+            CATEGORIES: '카테고리',
+            TAGS: '태그',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+        <div class="container">
+            <div class="main-body container-inner">
+                <div class="main-body-inner">
+                    <section id="main">
+                        <div class="main-body-header">
+    <h1 class="header">
+    
+    <a class="page-title-link" href="/categories/JavaScript/">JavaScript</a>
+    </h1>
+</div>
+                        <div class="main-body-content">
+                            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4212187675547278",
+    enable_page_level_ads: true
+  });
+</script>
+                            <article id="post-react-router-basic" class="article article-single article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+        React Router 기본 사용법
+        </h1>
+    
+
+            </header>
+        
+        
+            <div class="article-meta">
+                
+    <div class="article-date">
+        <a href="/react-router-basic/" class="article-date">
+            <time datetime="2019-06-23T09:54:00.000Z" itemprop="datePublished">2019-06-23</time>
+        </a>
+    </div>
+
+                
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/JS/">JS</a>, <a class="tag-link" href="/tags/React/">React</a>, <a class="tag-link" href="/tags/ReactRouter/">ReactRouter</a>, <a class="tag-link" href="/tags/리액트/">리액트</a>, <a class="tag-link" href="/tags/자바스크립트/">자바스크립트</a>
+    </div>
+
+            </div>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+            <p>React를 이용해서 SPA(Single Page Application)을 개발할 때 흔히 겪는 어려움 중에 하나가 웹페이지 라우팅입니다.<br>이 번 포스트에서는 React Router라는 라이브러리를 사용해서 SPA에서 라우팅을 하는 방법에 대해서 알아보겠습니다.</p>
+<h2 id="간단한-라우팅-구현"><a href="#간단한-라우팅-구현" class="headerlink" title="간단한 라우팅 구현"></a>간단한 라우팅 구현</h2><p>기본적으로 SPA는 <code>index.html</code> 파일에 <code>div</code> 엘리먼트만 하나 두고, 자바스크립트로 모든 부분을 동적으로 랜더링하는 구조를 취합니다.<br>그리고 화면의 전체 또는 일부를 브라우저에서 발생하는 이벤트에 따라서 동적으로 갱신할 수 있기 때문에 인터랙티브 한 사용자 경험을 제공할 수 있습니다. </p>
+<p>따라서 별도의 라이브러리 없이 React만으로 간단하게 라우팅을 구현하는 것은 그리 어렵지 않은 일입니다.<br>예를 들어, 다음 코드 처럼 현재 어떤 컴포넌트가 랜더링되야 하는지 상태로 관리할 수 있습니다.<br><code>&lt;header&gt;</code> 내의 특정 메뉴 버튼을 클릭하면 상응하는 컴포넌트로 <code>comp</code> 상태가 바뀌기 때문에 화면에서 <code>&lt;main&gt;</code> 부분이 갱신되게 됩니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">"./Home"</span>;</span><br><span class="line"><span class="keyword">import</span> About <span class="keyword">from</span> <span class="string">"./About"</span>;</span><br><span class="line"><span class="keyword">import</span> NotFound <span class="keyword">from</span> <span class="string">"./NotFound"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> [comp, setComp] = useState(Home);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;header&gt;</span><br><span class="line">        &lt;button onClick=&#123;() =&gt; setComp(Home)&#125;&gt;Home&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;button onClick=&#123;() =&gt; setComp(About)&#125;&gt;About&lt;/</span>button&gt;</span><br><span class="line">        &lt;button onClick=&#123;() =&gt; setComp(NotFound)&#125;&gt;Users&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">      &lt;/</span>header&gt;</span><br><span class="line">      &lt;hr /&gt;</span><br><span class="line">      &lt;main children=&#123;comp&#125; /&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<iframe src="https://codesandbox.io/embed/react-simple-routing-zg6xx?fontsize=14" title="react-simple-routing" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+<p>하지만 이런 방식으로 라우팅을 구현하게 되면 브라우저 사용자 입장에서 다음과 같은 문제가 발생하게 됩니다.</p>
+<ul>
+<li>특정 페이지에 대한 즐겨찾기 등록이 불가합니다. 컴포넌트가 전환되더라도 브라우저 주소창의 URL은 고정되어 있기 때문입니다.</li>
+<li>뒤로 가기 버튼을 누르면 해당 앱내에서 이전 페이지로 이동하는 것이 아니라 그 전에 서핑하던 다른 웹사이트로 이동해버립니다.</li>
+<li>새로 고침 버튼을 누르면 사용 중이던 컴포넌트가 아닌 무조건 최초에 렌더링되었던 <code>Home</code> 컴포넌트로 이동합니다.</li>
+</ul>
+<p>또한 SEO(검색 엔진 최적화) 측면에서도 일반 웹사이트들과 차이가 있어서 검색 엔진에 의해 원치않는 방식으로 색인이 될 수도 있습니다.</p>
+<h2 id="React-Router란"><a href="#React-Router란" class="headerlink" title="React Router란?"></a>React Router란?</h2><p>React Router는 위에서 살펴본 SPA의 라우팅 문제를 해결하기 위해서 거의 표준처럼 사용되고 있는 네비게이션 라이브러리입니다.<br>React Router를 사용하면 앱에서 발생하는 라우팅이 <code>location</code>나 <code>history</code>와 같은 브라우저 내장 API와 완벽하게 연동이 됩니다.<br>따라서 SPA에서 제공하는 다이나믹한 사용자 경험을 그대로 살리면서도 기존 웹사이트에서 가능하던 브라우저 상의 매끈한 라우팅을 제공할 수 있습니다.</p>
+<h2 id="React-Router-설치"><a href="#React-Router-설치" class="headerlink" title="React Router 설치"></a>React Router 설치</h2><p>React Router는 Web 용과 Native 용이 존재합니다. 아래와 같이 Web 용 <code>react-router-dom</code>을 React 애플리케이션 프로젝트에 설치해줍니다.</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npm i react-router-dom</span><br></pre></td></tr></table></figure>
+<h2 id="React-Router-핵심-컴포넌트"><a href="#React-Router-핵심-컴포넌트" class="headerlink" title="React Router 핵심 컴포넌트"></a>React Router 핵심 컴포넌트</h2><p>React Router를 이해하는데 핵심이 되는 3가지 컴포넌트 대해서 먼저 짚고 넘어가가겠습니다.</p>
+<h3 id="Link-컴포넌트"><a href="#Link-컴포넌트" class="headerlink" title="Link 컴포넌트"></a>Link 컴포넌트</h3><p>HTML의 <code>&lt;a&gt;</code> 태그와 유사한 기능을 하는 컴포넌트라고 생각하시면 이해가 쉽습니다.<br><code>&lt;a&gt;</code> 태그는 <code>href</code> 속성을 통해 이동할 경로를 지정하는 반면에 <code>&lt;Link&gt;</code> 컴포넌트는 <code>to</code> prop을 통해서 이동할 경로를 지정해줍니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Link to=<span class="string">"/about"</span>&gt;About&lt;<span class="regexp">/Link&gt;</span></span><br></pre></td></tr></table></figure>
+<p>예를 들어, 위의 코드는 브라우저에서 클릭이 가능한 <code>About</code>으로 랜더링되고, <code>About</code>를 클릭하면 주소창의 경로가 <code>&lt;도메인 네임&gt;/about</code>으로 갱신됩니다.<br>일반적으로 화면 상단이나 좌측에 위치한 네비게이션 바를 구현할 때 주로 사용하게되는 컴포넌트입니다.</p>
+<h3 id="Route-컴포넌트"><a href="#Route-컴포넌트" class="headerlink" title="Route 컴포넌트"></a>Route 컴포넌트</h3><p><code>&lt;Route&gt;</code> 컴포넌트는 현재 주소창의 경로와 매치될 경우 보여줄 컴포넌트를 지정하는데 사용됩니다.<br><code>path</code> prop을 통해서 매치시킬 경로를 지정하고 <code>component</code> prop을 통해서 매치되었을 때 보여줄 컴포넌트를 할당합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125; /&gt;</span><br></pre></td></tr></table></figure>
+<p>예를 들어, 위의 코드는 현재 주소창의 경로가 <code>/about</code>일 경우 <code>About</code>라는 컴포넌트를 보여줍니다.<br>일반적으로 현재 주소창의 URL 경로에 따라 특정 컨텐트를 보여주거나 숨기기 위해서 사용될 수 있습니다.</p>
+<h3 id="Router-컴포넌트"><a href="#Router-컴포넌트" class="headerlink" title="Router 컴포넌트"></a>Router 컴포넌트</h3><p><code>&lt;Router&gt;</code> 컴포넌트는 위에 나온 <code>&lt;Route&gt;</code>와 <code>&lt;Link&gt;</code> 컴포넌트가 함께 유기적으로 동작하도록 묶어주는데 사용합니다.<br>다시 말해, <code>&lt;Route&gt;</code>와 <code>&lt;Link&gt;</code> 컴포넌트는 DOM 트리 상에서 항상 <code>&lt;Router&gt;</code>를 공통 상위 컴포넌트로 가져야합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;Router&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;Link /&gt;</span><br><span class="line">  &lt;Link /&gt;</span><br><span class="line">  ...</span><br><span class="line">  &lt;Router /&gt;</span><br><span class="line">  &lt;Router /&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;<span class="regexp">/Router&gt;</span></span><br></pre></td></tr></table></figure>
+<p>즉, 전체적으로 React Router를 사용하는 어플리케이션은 이와 같은 구조를 가지게 됩니다.<br>실제 프로젝트에서는 위 컴포넌트들이 여러 파일에 걸쳐서 흩어져 있을 수도 있겠지만, 이 큰 그림을 염두해두고 코드를 읽다보면 어렵지 않게 라우팅 흐름을 파악하실 수 있으실 것입니다.</p>
+<h2 id="React-Router로-라우팅-구현"><a href="#React-Router로-라우팅-구현" class="headerlink" title="React Router로 라우팅 구현"></a>React Router로 라우팅 구현</h2><p>자 그럼, 처음에 직접 구현했던 라우팅을 React Router를 이용해서 재구현 해보겠습니다.<br>먼저 설치한 <code>react-router-dom</code> 패키지로 부터 3가지 핵심 컴포넌트를 임포트해야합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; Link, Route, BrowserRouter <span class="keyword">as</span> Router &#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br></pre></td></tr></table></figure>
+<p>사실 React Router가 제공하는 <code>&lt;Router&gt;</code> 컴포넌트가 여러 종류가 있는데, 여기서는 대게 일반적은 라우팅을 위해 사용되는 <code>&lt;BrowserRouter&gt;</code>를 사용하였습니다.<br>다른 라우터들은 추후 기회가 되면 다른 포스트를 통해서 다루도록 하겠습니다.</p>
+<p>먼저, 헤더 부분을 <code>&lt;Link&gt;</code> 컴포넌트를 사용해서 리팩토링 합니다. <code>to</code> prop에 해당 메뉴 클릭 시 이동해야할 경로를 지정합니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;header&gt;</span><br><span class="line">  &lt;Link to=<span class="string">"/"</span>&gt;</span><br><span class="line">    &lt;button&gt;Home&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>Link&gt;</span><br><span class="line">  &lt;Link to=<span class="string">"/about"</span>&gt;</span><br><span class="line">    &lt;button&gt;About&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>Link&gt;</span><br><span class="line">  &lt;Link to=<span class="string">"/users"</span>&gt;</span><br><span class="line">    &lt;button&gt;Users&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">  &lt;/</span>Link&gt;</span><br><span class="line">&lt;<span class="regexp">/header&gt;</span></span><br></pre></td></tr></table></figure>
+<p>다음, 메인 부분을 <code>&lt;Route&gt;</code> 컴포넌트를 사용해서 리팩토링 합니다. <code>path</code> prop에 매치 시 비교될 경로를 지정하고, <code>component</code> prop에 매치 시 보여줄 컴포넌트를 할당합니다.</p>
+<p>여기서 <code>/</code> 경로를 사용하는 <code>&lt;Route&gt;</code> 컴포넌트에만 <code>exact</code> prop이 사용된 이유는, React Router의 디폴트 매칭 규칙 때문입니다.<br>React Router는 <code>path</code> prop의 경로와 현재 브라우저의 주소창의 URL 경로 (<code>location.pathname</code>)와 비교를 하는데요.</p>
+<p>현재 URL 경로 값이 <code>&lt;Route&gt;</code>의 <code>path</code> porp 값과 전체가 아닌 앞부분만 일치해도 매치되는 것으로 간주합니다.<br>따라서 <code>path</code>가 <code>/</code>일 경우, <code>/</code> 뿐만 아니라 <code>/</code>로 시작하는 모든 URL 경로, 사실 상 가능한 모든 경우의 수의 경로와 매치가 됩니다.</p>
+<p>그렇기 때문에, <code>exact</code> prop이 없으면, 의도치 않게 <code>Home</code> 컴포넌트가 URL 경로와 상관없이 항상 보여지게 됩니다.<br>하지만 <code>exact</code> prop을 붙여주면 URL 경로 값이 <code>&lt;Route&gt;</code>의 <code>path</code> 값과 완벽히 전체가 일치해야 매치되는 것으로 처리를 해줍니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;</span><br><span class="line">  &lt;Route exact path=<span class="string">"/"</span> component=&#123;Home&#125; /&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125; /&gt;</span><br><span class="line">  &lt;Route path=<span class="string">"/users"</span> component=&#123;NotFound&#125; /&gt;</span><br><span class="line">&lt;<span class="regexp">/main&gt;</span></span><br></pre></td></tr></table></figure>
+<p>마지막으로 <code>&lt;Router&gt;</code> 컴포넌트로 위에서 작성한 모든 <code>&lt;Link&gt;</code> 컴포넌트와 <code>&lt;Route&gt;</code> 컴포넌트를 함께 감싸주기만 하면 끝입니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; Link, Route, BrowserRouter <span class="keyword">as</span> Router &#125; <span class="keyword">from</span> <span class="string">"react-router-dom"</span>;</span><br><span class="line"><span class="keyword">import</span> Home <span class="keyword">from</span> <span class="string">"./Home"</span>;</span><br><span class="line"><span class="keyword">import</span> About <span class="keyword">from</span> <span class="string">"./About"</span>;</span><br><span class="line"><span class="keyword">import</span> NotFound <span class="keyword">from</span> <span class="string">"./NotFound"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">App</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;Router&gt;</span><br><span class="line">      &lt;header&gt;</span><br><span class="line">        &lt;Link to=<span class="string">"/"</span>&gt;</span><br><span class="line">          &lt;button&gt;Home&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Link&gt;</span><br><span class="line">        &lt;Link to=<span class="string">"/about"</span>&gt;</span><br><span class="line">          &lt;button&gt;About&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Link&gt;</span><br><span class="line">        &lt;Link to=<span class="string">"/users"</span>&gt;</span><br><span class="line">          &lt;button&gt;Users&lt;<span class="regexp">/button&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>Link&gt;</span><br><span class="line">      &lt;<span class="regexp">/header&gt;</span></span><br><span class="line"><span class="regexp">      &lt;hr /</span>&gt;</span><br><span class="line">      &lt;main&gt;</span><br><span class="line">        &lt;Route exact path=<span class="string">"/"</span> component=&#123;Home&#125; /&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125; /&gt;</span><br><span class="line">        &lt;Route path=<span class="string">"/users"</span> component=&#123;NotFound&#125; /&gt;</span><br><span class="line">      &lt;<span class="regexp">/main&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>Router&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>이제 브라우저에서 네이게이션 메뉴를 클릭해보면 브라우저의 주소가 현재 페이지에 맞게 갱신이 되는 것을 확인하실 수 있을 겁니다.<br>뿐만 아니라, 뒤로 가기, 앞으로 가기, 새로 고침 버튼들도 일반 웹사이트를 서핑하듯이 작동하는 것을 확인하실 수 있을 겁니다.</p>
+<iframe src="https://codesandbox.io/embed/react-router-routing-pqm3m?fontsize=14" title="react-router-routing" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+
+
+<h2 id="보너스-404-페이지-처리"><a href="#보너스-404-페이지-처리" class="headerlink" title="[보너스] 404 페이지 처리"></a>[보너스] 404 페이지 처리</h2><p>SPA를 개발할 때도 많은 경우, 브라우저에 잘못된 경로가 입력되었을 때, 특정한 404 페이지를 보여줘야야 합니다.<br>이럴 경우, React Router에서 제공하는 또 다른 컴포넌트인 <code>&lt;Switch&gt;</code>로 모든 <code>&lt;Route&gt;</code> 컴포넌트로 묶어줘야 합니다.<br><code>&lt;Switch&gt;</code> 컴포넌트를 사용하면 그 하위에 있는 <code>&lt;Route&gt;</code> 컴포넌트 중에 매치되는 제일 첫번째 컴포넌트만 보여주고, 그 이후에 나오는 <code>Route</code> 컴포넌트는 매치되더라도 무시됩니다. (따라서 <code>&lt;Route&gt;</code> 컴포넌트의 순서가 중요해지겠지요?)<br>그 다음에 <code>path</code> prop이 없는 <code>&lt;Route&gt;</code> 컴포넌트를 하나 추가해주면, 이 <code>&lt;Route&gt;</code>는 모든 경로에 매치가 가능해지고, 여기에 404 컴포넌트를 할당해줄 수 있습니다.<br>그러면, 자연스럽게 위에 나온 <code>&lt;Route&gt;</code> 중에 매치되는 것이 없었을 경우, 제일 아래까지 내려올 것이고, 이 마지막 <code>&lt;Route&gt;</code> 컴포넌트가 매치되어 404 페이지가 보여질 것입니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;main&gt;</span><br><span class="line">  &lt;Switch&gt;</span><br><span class="line">    &lt;Route exact path=<span class="string">"/"</span> component=&#123;Home&#125; /&gt;</span><br><span class="line">    &lt;Route path=<span class="string">"/about"</span> component=&#123;About&#125; /&gt;</span><br><span class="line">    &lt;Route component=&#123;NotFound&#125; /&gt;</span><br><span class="line">  &lt;<span class="regexp">/Switch&gt;</span></span><br><span class="line"><span class="regexp">&lt;/m</span>ain&gt;</span><br></pre></td></tr></table></figure>
+        </div>
+        <footer class="article-footer">
+            
+
+
+
+    <a data-url="http://www.daleseo.com/react-router-basic/" data-id="cjxcmadoy00ois6r97fo2ojlx" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+<script>
+    (function ($) {
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+        </footer>
+    </div>
+</article>
+
+    <section id="comments">
+    
+        
+    <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </div>
+
+    
+    </section>
+
+
+                        </div>
+                    </section>
+                    <aside id="sidebar">
+    <a class="sidebar-toggle" title="Expand Sidebar"><i class="toggle icon"></i></a>
+    <div class="sidebar-top">
+        <p>팔로우:</p>
+        <ul class="social-links">
+            
+                
+                <li>
+                    <a class="social-tooltip" title="facebook" href="https://www.facebook.com/dale0713" target="_blank">
+                        <i class="icon fa fa-facebook"></i>
+                    </a>
+                </li>
+                
+            
+                
+                <li>
+                    <a class="social-tooltip" title="github" href="https://github.com/DaleSeo" target="_blank">
+                        <i class="icon fa fa-github"></i>
+                    </a>
+                </li>
+                
+            
+        </ul>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/react-font-awesome/" id="article-nav-older" class="article-nav-link-wrap">
+        <strong class="article-nav-caption">오래된</strong>
+        <p class="article-nav-title">React에서 Font Awesome 사용하기</p>
+        <i class="icon fa fa-chevron-left" id="icon-chevron-left"></i>
+        </a>
+    
+</nav>
+
+    
+    <div class="widgets-container">
+        
+            
+                
+
+            
+                
+    <div class="widget-wrap">
+        <h3 class="widget-title">최근 글</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/react-router-basic/" class="title">React Router 기본 사용법</a></p>
+                            <p class="item-date"><time datetime="2019-06-23T09:54:00.000Z" itemprop="datePublished">2019-06-23</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/react-font-awesome/" class="title">React에서 Font Awesome 사용하기</a></p>
+                            <p class="item-date"><time datetime="2019-06-15T02:29:00.000Z" itemprop="datePublished">2019-06-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/algorithm-generate-parentheses/" class="title">[알고리즘] Generate Parentheses</a></p>
+                            <p class="item-date"><time datetime="2019-06-08T06:40:00.000Z" itemprop="datePublished">2019-06-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithm/">Algorithm</a></p>
+                            <p class="item-title"><a href="/algorithm-merge-two-sorted-lists/" class="title">[알고리즘] Merge Two Sorted Lists</a></p>
+                            <p class="item-date"><time datetime="2019-05-25T08:24:00.000Z" itemprop="datePublished">2019-05-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
+                            <p class="item-title"><a href="/react-hooks-use-effect/" class="title">React Hooks: useEffect 사용법</a></p>
+                            <p class="item-date"><time datetime="2019-05-18T03:00:00.000Z" itemprop="datePublished">2019-05-18</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">카테고리</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/AWS/">AWS</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithm/">Algorithm</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/JavaScript/">JavaScript</a><span class="category-list-count">29</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Shell/">Shell</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Web/">Web</a><span class="category-list-count">2</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">아카이브</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">6월 2019</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">5월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/04/">4월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/03/">3월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/02/">2월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/01/">1월 2019</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">12월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">11월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">10월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">9월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">8월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">7월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/06/">6월 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">5월 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">4월 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/03/">3월 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/12/">12월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/11/">11월 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/10/">10월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/08/">8월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">6월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/05/">5월 2017</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/03/">3월 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/02/">2월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/01/">1월 2017</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">12월 2016</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">11월 2016</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">10월 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">9월 2016</a><span class="archive-list-count">4</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">태그</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS/">AWS</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AWS-CLI/">AWS CLI</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-S3/">Amazon S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Amazon-Web-Services/">Amazon Web Services</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apollo/">Apollo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Apollo-Server/">Apollo Server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ApplicationRunner/">ApplicationRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Array/">Array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AssertJ/">AssertJ</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Async/">Async</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Asynchronous/">Asynchronous</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Atomic-Access/">Atomic Access</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Authentication/">Authentication</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Babel/">Babel</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Backtracking/">Backtracking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary/">Binary</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BinarySearch/">BinarySearch</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/BinaryTree/">BinaryTree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bubble-Sort/">Bubble Sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CLI/">CLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CSS/">CSS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Callback/">Callback</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ChronoUnit/">ChronoUnit</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collection/">Collection</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Collections/">Collections</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Command/">Command</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommandLineRunner/">CommandLineRunner</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/CommonJS/">CommonJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comparable/">Comparable</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Comparator/">Comparator</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Concurrency/">Concurrency</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Context/">Context</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DDB/">DDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DP/">DP</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Date/">Date</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Duration/">Duration</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamic-Programing/">Dynamic Programing</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/DynamoDB/">DynamoDB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2015/">ES2015</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES2017/">ES2017</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES6/">ES6</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ES7/">ES7</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Entry/">Entry</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FP/">FP</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/FontAwesome/">FontAwesome</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Functional-Programmking/">Functional Programmking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/GraphQL/">GraphQL</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hash-Talbe/">Hash Talbe</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hoisting/">Hoisting</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Icon/">Icon</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Immutable/">Immutable</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Insertion-Sort/">Insertion Sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Instant/">Instant</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Intrinsic-Locks-and-Synchronization/">Intrinsic Locks and Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JDK9/">JDK9</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/">Java</a><span class="tag-list-count">24</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java6/">Java6</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java8/">Java8</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java9/">Java9</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/JavaScript/">JavaScript</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jest/">Jest</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Jetty/">Jetty</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/">Lambda</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Leetcode/">Leetcode</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linked-List/">Linked List</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Linux/">Linux</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/List/">List</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Loader/">Loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDate/">LocalDate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalDateTime/">LocalDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/LocalTime/">LocalTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lombok/">Lombok</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mac/">Mac</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Map/">Map</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Memory-Consistency-Errors/">Memory Consistency Errors</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Merge-Sort/">Merge Sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mock/">Mock</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Mocking/">Mocking</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Multithreading/">Multithreading</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPM/">NPM</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NPX/">NPX</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Network/">Network</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/">NodeJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Optional/">Optional</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Output/">Output</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Peroid/">Peroid</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Plugins/">Plugins</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Process/">Process</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Promise/">Promise</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Python/">Python</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Queue/">Queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quick-Sort/">Quick Sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/React/">React</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ReactRouter/">ReactRouter</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Recursion/">Recursion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/S3/">S3</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Set/">Set</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Shell/">Shell</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Simple-Storage-Service/">Simple Storage Service</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Slection-Sort/">Slection Sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sliding-Window/">Sliding Window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Socket/">Socket</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Sort/">Sort</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Spring/">Spring</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/SpringBoot/">SpringBoot</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stack/">Stack</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stream/">Stream</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Synchronization/">Synchronization</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/TDD/">TDD</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Terminal/">Terminal</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Test/">Test</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread/">Thread</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Thread-Interference/">Thread Interference</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Time/">Time</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Timestamp/">Timestamp</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Tomcat/">Tomcat</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Two-Pointers/">Two Pointers</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Undertow/">Undertow</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-CLI/">Vue CLI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Vue-CLI-3/">Vue CLI 3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/VueJS/">VueJS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Webpack/">Webpack</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ZonedDateTime/">ZonedDateTime</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/async-await/">async/await</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clean-webpack-plugin/">clean-webpack-plugin</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/clone/">clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css-loader/">css-loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/deep-clone/">deep clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/em/">em</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/export/">export</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/export-default/">export default</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/exports/">exports</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/for/">for</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graphql-request/">graphql-request</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heapq/">heapq</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/import/">import</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/index/">index</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/iterate/">iterate</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ls/">ls</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/max/">max</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/min/">min</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/module-exports/">module.exports</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-i/">npm i</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-init/">npm init</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-install/">npm install</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-ls/">npm ls</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-r/">npm r</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-run/">npm run</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-start/">npm start</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-test/">npm test</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/npm-uninstall/">npm uninstall</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ps/">ps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/random/">random</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/rem/">rem</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/require/">require</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sh/">sh</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/shallow-clone/">shallow clone</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sqlite3/">sqlite3</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/style-loader/">style-loader</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-cli/">webpack-cli</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-dev-server/">webpack-dev-server</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack-config-js/">webpack.config.js</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/거품-정렬/">거품 정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/노드/">노드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/노드JS/">노드JS</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/다이나모DB/">다이나모DB</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/다이나믹-프로그래밍/">다이나믹 프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/리눅스/">리눅스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/리액트/">리액트</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/링크드-리스트/">링크드 리스트</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/맥/">맥</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/멀티쓰레드/">멀티쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/명령어/">명령어</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/모킹/">모킹</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/뫀/">뫀</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/바벨/">바벨</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/배열/">배열</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/백트래킹/">백트래킹</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/번역/">번역</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/병합-정렬/">병합 정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/비동기/">비동기</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/삽입-정렬/">삽입 정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/선택-정렬/">선택 정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/세트/">세트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쉘/">쉘</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스타일/">스타일</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스택/">스택</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스트림/">스트림</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링/">스프링</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/스프링부트/">스프링부트</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/쓰레드/">쓰레드</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아마존-웹-서비스/">아마존 웹 서비스</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/아이콘/">아이콘</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/알고리즘/">알고리즘</a><span class="tag-list-count">14</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/언더토우/">언더토우</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/이진-탐색/">이진 탐색</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/이진트리/">이진트리</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/인증/">인증</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바/">자바</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바8/">자바8</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바9/">자바9</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/자바스크립트/">자바스크립트</a><span class="tag-list-count">17</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/재귀/">재귀</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/제티/">제티</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진법/">진법</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/진수/">진수</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/커맨드/">커맨드</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/켄텍스트/">켄텍스트</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/콜백/">콜백</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/퀵-정렬/">퀵 정렬</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/큐/">큐</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/터미널/">터미널</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/톰켓/">톰켓</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/파이썬/">파이썬</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/폰트어썸/">폰트어썸</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/프라미스/">프라미스</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/함수형-프로그래밍/">함수형 프로그래밍</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/해시-테이블/">해시 테이블</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/힙/">힙</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-float">
+        <h3 class="widget-title">태그 클라우드</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/AWS/" style="font-size: 12.73px;">AWS</a> <a href="/tags/AWS-CLI/" style="font-size: 12.73px;">AWS CLI</a> <a href="/tags/Amazon-S3/" style="font-size: 10.91px;">Amazon S3</a> <a href="/tags/Amazon-Web-Services/" style="font-size: 12.73px;">Amazon Web Services</a> <a href="/tags/Apollo/" style="font-size: 10px;">Apollo</a> <a href="/tags/Apollo-Server/" style="font-size: 10px;">Apollo Server</a> <a href="/tags/ApplicationRunner/" style="font-size: 10px;">ApplicationRunner</a> <a href="/tags/Array/" style="font-size: 10px;">Array</a> <a href="/tags/AssertJ/" style="font-size: 10px;">AssertJ</a> <a href="/tags/Async/" style="font-size: 11.82px;">Async</a> <a href="/tags/Asynchronous/" style="font-size: 11.82px;">Asynchronous</a> <a href="/tags/Atomic-Access/" style="font-size: 10px;">Atomic Access</a> <a href="/tags/Authentication/" style="font-size: 10px;">Authentication</a> <a href="/tags/Babel/" style="font-size: 10px;">Babel</a> <a href="/tags/Backtracking/" style="font-size: 10px;">Backtracking</a> <a href="/tags/Binary/" style="font-size: 10px;">Binary</a> <a href="/tags/BinarySearch/" style="font-size: 10px;">BinarySearch</a> <a href="/tags/BinaryTree/" style="font-size: 10px;">BinaryTree</a> <a href="/tags/Bubble-Sort/" style="font-size: 10px;">Bubble Sort</a> <a href="/tags/CLI/" style="font-size: 10px;">CLI</a> <a href="/tags/CSS/" style="font-size: 11.82px;">CSS</a> <a href="/tags/Callback/" style="font-size: 10px;">Callback</a> <a href="/tags/ChronoUnit/" style="font-size: 10px;">ChronoUnit</a> <a href="/tags/Collection/" style="font-size: 10px;">Collection</a> <a href="/tags/Collections/" style="font-size: 13.64px;">Collections</a> <a href="/tags/Command/" style="font-size: 10.91px;">Command</a> <a href="/tags/CommandLineRunner/" style="font-size: 10px;">CommandLineRunner</a> <a href="/tags/CommonJS/" style="font-size: 10px;">CommonJS</a> <a href="/tags/Comparable/" style="font-size: 10.91px;">Comparable</a> <a href="/tags/Comparator/" style="font-size: 10.91px;">Comparator</a> <a href="/tags/Concurrency/" style="font-size: 12.73px;">Concurrency</a> <a href="/tags/Context/" style="font-size: 11.82px;">Context</a> <a href="/tags/DDB/" style="font-size: 10px;">DDB</a> <a href="/tags/DP/" style="font-size: 10px;">DP</a> <a href="/tags/Date/" style="font-size: 12.73px;">Date</a> <a href="/tags/Duration/" style="font-size: 10px;">Duration</a> <a href="/tags/Dynamic-Programing/" style="font-size: 10px;">Dynamic Programing</a> <a href="/tags/DynamoDB/" style="font-size: 10px;">DynamoDB</a> <a href="/tags/ES2015/" style="font-size: 15.45px;">ES2015</a> <a href="/tags/ES2017/" style="font-size: 10px;">ES2017</a> <a href="/tags/ES6/" style="font-size: 15.45px;">ES6</a> <a href="/tags/ES7/" style="font-size: 10px;">ES7</a> <a href="/tags/Entry/" style="font-size: 10px;">Entry</a> <a href="/tags/FP/" style="font-size: 16.36px;">FP</a> <a href="/tags/FontAwesome/" style="font-size: 10.91px;">FontAwesome</a> <a href="/tags/Functional-Programmking/" style="font-size: 10px;">Functional Programmking</a> <a href="/tags/GraphQL/" style="font-size: 10.91px;">GraphQL</a> <a href="/tags/Hash-Talbe/" style="font-size: 11.82px;">Hash Talbe</a> <a href="/tags/Hoisting/" style="font-size: 10px;">Hoisting</a> <a href="/tags/Icon/" style="font-size: 10.91px;">Icon</a> <a href="/tags/Immutable/" style="font-size: 10px;">Immutable</a> <a href="/tags/Insertion-Sort/" style="font-size: 10px;">Insertion Sort</a> <a href="/tags/Instant/" style="font-size: 10px;">Instant</a> <a href="/tags/Intrinsic-Locks-and-Synchronization/" style="font-size: 10px;">Intrinsic Locks and Synchronization</a> <a href="/tags/JDK9/" style="font-size: 11.82px;">JDK9</a> <a href="/tags/JS/" style="font-size: 18.18px;">JS</a> <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Java6/" style="font-size: 10.91px;">Java6</a> <a href="/tags/Java8/" style="font-size: 18.18px;">Java8</a> <a href="/tags/Java9/" style="font-size: 11.82px;">Java9</a> <a href="/tags/JavaScript/" style="font-size: 19.09px;">JavaScript</a> <a href="/tags/Jest/" style="font-size: 12.73px;">Jest</a> <a href="/tags/Jetty/" style="font-size: 10px;">Jetty</a> <a href="/tags/Lambda/" style="font-size: 11.82px;">Lambda</a> <a href="/tags/Leetcode/" style="font-size: 17.27px;">Leetcode</a> <a href="/tags/Linked-List/" style="font-size: 10.91px;">Linked List</a> <a href="/tags/Linux/" style="font-size: 10.91px;">Linux</a> <a href="/tags/List/" style="font-size: 10px;">List</a> <a href="/tags/Loader/" style="font-size: 10px;">Loader</a> <a href="/tags/LocalDate/" style="font-size: 10px;">LocalDate</a> <a href="/tags/LocalDateTime/" style="font-size: 10px;">LocalDateTime</a> <a href="/tags/LocalTime/" style="font-size: 10px;">LocalTime</a> <a href="/tags/Lombok/" style="font-size: 10.91px;">Lombok</a> <a href="/tags/Mac/" style="font-size: 10.91px;">Mac</a> <a href="/tags/Map/" style="font-size: 10px;">Map</a> <a href="/tags/Memory-Consistency-Errors/" style="font-size: 10px;">Memory Consistency Errors</a> <a href="/tags/Merge-Sort/" style="font-size: 10px;">Merge Sort</a> <a href="/tags/Mock/" style="font-size: 10px;">Mock</a> <a href="/tags/Mocking/" style="font-size: 10px;">Mocking</a> <a href="/tags/Multithreading/" style="font-size: 10px;">Multithreading</a> <a href="/tags/NPM/" style="font-size: 10px;">NPM</a> <a href="/tags/NPX/" style="font-size: 10px;">NPX</a> <a href="/tags/Network/" style="font-size: 10px;">Network</a> <a href="/tags/NodeJS/" style="font-size: 11.82px;">NodeJS</a> <a href="/tags/Optional/" style="font-size: 12.73px;">Optional</a> <a href="/tags/Output/" style="font-size: 10px;">Output</a> <a href="/tags/Peroid/" style="font-size: 10px;">Peroid</a> <a href="/tags/Plugins/" style="font-size: 10px;">Plugins</a> <a href="/tags/Process/" style="font-size: 10.91px;">Process</a> <a href="/tags/Promise/" style="font-size: 10.91px;">Promise</a> <a href="/tags/Python/" style="font-size: 19.09px;">Python</a> <a href="/tags/Queue/" style="font-size: 10px;">Queue</a> <a href="/tags/Quick-Sort/" style="font-size: 10px;">Quick Sort</a> <a href="/tags/React/" style="font-size: 13.64px;">React</a> <a href="/tags/ReactRouter/" style="font-size: 10px;">ReactRouter</a> <a href="/tags/Recursion/" style="font-size: 10px;">Recursion</a> <a href="/tags/S3/" style="font-size: 10.91px;">S3</a> <a href="/tags/Set/" style="font-size: 10.91px;">Set</a> <a href="/tags/Shell/" style="font-size: 10.91px;">Shell</a> <a href="/tags/Simple-Storage-Service/" style="font-size: 10.91px;">Simple Storage Service</a> <a href="/tags/Slection-Sort/" style="font-size: 10px;">Slection Sort</a> <a href="/tags/Sliding-Window/" style="font-size: 10px;">Sliding Window</a> <a href="/tags/Socket/" style="font-size: 10px;">Socket</a> <a href="/tags/Sort/" style="font-size: 13.64px;">Sort</a> <a href="/tags/Spring/" style="font-size: 12.73px;">Spring</a> <a href="/tags/SpringBoot/" style="font-size: 12.73px;">SpringBoot</a> <a href="/tags/Stack/" style="font-size: 10px;">Stack</a> <a href="/tags/Stream/" style="font-size: 14.55px;">Stream</a> <a href="/tags/Synchronization/" style="font-size: 10px;">Synchronization</a> <a href="/tags/TDD/" style="font-size: 12.73px;">TDD</a> <a href="/tags/Terminal/" style="font-size: 10.91px;">Terminal</a> <a href="/tags/Test/" style="font-size: 13.64px;">Test</a> <a href="/tags/Thread/" style="font-size: 12.73px;">Thread</a> <a href="/tags/Thread-Interference/" style="font-size: 10px;">Thread Interference</a> <a href="/tags/Time/" style="font-size: 12.73px;">Time</a> <a href="/tags/Timestamp/" style="font-size: 10px;">Timestamp</a> <a href="/tags/Tomcat/" style="font-size: 10px;">Tomcat</a> <a href="/tags/Two-Pointers/" style="font-size: 10.91px;">Two Pointers</a> <a href="/tags/Undertow/" style="font-size: 10px;">Undertow</a> <a href="/tags/Vue-CLI/" style="font-size: 10px;">Vue CLI</a> <a href="/tags/Vue-CLI-3/" style="font-size: 10px;">Vue CLI 3</a> <a href="/tags/VueJS/" style="font-size: 10px;">VueJS</a> <a href="/tags/Webpack/" style="font-size: 11.82px;">Webpack</a> <a href="/tags/ZonedDateTime/" style="font-size: 10px;">ZonedDateTime</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/async-await/" style="font-size: 10px;">async/await</a> <a href="/tags/clean-webpack-plugin/" style="font-size: 10px;">clean-webpack-plugin</a> <a href="/tags/clone/" style="font-size: 10px;">clone</a> <a href="/tags/css-loader/" style="font-size: 10px;">css-loader</a> <a href="/tags/deep-clone/" style="font-size: 10px;">deep clone</a> <a href="/tags/em/" style="font-size: 10px;">em</a> <a href="/tags/export/" style="font-size: 10px;">export</a> <a href="/tags/export-default/" style="font-size: 10px;">export default</a> <a href="/tags/exports/" style="font-size: 10px;">exports</a> <a href="/tags/for/" style="font-size: 10px;">for</a> <a href="/tags/graphql-request/" style="font-size: 10px;">graphql-request</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/heapq/" style="font-size: 10px;">heapq</a> <a href="/tags/import/" style="font-size: 10.91px;">import</a> <a href="/tags/index/" style="font-size: 10px;">index</a> <a href="/tags/iterate/" style="font-size: 10px;">iterate</a> <a href="/tags/js/" style="font-size: 16.36px;">js</a> <a href="/tags/ls/" style="font-size: 10px;">ls</a> <a href="/tags/max/" style="font-size: 10px;">max</a> <a href="/tags/min/" style="font-size: 10px;">min</a> <a href="/tags/module-exports/" style="font-size: 10px;">module.exports</a> <a href="/tags/npm-i/" style="font-size: 10px;">npm i</a> <a href="/tags/npm-init/" style="font-size: 10px;">npm init</a> <a href="/tags/npm-install/" style="font-size: 10px;">npm install</a> <a href="/tags/npm-ls/" style="font-size: 10px;">npm ls</a> <a href="/tags/npm-r/" style="font-size: 10px;">npm r</a> <a href="/tags/npm-run/" style="font-size: 10px;">npm run</a> <a href="/tags/npm-start/" style="font-size: 10px;">npm start</a> <a href="/tags/npm-test/" style="font-size: 10px;">npm test</a> <a href="/tags/npm-uninstall/" style="font-size: 10px;">npm uninstall</a> <a href="/tags/ps/" style="font-size: 10px;">ps</a> <a href="/tags/random/" style="font-size: 10px;">random</a> <a href="/tags/rem/" style="font-size: 10px;">rem</a> <a href="/tags/require/" style="font-size: 10px;">require</a> <a href="/tags/sh/" style="font-size: 10.91px;">sh</a> <a href="/tags/shallow-clone/" style="font-size: 10px;">shallow clone</a> <a href="/tags/sqlite3/" style="font-size: 10px;">sqlite3</a> <a href="/tags/style-loader/" style="font-size: 10px;">style-loader</a> <a href="/tags/webpack-cli/" style="font-size: 10px;">webpack-cli</a> <a href="/tags/webpack-dev-server/" style="font-size: 10px;">webpack-dev-server</a> <a href="/tags/webpack-config-js/" style="font-size: 10px;">webpack.config.js</a> <a href="/tags/거품-정렬/" style="font-size: 10px;">거품 정렬</a> <a href="/tags/노드/" style="font-size: 10px;">노드</a> <a href="/tags/노드JS/" style="font-size: 10px;">노드JS</a> <a href="/tags/다이나모DB/" style="font-size: 10px;">다이나모DB</a> <a href="/tags/다이나믹-프로그래밍/" style="font-size: 10px;">다이나믹 프로그래밍</a> <a href="/tags/리눅스/" style="font-size: 10.91px;">리눅스</a> <a href="/tags/리액트/" style="font-size: 13.64px;">리액트</a> <a href="/tags/링크드-리스트/" style="font-size: 10.91px;">링크드 리스트</a> <a href="/tags/맥/" style="font-size: 10.91px;">맥</a> <a href="/tags/멀티쓰레드/" style="font-size: 10px;">멀티쓰레드</a> <a href="/tags/명령어/" style="font-size: 10px;">명령어</a> <a href="/tags/모킹/" style="font-size: 10px;">모킹</a> <a href="/tags/뫀/" style="font-size: 10px;">뫀</a> <a href="/tags/바벨/" style="font-size: 10px;">바벨</a> <a href="/tags/배열/" style="font-size: 10.91px;">배열</a> <a href="/tags/백트래킹/" style="font-size: 10px;">백트래킹</a> <a href="/tags/번역/" style="font-size: 12.73px;">번역</a> <a href="/tags/병합-정렬/" style="font-size: 10px;">병합 정렬</a> <a href="/tags/비동기/" style="font-size: 11.82px;">비동기</a> <a href="/tags/삽입-정렬/" style="font-size: 10px;">삽입 정렬</a> <a href="/tags/선택-정렬/" style="font-size: 10px;">선택 정렬</a> <a href="/tags/세트/" style="font-size: 10px;">세트</a> <a href="/tags/쉘/" style="font-size: 10.91px;">쉘</a> <a href="/tags/스타일/" style="font-size: 10.91px;">스타일</a> <a href="/tags/스택/" style="font-size: 10px;">스택</a> <a href="/tags/스트림/" style="font-size: 10.91px;">스트림</a> <a href="/tags/스프링/" style="font-size: 12.73px;">스프링</a> <a href="/tags/스프링부트/" style="font-size: 12.73px;">스프링부트</a> <a href="/tags/쓰레드/" style="font-size: 10px;">쓰레드</a> <a href="/tags/아마존-웹-서비스/" style="font-size: 12.73px;">아마존 웹 서비스</a> <a href="/tags/아이콘/" style="font-size: 10.91px;">아이콘</a> <a href="/tags/알고리즘/" style="font-size: 17.27px;">알고리즘</a> <a href="/tags/언더토우/" style="font-size: 10px;">언더토우</a> <a href="/tags/이진-탐색/" style="font-size: 10px;">이진 탐색</a> <a href="/tags/이진트리/" style="font-size: 10px;">이진트리</a> <a href="/tags/인증/" style="font-size: 10px;">인증</a> <a href="/tags/자바/" style="font-size: 13.64px;">자바</a> <a href="/tags/자바8/" style="font-size: 15.45px;">자바8</a> <a href="/tags/자바9/" style="font-size: 11.82px;">자바9</a> <a href="/tags/자바스크립트/" style="font-size: 18.18px;">자바스크립트</a> <a href="/tags/재귀/" style="font-size: 10px;">재귀</a> <a href="/tags/제티/" style="font-size: 10px;">제티</a> <a href="/tags/진법/" style="font-size: 10px;">진법</a> <a href="/tags/진수/" style="font-size: 10px;">진수</a> <a href="/tags/커맨드/" style="font-size: 11.82px;">커맨드</a> <a href="/tags/켄텍스트/" style="font-size: 10px;">켄텍스트</a> <a href="/tags/콜백/" style="font-size: 10px;">콜백</a> <a href="/tags/퀵-정렬/" style="font-size: 10px;">퀵 정렬</a> <a href="/tags/큐/" style="font-size: 10px;">큐</a> <a href="/tags/터미널/" style="font-size: 10.91px;">터미널</a> <a href="/tags/톰켓/" style="font-size: 10px;">톰켓</a> <a href="/tags/파이썬/" style="font-size: 15.45px;">파이썬</a> <a href="/tags/폰트어썸/" style="font-size: 10.91px;">폰트어썸</a> <a href="/tags/프라미스/" style="font-size: 10.91px;">프라미스</a> <a href="/tags/함수형-프로그래밍/" style="font-size: 10px;">함수형 프로그래밍</a> <a href="/tags/해시-테이블/" style="font-size: 11.82px;">해시 테이블</a> <a href="/tags/힙/" style="font-size: 10px;">힙</a>
+        </div>
+    </div>
+
+
+            
+                
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">링크</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="http://hexo.io">Hexo</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+            
+        
+    </div>
+</aside>
+                </div>
+            </div>
+        </div>
+        <footer id="footer">
+    <div class="container">
+        <div class="container-inner">
+            <a id="back-to-top" href="javascript:;"><i class="icon fa fa-angle-up"></i></a>
+            <div class="credit">
+                <h1 class="logo-wrap">
+                    <a href="/" class="logo"></a>
+                </h1>
+                <p>&copy; 2019 Dale Seo</p>
+                <p>Powered by <a href="//hexo.io/" target="_blank">Hexo</a>. Theme by <a href="//github.com/ppoffice" target="_blank">PPOffice</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+        
+    
+    <script>
+    var disqus_shortname = 'daleseo';
+    
+    
+    var disqus_url = 'http://www.daleseo.com/react-router-basic/';
+    
+    (function() {
+    var dsq = document.createElement('script');
+    dsq.type = 'text/javascript';
+    dsq.async = true;
+    dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+    </script>
+
+
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
