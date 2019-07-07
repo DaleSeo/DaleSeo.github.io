@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="DaleSeo">
 <meta property="og:description" content="Java8의 Optional API를 통해 어떻게 null 처리를 할 수 있는지 알아봅시다.  이전 포스트를 통해 Java8 이 전에는 얼마나 null 처리가 고통스러웠는지 살펴보았습니다.그리고 문제의 본질이 null 참조를 통해 “값의 부재”를 표현하는 자바 언어의 초기 설계에 기인한다라는 것도 말미에 언급하였습니다. null 관련 문제 돌아보기이 전">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2018-08-22T23:31:02.126Z">
+<meta property="og:updated_time" content="2019-07-07T01:27:22.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="자바8 Optional 2부: null을 대하는 새로운 방법">
 <meta name="twitter:description" content="Java8의 Optional API를 통해 어떻게 null 처리를 할 수 있는지 알아봅시다.  이전 포스트를 통해 Java8 이 전에는 얼마나 null 처리가 고통스러웠는지 살펴보았습니다.그리고 문제의 본질이 null 참조를 통해 “값의 부재”를 표현하는 자바 언어의 초기 설계에 기인한다라는 것도 말미에 언급하였습니다. null 관련 문제 돌아보기이 전">
@@ -222,7 +222,7 @@ ga('send', 'pageview');
 <ul>
 <li><code>Optional.ofNullable(value)</code></li>
 </ul>
-<p>null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다.<br><code>Optional.empty()</code>와 <code>Optional.ofNullable(value)</code>를 합쳐놓은 메소드라고 생각하시면 됩니다.<br>null이 넘어올 경우, NPE를 던지지 않고 <code>Optional.empty()</code>와 동일하게 비어 있는 Optional 객체를 얻어옵니다.<br>해당 객체가 null인지 아닌지 자신이 없는 상황에서는 이 메소드를 사용하셔야 합니다.</p>
+<p>null인지 아닌지 확신할 수 없는 객체를 담고 있는 Optional 객체를 생성합니다.<br><code>Optional.empty()</code>와 <code>Optional.of(value)</code>를 합쳐놓은 메소드라고 생각하시면 됩니다.<br>null이 넘어올 경우, NPE를 던지지 않고 <code>Optional.empty()</code>와 동일하게 비어 있는 Optional 객체를 얻어옵니다.<br>해당 객체가 null인지 아닌지 자신이 없는 상황에서는 이 메소드를 사용하셔야 합니다.</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Optional&lt;Member&gt; maybeMember = Optional.ofNullable(aMember);</span><br><span class="line">Optional&lt;Member&gt; maybeNotMember = Optional.ofNullable(<span class="keyword">null</span>);</span><br></pre></td></tr></table></figure>
 <h3 id="Optional이-담고-있는-객체-접근하기"><a href="#Optional이-담고-있는-객체-접근하기" class="headerlink" title="Optional이 담고 있는 객체 접근하기"></a>Optional이 담고 있는 객체 접근하기</h3><p>Optional 클래스는 담고 있는 객체를 꺼내오기 위해서 다양한 인스턴스 메소드를 제공합니다.<br>아래 메소드들은 모두 Optional이 담고 있는 객체가 존재할 경우 동일하게 해당 값을 반환합니다.<br>반면에 Optional이 비어있는 경우(즉, null을 담고 있는 경우), 다르게 작동합니다.<br>따라서 비어있는 Optional에 대해서 다르게 작동하는 부분만 설명드리겠습니다.</p>
 <ul>
