@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="DaleSeo">
 <meta property="og:description" content="React Testing Library(RTL)라는 테스팅 라이브러리가 React 개발자들의 입소문을 타고 점점 인기가 올라가고 있습니다.이번 포스트에서는 최근 React에서 테스팅 트랜드와 패러다임을 바꾸고 있는 React Testing Library에서 다뤄보도록 하겠습니다. React Testing Library 소개React Testing Libra">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-06-29T19:30:20.046Z">
+<meta property="og:updated_time" content="2019-07-27T01:02:28.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Testing Library 사용법">
 <meta name="twitter:description" content="React Testing Library(RTL)라는 테스팅 라이브러리가 React 개발자들의 입소문을 타고 점점 인기가 올라가고 있습니다.이번 포스트에서는 최근 React에서 테스팅 트랜드와 패러다임을 바꾸고 있는 React Testing Library에서 다뤄보도록 하겠습니다. React Testing Library 소개React Testing Libra">
@@ -205,14 +205,14 @@ ga('send', 'pageview');
 <p>다음, React Testing Library를 설치합니다. 패키지 이름은 <code>@testing-library/react</code> 입니다.<br>간혹 아직 업데이트가 안 된 튜토리얼의 경우, 패키지 이름이 <code>react-testing-library</code> 안내되고 있지만, 반드시 <code>@testing-library/react</code>를 설치해야합니다.<br>(패키지 이름이 바꿘 사연은 React Testing Library의 저자인 <a href="https://twitter.com/kentcdodds/status/1134164755910778880" target="_blank" rel="noopener">Kent C. Dodds의 트위트</a>를 참고바랍니다.)</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @testing-library/react</span><br></pre></td></tr></table></figure>
 <p>마지막으로 Jest의 DOM에 특화된 matcher 애드온인 <code>jest-dom</code>을 설치합니다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D jest-dom</span><br></pre></td></tr></table></figure>
-<p><code>jest-dom</code>에서 제공하는 custom matcher 목록은 아래 링크를 참조바랍니다.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D @testing-library/jest-dom</span><br></pre></td></tr></table></figure>
+<p><code>@testing-library/jest-dom</code>에서 제공하는 custom matcher 목록은 아래 링크를 참조바랍니다.</p>
 <ul>
 <li><a href="https://github.com/testing-library/jest-dom#table-of-contents" target="_blank" rel="noopener">https://github.com/testing-library/jest-dom#table-of-contents</a></li>
 </ul>
 <h2 id="React-Testing-Library-설정"><a href="#React-Testing-Library-설정" class="headerlink" title="React Testing Library 설정"></a>React Testing Library 설정</h2><p>React Testing Library를 사용하려면 두 가지 설정이 필요합니다.<br>첫 째는 각 테스트가 DOM에 렌더링해놓은 내용들을 테스트가 끝날 때 다음 테스트를 위해서 지워주는 것이고, 두 번째는 <code>jest-dom</code>가 제공하는 matcher를 Jest 테스트 러너에게 인식시키는 것입니다.</p>
 <p>아래 두 줄의 코드를 자신의 React 프로젝트의 테스팅 설정 파일에 추가해주면 됩니다.<br>예를 들어 <code>create-react-app</code>으로 생성된 프로젝트라면 <code>src/setupTests.js</code> 파일에 추가해주면 됩니다.</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"@testing-library/react/cleanup-after-each"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"jest-dom/extend-expect"</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="string">"@testing-library/react/cleanup-after-each"</span>;</span><br><span class="line"><span class="keyword">import</span> <span class="string">"@testing-library/jest-dom/extend-expect"</span>;</span><br></pre></td></tr></table></figure>
 <h2 id="React-Testing-Library-주요-API"><a href="#React-Testing-Library-주요-API" class="headerlink" title="React Testing Library 주요 API"></a>React Testing Library 주요 API</h2><p>React Testing Library는 매우 심플하지만 강력한 API를 가지고 있습니다.<br>크게 DOM에 컴포넌트를 랜더링 해주는 <code>render()</code> 함수와, 특정 이벤트를 발생시켜주는 <code>fireEvent</code> 객체, 그리고 DOM에서 특정 영역을 선택하기 위한 다양한 쿼리 함수들이 존재합니다.</p>
 <p><code>render()</code> 함수는 <code>@testing-library/react</code> 모듈로 부터 바로 임포트가 가능하며, 인자로 랜더링할 React 컴포넌트를 넘김니다.<br>그리고 <code>render()</code> 함수는 React Testing Library 제공하는 모든 쿼리 함수와 기타 유틸리티 함수 담고 있는 객체를 리턴합니다.<br>따라서 다음과 같이 자바스크립트의 객체 Destructuring 문법으로 <code>render()</code> 함수가 리턴한 객체로 부터 원하는 쿼리 함수만 얻어올 수 있습니다.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; render, fireEvent &#125; <span class="keyword">from</span> <span class="string">"@testing-library/react"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> &#123; getByText, getByLabelText, getByPlaceholderText &#125; = render(<span class="xml"><span class="tag">&lt;<span class="name">YourComponent</span> /&gt;</span>);</span></span><br></pre></td></tr></table></figure>
