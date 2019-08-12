@@ -13,11 +13,11 @@
 <meta name="keywords" content="JS,자바스크립트,React,리액트,ReactRouter,match,location,history">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React Router로 중첩 라우팅 하기">
-<meta property="og:url" content="http://www.daleseo.com/react-router-nested-routing/index.html">
+<meta property="og:url" content="http://www.daleseo.com/react-router-nested/index.html">
 <meta property="og:site_name" content="DaleSeo">
 <meta property="og:description" content="지난 포스트에서 React Router로 기본적인 라우팅 방법을 다루었습니다.이번 포스트에서는 React Router로 중첩 라우팅을 구현하는 방법에 대해서 알아보겠습니다. 중첩 라우팅이란?중첩 라우팅(Nested Routing)이란 라우팅 맵핑을 최상위 컴포넌트 뿐만 아니라 여러 개의 컴포넌트에 걸쳐서 단계별로 정의하는 라우팅 기법입니다. 예를 들어, 브">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-08-12T02:21:43.203Z">
+<meta property="og:updated_time" content="2019-08-12T02:25:23.508Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React Router로 중첩 라우팅 하기">
 <meta name="twitter:description" content="지난 포스트에서 React Router로 기본적인 라우팅 방법을 다루었습니다.이번 포스트에서는 React Router로 중첩 라우팅을 구현하는 방법에 대해서 알아보겠습니다. 중첩 라우팅이란?중첩 라우팅(Nested Routing)이란 라우팅 맵핑을 최상위 컴포넌트 뿐만 아니라 여러 개의 컴포넌트에 걸쳐서 단계별로 정의하는 라우팅 기법입니다. 예를 들어, 브">
@@ -154,7 +154,7 @@ ga('send', 'pageview');
     enable_page_level_ads: true
   });
 </script>
-                            <article id="post-react-router-nested-routing" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-react-router-nested" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -171,7 +171,7 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/react-router-nested-routing/" class="article-date">
+        <a href="/react-router-nested/" class="article-date">
             <time datetime="2019-08-10T14:54:00.000Z" itemprop="datePublished">2019-08-10</time>
         </a>
     </div>
@@ -217,14 +217,14 @@ ga('send', 'pageview');
 <p>유저 목록 페이지로 다시 돌아가기 위한 버튼에는 <code>history</code> prop의 <code>goBack()</code> 함수를 사용하였습니다.<br>참고로, <code>history</code> prop은 브라우저의 이력 정보와 관련 유틸리티 함수를 가지고 있습니다.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">import</span> &#123; users &#125; <span class="keyword">from</span> <span class="string">"./data.json"</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">UserDetail</span>(<span class="params">&#123; match, history &#125;</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">const</span> user = users.find(<span class="function"><span class="params">user</span> =&gt;</span> user.id === match.params.id);</span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h2&gt;User Detail&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">      &lt;dt&gt;id&lt;/</span>dt&gt;</span><br><span class="line">      &lt;dd&gt;&#123;user.id&#125;&lt;<span class="regexp">/dd&gt;</span></span><br><span class="line"><span class="regexp">      &lt;dt&gt;name&lt;/</span>dt&gt;</span><br><span class="line">      &lt;dd&gt;&#123;user.name&#125;&lt;<span class="regexp">/dd&gt;</span></span><br><span class="line"><span class="regexp">      &lt;button onClick=&#123;() =&gt; history.goBack()&#125;&gt;Back&lt;/</span>button&gt;</span><br><span class="line">    &lt;<span class="regexp">/&gt;</span></span><br><span class="line"><span class="regexp">  );</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">export default UserDetail;</span></span><br></pre></td></tr></table></figure>
 <h3 id="마치면서"><a href="#마치면서" class="headerlink" title="마치면서"></a>마치면서</h3><p>이상으로 React Router로 중첩 라우팅을 구현하는 방법에 대해서 자세히 알아보았습니다.<br>전체 코든는 아래에서 올려두었으니 참고 부탁드립니다.</p>
-<iframe src="https://stackblitz.com/edit/react-router-nested-routing?embed=1&file=Users/index.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"></iframe>
+<iframe src="https://stackblitz.com/edit/react-router-nested?embed=1&file=Users/index.js" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"></iframe>
         </div>
         <footer class="article-footer">
             
 
 
 
-    <a data-url="http://www.daleseo.com/react-router-nested-routing/" data-id="cjz7jnz3u000llor90ipzuty4" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://www.daleseo.com/react-router-nested/" data-id="cjz7ryx6r0000w8r9sck0vad1" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -355,7 +355,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
-                            <p class="item-title"><a href="/react-router-nested-routing/" class="title">React Router로 중첩 라우팅 하기</a></p>
+                            <p class="item-title"><a href="/react-router-nested/" class="title">React Router로 중첩 라우팅 하기</a></p>
                             <p class="item-date"><time datetime="2019-08-10T14:54:00.000Z" itemprop="datePublished">2019-08-10</time></p>
                         </div>
                     </li>
@@ -483,7 +483,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'daleseo';
     
     
-    var disqus_url = 'http://www.daleseo.com/react-router-nested-routing/';
+    var disqus_url = 'http://www.daleseo.com/react-router-nested/';
     
     (function() {
     var dsq = document.createElement('script');
