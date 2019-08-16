@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="DaleSeo">
 <meta property="og:description" content="GraphQL API를 호출할 때 사용하는 클라이언트 라이브러리인 Apollo Client에 대해서 알아보겠습니다.  기본적으로 HTTP 기반으로 동작하는 GraphQL API를 호출할 때 반드시 Apollo Client와 같은 전용 클라이언트 라이브러리가 필요한 것은 아닙니다.GraphQL API를 별다른 라이브러리 없이 최대한 간단하게 호출하는 방법에">
 <meta property="og:locale" content="ko">
-<meta property="og:updated_time" content="2019-08-16T03:41:19.450Z">
+<meta property="og:updated_time" content="2019-08-16T03:43:52.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Apollo Client로 GraphQL API 호출 방법">
 <meta name="twitter:description" content="GraphQL API를 호출할 때 사용하는 클라이언트 라이브러리인 Apollo Client에 대해서 알아보겠습니다.  기본적으로 HTTP 기반으로 동작하는 GraphQL API를 호출할 때 반드시 Apollo Client와 같은 전용 클라이언트 라이브러리가 필요한 것은 아닙니다.GraphQL API를 별다른 라이브러리 없이 최대한 간단하게 호출하는 방법에">
@@ -209,7 +209,7 @@ ga('send', 'pageview');
 <p>위에서 작성한 함수를 호출해보면 다음과 같이 대륙 관련 데이터가 출력되는 것을 볼 수 있습니다.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">printGraphQLData();</span><br></pre></td></tr></table></figure>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">loading: <span class="literal">false</span></span><br><span class="line">error: undefined</span><br><span class="line">data: &#123;continents: Array[7]&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="참고-async-await-키워드를-사용할-수-없는-경우"><a href="#참고-async-await-키워드를-사용할-수-없는-경우" class="headerlink" title="[참고] async/await 키워드를 사용할 수 없는 경우"></a>[참고] <code>async/await</code> 키워드를 사용할 수 없는 경우</h2><p><code>async/await</code> 키워드를 사용할 수 없는 경우에는 <code>then()</code> 메서드를 사용하면 됩니다.</p>
+<h2 id="참고-async-await-키워드를-사용할-수-없는-경우"><a href="#참고-async-await-키워드를-사용할-수-없는-경우" class="headerlink" title="[참고] async/await 키워드를 사용할 수 없는 경우"></a>[참고] <code>async/await</code> 키워드를 사용할 수 없는 경우</h2><p><code>async/await</code> 키워드를 사용할 수 없는 경우에는 리턴된 Promise 객체의 <code>then()</code> 메서드를 사용하면 됩니다.</p>
 <blockquote>
 <p>Promise에 대한 자세한 설명은 <a href="/js-async-promise">관련 포스트</a>를 참고 바랍니다.</p>
 </blockquote>
