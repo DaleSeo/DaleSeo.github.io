@@ -14,12 +14,12 @@
 <meta name="keywords" content="React,리액트,OAuth,OAuth2.0,Google API,구글 API">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OAuth 2.0으로 구글 API 호출하기">
-<meta property="og:url" content="http://www.daleseo.com/oauth-google-api/index.html">
+<meta property="og:url" content="http://www.daleseo.com/google-oauth/index.html">
 <meta property="og:site_name" content="DaleSeo">
 <meta property="og:description" content="검색과 지메일, 연락처, 캘린더, 드라이브, 포토 등 우리는 거의 매일 구글의 서비스를 이용하면서 살고 있습니다.구글은 이렇게 다양한 구글의 서비스에서 관리되고 있는 사용자의 데이터를 다른 서비스가 접근할 수 있도록 구글 API를 제공하고 있는데요.이번 포스트에서는 OAuth 2.0을 통해 사용자의 동의를 구하고 구글 API를 호출하는 방법에 대해서 알아보">
 <meta property="og:locale" content="ko">
 <meta property="og:image" content="https://developers.google.com/accounts/images/OAuth2Consent.png">
-<meta property="og:updated_time" content="2019-12-16T04:21:03.436Z">
+<meta property="og:updated_time" content="2019-12-17T01:27:45.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OAuth 2.0으로 구글 API 호출하기">
 <meta name="twitter:description" content="검색과 지메일, 연락처, 캘린더, 드라이브, 포토 등 우리는 거의 매일 구글의 서비스를 이용하면서 살고 있습니다.구글은 이렇게 다양한 구글의 서비스에서 관리되고 있는 사용자의 데이터를 다른 서비스가 접근할 수 있도록 구글 API를 제공하고 있는데요.이번 포스트에서는 OAuth 2.0을 통해 사용자의 동의를 구하고 구글 API를 호출하는 방법에 대해서 알아보">
@@ -157,7 +157,7 @@ ga('send', 'pageview');
     </h1>
 </div>
                         <div class="main-body-content">
-                            <article id="post-oauth-google-api" class="article article-single article-type-post" itemscope itemprop="blogPost">
+                            <article id="post-google-oauth" class="article article-single article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
             <header class="article-header">
@@ -174,7 +174,7 @@ ga('send', 'pageview');
             <div class="article-meta">
                 
     <div class="article-date">
-        <a href="/oauth-google-api/" class="article-date">
+        <a href="/google-oauth/" class="article-date">
             <time datetime="2019-12-15T04:53:00.000Z" itemprop="datePublished">2019-12-15</time>
         </a>
     </div>
@@ -206,7 +206,7 @@ ga('send', 'pageview');
 </ol>
 <h2 id="실습-프로젝트"><a href="#실습-프로젝트" class="headerlink" title="실습 프로젝트"></a>실습 프로젝트</h2><p>구글의 <a href="https://developers.google.com/people" target="_blank" rel="noopener">People API</a>를 사용하여 사용자의 연락처의 그룹 목록을 출력하는 간단한 React 애플리케이션을 작성해보겠습니다.<br>실습 프로젝트에서는 OAuth 2.0이 어떻게 동작하는지 이해하기 위해서 구글 인가 서버(Authorization Server)와 구글 People API 서버를 직접 호출해보도록 하겠습니다.<br>실제 프로젝트에서는 반드시 <a href="https://developers.google.com/identity/protocols/OAuth2#libraries" target="_blank" rel="noopener">구글에서 언어별로 제공하는 SDK</a>를 사용하는 것이 강하게 권장됩니다.</p>
 <h2 id="구글-클라이언트-등록"><a href="#구글-클라이언트-등록" class="headerlink" title="구글 클라이언트 등록"></a>구글 클라이언트 등록</h2><p>애플리케이션으로서 구글 API를 호출하려면 제일 먼저, 구글에 자신의 애플리케이션을 클라이언트로 등록하고 클라이언트 아이디(client id)를 발급 받아야 합니다.</p>
-<p><a href="https://console.developers.google.com/apis" target="_blank" rel="noopener">구글 API 콘솔</a>에서 새 프로젝트를 생성하고 <code>사용자 인증 정보 만들기</code>에서 <code>OAuth 클라이언트 ID</code>를 선택합니다.<br>그 다음, 애플리케이션 유형을 <code>웹 애플리케이션</code>으로 클라이언트 ID를 만들고, <code>승인된 리디렉션 URI</code>를 실습 애플리케이션의 URL(ex. <code>http://localhost:3000/</code>, <code>https://oauth-google-api.stackblitz.io/</code>)로 지정합니다.</p>
+<p><a href="https://console.developers.google.com/apis" target="_blank" rel="noopener">구글 API 콘솔</a>에서 새 프로젝트를 생성하고 <code>사용자 인증 정보 만들기</code>에서 <code>OAuth 클라이언트 ID</code>를 선택합니다.<br>그 다음, 애플리케이션 유형을 <code>웹 애플리케이션</code>으로 클라이언트 ID를 만들고, <code>승인된 리디렉션 URI</code>를 실습 애플리케이션의 URL(ex. <code>http://localhost:3000/</code>, `<a href="https://google-oauth.stackblitz.io/)로" target="_blank" rel="noopener">https://google-oauth.stackblitz.io/)로</a> 지정합니다.</p>
 <h2 id="인가-서버-URL"><a href="#인가-서버-URL" class="headerlink" title="인가 서버 URL"></a>인가 서버 URL</h2><p>OAuth 2.0의 시작은 사용자가 구글 인가 서버(Authorization Server)에 접속하여 로그인 후, 애플리케이션에서 요청하는 권한을 허용해주는 것입니다.<br>이를 위해서는 먼저 사용자가 접속해야하는 구글 인가 서버의 URL을 만들어야 하는데요.<br>여러 개의 쿼리 파라미터가 있지만, 필수 파라미터인 <code>client_id</code>, <code>redirect_uri</code>, <code>response_type</code>, <code>scope</code>은 반드시 지정해줘야 합니다.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> qs <span class="keyword">from</span> <span class="string">"qs"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> CLIENT_ID = <span class="string">"&lt;자신의 애플리케이션이 발급받은 클라이언트 아이디&gt;"</span>;</span><br><span class="line"><span class="keyword">const</span> AUTHORIZE_URI = <span class="string">"https://accounts.google.com/o/oauth2/v2/auth"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> queryStr = qs.stringify(&#123;</span><br><span class="line">  client_id: CLIENT_ID,</span><br><span class="line">  redirect_uri: <span class="built_in">window</span>.location.href,</span><br><span class="line">  response_type: <span class="string">"token"</span>,</span><br><span class="line">  scope: <span class="string">"https://www.googleapis.com/auth/contacts.readonly"</span></span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> loginUrl = AUTHORIZE_URI + <span class="string">"?"</span> + queryStr;</span><br></pre></td></tr></table></figure>
 <p><code>client_id</code>는 구글 클라이언트를 등록하면 누구나 바로 얻을 수 있고, <code>redirect_uri</code>는 구글 API 콘솔에서 직접 설정한 내 애플리케이션의 URL입니다.<br>실습 애플리케이션은 페이지가 하나 밖에 없는 SPA이기 때문에, 현재 URL을 <code>redirect_uri</code>로 설정하였습니다.<br><code>response_type</code>은 어떤 OAuth 방식을 사용하는지를 결정하는데, <code>token</code>로 설정하면 위에서 설명드린 implicit grant 방식이 적용됩니다.<br><code>scope</code>은 사용자의 어떤 데이터와 어떤 작업에 대한 권한을 요청하는지를 나타내는데, 여기서는 People API를 읽기 전용으로 호출이 필요하다고 설정하였습니다.</p>
@@ -219,9 +219,9 @@ ga('send', 'pageview');
 <h2 id="구글-API-호출"><a href="#구글-API-호출" class="headerlink" title="구글 API 호출"></a>구글 API 호출</h2><p>access token 값이 확보되면, 구글 API를 호출하는 것은 매우 간단한 일입니다.<br>People API를 호출할 때, access token 앞에 <code>Bearer</code> 문자열만 붙여서, <code>Authorization</code> 헤더로 넘기면 됩니다.</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React, &#123; useState, useEffect &#125; <span class="keyword">from</span> <span class="string">"react"</span>;</span><br><span class="line"><span class="keyword">const</span> PEOPLE_URI = <span class="string">"https://people.googleapis.com/v1/contactGroups"</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> () =&gt; &#123;</span><br><span class="line">  <span class="comment">// 생략</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> [contactGroups, setContactGroups] = useState([]);</span><br><span class="line"></span><br><span class="line">  useEffect(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">    fetch(PEOPLE_URI, &#123;</span><br><span class="line">      headers: &#123; <span class="attr">Authorization</span>: <span class="string">"Bearer "</span> + access_token &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">      .then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">      .then(<span class="function"><span class="params">data</span> =&gt;</span> setContactGroups(data.contactGroups));</span><br><span class="line">  &#125;, [access_token]);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> (</span><br><span class="line">    &lt;&gt;</span><br><span class="line">      &lt;h2&gt;Contact Groups&lt;<span class="regexp">/h2&gt;</span></span><br><span class="line"><span class="regexp">      &lt;ul&gt;</span></span><br><span class="line"><span class="regexp">        &#123;contactGroups &amp;&amp;</span></span><br><span class="line"><span class="regexp">          contactGroups.map((&#123; resourceName, name, memberCount &#125;) =&gt; (</span></span><br><span class="line"><span class="regexp">            &lt;li key=&#123;resourceName&#125;&gt;</span></span><br><span class="line"><span class="regexp">              &#123;name&#125; (&#123;memberCount&#125;)</span></span><br><span class="line"><span class="regexp">            &lt;/</span>li&gt;</span><br><span class="line">          ))&#125;</span><br><span class="line">      &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;/</span>&gt;</span><br><span class="line">  );</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="전체-코드"><a href="#전체-코드" class="headerlink" title="전체 코드"></a>전체 코드</h2><ul>
-<li>테스트: <a href="https://oauth-google-api.stackblitz.io" target="_blank" rel="noopener">https://oauth-google-api.stackblitz.io</a></li>
+<li>테스트: <a href="https://google-oauth.stackblitz.io" target="_blank" rel="noopener">https://google-oauth.stackblitz.io</a></li>
 </ul>
-<iframe src="https://stackblitz.com/edit/oauth-google-api?embed=1&file=App.js&view=editor" style="width:100%; height:600px; border:0; border-radius: 4px; overflow:hidden;"></iframe>
+<iframe src="https://stackblitz.com/edit/google-oauth?embed=1&file=App.js&view=editor" style="width:100%; height:600px; border:0; border-radius: 4px; overflow:hidden;"></iframe>
 
 <h2 id="마치면서"><a href="#마치면서" class="headerlink" title="마치면서"></a>마치면서</h2><p>이상으로 Google API를 직접 호출해보면서 OAuth 2.0이 어떻게 동작하는지 간단하게 살펴보았습니다.<br>OAuth 2.0이 실제로 구현을 해보면 의외로 까다로운 부분이 많아서 배울 부분이 많은 것 같습니다.<br>구글 API 호출을 위해 OAuth 2.0을 사용하는 방법과 implicit grant 방식에 대한 좀 더 자세한 내용은 아래 공식 레퍼런스를 참고바라겠습니다.</p>
 <ul>
@@ -235,7 +235,7 @@ ga('send', 'pageview');
 
 
 
-    <a data-url="http://www.daleseo.com/oauth-google-api/" data-id="ck47klgo6000c6yr9gyza1xzl" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
+    <a data-url="http://www.daleseo.com/google-oauth/" data-id="ck496u4560000jir904v6uyq2" class="article-share-link"><i class="fa fa-share"></i>공유하기</a>
 <script>
     (function ($) {
         $('body').on('click', function() {
@@ -366,7 +366,7 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/JavaScript/">JavaScript</a></p>
-                            <p class="item-title"><a href="/oauth-google-api/" class="title">OAuth 2.0으로 구글 API 호출하기</a></p>
+                            <p class="item-title"><a href="/google-oauth/" class="title">OAuth 2.0으로 구글 API 호출하기</a></p>
                             <p class="item-date"><time datetime="2019-12-15T04:53:00.000Z" itemprop="datePublished">2019-12-15</time></p>
                         </div>
                     </li>
@@ -494,7 +494,7 @@ ga('send', 'pageview');
     var disqus_shortname = 'daleseo';
     
     
-    var disqus_url = 'http://www.daleseo.com/oauth-google-api/';
+    var disqus_url = 'http://www.daleseo.com/google-oauth/';
     
     (function() {
     var dsq = document.createElement('script');
