@@ -463,11 +463,14 @@
 <span class="token keyword">function</span> <span class="token function">ManualCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> <span class="token punctuation">[</span>count<span class="token punctuation">,</span> setCount<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">useState</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>
 
+  <span class="token keyword">let</span> intervalId
+
   <span class="token keyword">const</span> <span class="token function-variable function">startCounter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> intervalId <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">count</span><span class="token punctuation">)</span> <span class="token operator">=></span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
+    <span class="token comment">// 💥 매번 새로운 값 할당</span>
+    intervalId <span class="token operator">=</span> <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token function">setCount</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">count</span><span class="token punctuation">)</span> <span class="token operator">=></span> count <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">const</span> <span class="token function-variable function">stopCounter</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-    <span class="token function">clearInterval</span><span class="token punctuation">(</span>intervalId<span class="token punctuation">)</span> <span class="token comment">// 💥</span>
+    <span class="token function">clearInterval</span><span class="token punctuation">(</span>intervalId<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
@@ -478,8 +481,9 @@
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span></span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>여기서 가장 큰 걸릿돌은 <code>startCounter()</code> 함수 안에서 선언된 <code>intervalId</code> 변수를 <code>stopCounter()</code> 함수에서 접근할 길이 없다는 것입니다.
-따라서 <code>intervalId</code> 변수를 <code>startCounter()</code> 함수 밖으로 빼내야 하는데 그러면 <code>count</code> 상태값이 바뀔 때 마다 컴포넌트 함수가 호출되어 <code>intervalId</code>도 매번 새로운 값으로 바뀔 것입니다.</p>
+<p>여기서 가장 큰 걸릿돌은 안에서 선언된 <code>intervalId</code> 변수를 <code>startCounter()</code> 함수와 <code>stopCounter()</code> 함수가 공유할 수 있도록 해줘야 한다는 것입니다.
+그럴려면 <code>intervalId</code> 변수를 두 함수 밖에서 선언해야하는데 그럴 경우, <code>count</code> 상태값이 바뀔 때 마다 컴포넌트 함수가 호출되어 <code>intervalId</code>도 매번 새로운 값으로 바뀔 것입니다.
+따라서, 브라우저 메모리에는 미처 정리되지 못한 <code>intervalId</code> 들이 1초에 하나식 쌓여나갈 것입니다. 💥</p>
 <p>클래스를 이용해서 React 컴포넌트를 작성할 시절에는, 이와 같은 문제를 해결하는 가장 명료한 방법은 인스턴스(instance) 변수에 이러한 값들을 저장하는 것이 었습니다.
 하지만 최근처럼 대부분 함수를 이용해서 React 컴포넌트를 작성할 때는 일반적으로 <code>useRef</code> 훅(hook) 함수를 사용해서 이러한 문제를 해결합니다.</p>
 <h2 id="useref-사용하기" style="position:relative;"><a href="#useref-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0" aria-label="useref 사용하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>useRef 사용하기</h2>
