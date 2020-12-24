@@ -492,7 +492,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
     <span class="token keyword">return</span> <span class="token function">roundTwoDecimals</span><span class="token punctuation">(</span>us <span class="token operator">/</span> exchangeRate<span class="token punctuation">)</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>구지 꼭 변수에 할당하고 내보내기를 하고 싶다면 다음과 같이 작성할 수도 있습니다. 하지만 불러내는 쪽에서 반드시 이 <code>obj</code>라는 변수 이름을 사용하도록 강제되지는 않습니다.</p>
+<p>굳이 꼭 변수에 할당하고 내보내기를 하고 싶다면 다음과 같이 작성할 수도 있습니다. 하지만 불러내는 쪽에서 반드시 이 <code>obj</code>라는 변수 이름을 사용하도록 강제되지는 않습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token function">canadianToUs</span><span class="token punctuation">(</span><span class="token parameter">canadian</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token function">roundTwoDecimals</span><span class="token punctuation">(</span>canadian <span class="token operator">*</span> exchangeRate<span class="token punctuation">)</span>

@@ -481,7 +481,7 @@
 왜냐하면 함수 호출 횟수와 저장 데이터의 크기가 주어진 숫자에 비례하기 때문입니다.</p>
 <h2 id="최적-알고리즘" style="position:relative;"><a href="#%EC%B5%9C%EC%A0%81-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98" aria-label="최적 알고리즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>최적 알고리즘</h2>
 <p>메모이제이션을 사용한 알고리즘의 성능도 나쁘지는 않지만 추가적인 공간 최적화를 해보도록 하겠습니다.
-피보나치 수열을 어떻게 계산되는지를 유심히 생각해보면 구지 모든 수에 대한 계산 결과를 저장해둘 필요가 없다는 사실을 깨닫게 됩니다.
+피보나치 수열을 어떻게 계산되는지를 유심히 생각해보면 굳이 모든 수에 대한 계산 결과를 저장해둘 필요가 없다는 사실을 깨닫게 됩니다.
 왜냐하면 실제로 매 단계 필요한 것은 단지 전 단계와 바로 전전 단계의 계산 결과이기 때문입니다.
 결국, 두 개의 변수만 있다면 계속해서 매 단계 저장된 값을 바뀌가면서 재사용할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">fib</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">:</span>
