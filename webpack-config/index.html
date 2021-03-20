@@ -524,10 +524,10 @@ Entrypoint main <span class="token operator">=</span> main.js
   entry<span class="token operator">:</span> <span class="token string">"./script.js"</span><span class="token punctuation">,</span>
   output<span class="token operator">:</span> <span class="token punctuation">{</span>
     path<span class="token operator">:</span> __dirname<span class="token punctuation">,</span>
-    filename<span class="token operator">:</span> <span class="token string">"biuld.js"</span><span class="token punctuation">,</span>
+    filename<span class="token operator">:</span> <span class="token string">"build.js"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>참고로 <code>__dirname</code>은 NodeJS에서 현재 프로젝트 디렉터리를 의미합니다. 이제 웹팩을 실행하면 프로젝트 최상위 디렉터리에 <code>biuld.js</code> 파일이 생성되었음을 확인할 수 있습니다.</p>
+<p>참고로 <code>__dirname</code>은 NodeJS에서 현재 프로젝트 디렉터리를 의미합니다. 이제 웹팩을 실행하면 프로젝트 최상위 디렉터리에 <code>build.js</code> 파일이 생성되었음을 확인할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ npx webpack
 npx: installed <span class="token number">1</span> <span class="token keyword">in</span> <span class="token number">4</span>.402s
 Path must be a string. Received undefined
@@ -537,8 +537,8 @@ Version: webpack <span class="token number">4.16</span>.3
 Time: 1230ms
 Built at: <span class="token number">2018</span>-07-14 <span class="token number">20</span>:19:39
     Asset        Size  Chunks             Chunk Names
-biuld.js  <span class="token number">1010</span> bytes       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
-Entrypoint main <span class="token operator">=</span> biuld.js
+build.js  <span class="token number">1010</span> bytes       <span class="token number">0</span>  <span class="token punctuation">[</span>emitted<span class="token punctuation">]</span>  main
+Entrypoint main <span class="token operator">=</span> build.js
 <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> ./script.js <span class="token number">94</span> bytes <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">}</span> <span class="token punctuation">[</span>built<span class="token punctuation">]</span></code></pre></div>
 <p>다음과 같이 <code>build.js</code>를 참조하는 <code>index.html</code> 파일을 작성 후 브라우져에서 열어보면 화면에 <code>Webpack Example</code>이 출력될 것입니다.</p>
 <ul>
@@ -550,7 +550,7 @@ Entrypoint main <span class="token operator">=</span> biuld.js
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>Webpack Example<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./biuld.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>./build.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span></code></pre></div>
 <h2 id="loader-설정" style="position:relative;"><a href="#loader-%EC%84%A4%EC%A0%95" aria-label="loader 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Loader 설정</h2>
