@@ -219,6 +219,7 @@ data-styled.g62[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
   html-tabindex-0</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+<p>이 기능은 복잡한 UI를 <code>&#x3C;div></code>나 <code>&#x3C;span></code>과 같이 <code>tab</code> 키로 포커스가 불가능한 요소를 기반으로 구현한 후 포커스가 오게 하고 싶을 때 주로 사용됩니다.</p>
 <h2 id="tabindex-1" style="position:relative;"><a href="#tabindex-1" aria-label="tabindex 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tabindex=“-1”</h2>
 <p>그럼 반대로 원래 상호작용하는 요소에 포커스가 잡히지 않게 하려면 어떻게 해야 할까요?
 해당 요소의 <code>tabindex</code> 속성을 <code>-1</code>로 설정해주면 상호작용이 가능한 요소라도 포커스가 이동하지 않게 됩니다.</p>
@@ -230,6 +231,8 @@ data-styled.g62[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
   html-tabindex-0</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+<p>참고로 어떤 요소에 <code>tabindex="-1"</code>을 설정하여 <code>tab</code> 키로 포커스가 불가능해졌더라도 자바스크립트의 <code>focus()</code> 함수를 이용하여 해당 요소에 포커스를 잡아줄 수 있습니다.
+일반적으로 라디오 버튼 그룹처럼 여러 개의 요소로 이루어진 UI에서 하나의 요소에만 포커스가 오도록 하기 위해서 사용되는데 이 부분에 대해서는 추후 기회가 되면 다뤄보도록 하겠습니다.</p>
 <h2 id="tabindex양수" style="position:relative;"><a href="#tabindex%EC%96%91%EC%88%98" aria-label="tabindex양수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tabindex=“양수”</h2>
 <p>기본적으로 키보드 포커스는 <code>tab</code> 키를 누르면 HTML 문서 상에서 요소들이 배치된 순서대로, <code>shift</code> 키와 <code>tab</code> 키를 함께 누르면 역순으로 이동하는데요.
 <code>tabindex</code> 속성에 1 이상의 양수값을 설정하여 요소들 간에 포커스가 잡히는 순서를 강제로 변경할 수도 있습니다.</p>
