@@ -415,7 +415,8 @@ faker<span class="token punctuation">.</span>locale <span class="token operator"
 (<code>@jackfranklin/test-data-bot</code> 라이브러리에 대한 좀 더 자세한 내용은 <a href="https://github.com/jackfranklin/test-data-bot">Github 저장소</a>를 참고 바랍니다.)</p>
 <h2 id="객체-팩토리-모듈화-하기" style="position:relative;"><a href="#%EA%B0%9D%EC%B2%B4-%ED%8C%A9%ED%86%A0%EB%A6%AC-%EB%AA%A8%EB%93%88%ED%99%94-%ED%95%98%EA%B8%B0" aria-label="객체 팩토리 모듈화 하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>객체 팩토리 모듈화 하기</h2>
 <p>마지막으로, 생성해야할 테스트 객체가 많은 프로젝트에서는 테스트 코드를 작성할 때 필요한 모든 팩토리 함수를 하나의 모듈에 모아놓고 관리하는 것을 추천드립니다.
-테스트 코드로 부터 객체 팩토리가 분리해놓으면 유지 보수가 더욱 쉬워지고, 팩토리 함수 간에 상호 호출도 용이해지기 때문입니다.</p>
+비단 이 테스트 파일 뿐만 아니라 다른 테스트 파일에서도 사용자 객체를 생성해야 될 확률이 매우 높기 때문입니다.
+테스트 코드로 부터 객체 팩토리가 분리해놓으면 유지 보수가 더욱 쉬워지고, 팩토리 함수 간에 상호 호출도 용이해지는 장점이 있습니다.</p>
 <div class="gatsby-code-title">builders.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> faker <span class="token keyword">from</span> <span class="token string">"faker"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> build<span class="token punctuation">,</span> fake <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@jackfranklin/test-data-bot"</span><span class="token punctuation">;</span>
