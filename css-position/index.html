@@ -194,7 +194,7 @@ data-styled.g62[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 <p><code>position</code> 속성을 <code>relative</code>로 설정하게 되면, 요소를 원래 위치에서 벗어나게 배치할 수 있게 됩니다.
 요소를 <strong>원래 위치</strong>를 기준으로 상대적(relative)으로 배치해준다고 생각하시면 이해가 쉬울 것 같은데요.
 요소의 위치 지정은 <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code> 속성을 이용해서, 요소가 원래 위치에 있을 때의 상하좌우로 부터 얼마나 떨어지게 할지를 지정할 수 있습니다.</p>
-<p>예를 들어, 두번째 <code>&#x3C;div></code> 요소의 <code>position</code> 속성을 <code>relative</code>로 변경하고, 요소의 원래 위치로 부터 위에서 <code>28px</code>, 왼쪽에서 <code>48px</code> 떨어지도록 <code>top</code>과 <code>left</code> 속성을 설정해보겠습니다.</p>
+<p>예를 들어, 두 번째 <code>&#x3C;div></code> 요소의 <code>position</code> 속성을 <code>relative</code>로 변경하고, 요소의 원래 위치로 부터 위에서 <code>28px</code>, 왼쪽에서 <code>48px</code> 떨어지도록 <code>top</code>과 <code>left</code> 속성을 설정해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">div:nth-of-type(2)</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">  <span class="token property">top</span><span class="token punctuation">:</span> 28px<span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">  <span class="token property">left</span><span class="token punctuation">:</span> 48px<span class="token punctuation">;</span></span>  <span class="token property">background</span><span class="token punctuation">:</span> cyan<span class="token punctuation">;</span>
   <span class="token property">opacity</span><span class="token punctuation">:</span> 0.8<span class="token punctuation">;</span>
@@ -217,13 +217,13 @@ DOM 트리를 따라 올라가다가 <code>position</code> 속성이 <code>stati
 <p>알고리즘이 상당히 복잡하게 느껴지죠? 하지만 실제로 <code>absolute</code> 속성값을 사용할 때 이러한 복잡한 특성을 활용하는 경우는 드뭅니다.
 대부분의 경우, 부모 요소(가장 가까운 상위 요소)를 기준으로 <code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code> 속성을 적용해야하기 때문입니다.
 따라서 어떤 요소의 <code>display</code> 속성을 <code>absolute</code>로 설정하면, 부모 요소의 <code>display</code> 속성을 <code>relative</code>로 지정해주는 것이 관례입니다.</p>
-<p>예제 CSS 코드에서 두번째 <code>&#x3C;div></code> 요소의 부모인 <code>&#x3C;main></code> 요소의 <code>position</code> 속성을 <code>relative</code>로 변경해보겠습니다.</p>
+<p>예제 CSS 코드에서 두 번째 <code>&#x3C;div></code> 요소의 부모인 <code>&#x3C;main></code> 요소의 <code>position</code> 속성을 <code>relative</code>로 변경해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">main</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span>  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
   <span class="token property">height</span><span class="token punctuation">:</span> 400px<span class="token punctuation">;</span>
   <span class="token property">background</span><span class="token punctuation">:</span> tomato<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>그 다음 두번째 <code>&#x3C;div></code> 요소의 <code>position</code> 속성을 <code>absolute</code>로 변경하고, 부모 요소를 기준으로 하단에서 <code>8px</code>, 우측에서 <code>16x</code> 떨어지도록 <code>bottom</code>과 <code>right</code> 속성을 설정해주겠습니다.</p>
+<p>그 다음 두 번째 <code>&#x3C;div></code> 요소의 <code>position</code> 속성을 <code>absolute</code>로 변경하고, 부모 요소를 기준으로 하단에서 <code>8px</code>, 우측에서 <code>16x</code> 떨어지도록 <code>bottom</code>과 <code>right</code> 속성을 설정해주겠습니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">div:nth-of-type(2)</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">position</span><span class="token punctuation">:</span> absolute<span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">  <span class="token property">bottom</span><span class="token punctuation">:</span> 8px<span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">  <span class="token property">right</span><span class="token punctuation">:</span> 16px<span class="token punctuation">;</span></span>  <span class="token property">background</span><span class="token punctuation">:</span> cyan<span class="token punctuation">;</span>
   <span class="token property">opacity</span><span class="token punctuation">:</span> 0.8<span class="token punctuation">;</span>
@@ -257,7 +257,7 @@ DOM 트리를 따라 올라가다가 <code>position</code> 속성이 <code>stati
 <p><code>position: fixed</code>인 요소도 <code>position: absolute</code>인 요소와 마찬가지로 HTML 문서 상에서 독립되어 앞뒤에 나온 요소와 더 이상 상호작용을 하지 않습니다.</p>
 <h2 id="position-sticky" style="position:relative;"><a href="#position-sticky" aria-label="position sticky permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>position: sticky</h2>
 <p><code>position</code> 속성의 <code>sticky</code> 값은 CSS에서 비교적 최근에 추가된 속성값인데요.
-특이하게도 요소가 배치될 때 스크롤링의 영향을 받게 됩니다.</p>
+특이하게도 요소가 스크롤링될 때 효과가 나타납니다.</p>
 <p>사실 말로 장황하게 설명하는 것 보다는 예제를 보는 게 이해가 빠를 수 있는데요.</p>
 <p>먼저, <code>&#x3C;div></code> 요소의 부모인 <code>&#x3C;main></code> 요소의 높이를 줄이고 스크롤링이 가능해지도록 <code>height</code>외 <code>overflow</code> 속성을 조정해줍니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">main</span> <span class="token punctuation">{</span>
@@ -269,8 +269,8 @@ DOM 트리를 따라 올라가다가 <code>position</code> 속성이 <code>stati
 <span class="gatsby-highlight-code-line">  <span class="token property">position</span><span class="token punctuation">:</span> sticky<span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">  <span class="token property">top</span><span class="token punctuation">:</span> 0<span class="token punctuation">;</span></span>  <span class="token property">background</span><span class="token punctuation">:</span> cyan<span class="token punctuation">;</span>
   <span class="token property">opacity</span><span class="token punctuation">:</span> 0.8<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>이제 스크롤바를 아래로 내려서 화면을 위로 올려보면, 두번째 요소가 화면 상단에 붙어서 움직이지 않는 것을 알 수 있습니다.
-반면에 <code>position: static</code>인 세번째 요소는 이에 구애받지 않고 화면에 따라 올라가는 것을 알 수 있습니다.</p>
+<p>이제 스크롤바를 아래로 내려서 화면을 위로 올려보면, 두 번째 요소가 화면 상단에 끈적하게(sticky) 붙어서 움직이지 않는 것을 알 수 있습니다.
+반면에 <code>position: static</code>인 세 번째 요소는 이에 구애받지 않고 화면에 따라 올라가는 것을 알 수 있습니다.</p>
 <iframe height="202" style="width: 100%;" scrolling="no" title="position-sticky" src="https://codepen.io/daleseo/embed/LYjYgrg?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/daleseo/pen/LYjYgrg">
   position-sticky</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
