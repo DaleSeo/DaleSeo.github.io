@@ -186,18 +186,18 @@ JSON 포멧의 데이터는 기계뿐만 아니라 사람이 읽기에도 크게
   <span class="token property">"hobbies"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"독서"</span><span class="token punctuation">,</span> <span class="token string">"도술"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"jobs"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>JSON으로는 객체, 배열, 숫자, 문자열, 불리언(boolean), 널(null)을 나타낼 수 있는데요.
+<p>JSON으로는 객체, 배열, 숫자, 문자열, 불리언(boolean), 널(null)과 같은 다양한 데이터를 나타낼 수 있는데요.
 JSON의 문법은 매우 간단하고 자바스크립트와 상당히 유사하기 때문에 본 포스팅에서 세세하게 다루지는 않겠습니다.
 자바스크립트 개발자라면 누구나 금방 친숙해질 수 있을테니 걱정하지 마시고 따라 오시면 됩니다.</p>
 <h2 id="json-내장-객체" style="position:relative;"><a href="#json-%EB%82%B4%EC%9E%A5-%EA%B0%9D%EC%B2%B4" aria-label="json 내장 객체 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON 내장 객체</h2>
 <p>자바스크립트에서는 JSON 포멧의 데이터를 간편하게 다룰 수 있도록 <code>JSON</code>이라는 객체를 내장하고 있습니다.
 이 객체는 자바스크립트를 코드를 브라우저에서 실행하든 Node.js 런타임에서 실행하든 상관없이 전역(global)에서 접근이 가능합니다.</p>
-<p><code>JSON</code> 내장 객체는 JavaScript 객체와 JON 문자열 간의 상호 변환을 수행해주는 두 개의 메서드를 제공합니다.</p>
+<p><code>JSON</code> 내장 객체는 JavaScript 객체와 JSON 문자열 간의 상호 변환을 수행해주는 두 개의 메서드를 제공합니다.</p>
 <h2 id="jsonparse-json-문자열을-javascript-객체로-변환" style="position:relative;"><a href="#jsonparse-json-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%84-javascript-%EA%B0%9D%EC%B2%B4%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="jsonparse json 문자열을 javascript 객체로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON.parse(): JSON 문자열을 JavaScript 객체로 변환</h2>
 <p>JSON 문자열을 JavaScript 객체로 변환할 때는 <code>JSON</code> 객체의 <code>parse()</code> 메서드를 사용합니다.
 <code>parse()</code> 메서드는 JSON 문자열을 인자로 받고 결과값으로 JavaScript 객체를 반환합니다.</p>
-<p>예를 들어, 위에서 예시로 들었던 JSON 문자열을 <code>jsonStr</code>이라는 변수에 저장하겠습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> jsonStr <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">{
+<p>예를 들어, 위에서 예시로 들었던 JSON 문자열을 <code>str</code>이라는 변수에 저장하겠습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">{
   "name": "홍길동",
   "age": 25,
   "married": false,
@@ -205,11 +205,11 @@ JSON의 문법은 매우 간단하고 자바스크립트와 상당히 유사하�
   "hobbies": ["독서", "도술"],
   "jobs": null
 }</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span></code></pre></div>
-<p>그 다음, <code>JSON.parse()</code> 메서드에 <code>jsonStr</code>을 인자로 넘겨 호출해보겠습니다.
-결과값을 <code>jsObj</code>라는 변수에 저장하겠습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> jsObj <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>jsonStr<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p><code>jsObj</code>에 저장된 값을 콘솔에 출력해보면 JSON 문자열 형태의 데이터가 JavaScript 객체의 형태로 변환되어 출력되는 것을 확인할 수 있습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsObj<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>그 다음, <code>JSON.parse()</code> 메서드에 <code>str</code>을 인자로 넘겨 호출해보겠습니다.
+결과값을 <code>obj</code>라는 변수에 저장하겠습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><code>obj</code>에 저장된 값을 콘솔에 출력해보면 JSON 문자열 형태의 데이터가 JavaScript 객체의 형태로 변환되어 출력되는 것을 확인할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">{</span>
     name: <span class="token string">"홍길동"</span>,
     age: <span class="token number">25</span>,
@@ -228,29 +228,29 @@ JSON의 문법은 매우 간단하고 자바스크립트와 상당히 유사하�
 JSON 문자열에서는 키(key)를 나타낼 때 반드시 쌍따옴표로 감싸줘야 하는 반면에, JavaScript 객체에서는 쌍따옴표를 꼭 사용할 필요는 없습니다.
 (특수 문자나 영어 외의 언어와 같이 키로 허용되지 않는 문자를 키로 사용해야하는 경우에는 쌍따옴표를 사용해야 합니다.)</p>
 <p>이렇게 JavaScript 객체로 변환된 데이터는 <code>.</code>나 <code>[]</code> 기호를 사용하여 각 속성에 접근할 수 있습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">></span> jsObj<span class="token punctuation">.</span>name
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">></span> obj<span class="token punctuation">.</span>name
 <span class="token operator">&lt;</span> <span class="token string">'홍길동'</span>
-<span class="token operator">></span> jsObj<span class="token punctuation">.</span>age
+<span class="token operator">></span> obj<span class="token punctuation">.</span>age
 <span class="token operator">&lt;</span> <span class="token number">25</span>
-<span class="token operator">></span> jsObj<span class="token punctuation">.</span>married
+<span class="token operator">></span> obj<span class="token punctuation">.</span>married
 <span class="token operator">&lt;</span> <span class="token boolean">false</span>
-<span class="token operator">></span> jsObj<span class="token punctuation">.</span>family
+<span class="token operator">></span> obj<span class="token punctuation">.</span>family
 <span class="token operator">&lt;</span> <span class="token punctuation">{</span>father<span class="token operator">:</span> <span class="token string">'홍판서'</span><span class="token punctuation">,</span> mother<span class="token operator">:</span> <span class="token string">'춘섬'</span><span class="token punctuation">}</span>
-<span class="token operator">></span> jsObj<span class="token punctuation">.</span>family<span class="token punctuation">.</span>mother
+<span class="token operator">></span> obj<span class="token punctuation">.</span>family<span class="token punctuation">.</span>mother
 <span class="token operator">&lt;</span> <span class="token string">'춘섬'</span>
-<span class="token operator">></span> jsObj<span class="token punctuation">.</span>hobbies
+<span class="token operator">></span> obj<span class="token punctuation">.</span>hobbies
 <span class="token operator">&lt;</span> <span class="token punctuation">[</span><span class="token string">'독서'</span><span class="token punctuation">,</span> <span class="token string">'도술'</span><span class="token punctuation">]</span>
-<span class="token operator">></span> jsObj<span class="token punctuation">.</span>hobbies<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+<span class="token operator">></span> obj<span class="token punctuation">.</span>hobbies<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
 <span class="token operator">&lt;</span> <span class="token string">'도술'</span>
-<span class="token operator">></span> jsObj<span class="token punctuation">.</span>jobs
+<span class="token operator">></span> obj<span class="token punctuation">.</span>jobs
 <span class="token operator">&lt;</span> <span class="token keyword">null</span></code></pre></div>
 <p>이렇게 외부에서 문자열의 형태로 주어진 데이터를 해당 언어에서 다루기 용이하도록 내장 데이터 타입으로 변환하는 과정을 CS(Computer Science)에서는 소위 역직렬화(deserialization)이라고 부릅니다.
 대표적인 사례로 클라이언트에서 JSON 포멧으로 데이터를 보내면, 서버에서 우선 JavaScript 객체로 변환한 후에 데이터를 처리하게 되는 것을 들 수 있습니다.</p>
 <h2 id="jsonstringify-javascript-객체를-json-문자열로-변환" style="position:relative;"><a href="#jsonstringify-javascript-%EA%B0%9D%EC%B2%B4%EB%A5%BC-json-%EB%AC%B8%EC%9E%90%EC%97%B4%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="jsonstringify javascript 객체를 json 문자열로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON.stringify(): JavaScript 객체를 JSON 문자열로 변환</h2>
 <p>역으로 JavaScript 객체를 JSON 문자열로 변환할 때는 <code>JSON</code> 객체의 <code>stringify()</code> 메서드를 사용합니다.
 <code>stringify()</code> 메서드는 JavaScript 객체를 인자로 받고 JSON 문자열을 반환합니다.</p>
-<p>예를 들어, 위에서 <code>parse()</code> 메서드의 호출 결과로 얻은 JavaScript 객체를 <code>jsObj</code>이라는 변수에 저장하겠습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> jsObj <span class="token operator">=</span> <span class="token punctuation">{</span>
+<p>예를 들어, 위에서 <code>parse()</code> 메서드의 호출 결과로 얻은 JavaScript 객체를 <code>obj</code>이라는 변수에 저장하겠습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> obj <span class="token operator">=</span> <span class="token punctuation">{</span>
   name<span class="token operator">:</span> <span class="token string">"홍길동"</span><span class="token punctuation">,</span>
   age<span class="token operator">:</span> <span class="token number">25</span><span class="token punctuation">,</span>
   married<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
@@ -261,17 +261,17 @@ JSON 문자열에서는 키(key)를 나타낼 때 반드시 쌍따옴표로 감�
   hobbies<span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"독서"</span><span class="token punctuation">,</span> <span class="token string">"도술"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   jobs<span class="token operator">:</span> <span class="token keyword">null</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p>그 다음, <code>JSON.stringify()</code> 메서드에 <code>jsObj</code>를 인자로 넘겨 호출해보겠습니다.
-결과값을 <code>jsonStr</code>라는 변수에 저장하겠습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> jsonStr <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>jsObj<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p><code>jsonStr</code>에 저장된 값을 콘솔에 출력해보면 JavaScript 객체의 형태였던 데이터가 JSON 형식의 문자열로 변환되어 출력되는 것을 확인할 수 있습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsonStr<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>그 다음, <code>JSON.stringify()</code> 메서드에 <code>obj</code>를 인자로 넘겨 호출해보겠습니다.
+결과값을 <code>str</code>라는 변수에 저장하겠습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> str <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p><code>str</code>에 저장된 값을 콘솔에 출력해보면 JavaScript 객체의 형태였던 데이터가 JSON 형식의 문자열로 변환되어 출력되는 것을 확인할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token string">'{"name":"홍길동","age":25,"married":false,"family":{"father":"홍판서","mother":"춘섬"},"hobbies":["독서","도술"],"jobs":null}'</span></code></pre></div>
 <p>여기서 약간의 팁을 드리자면 변환해야하는 JavaScript 객체가 많은 양의 데이터를 담고 있는 경우에는 이렇게 한 줄의 문자열로 변환되면 알아보기 힘들어지는데요.
-이럴 때는 <code>stringify()</code> 메서드의 3번째 인자로 들여쓰기할 공백을 지정해줄 수 있습니다.</p>
+이럴 때는 <code>stringify()</code> 메서드의 3번째 인자로 들여쓰기할 공백의 크기를 지정해줄 수 있습니다.</p>
 <p>예를 들어, 변환된 JSON 문자열이 2개의 공백으로 들여쓰기가 되도록 해보겠습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> jsonStr2 <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>jsObj<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>jsonStr2<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> str2 <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>obj<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>어떤가요? 데이터를 한 눈에 알아보기가 훨씬 쉽죠? 😁</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">{</span>
   <span class="token string">"name"</span><span class="token builtin class-name">:</span> <span class="token string">"홍길동"</span>,
@@ -288,7 +288,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   <span class="token string">"jobs"</span><span class="token builtin class-name">:</span> null
 <span class="token punctuation">}</span></code></pre></div>
 <p>당연한 얘기이겠지만 이렇게 JSON 형식의 문자열로 변환된 데이터는 더 이상 <code>.</code>나 <code>[]</code> 기호를 사용하여 각 속성에 접근할 수 없게 됩니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">></span> jsonStr<span class="token punctuation">.</span>name
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">></span> str<span class="token punctuation">.</span>name
 <span class="token operator">&lt;</span> <span class="token keyword">undefined</span></code></pre></div>
 <p>이렇게 특정 언어의 내장 타입의 데이터를 외부에 전송하기 용이하도록 문자열로 변환하는 과정을 CS(Computer Science)에서는 소위 직렬화(serialization)이라고 부릅니다.
 대표적인 사례로 서버에서 클라이언트의 요청을 처리 후에 JavaScript 객체 형태의 데이터를 JSON 형태의 문자열로 변환하여 응답하는 것을 들 수 있습니다.</p>
