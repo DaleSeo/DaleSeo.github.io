@@ -176,7 +176,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 <p>먼저 OAuth 2.0이 생소하신 분을 위해서, 과연 OAuth 2.0가 무엇인지 간단하게 개념부터 짚고 가겠습니다.
 OAuth 2.0은 한마디로, 사용자가 어떤 서비스에 저장된 자신의 데이터를 다른 서비스에서 접근할 수 있도록 허락해주는 프로토콜입니다.
 구글 뿐만 페이스북, 트위터 등 많은 글로벌 서비스들이 OAuth 1.0에 이어 OAuth 2.0을 채택하면서 OAuth는 인가 분야에서 거의 표준이 되어 가고 있습니다.</p>
-<p><img src="https://developers.google.com/accounts/images/OAuth2Consent.png" alt="구글의 OAuth 2.0 권한 허용 화면"></p>
+<p><img src="https://res.cloudinary.com/daleseo/image/upload/v1647733607/google-oauth-consent.png" alt="구글의 OAuth 2.0 권한 허용 화면"></p>
 <p>예를 들어, 구글에 저장되어 있는 사용자의 연락처와 연동이되는 애플리케이션을 만든다고 가정을 해봅시다.
 애플리케이션 개발자로서 구글에 저장되어 있는 사용자의 연락처 데이터를 어떻게 읽어올 수 있을까요?</p>
 <p>가장 원시적인 방법은 사용자에게 직접 구글에 들어가서 자신의 연락처를 내려 받아 우리 애플리케이션에 올리라고 하는 것입니다.
@@ -192,7 +192,7 @@ OAuth 2.0은 한마디로, 사용자가 어떤 서비스에 저장된 자신의 
 <p>OAuth 2.0 프로토콜은 애플리케이션의 유형에 따라 여러가지 인가 방식을 제공하는데요.
 React나 Vue, Angular 등과 같은 자바스크립트 라이브러리로 개발되는 SPA(single oage application)에서는 implicit grant 방식이 많이 사용됩니다.
 implicit grant 방식이 다른 OAuth 2.0 방식에 비해서 간단하게 때문에, 본 포스팅에서는 implicit grant 방식으로 실습을 진행해보려고 합니다.</p>
-<p><img src="https://developers.google.com/accounts/images/tokenflow.png" alt="Implict Grant 인가 흐름"></p>
+<p><img src="https://res.cloudinary.com/daleseo/image/upload/v1647733607/google-oauth-implicit.png" alt="Implict Grant 인가 흐름"></p>
 <p>OAuth 2.0의 implicit grant 방식 인가는 크게 다음과 같은 흐름으로 진행됩니다.</p>
 <ol>
 <li>사용자는 구글에 로그인 후에 애플리케이션에서 요청하는 권한을 확인하고, 해당 권한을 허용해줍니다.</li>
