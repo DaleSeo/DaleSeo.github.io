@@ -181,16 +181,19 @@ datetime<span class="token punctuation">.</span>timedelta<span class="token punc
 <p>파이썬의 날짜/시간 계산은 다른 언어에 비해서 매우 간결하고 직관적인데요.
 바로 이 <code>timedelta</code>를 통해 산술/대소 연산자를 사용할 수 있기 때문입니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">from</span> datetime <span class="token keyword">import</span> date<span class="token punctuation">,</span> timedelta
-<span class="token operator">>></span><span class="token operator">></span> week <span class="token operator">=</span> timedelta<span class="token punctuation">(</span>weeks<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> week
+<span class="token operator">>></span><span class="token operator">></span> today <span class="token operator">=</span> date<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> today
+datetime<span class="token punctuation">.</span>date<span class="token punctuation">(</span><span class="token number">2020</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> one_week <span class="token operator">=</span> timedelta<span class="token punctuation">(</span>weeks<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+<span class="token operator">>></span><span class="token operator">></span> one_week
 datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span>days<span class="token operator">=</span><span class="token number">7</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> next_week <span class="token operator">=</span> date<span class="token punctuation">.</span>today<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> week
+<span class="token operator">>></span><span class="token operator">></span> next_week <span class="token operator">=</span> today <span class="token operator">+</span> one_week
 <span class="token operator">>></span><span class="token operator">></span> next_week
 datetime<span class="token punctuation">.</span>date<span class="token punctuation">(</span><span class="token number">2020</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> two_weeks <span class="token operator">=</span> week <span class="token operator">*</span> <span class="token number">2</span>
+<span class="token operator">>></span><span class="token operator">></span> two_weeks <span class="token operator">=</span> one_week <span class="token operator">*</span> <span class="token number">2</span>
 <span class="token operator">>></span><span class="token operator">></span> two_weeks
 datetime<span class="token punctuation">.</span>timedelta<span class="token punctuation">(</span>days<span class="token operator">=</span><span class="token number">14</span><span class="token punctuation">)</span>
-<span class="token operator">>></span><span class="token operator">></span> week <span class="token operator">&lt;</span> two_weeks
+<span class="token operator">>></span><span class="token operator">></span> one_week <span class="token operator">&lt;</span> two_weeks
 <span class="token boolean">True</span>
 <span class="token operator">>></span><span class="token operator">></span> two_weeks <span class="token operator">==</span> timedelta<span class="token punctuation">(</span>weeks<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
 <span class="token boolean">True</span>
