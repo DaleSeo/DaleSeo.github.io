@@ -210,7 +210,8 @@ We suggest that you begin by typing:
 Happy hacking<span class="token operator">!</span></code></pre></div>
 <p>본인 GitHub에 계정에 새로운 코드 저장소(repository)를 하나를 만들고 위에서 생성한 React 프로젝트를 올립니다.
 (저는 <code>github-actions-cache</code>이라는 이름으로 실습 코드 저장소를 만들겠습니다.)</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> remote <span class="token function">add</span> origin https://github.com/DaleSchool/github-actions-cache.git
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">cd</span> github-actions-cache
+$ <span class="token function">git</span> remote <span class="token function">add</span> origin https://github.com/DaleSchool/github-actions-cache.git
 $ <span class="token function">git</span> branch -M main
 $ <span class="token function">git</span> push -u origin main
 Enumerating objects: <span class="token number">22</span>, done.
@@ -225,7 +226,7 @@ Branch <span class="token string">'main'</span> <span class="token builtin class
 <h2 id="github-actions-워크플로우-생성" style="position:relative;"><a href="#github-actions-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0-%EC%83%9D%EC%84%B1" aria-label="github actions 워크플로우 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GitHub Actions 워크플로우 생성</h2>
 <p>프로젝트에 <code>.github/workflows/</code>라는 폴더를 만든 후, 그 안에 <code>cache.yml</code>이라는 이름의 YAML 파일을 하나 생성합니다.</p>
 <p>코드 저장소에서 <code>push</code> 이벤트가 발생되면 워크플로우가 실행되도록 설정하고 <code>cache</code>라는 간단한 작업(job)을 추가합니다.
-<code>cache</code> 작업은 총 2단계로 이뤄지는데 첫번째 단계에서는 체크아웃 액션을 이용하여 코드 저장소에 올려둔 프로젝트의 코드를 CI 서버로 내려받고 두번째 단계에서는 <code>npm</code>을 이용하여 <code>package.json</code> 파일에 명시되어 있는 패키지들을 설치합니다.</p>
+<code>cache</code> 작업은 총 2단계로 이뤄지는데 첫번째 단계에서는 체크아웃 액션을 이용하여 코드 저장소에 올려둔 프로젝트의 코드를 CI 서버로 내려받고 두번째 단계에서는 <code>npm</code>을 이용하여 <code>package.json</code> 파일에 명시되어 있는 패키지들을 CI 서버에 설치합니다.</p>
 <blockquote>
 <p>GitHub에서 제공하는 체크아웃(Checkout) 액션에 대해서는 <a href="/github-actions-checkout/">별도의 포스팅</a>에서 자세히 다루었으니 참고 바랍니다.</p>
 </blockquote>
