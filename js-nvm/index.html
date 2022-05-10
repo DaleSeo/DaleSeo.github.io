@@ -218,7 +218,8 @@ Downloading https://nodejs.org/dist/v17.0.1/node-v17.0.1-darwin-arm64.tar.xz<spa
 <span class="token comment">######################################################################################################################### 100.0%</span>
 Computing checksum with shasum -a <span class="token number">256</span>
 Checksums matched<span class="token operator">!</span>
-Now using node v17.0.1 <span class="token punctuation">(</span>npm v8.1.0<span class="token punctuation">)</span></code></pre></div>
+Now using node v17.0.1 <span class="token punctuation">(</span>npm v8.1.0<span class="token punctuation">)</span>
+Creating default alias: default -<span class="token operator">></span> node <span class="token punctuation">(</span>-<span class="token operator">></span> v17.0.1<span class="token punctuation">)</span></code></pre></div>
 <p>설치가 끝나면 <code>node -v</code> 명령어를 실행하여 정확한 버전의 Node.js가 설치되었는지 확인해볼 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ node -v
 v17.0.1</code></pre></div>
@@ -291,6 +292,24 @@ lts/gallium -<span class="token operator">></span> v16.13.0</code></pre></div>
 <p><code>nvm uninstall</code> 명령어 뒤에 삭제하고 싶은 버전을 붙여서 실행하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ nvm uninstall <span class="token number">16.6</span>.2
 Uninstalled node v16.6.2</code></pre></div>
+<h2 id="기본-nodejs-버전-변경" style="position:relative;"><a href="#%EA%B8%B0%EB%B3%B8-nodejs-%EB%B2%84%EC%A0%84-%EB%B3%80%EA%B2%BD" aria-label="기본 nodejs 버전 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기본 Node.js 버전 변경</h2>
+<p>새로운 터미널을 열 때 설치된 여러 버전의 Node.js 중에서 어떤 버전이 기본으로 사용될까요?
+nvm은 <code>default</code>라는 별칭(alias)을 통해서 기본 Node.js 버전을 관리하는데요.</p>
+<p><code>nvm alias</code> 명령어에 별칭 이름을 넘기면 해당 별칭이 가리키고 있는 실제 버전을 확인할 수 있는데요.
+그럼 <code>default</code> 별칭에 어떤 Node.js 버전이 연결되어 있는지 확인해볼까요?</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ nvm <span class="token builtin class-name">alias</span> default
+default -<span class="token operator">></span> node <span class="token punctuation">(</span>-<span class="token operator">></span> v17.0.1<span class="token punctuation">)</span></code></pre></div>
+<p><code>default</code> 별칭이 <code>node</code> 별칭을 가리키고 있고, 이 <code>node</code> 별칭은 <code>17.0.1</code> 버전을 가리키고 있네요.
+참고로 여기서 <code>node</code>는 Node.js의 최신 버전을 가리키는 별칭입니다.
+비슷하게 <code>lts/*</code>라는 별칭은 Node.js의 LTS 버전을 가리키게 됩니다.</p>
+<p>이제 기본 Node.js 버전을 현재 LTS 버진인 <code>16.13.0</code> 버전으로 변경해볼께요.
+<code>nvm alias</code> 명령어를 실행할 때 별칭 이름에 실제 버전을 명시헤주면 됩니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ nvm <span class="token builtin class-name">alias</span> default <span class="token number">16.13</span>.0
+default -<span class="token operator">></span> <span class="token number">16.13</span>.0 <span class="token punctuation">(</span>-<span class="token operator">></span> v16.13.0<span class="token punctuation">)</span></code></pre></div>
+<p>이렇게 별칭에 실제 버전을 연결해줄 수도 있지만 또 다른 별칭을 연결해줄 수도 있습니다.
+예를 들어, <code>default</code> 별칭이 <code>lts/*</code> 별칭을 가리키게 해보겠습니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ default -<span class="token operator">></span> lts/* <span class="token punctuation">(</span>-<span class="token operator">></span> v16.13.0<span class="token punctuation">)</span></code></pre></div>
+<p>이렇게 기본 Node.js 버전을 설정해놓으면 추후 LTS 버전을 업그레이드 할 때 마다 자동으로 기본 Node.js 버전이 변경되는 효과가 나겠죠?</p>
 <h2 id="프로젝트별-nodejs-버전-전환" style="position:relative;"><a href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%B3%84-nodejs-%EB%B2%84%EC%A0%84-%EC%A0%84%ED%99%98" aria-label="프로젝트별 nodejs 버전 전환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프로젝트별 Node.js 버전 전환</h2>
 <p>여러 자바스크립트 프로젝트를 들락날락하면서 개발을 하다보면 매번 Node.js 버전을 바뀌주는 것이 귀찮게 느껴질 수 있습니다.</p>
 <p>이럴 때는 프로젝트의 최상위 디렉토리에 <code>.nvmrc</code> 파일을 생성하고 그 안에 프로젝트에서 사용할 Node.js 버전을 명시해줍니다.</p>
