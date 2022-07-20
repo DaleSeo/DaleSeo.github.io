@@ -183,7 +183,7 @@ GitHub Actions는 일반적으로 CI(Continuous Integration, 지속 통합) 또�
 <p>GitHub Actions에 대한 소개와 핵심 개념은 별도로 정리해 두었으니 <a href="/github-actions-basics/">관련 포스팅</a>를 참고 바랍니다.</p>
 </blockquote>
 <h2 id="github의-캐시-액션" style="position:relative;"><a href="#github%EC%9D%98-%EC%BA%90%EC%8B%9C-%EC%95%A1%EC%85%98" aria-label="github의 캐시 액션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GitHub의 캐시 액션</h2>
-<p>GitHub가 제공하는 캐시(Cache) 액션을 사용하면 GitHub Actions에서 워크플로우가 실행될 때 팔요한 파일 중에서 거의 잘 바뀌지 않는 파일들을 GitHub의 캐시에 올려놓고 CI 서버로 내려받을 수 있습니다.
+<p>GitHub가 제공하는 캐시(Cache) 액션을 사용하면 GitHub Actions에서 워크플로우가 실행될 때 필요한 파일 중에서 거의 잘 바뀌지 않는 파일들을 GitHub의 캐시에 올려놓고 CI 서버로 내려받을 수 있습니다.
 설치해야하는 패키지가 많은 프로젝트의 경우, GitHub의 캐시 액션을 잘 활용하면 워크플로우의 성능을 최적화하는데 상당한 도움이 됩니다.
 프로젝트에서 의존하고 있는 외부 패키지를 매번 네트워크를 통해 원격 패키지 저장소로 부터 내려받는 대신에 GitHub의 캐시에 저장해두고 활용할 수 있기 때문이죠.</p>
 <p>GitHub의 캐시 액션은 주어진 키에 해당하는 데이터가 GitHub의 캐시에 존재하는 경우 해당 파일을 CI 서버의 특정 경로에 내려받아 줍니다.
