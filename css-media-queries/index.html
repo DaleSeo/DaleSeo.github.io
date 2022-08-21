@@ -195,7 +195,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 </iframe>
 <h2 id="넓은-화면-스타일링" style="position:relative;"><a href="#%EB%84%93%EC%9D%80-%ED%99%94%EB%A9%B4-%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81" aria-label="넓은 화면 스타일링 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>넓은 화면 스타일링</h2>
 <p>반대로 TV처럼 넓은 화면에서만 특정 스타일을 적용하고 싶을 때는 화면의 최소 너비를 조건으로 하여 미디어 쿼리를 사용할 수 있습니다.</p>
-<p>예를 들어, <code>800px</code> 이상의 넓은 화면에서 특정 엘러민트의 글자색을 토마토 색으로 바꾸고 싶다면,</p>
+<p>예를 들어, <code>800px</code> 이상의 넓은 화면에서 특정 HTML 요소의 글자색을 토마토 색으로 바꾸고 싶다면,</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>large-tomato<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>넓은 화면에서는 글자색이 토마토 색이 됩니다.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span></code></pre></div>
 <p>다음과 같이 <code>min-width</code> 속성을 이용하여 미디어 쿼리를 작성해주면 됩니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token atrule"><span class="token rule">@media</span> <span class="token punctuation">(</span><span class="token property">min-width</span><span class="token punctuation">:</span> 800px<span class="token punctuation">)</span></span> <span class="token punctuation">{</span>
@@ -227,6 +227,8 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
     <span class="token property">display</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
+<p>뷰포트(viewport)의 폭이 <code>600px</code> 이하로 내려가면 <code>desktop</code> 클래스가 적용된 부분이 화면에서 사라지고,
+뷰포트(viewport)의 폭이 <code>1000px</code> 이하로 올라가면 <code>mobile</code> 클래스가 적용된 부분이 화면에서 사라지는 것을 볼 수 있으실 겁니다.</p>
 <iframe height="265" style="width: 100%;" scrolling="no" title="css-media-queries-3" src="https://codepen.io/daleseo/embed/vYyPdEw?height=265&theme-id=dark&default-tab=css,result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href='https://codepen.io/daleseo/pen/vYyPdEw'>css-media-queries-3</a> by Dale Seo
   (<a href='https://codepen.io/daleseo'>@daleseo</a>) on <a href='https://codepen.io'>CodePen</a>.
