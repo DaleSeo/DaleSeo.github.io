@@ -260,6 +260,9 @@ React 외에도 다른 자바스크립트 라이브러리가 혼용되서 사용
    ></iframe>
 <h2 id="usestate-후크" style="position:relative;"><a href="#usestate-%ED%9B%84%ED%81%AC" aria-label="usestate 후크 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>useState() 후크</h2>
 <p>DOM API를 사용하지 않고 좀 더 React 답게 <code>useState()</code> 후크(hook) 함수를 사용해서도 Uncontrolled Components을 구현할 수 있는데요.</p>
+<blockquote>
+<p>useState 후크 함수에 대한 좀 더 자세한 내용은 <a href="/react-hooks-use-state/">관련 포스트</a>를 참고 바랍니다.</p>
+</blockquote>
 <p>우선 <code>useState()</code> 후크(hook) 함수를 호출하여 양식 관련 HTML 요소를 저장하기 위한 상태 변수와 상태를 변경하기 위한 함수를 생성합니다.
 그 다음, 양식 내부에 있는 모든 HTML 요소에 <code>ref</code> prop을 통해 콜백 함수를 설정해주는데요.
 이 콜백 함수의 인자로 넘어온 각 HTML 요소를 상태 변경 함수를 호출하여 각 상태 변수에 저장해주는 것입니다.</p>
@@ -376,7 +379,7 @@ React 외에도 다른 자바스크립트 라이브러리가 혼용되서 사용
 <h2 id="useref-후크" style="position:relative;"><a href="#useref-%ED%9B%84%ED%81%AC" aria-label="useref 후크 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>useRef() 후크</h2>
 <p>마지막으로 살펴볼 방법은 <code>useState()</code> 대신에 HTML 요소를 저장하는데 좀 더 최적화 된 <code>useRef()</code> 후크(hook) 함수를 사용하는 것인데요.</p>
 <blockquote>
-<p>useRef 후크 함수에 대한 좀 더 자세한 내용은 <a href="http://localhost:8000/react-hooks-use-ref/">관련 포스트</a>를 참고 바랍니다.</p>
+<p>useRef 후크 함수에 대한 좀 더 자세한 내용은 <a href="/react-hooks-use-ref/">관련 포스트</a>를 참고 바랍니다.</p>
 </blockquote>
 <p><code>useRef()</code> 후크를 사용하면 굳이 상태 저장 변수와 상태 변경 함수가 짝으로 필요가 없으면 간편하게 하나의 변수만 <code>ref</code> prop에 넘겨줄 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> useRef <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
