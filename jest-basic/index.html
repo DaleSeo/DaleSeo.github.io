@@ -174,9 +174,9 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 <h2 id="jest-all-in-one-테스팅-라이브러리" style="position:relative;"><a href="#jest-all-in-one-%ED%85%8C%EC%8A%A4%ED%8C%85-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC" aria-label="jest all in one 테스팅 라이브러리 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Jest: All-in-one 테스팅 라이브러리</h2>
 <p>페이스북에서는 Jest를 단순한 테스팅 라이브러리가 아닌 “테스팅 프레임워크”라고 부르는 만큼 기존 자바스크립트 테스팅 라이브러리와는 차별점이 있습니다.
 Jest 이전에는 자바스크립트 코드를 테스트하라면 여러가지 테스팅 라이브러리를 조합해서 사용하곤 했었습니다.
-예를 들어, Mocha나 Jasmin을 Test Runner로 사용하고, Chai나 Expect와 같은 Test Mathcher를 사용했으며, 또한 Sinon과 Testdouble 같은 Test Mock 라이브러리도 필요했었습니다.
+예를 들어, Mocha나 Jasmin을 Test Runner로 사용하고, Chai나 Expect와 같은 Test Matcher를 사용했으며, 또한 Sinon과 Testdouble 같은 Test Mock 라이브러리도 필요했었습니다.
 이 라이브러리들은 굉장히 유사하지만 살짝씩 다른 API를 가지고 있었기 때문에, 여러 프로젝트에 걸쳐서 일하는 자바스크립트 개발자들에게 혼란을 주기도 했었습니다.
-하지만 Jest는 라이브러리 하나만 설치하면, Test Runner와 Test Mathcher 그리고 Test Mock 프레임워크까지 제공해주기 때문에 상당히 편리하게 느껴지는 것 같습니다.</p>
+하지만 Jest는 라이브러리 하나만 설치하면, Test Runner와 Test Matcher 그리고 Test Mock 프레임워크까지 제공해주기 때문에 상당히 편리하게 느껴지는 것 같습니다.</p>
 <p>이번 포스팅는 Jest 테스팅 프레임워크를 사용하는 기본적인 방법에 대해서 알아보록 하겠습니다.</p>
 <h2 id="프로젝트-생성" style="position:relative;"><a href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%83%9D%EC%84%B1" aria-label="프로젝트 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>프로젝트 생성</h2>
 <p>프로젝트 디렉터리를 생성하고 NPM 초기화 커맨드로 <code>package.json</code> 파일을 만듭니다.</p>
@@ -218,7 +218,7 @@ Ran all <span class="token builtin class-name">test</span> suites.</code></pre><
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"테스트 설명"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token function">expect</span><span class="token punctuation">(</span><span class="token string">"검증 대상"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toXxx</span><span class="token punctuation">(</span><span class="token string">"기대 결과"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p><code>toXxx</code> 부분에서 사용되는 함수를 흔히 Test Mathcher라고 하는데요.
+<p><code>toXxx</code> 부분에서 사용되는 함수를 흔히 Test Matcher라고 하는데요.
 위에서 사용된 <code>toBe()</code> 함수는 숫자나 문자와 같은 객체가 아닌 기본형(primitive) 값을 비교할 때 사용됩니다.</p>
 <p>그리고 <code>npm test</code>를 실행하면 프로젝트 내에 모든 테스트 파일을 찾아서 테스트를 실행해줍니다.
 Jest는 기본적으로 <code>test.js</code>로 끝나거나, <code>__test__</code> 디렉터리 안에 있는 파일들은 모두 테스트 파일로 인식합니다.
