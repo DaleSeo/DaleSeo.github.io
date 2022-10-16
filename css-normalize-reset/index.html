@@ -175,7 +175,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 여기서 문제는 소위 User Agent Stylesheet라고 불리는 브라우저 내장 스타일이 브라우저마다 조금씩 다르다는 것 인데요.
 다시 말해서, 우리가 만든 UI가 크롬(Chrome)에서 열었을 때와 사파리(Safari)에서 열었을 때 다르게 보일 수 있다는 말이 되겠지요?</p>
 <p>이러한 문제를 최소화하기 위해서 사용하는 것이 CSS Normalize와 CSS Reset인데요.
-접근 방식은 약간 다르지만 이 두 가지 모두 어떤 브라우저를 사용하든 최대한 동일한 사용자 경험을 제공하겠다는 동일한 목표를 가지고 있습니다.</p>
+접근 방식은 약간 다르지만 이 두 가지 모두 브라우저에 구애받지 않고 최대한 동일한 사용자 경험을 제공하겠다는 동일한 목표를 가지고 있습니다.</p>
 <h2 id="css-normalize" style="position:relative;"><a href="#css-normalize" aria-label="css normalize permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CSS Normalize</h2>
 <p>아래는 아무런 추가 스타일링 없이 CSS Normalize만 적용된 웹페이지의 전형적인 모습입니다. 어떤가요? 뭐, 예쁘지는 않지만 그런데로 볼 만은 하죠?</p>
 <iframe height="600" style="width: 100%;" scrolling="no" title="css-normalize" src="https://codepen.io/daleseo/embed/KKREGxo?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -184,9 +184,9 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 <p>CSS Normalize는 가능한한 브라우저의 내장 스타일을 최대한 건들지 않는 선에서 브라우저 간에 상이한 부분만 스타일을 통일시켜 주는데요.</p>
-<p>애초에 브라우저에 자체적으로 HTML 요소 별로 스타일을 제공하는 이유가 아무런 스타일이 되지 않는 웹페이지도 사용자가 어렵지 않게 구조와 내용을 파악할 수 있기 도와주기 위함이기 때문에,
+<p>애초에 브라우저들이 자체적으로 HTML 요소 별로 스타일을 제공하는 이유가 아무런 스타일이 되지 않는 웹페이지도 사용자가 어렵지 않게 구조와 내용을 파악할 수 있기 도와주기 위함이기 때문에,
 CSS Normalize가 적용한다고 해서 이 부분에서 크게 달라지지는 않습니다.
-단지 차이점은 CSS Normalize가 적용된 웹페이지는 브라우저에 구애받지 않고 일관적인 모습으로 나타나게 됩니다.</p>
+단지 차이점은 CSS Normalize가 적용된 웹페이지는 어느 브라우저에서든 일관적인 모습으로 나타나게 됩니다.</p>
 <p>예를 들어, 크롬(Chrome)과 파이어폭스(Firefox), 사파리(Safari) 간에 <code>&#x3C;h1></code> 요소의 크기와 외부 여백을 통일시키기 위해서 다음과 같은 스타일이 적용되고요.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">h1</span> <span class="token punctuation">{</span>
   <span class="token property">font-size</span><span class="token punctuation">:</span> 2em<span class="token punctuation">;</span>
