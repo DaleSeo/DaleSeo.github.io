@@ -204,7 +204,7 @@ CSS 속성이 정의된 객체를 버튼 엘리먼트의 <code>style</code> 속�
 <span class="token punctuation">}</span></code></pre></div>
 <iframe src="https://codesandbox.io/embed/react-styling-grw66?fontsize=14&initialpath=%3Finline&module=%2Fsrc%2Finline%2FButton.js" title="react-styling" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
 <p>인라인 스타일은 CSS에서도 그렇듯이 React에서도 유지 보수나 성능 상으로 이유로 권장되지 않는 방법입니다.
-직접 사용해보면 매번 CSS 속성명을 케밥 케이스로 바꿔줘야 하는 것도 번거롭고, 무엇보다 <code>:hover</code>와 같은 pseudo-selecto도 사용할 수 없다는 치명적인 제약도 있습니다.
+직접 사용해보면 매번 CSS 속성명을 케밥 케이스로 바꿔줘야 하는 것도 번거롭고, 무엇보다 <code>:hover</code>와 같은 pseudo class도 사용할 수 없다는 치명적인 제약도 있습니다.
 하지만 개발 중에 임시로 스타일을 빠르게 적용해볼 때 꽤 유용하기 때문에 소개해드렸습니다.</p>
 <h2 id="external-stylesheet" style="position:relative;"><a href="#external-stylesheet" aria-label="external stylesheet permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>External Stylesheet</h2>
 <p>다음으로 소개시켜드릴 방법은 별도의 파일에 스타일을 정의해놓고, React 컴포넌트 파일에서 해당 CSS 파일을 임포트합니다.
