@@ -255,7 +255,7 @@ input[type="submit"]</span> <span class="token punctuation">{</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>이와 같이 여러 개의 선택자를 나열했을 때 그 중에서 하나라도 잘못되었다면 그 CSS 규칙이 몽땅 날라가게 되는데요.
 따라서 4가지 버튼 모두 전혀 스타일이 적용되지 않게 됩니다. 🙁</p>
-<p>하지만 다음과 같이 <code>:where()</code>를 쓰게 되면, 문제가 있는 첫 번째 선택자를 제외한 나머지 선택자에는 장상적으로 스타일이 적용됩니다.</p>
+<p>하지만 다음과 같이 <code>:where()</code>를 쓰게 되면, 문제가 있는 첫 번째 선택자를 제외한 나머지 선택자에는 여전히 스타일이 적용됩니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">:where(:button, input[type="button"], input[type="reset"], input[type="submit"])</span> <span class="token punctuation">{</span>
   <span class="token comment">/* 스타일 */</span>
 <span class="token punctuation">}</span></code></pre></div>
