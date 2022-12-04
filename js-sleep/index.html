@@ -291,6 +291,13 @@ before
 <span class="token constant">END</span>
 after
 done<span class="token operator">!</span></code></pre></div>
+<p>그 다음에 나오는 코드도 순서대로 실행이되길 원한다면, 다음과 같이 <code>test()</code> 함수 앞에 <code>await</code> 키워드를 붙여서 호출해주면 됩니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">></span> <span class="token keyword">await</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token operator">></span> console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"END"</span><span class="token punctuation">)</span>
+before
+after
+done<span class="token operator">!</span>
+<span class="token constant">END</span></code></pre></div>
 <h2 id="라이브러리---waait" style="position:relative;"><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC---waait" aria-label="라이브러리   waait permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>라이브러리 - waait</h2>
 <p>본인이 속한 프로젝트에서 이렇게 일정 시간을 기다렸다가 다시 실행해야하는 프로그램이 많을 경우에는 라이브러리를 사용하는 것도 고려해볼 수 있습니다.</p>
 <p>대표적인 라이브러리로 <a href="https://www.npmjs.com/package/waait">waait</a>를 들 수 있는데요, 소스 코드를 보시면 아시겠지만 위에서 작성한 코드와 크게 다르지 않습니다.
