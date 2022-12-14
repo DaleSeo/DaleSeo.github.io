@@ -187,7 +187,7 @@ EBS는 동시에 하나의 EC2 인스턴스에만 마운트를 할 수 있기 �
 <p>Amazon Elastic File System, 줄여서 EFS는 마치 윈도우즈 운영체제의 공유 폴더나 구글 드라이브처럼 여러 컴퓨터가 동시에 접근할 수 있는 스토리지입니다.</p>
 <p>EFS 볼륨은 AWS의 한 지역(region) 내에서 여러 가용 영역에 걸쳐서 사용이 가능하기 때문에,
 고 가용성을 보장하면서 수평 확장하기에 용이한 아키텍쳐를 구성할 때 합리적인 옵션이 될 수 있습니다.</p>
-<p>더 강력한 기능을 제공하는 만큼 EFS는 EBS 대비 상대적으로 비싸지만 오토 스테일링(Auto Scaling)을 활용하여 용량 최적화가 가능하며,
+<p>더 강력한 기능을 제공하는 만큼 EFS는 EBS 대비 상대적으로 비싸지만 자동 규모조정(Auto Scaling)을 활용하여 용량 최적화가 가능하며,
 자주 접근되지 않는 데이터는 좀 더 저렴한 EFS IA (Infrequent Access)로 옮겨서 요금을 절약할 수도 있습니다.</p>
 <h2 id="ec2-instance-store" style="position:relative;"><a href="#ec2-instance-store" aria-label="ec2 instance store permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>EC2 Instance Store</h2>
 <p>EBS와 EFS는 둘 다 네트워크 기반 스토리지이기 때문에 물리적으로 연결되는 하드 드라이브만큼 입출력(I/O) 속도가 나오지는 않죠.
