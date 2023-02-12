@@ -262,8 +262,8 @@ DB_PASS: <span class="token number">1234</span></code></pre></div>
 DB_HOST: localhost
 DB_USER: <span class="token builtin class-name">test</span>
 DB_PASS: <span class="token number">5678</span></code></pre></div>
-<p>이 방법은 어떤 프로젝트가 CommonJS를 사용하는지 ES 모듈을 사용하는지 미리 알 수 없을 때 매우 유용합니다.
-CommonJS를 사용하는지 ES 모듈을 사용하든지 상관없이 통하는 방법이기 때문입니다.</p>
+<p>이 방법은 어떤 프로젝트가 CommonJS 기반인지 ES 모듈 기반인지 미리 알 수 없을 때 매우 유용합니다.
+왜냐하면 CommonJS를 사용하든지 ES 모듈을 사용하든지 상관없이 통하는 방법이기 때문입니다.</p>
 <h2 id="es-모듈에서-발생하기-쉬운-실수" style="position:relative;"><a href="#es-%EB%AA%A8%EB%93%88%EC%97%90%EC%84%9C-%EB%B0%9C%EC%83%9D%ED%95%98%EA%B8%B0-%EC%89%AC%EC%9A%B4-%EC%8B%A4%EC%88%98" aria-label="es 모듈에서 발생하기 쉬운 실수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ES 모듈에서 발생하기 쉬운 실수</h2>
 <p>ES 모듈을 사용할 때는 CommonJS를 사용할 때 보다 좀 더 주의가 필요한데요.
 흔히 발생하는 문제를 재현해보겠습니다.</p>
