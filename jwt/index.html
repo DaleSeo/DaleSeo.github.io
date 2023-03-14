@@ -180,17 +180,29 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 <h2 id="jwt-구조" style="position:relative;"><a href="#jwt-%EA%B5%AC%EC%A1%B0" aria-label="jwt 구조 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JWT 구조</h2>
 <p>하나의 JWT 토큰은 헤더(header)와 페이로드(payload), 서명(signature) 이렇게 세 부분으로 이루어지며 각 구역이 <code>,</code> 기호로 구분됩니다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&lt;헤더>.&lt;페이로드>.&lt;서명></code></pre></div>
-<p>첫 번째 부분인 헤더(header)에는 토큰의 종류와 서명 알고리즘(alg)에 대한 정보가 담기고, 중간 부분인 페이로드(payload)에는 소위 claim이라고도 불리는 사용자의 인증/인가 정보가 담기게 되는데요.
+<p>첫 번째 부분인 헤더(header)에는 토큰의 유형과 서명 알고리즘에 명시되고, 중간 부분인 페이로드(payload)에는 소위 claim이라고도 불리는 사용자의 인증/인가 정보가 담기는데요.
 마지막 부분인 서명(signature)에는 헤더와 페이로드가 비밀키로 서명되어 저장됩니다.</p>
 <p>JWT 토큰은 네트워크로 전송되야 하기 때문에 공간을 적게 차지하는 것이 유리한데요.
 그래서 독특하게도 JSON 형식으로 데이터를 저장할 때 키(key)를 3글자로 줄이는 관행이 있습니다.</p>
+<p>아래는 전형적인 JWT 토큰의 디코딩 결과입니다.</p>
+<div class="gatsby-code-title">헤더</div>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"alg"</span><span class="token operator">:</span> <span class="token string">"HS256"</span><span class="token punctuation">,</span>
+  <span class="token property">"typ"</span><span class="token operator">:</span> <span class="token string">"JWT"</span>
+<span class="token punctuation">}</span></code></pre></div>
+<div class="gatsby-code-title">페이로드</div>
+<div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"sub"</span><span class="token operator">:</span> <span class="token string">"1234567890"</span><span class="token punctuation">,</span>
+  <span class="token property">"lat"</span><span class="token operator">:</span> <span class="token number">1516239022</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>JWT에서 자주 사용되는 JSON 키 이름은 다음과 같습니다.</p>
 <ul>
+<li><code>sub</code> 키: 인증 주체(subject)</li>
 <li><code>iss</code> 키: 토큰 발급처</li>
-<li><code>typ</code> 키: 토큰의 종료(type)</li>
+<li><code>typ</code> 키: 토큰의 유형(type)</li>
 <li><code>alg</code> 키: 서명 알고리즘(algorithm)</li>
 <li><code>iat</code> 키: 발급 시각(issued at)</li>
 <li><code>exp</code> 키: 말료 시작(expiration time)</li>
-<li><code>sub</code> 키: 인증 주체(subject)</li>
 <li><code>aud</code> 키: 클라이언트(audience)</li>
 </ul>
 <h2 id="jwt를-통한-인증인가" style="position:relative;"><a href="#jwt%EB%A5%BC-%ED%86%B5%ED%95%9C-%EC%9D%B8%EC%A6%9D%EC%9D%B8%EA%B0%80" aria-label="jwt를 통한 인증인가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JWT를 통한 인증/인가</h2>
