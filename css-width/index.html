@@ -174,7 +174,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 <p><code>width</code> 속성은 엘리먼트의 너비를 제어하기 위해서 사용되는데요. 크게 절대값, 상대값, 키워드로 설정이 가능한데 이에 따른 너비가 어떻게 결정되는지 이해하는 것이 중요합니다.</p>
 <h2 id="절대값" style="position:relative;"><a href="#%EC%A0%88%EB%8C%80%EA%B0%92" aria-label="절대값 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>절대값</h2>
 <p><code>px</code>와 같은 절대 단위를 사용하여 <code>width</code> 속성값을 지정해주면 해당 엘리먼트는 항상 고정된 너비를 갖게 됩니다.
-즉, 절대값으로 <code>width</code> 속성을 설정하면 가용 너비이나 컨텐트의 크기와 무방하게 특정값으로 엘리먼트의 너비를 고정시킬 수 있습니다.</p>
+즉, 절대값으로 <code>width</code> 속성을 설정하면 가용 너비이나 컨텐츠의 크기와 무방하게 특정값으로 엘리먼트의 너비를 고정시킬 수 있습니다.</p>
 <p>예를 들어, <code>&#x3C;p></code> 엘리먼트의 너비를 <code>300px</code>로 고정하려면 다음과 같이 스타일합니다.</p>
 <div class="gatsby-highlight has-highlighted-lines" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span></span>  <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
@@ -226,10 +226,10 @@ CSS의 <code>calc</code> 함수를 알고 있으시다면, <code>width: auto</co
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
 <h2 id="min-content" style="position:relative;"><a href="#min-content" aria-label="min content permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>min-content</h2>
-<p><code>min-content</code> 키워드와 <code>max-content</code> 키워드는 상대값과 반대로 가용 공간이 아닌 담고 있는 컨텐트에 의해 <code>width</code> 속성값이 결정되는데요.</p>
+<p><code>min-content</code> 키워드와 <code>max-content</code> 키워드는 상대값과 반대로 가용 공간이 아닌 담고 있는 컨텐츠에 의해 <code>width</code> 속성값이 결정되는데요.</p>
 <p>먼저 <code>min-content</code> 키워드는 엘리먼트의 너비를 줄일 수 있는 만큼 최소로 줄이고 싶을 때 사용합니다.
-최소 너비는 해당 엘리먼트가 담고 있는 컨텐트에 의해 좌우가 되는데요.</p>
-<p>예를 들어, 텍스트 컨텐트의 경우 최대한 줄바꿈을 하여 가장 긴 단어의 길이가 최소 너비를 결정합니다.</p>
+최소 너비는 해당 엘리먼트가 담고 있는 컨텐츠에 의해 좌우가 되는데요.</p>
+<p>예를 들어, 텍스트 컨텐츠의 경우 최대한 줄바꿈을 하여 가장 긴 단어의 길이가 최소 너비를 결정합니다.</p>
 <div class="gatsby-highlight has-highlighted-lines" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">width</span><span class="token punctuation">:</span> min-content<span class="token punctuation">;</span></span>  <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
   <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
@@ -242,8 +242,8 @@ CSS의 <code>calc</code> 함수를 알고 있으시다면, <code>width: auto</co
 <p>위 예제의 경우, <code>width</code>라는 단어가 가장 길기 때문에 컨테이너의 최소 너비로 사용되었습니다.</p>
 <h2 id="max-content" style="position:relative;"><a href="#max-content" aria-label="max content permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>max-content</h2>
 <p><code>max-content</code> 키워드는 <code>min-content</code> 키워드와 정반대로 엘리먼트의 너비를 최대한 늘이고 싶을 때 사용합니다.
-최대 너비 역시 해당 엘리먼트가 담고 있는 컨텐트에 의해 좌우가 되는데요.</p>
-<p>예를 들어, 텍스트 컨텐트의 경우 줄바꾸기를 하지 않은 상태의 문장의 길이가 최대 너비로 사용됩니다.</p>
+최대 너비 역시 해당 엘리먼트가 담고 있는 컨텐츠에 의해 좌우가 되는데요.</p>
+<p>예를 들어, 텍스트 컨텐츠의 경우 줄바꾸기를 하지 않은 상태의 문장의 길이가 최대 너비로 사용됩니다.</p>
 <div class="gatsby-highlight has-highlighted-lines" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">width</span><span class="token punctuation">:</span> max-content<span class="token punctuation">;</span></span>  <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>
   <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
@@ -256,7 +256,7 @@ CSS의 <code>calc</code> 함수를 알고 있으시다면, <code>width: auto</co
 <p><code>max-content</code> 키워드는 텍스트의 배경색을 적용할 때 유용하게 사용될 수 있습니다. 왜냐하면 <code>auto</code> 키워드와 달리 텍스트의 길이에 딱 맞게 배경색을 적용할 수 있기 때문입니다.</p>
 <h2 id="fit-content" style="position:relative;"><a href="#fit-content" aria-label="fit content permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>fit-content</h2>
 <p>CSS에서 가장 나중에 추가된 <code>fit-content</code> 키워드는 <code>max-content</code> 키워드와 <code>auto</code> 키워드의 하이브리드 모드처럼 작동합니다.</p>
-<p>가용 너비이 부족하지 않는 경우에는 <code>max-content</code> 키워드처럼 담고 있는 컨텐트의 최대 너비를 엘리먼트의 <code>width</code> 속성값으로 사용합니다.
+<p>가용 너비이 부족하지 않는 경우에는 <code>max-content</code> 키워드처럼 담고 있는 컨텐츠의 최대 너비를 엘리먼트의 <code>width</code> 속성값으로 사용합니다.
 그러나 가용 너비이 부족하다면 <code>auto</code> 키워드처럼 가용 너비에서 여백(<code>margin</code>)을 제외한 너비를 엘리먼트의 <code>width</code> 속성값으로 사용합니다.</p>
 <div class="gatsby-highlight has-highlighted-lines" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">p</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">width</span><span class="token punctuation">:</span> fit-content<span class="token punctuation">;</span></span>  <span class="token property">margin</span><span class="token punctuation">:</span> 10px<span class="token punctuation">;</span>

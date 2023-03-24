@@ -203,10 +203,15 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 </iframe>
 <p>대부분 경우에는 <code>overflow</code> 속성을 <code>hidden</code>으로 설정하여 부모 요소 밖으로 빠져나오는 텍스트를 숨기는데요.
 사용자가 혼란스럽지 않도록 <code>text-overflow</code> 속성을 사용하여 말줌임 기호인 <code>...</code>를 보여주는 경우도 많습니다.</p>
-<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">div:nth-of-type(2)</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">div:nth-of-type(3)</span> <span class="token punctuation">{</span>
   <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
   <span class="token property">overflow</span><span class="token punctuation">:</span> hidden<span class="token punctuation">;</span>
   <span class="token property">text-overflow</span><span class="token punctuation">:</span> ellipsis<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<p>또 다른 대안으로 사용자가 가로 스크롤바로 끝까지 텍스트를 볼 수 있도록 해줄 수도 있겠습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">div:nth-of-type(4)</span> <span class="token punctuation">{</span>
+  <span class="token property">white-space</span><span class="token punctuation">:</span> nowrap<span class="token punctuation">;</span>
+  <span class="token property">overflow</span><span class="token punctuation">:</span> auto<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <blockquote>
 <p>CSS의 overflow 속성에 대한 자세한 내용은 <a href="/css-overflow/">관련 포스팅</a>을 참고 바랍니다.</p>
