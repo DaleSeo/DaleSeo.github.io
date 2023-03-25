@@ -226,7 +226,7 @@ id token이 없는 경우에는 인가 서버 URL(<code>loginUrl</code>)로 사�
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <h2 id="id-token-디코딩" style="position:relative;"><a href="#id-token-%EB%94%94%EC%BD%94%EB%94%A9" aria-label="id token 디코딩 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ID Token 디코딩</h2>
 <p>확보된 id token 값은 <a href="https://jwt.io">JSON Web Tokens(JWT)</a> 방식으로 인코딩이 되어 있는 문자열이므로 먼저 디코딩을 해줘야 합니다.
-<a href="https://www.npmjs.com/package/jwt-decode"><code>jwt-decode</code></a>와 같은 라이브러리를 사용해서 이 id token을 디코딩하면 여러가지 사용자 데이터가 담긴 객체를 얻을 수 있습니다.
+<a href="https://www.npmjs.com/package/jwt-decode"><code>jwt-decode</code></a>와 같은 라이브러리를 사용해서 이 id token을 디코딩하면 여러 가지 사용자 데이터가 담긴 객체를 얻을 수 있습니다.
 이 중 사용자의 이메일과 이름, 프로필 사진을 읽어서 화면에 출력해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">"react"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> jwtDecode <span class="token keyword">from</span> <span class="token string">"jwt-decode"</span><span class="token punctuation">;</span>

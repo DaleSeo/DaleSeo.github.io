@@ -178,7 +178,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 모든 로거는 이름을 가지며, 최상위(root) 로거의 자식이 됩니다. 이 로깅의 계층 개념에 대해서는 밑에서 예제를 통해 추가 설명을 드리겠습니다.</p>
 <p>로거가 로그를 남기라고 전달을 하면, 로깅 시스템의 어디선가에서는 이를 받아서 처리를 해줘야겠죠? 이 부분은 핸들러(handler)가 담당합니다.
 우리는 핸들러를 통해서 로그 메시지를 다양한 방식으로 처리할 수 있습니다. 예를 들어, 단순히 콘솔이나 파일에 출력할 수도 있고, 이메일로 보내거나, 외부 로깅 서비스로 전달할 수도 있습니다.
-하나의 로거에는 여러 개의 핸들러를 설정할 수 있기 때문에, 하나의 로그 메시지를 여러가지 방식으로 처리할 수 있습니다.</p>
+하나의 로거에는 여러 개의 핸들러를 설정할 수 있기 때문에, 하나의 로그 메시지를 여러 가지 방식으로 처리할 수 있습니다.</p>
 <p>마지막으로 로그 메시지를 어떤 형태(format)로 남기냐는 문제가 남는데요. 이 부분은 포맷터(formatter)를 통해서 명시할 수 있습니다.
 우리는 포맷터를 통해서 로그 메시지 뿐만 아니라 로그 발생 시각, 로그 심각도, 함수 이름, 라인 번호 등도 함께 기록할 수 있습니다.
 포맷터를 핸들러에 설정을 해주면 핸들러는 포맷터에 설정되어 있는 형태대로 로그 메시지를 처리해줍니다.</p>
@@ -313,7 +313,7 @@ logging<span class="token punctuation">.</span>config<span class="token punctuat
 <li><a href="https://docs.python.org/3/library/logging.config.html#configuration-dictionary-schema">Configuration dictionary schema</a></li>
 </ul>
 <h2 id="로깅-설정-테스트" style="position:relative;"><a href="#%EB%A1%9C%EA%B9%85-%EC%84%A4%EC%A0%95-%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="로깅 설정 테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>로깅 설정 테스트</h2>
-<p>위에서 여러가지 방법으로 설정한 로깅 시스템을 이용해서 로그를 남겨보도록 하겠습니다.</p>
+<p>위에서 여러 가지 방법으로 설정한 로깅 시스템을 이용해서 로그를 남겨보도록 하겠습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
     root_logger <span class="token operator">=</span> logging<span class="token punctuation">.</span>getLogger<span class="token punctuation">(</span><span class="token punctuation">)</span>
     root_logger<span class="token punctuation">.</span>debug<span class="token punctuation">(</span><span class="token string">"디버그"</span><span class="token punctuation">)</span>

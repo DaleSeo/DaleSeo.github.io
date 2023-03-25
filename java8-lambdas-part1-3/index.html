@@ -181,7 +181,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
   <span class="token keyword">public</span> <span class="token class-name">String</span> lastName<span class="token punctuation">;</span>
   <span class="token keyword">public</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
-<p><code>Person</code> 객체를 <code>SortedSet</code>에 저정하거나 어떤 형태로든 리스트 내에서 정렬될 필요가 있을 때, <code>Persion</code> 인스턴스가 정렬되기 위한 다른 여러가지 방식을 필요로 합니다. 예를 들어, 이름으로 정렬하고 싶을 때도 있고 성으로 정렬하고 싶을 때도 있습니다.
+<p><code>Person</code> 객체를 <code>SortedSet</code>에 저정하거나 어떤 형태로든 리스트 내에서 정렬될 필요가 있을 때, <code>Persion</code> 인스턴스가 정렬되기 위한 다른 여러 가지 방식을 필요로 합니다. 예를 들어, 이름으로 정렬하고 싶을 때도 있고 성으로 정렬하고 싶을 때도 있습니다.
 이 목적으로 <code>Comparator&#x3C;T></code>를 사용하는데 <code>Comparator&#x3C;T></code> 인스턴스를 전달함으로써 정렬 방식을 정의할 수 있게 됩니다.</p>
 <p>람다는 일람 15처럼 확실히 정렬 코드를 더 쉽게 작성하게 해줍니다.
 그러나 <code>Person</code> 인스턴스를 이름에 의해 정렬하는 것은 코드 기반 내에서 여러 번 수행된 필요가 있을지도 모르는데,
@@ -201,7 +201,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 <span class="token punctuation">}</span></code></pre></div>
 <p><code>Comparator</code>는 확실히 <code>Person</code> 자체의 멤버가 될 수도 있습니다. (일람 16)
 그 다음에 <code>Comparator&#x3C;T></code>는 다른 정적 필드 처럼 참조당할 수 있습니다. (일람 17)
-솔직히 말하면 함수형 프로그래밍의 지지자들은 함수가 여러가지 방식으로 조합될 수 있는 이런 스타일을 선호합니다.</p>
+솔직히 말하면 함수형 프로그래밍의 지지자들은 함수가 여러 가지 방식으로 조합될 수 있는 이런 스타일을 선호합니다.</p>
 <h3 id="일람-16" style="position:relative;"><a href="#%EC%9D%BC%EB%9E%8C-16" aria-label="일람 16 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>일람 16</h3>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{</span>
   <span class="token keyword">public</span> <span class="token class-name">String</span> firstName<span class="token punctuation">;</span>

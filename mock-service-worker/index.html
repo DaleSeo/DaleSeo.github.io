@@ -175,7 +175,7 @@ data-styled.g66[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 쉽게 말해, 브라우저에 기생(?)해서 마치 백앤드 API인 척하면서 프런트앤드의 요청에 가짜 데이터를 응답해주는 녀석이라고 볼 수 있겠네요.</p>
 <p>비교적에 최근에 도입된 웹 표준 기술인 서비스 워커(Service Worker)를 사용하면 브라우저로 부터 나가는 요청이나 들어오는 응답을 중간에서 감시하거나 변조, 캐싱과 같은 기존에 웹에서 할 수 없었던 부가적인 작업들을 할 수 있는데요.
 MSW는 이러한 서비스 워커의 능력을 백분 활용하여 웹 개발에 있어서 API 모킹의 수준을 한 단계 올려놓았다고 평가받으며 출시되지 마자 큰 호응을 얻고 있습니다.</p>
-<p>MSW를 여러가지 용도로 활용할 수 있지만 대표적으로 두가지 사례를 생각해볼 수 있는데요.</p>
+<p>MSW를 여러 가지 용도로 활용할 수 있지만 대표적으로 두가지 사례를 생각해볼 수 있는데요.</p>
 <p>첫번째는 백앤드 API 개발과 프런트앤드 UI 개발이 동시에 진행되야하는 경우, 백앤드 API 구현이 완료될 때까지 프런트앤드 팀에서 임시로 사용하기 위한 가짜(mock) API를 서비스 워커로 돌리기 위해서이고,
 두번째는 테스트를 실행 시 실제 백앤드 API에 네트워크 호출을 하는 대신에 훨씬 빠르고 안정적인 가짜 API 서버를 구축하기 위해서 입니다.</p>
 <h2 id="mock-service-worker의-특징" style="position:relative;"><a href="#mock-service-worker%EC%9D%98-%ED%8A%B9%EC%A7%95" aria-label="mock service worker의 특징 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mock Service Worker의 특징</h2>
