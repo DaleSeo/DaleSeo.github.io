@@ -232,7 +232,7 @@ JWT는 토큰 자체에 사용자의 정보가 저장되어 있어있기 때문�
 </ul>
 </blockquote>
 <h2 id="jwt의-한계" style="position:relative;"><a href="#jwt%EC%9D%98-%ED%95%9C%EA%B3%84" aria-label="jwt의 한계 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JWT의 한계</h2>
-<p>위와 같은 JWT의 장점에도 불구하고 어느정도 규모가 있는 서비스에서 사용자 인증 용도로 JWT를 사용하기에는 부족한 경우가 있는데요.</p>
+<p>위와 같은 JWT의 장점에도 불구하고 어느 정도 규모가 있는 서비스에서 사용자 인증 용도로 JWT를 사용하기에는 부족한 경우가 있는데요.</p>
 <p>예를 들어, 현재 로그인된 사용자의 모든 장비들을 나열해주거나, 특정 장비에서 로그아웃을 허용하는 기능을 구현하려면 서버 단에 사용자 세션을 저장하지 않고는 어렵기 때문입니다.</p>
 <h2 id="jwt-사용-시-주의사항" style="position:relative;"><a href="#jwt-%EC%82%AC%EC%9A%A9-%EC%8B%9C-%EC%A3%BC%EC%9D%98%EC%82%AC%ED%95%AD" aria-label="jwt 사용 시 주의사항 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JWT 사용 시 주의사항</h2>
 <p>서명이 되어 있는 JWT 토큰 서버에서만 유효성을 검증할 수 있지만 그 안에 저장된 데이터는 누구나 쉽게 열람이 가능합니다.
