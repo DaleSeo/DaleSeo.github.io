@@ -212,6 +212,9 @@ CNAME 레코드를 통해 커스텀 도메인이 Netlify에서 제공하는 기�
 <p>루트 도메인과 <code>www</code> 서브 도메인 중에서 <code>www</code> 서브 도메인을 주(primary) 도메인로 설정하는 것이 권장되는데요.
 루트 도메인이 주 도메인이되면 웹사이트 쿠키(Cookie)가 모든 서브 도메인까지 적용되어 동시에 여러 서브 도메인을 사용할 때 문제의 소지가 되기 때문입니다.</p>
 <p><code>www</code> 서브 도메인을 주(primary) 도메인로 설정해주면 루트 도메인으로 접속하는 사용자들은 Netlify가 자연스럽게 <code>www</code> 서브 도메인으로 리다이렉트(redirect) 시켜줄 것입니다.</p>
+<p>여기서 루트 도메인도 <code>www</code> 서브 도메인과 동일하게 Netlify에서 제공하는 기본 도메인 네임(<code>your-blog.netlify.app</code>)을 가리키게 하면 되지 않을까 생각하시는 분들도 있을 것 같은데요.
+그러면 사용자가 루트 도메인으로 접속했을 때 Netlify 사이트에 문제없이 접속은 되지만 라디이렉트가 일어나지 않아서 브라우저의 주소창에 <code>www</code>가 붙지 않게 됩니다.
+반면에 루트 도메인가 Netlify의 로드밸런서를 가리키게 해주면 사용자가 루트 도메인으로 접속했을 때 <code>301 Moved Permanently</code>를 응답받기 때문에 브라우저는 <code>www</code> 서브 도메인으로 접속된다는 차이가 있습니다.</p>
 <h2 id="netlify-dns-활용" style="position:relative;"><a href="#netlify-dns-%ED%99%9C%EC%9A%A9" aria-label="netlify dns 활용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Netlify DNS 활용</h2>
 <p>DNS 설정을 도메인 등록 업체를 통해서 직접 하지 않고 Netlify에서 대신 해준다면 얼마나 편할까요?
 고맙게도 Netlify의 자체 도메인 관리 서비스인 Netlify DNS를 활용하면 가능합니다!</p>

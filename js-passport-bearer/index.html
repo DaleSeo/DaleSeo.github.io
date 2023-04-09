@@ -231,7 +231,7 @@ passport<span class="token punctuation">.</span><span class="token function">use
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>최대한 간단한 예제를 위해서 Bearer 토큰이 <code>1234</code>일 때만 토큰이 유효하다고 판단되도록 구현해보았습니다. (말도 안되죠? 😅)</p>
 <p>실제 애플리케이션에션에서는 사용하시는 인증 매커니즘에 따라 다양한 방식으로 구현이 될 것입니다.
-예를 들어, Bearer 토큰으로 DB를 조회할 수도 있고, OAuth를 사용하고 있다면 원격 인증 서버로 토큰을 전송할 수도 있고, JWT 토큰이라면 디코딩한 후 서명을 검증해야할 것입니다.</p>
+예를 들어, Bearer 토큰으로 DB를 조회할 수도 있고, OAuth를 사용하고 있다면 원격 전송할 수도 있고, JWT 토큰이라면 디코딩한 후 서명을 검증해야할 것입니다.</p>
 <h2 id="passportjs-미들웨어-사용" style="position:relative;"><a href="#passportjs-%EB%AF%B8%EB%93%A4%EC%9B%A8%EC%96%B4-%EC%82%AC%EC%9A%A9" aria-label="passportjs 미들웨어 사용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Passport.js 미들웨어 사용</h2>
 <p>다음으로 유효한 Bearer 토큰과 함께 들어온 요청만 처리하도록 Express.js 앱을 수정해줘야 하는데요.
 이 작업은 <code>passport.authenticate()</code> 함수를 통해서 얻은 미들웨어(middleware)로 이루어집니다.</p>
