@@ -251,8 +251,8 @@ alt-svc: <span class="token assign-left variable">h3</span><span class="token op
 <p>자, 이제 <code>curl</code> 명령어의 <code>-d</code> 옵션을 통해서 <code>gpt-3.5-turbo</code>라는 인공지능 모델을 사용하고 싶다고 명시해주고, <code>야!</code>라는 메시지도 입력해보겠습니다.</p>
 <div class="gatsby-code-title">명령</div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> https://api.openai.com/v1/chat/completions -i <span class="token punctuation">\</span>
-  -H <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
   -H <span class="token string">"Authorization: Bearer <span class="token variable">$OPENAI_API_KEY</span>"</span> <span class="token punctuation">\</span>
+  -H <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
   -d <span class="token string">'{
      "model": "gpt-3.5-turbo",
      "messages": [{"role": "user", "content": "야!"}]
