@@ -250,7 +250,7 @@ alt-svc: <span class="token assign-left variable">h3</span><span class="token op
 <h2 id="200-ok" style="position:relative;"><a href="#200-ok" aria-label="200 ok permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>200 OK</h2>
 <p>자, 이제 <code>curl</code> 명령어의 <code>-d</code> 옵션을 통해서 <code>gpt-3.5-turbo</code>라는 인공지능 모델을 사용하고 싶다고 명시해주고, <code>야!</code>라는 메시지도 입력해보겠습니다.</p>
 <div class="gatsby-code-title">명령</div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> https://api.openai.com/v1/chat/completions -i <span class="token punctuation">\</span>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://api.openai.com/v1/chat/completions -i <span class="token punctuation">\</span>
   -H <span class="token string">"Authorization: Bearer <span class="token variable">$OPENAI_API_KEY</span>"</span> <span class="token punctuation">\</span>
   -H <span class="token string">"Content-Type: application/json"</span> <span class="token punctuation">\</span>
   -d <span class="token string">'{
