@@ -244,7 +244,7 @@ sk-<span class="token punctuation">..</span>.DECr</code></pre></div>
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="커맨드-라인-인터페이스-구현" style="position:relative;"><a href="#%EC%BB%A4%EB%A7%A8%EB%93%9C-%EB%9D%BC%EC%9D%B8-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-%EA%B5%AC%ED%98%84" aria-label="커맨드 라인 인터페이스 구현 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>커맨드 라인 인터페이스 구현</h2>
-<p>마지막으로 터미널 상에서 ChatGPT와 메세지를 주고 받을 수 있는 프로그램을 작성할 차례입니다.</p>
+<p>마지막으로 터미널 상에서 ChatGPT와 메시지를 주고 받을 수 있는 프로그램을 작성할 차례입니다.</p>
 <p>먼저 위에서 작성한 코드를 함수화하면 좋을 것 같은데요.
 입력으로 들어온 질문을 ChatGPT API에 그대로 전달해주고, ChatGPT API로 부터 응답된 결과에서 답변만 추출해서 반환하는 함수를 작성하겠습니다.
 마지막에 이 함수에 질문을 인자로 넘겨서 호출도 해 볼께요.</p>
@@ -286,7 +286,7 @@ rl<span class="token punctuation">.</span><span class="token function">on</span>
     rl<span class="token punctuation">.</span><span class="token function">prompt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>다시 프로그램을 실행해보면 다음과 같이 터미널에서 ChatGPT와 메세지를 주고 받으며 채팅이 가능하게 됩니다! 🎉</p>
+<p>다시 프로그램을 실행해보면 다음과 같이 터미널에서 ChatGPT와 메시지를 주고 받으며 채팅이 가능하게 됩니다! 🎉</p>
 <div class="gatsby-code-title">터미널</div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ node chat.js
 💬 ChatGPT 터미널 챗앱 💬
