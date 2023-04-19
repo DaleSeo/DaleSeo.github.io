@@ -183,7 +183,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jxKfMg,"}/*!sc*/
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">OPENAI_API_KEY</span><span class="token operator">=</span>sk-<span class="token punctuation">..</span>.0K7L
 $ <span class="token builtin class-name">echo</span> <span class="token variable">$OPENAI_API_KEY</span>
 sk-<span class="token punctuation">..</span>.0K7L</code></pre></div>
-<p>이렇게 API 키를 환경 변수로 저장해놓으면 Python 코드를 실행할 때 <code>os</code> 모듈의 <code>getenv()</code> 함수를 통해 통해 쉽게 환경 변수를 읽어올 수 있습니다.</p>
+<p>이렇게 API 키를 환경 변수로 저장해놓으면 Python 코드를 실행할 때 <code>os</code> 모듈의 <code>getenv()</code> 함수를 통해 쉽게 환경 변수를 읽어올 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">$ python
 Python <span class="token number">3.11</span><span class="token number">.2</span> <span class="token punctuation">(</span>main<span class="token punctuation">,</span> Apr  <span class="token number">7</span> <span class="token number">2023</span><span class="token punctuation">,</span> <span class="token number">15</span><span class="token punctuation">:</span><span class="token number">52</span><span class="token punctuation">:</span><span class="token number">33</span><span class="token punctuation">)</span> <span class="token punctuation">[</span>Clang <span class="token number">14.0</span><span class="token number">.3</span> <span class="token punctuation">(</span>clang<span class="token operator">-</span><span class="token number">1403.0</span><span class="token number">.22</span><span class="token number">.14</span><span class="token number">.1</span><span class="token punctuation">)</span><span class="token punctuation">]</span> on darwin
 Type <span class="token string">"help"</span><span class="token punctuation">,</span> <span class="token string">"copyright"</span><span class="token punctuation">,</span> <span class="token string">"credits"</span> <span class="token keyword">or</span> <span class="token string">"license"</span> <span class="token keyword">for</span> more information<span class="token punctuation">.</span>
@@ -224,7 +224,7 @@ Type <span class="token string">"help"</span><span class="token punctuation">,</
 <p><code>requests</code> 라이브러리를 사용하면 OpenAI 뿐만 아니라 타사의 API도 표준화된 방법으로 호출할 수 있다는 이점이 있습니다.</p>
 <h2 id="openai-라이브러리-사용" style="position:relative;"><a href="#openai-%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC-%EC%82%AC%EC%9A%A9" aria-label="openai 라이브러리 사용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>openai 라이브러리 사용</h2>
 <p>OpenAI에서는 제공하는 <code>openai</code> 라이브러리를 이용해서도 ChatGPT API를 호출할 수 있습니다.</p>
-<p>마찬가지로 터미널에서 파이썬의 패키지 매니저인 pip를 사용하여 <code>openai</code>라는 패키지를 설치해줍니다.</p>
+<p>마찬가지로 터미널에서 pip를 사용하여 <code>openai</code>라는 패키지를 설치해줍니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ pip <span class="token function">install</span> openai</code></pre></div>
 <p>그 다음 <code>python</code>을 실행 후 <code>os</code> 내장 모듈과 방금 설치한 <code>openai</code> 모듈을 불러옵니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">$ python
@@ -234,7 +234,7 @@ Type <span class="token string">"help"</span><span class="token punctuation">,</
 <span class="token operator">>></span><span class="token operator">></span> <span class="token keyword">import</span> openai</code></pre></div>
 <p>그 다음 환경 변수로 저장해놓은 API 키를 읽어서 <code>openai</code>의 <code>api_key</code> 속성으로 설정합니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token operator">>></span><span class="token operator">></span> openai<span class="token punctuation">.</span>api_key <span class="token operator">=</span> os<span class="token punctuation">.</span>getenv<span class="token punctuation">(</span><span class="token string">"OPENAI_API_KEY"</span><span class="token punctuation">)</span></code></pre></div>
-<p>이제 <code>requests</code> 모듈의 <code>post()</code> 함수를 이용해서 ChatGPT API를 호출할 차례인데요.</p>
+<p>이제 <code>openai</code> 모듈의 <code>ChatCompletion</code> 속성을 이용해서 ChatGPT API를 호출할 차례인데요.</p>
 <p><code>model</code> 키워드 인자로는 <code>gpt-3.5-turbo</code>를 인공지능 모델로 지정해주고, <code>messages</code> 키워드 인자로 보낼 메시지를 역할과 내용을 넘겨줍니다.</p>
 <p>함수가 반환해준 결과는 <code>result</code> 변수에 저장하겠습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token operator">>></span><span class="token operator">></span> result <span class="token operator">=</span> openai<span class="token punctuation">.</span>ChatCompletion<span class="token punctuation">.</span>create<span class="token punctuation">(</span>
