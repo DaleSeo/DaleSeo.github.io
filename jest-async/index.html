@@ -251,7 +251,7 @@ Snapshots:   <span class="token number">0</span> total
 Time:        <span class="token number">0</span>.88s, estimated 1s
 Ran all <span class="token builtin class-name">test</span> suites.</code></pre></div>
 <p>Jest Runner는 기본적으로 테스트 함수를 그저 가능한한 최대한 빨리 호출해줍니다. 그래야 실행한 테스트가 많을 때도 성능이 좋겠죠?
-따라서 위 경우에, 콜백 함수는 호출될 기회조차 얻지 못하고, 콜백 함수 내의 <code>toEqual()</code> Matcher 함수도 호출되지 못했던 것 입니다.</p>
+따라서 위 경우에, 콜백 함수는 호출될 기회조차 얻지 못하고, 콜백 함수 내의 <code>toEqual()</code> Matcher 함수도 호출되지 못했던 것입니다.</p>
 <p>해결 방법은 간단합니다. Jest Runner에게 명시적으로 이 테스트 함수는 비동기 코드를 테스트 하니 콜백 함수가 호출되는지도 좀 봐주라고 알려주는 것입니다.
 다음과 같이 실행할 테스트 함수가 <code>done</code>이라는 함수 인자를 받도록 수정하고, 이 <code>done</code> 함수를 콜백 함수의 제일 마지막에 호출하도록 수정합니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"fetch a user"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">done</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>

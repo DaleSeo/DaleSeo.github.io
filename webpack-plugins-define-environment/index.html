@@ -316,7 +316,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>textNode<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>자, 이제 빌드를 할 때 <code>DEBUG</code> 환경 변수의 값을 뭐로 주느냐에 따라 로그가 찍힐 수도 있고 안 찍힐 수도 있습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">$ <span class="token constant">DEBUG</span><span class="token operator">=</span>on npm run build</code></pre></div>
-<p>위와 같이 빌드 커맨드 앞에 <code>DEBUG=on</code>를 붙여서 실행을 하면, 브라우저 콘솔에 다음과 같이 위에서 DefinePlugin으로 선언했던 전역 변수들이 출력될 것 입니다.</p>
+<p>위와 같이 빌드 커맨드 앞에 <code>DEBUG=on</code>를 붙여서 실행을 하면, 브라우저 콘솔에 다음과 같이 위에서 DefinePlugin으로 선언했던 전역 변수들이 출력될 것입니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">APP_NAME: My app
 index.js:3 VERSION: v0.1</code></pre></div>
 <p>반대로 아래와 같이 빌드 커맨드 앞에 <code>DEBUG=off</code>를 붙이거나 아무 것도 안 붙이고 실행을 하면, 브라우저 콘솔에는 아무것도 출력되지 않을 것입니다.</p>

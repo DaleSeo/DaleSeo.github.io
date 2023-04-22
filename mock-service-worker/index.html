@@ -258,7 +258,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>일반적으로 개발 환경에서만 가짜 API를 사용하므로 환경 변수를 체크하여 선택적으로 서비스 워커가 구동되도록 해주고 있습니다.</p>
 <h2 id="서비스-워커-테스트" style="position:relative;"><a href="#%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%9B%8C%EC%BB%A4-%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="서비스 워커 테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>서비스 워커 테스트</h2>
-<p>이제 애플리케이션을 구동 후에 브라우저에서 열면 콘솔에 다음과 같이 모킹이 활성화되었다는 메시지가 출력될 것 입니다.</p>
+<p>이제 애플리케이션을 구동 후에 브라우저에서 열면 콘솔에 다음과 같이 모킹이 활성화되었다는 메시지가 출력될 것입니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">[</span><span class="token constant">MSW</span><span class="token punctuation">]</span> Mocking enabled<span class="token punctuation">.</span></code></pre></div>
 <p>이제 <code>fetch()</code> 함수를 사용해서 정말로 <code>GET /todos</code>에 요청을 보내면 가짜 응답이 오는지 확인해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">"/todos"</span><span class="token punctuation">)</span>

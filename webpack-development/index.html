@@ -274,7 +274,7 @@ $ npx webpack-dev-server --content-base ./dist
 Version: webpack <span class="token number">4.16</span>.5
 Time: 409ms
 Built at: <span class="token number">2018</span>-07-20 <span class="token number">14</span>:32:49</code></pre></div>
-<p>그리고 나서 브라우저에서 <code>dist/index.html</code> 파일을 직접 여는 대신에 브라우저 주소창에 <code>http://localhost:8080</code>을 입력하면 <code>Bye, Webpack!</code>이 화면에 표시될 것 입니다.</p>
+<p>그리고 나서 브라우저에서 <code>dist/index.html</code> 파일을 직접 여는 대신에 브라우저 주소창에 <code>http://localhost:8080</code>을 입력하면 <code>Bye, Webpack!</code>이 화면에 표시될 것입니다.</p>
 <p><code>src/index.js</code> 파일을 다음과 같이 다시 수정해보면 새로고침을 하지 않아도 변경 사항이 즉시 브라우저 화면에 반영되는 것을 확인할 수 있을 것입니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> message <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createTextNode</span><span class="token punctuation">(</span><span class="token string">"Bye~ Bye, Webpack!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 document<span class="token punctuation">.</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>

@@ -223,9 +223,9 @@ child_logger<span class="token punctuation">.</span>setLevel<span class="token p
 <p>이런 식으로 모듈 별로 로깅 레벨을 다른 게 설정해줌으로써, 특정 모듈에 대해서는 다른 모듈에 비해서 좀 더 자세한 로그를 남길 수 있습니다.
 여기서 <code>parent</code> 로거와 <code>parent.child</code> 로거에 별도로 핸들러 설정을 하지 않아도 되는 이유는 자식 로거의 로그 메시지는 부모 로거로 전파(propogate)되기 때문입니다.</p>
 <p>즉, <code>parent.child</code> 로거의 로그 메시지는 <code>parent</code> 로거로 전파되고, 이는 다시 최종적으로 최상위 로거로 전파됩니다.
-따라서 <code>parent</code> 로거와 <code>parent.child</code> 로거가 남기는 로그는 취상위 로거에 연결되어 있는 두 개의 핸들러에 의해서 처리될 것 입니다.</p>
+따라서 <code>parent</code> 로거와 <code>parent.child</code> 로거가 남기는 로그는 취상위 로거에 연결되어 있는 두 개의 핸들러에 의해서 처리될 것입니다.</p>
 <p>만약에 자식 로거에도 핸들러 설정을 해주고 싶다면, 해당 로거의 <code>propogate</code> 속성을 <code>False</code>로 설정하여 부모 로거로의 전파를 차단하면 됩니다.
-그러지 않으면, 의도치 않게 로그가 자식 핸들러와 부모 핸들러에 의해서 중복 처리가 될 것 입니다.</p>
+그러지 않으면, 의도치 않게 로그가 자식 핸들러와 부모 핸들러에 의해서 중복 처리가 될 것입니다.</p>
 <h2 id="파일로-로깅-설정" style="position:relative;"><a href="#%ED%8C%8C%EC%9D%BC%EB%A1%9C-%EB%A1%9C%EA%B9%85-%EC%84%A4%EC%A0%95" aria-label="파일로 로깅 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>파일로 로깅 설정</h2>
 <p>코드로 로깅 설정을 하면 유지보수가 까다로울 수 있기 때문에 실제 프로젝트에서는 별도의 파일을 이용해서 로깅 설정을 하는 경우가 많습니다.
 위에서 코딩한 로깅 설정은 다음과 같이 파일로 변환을 할 수 있습니다.</p>
