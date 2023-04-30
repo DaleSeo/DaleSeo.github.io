@@ -208,7 +208,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>예를 들어, 10자로 NanoID이 길이를 줄여보겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> id <span class="token operator">=</span> <span class="token function">nanoid</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>id<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// EsTMGzIeLH</span></code></pre></div>
-<p>단, 식별자의 길이가 짧아지면 복붙하기 쉬워지고 저장 공간을 아낄 수 있지만 식별자 간에 충돌 위험성이 높아진다는 큰 단점도 있습니다
+<p>단, 식별자의 길이가 짧아지면 복붙하기 쉬워지고 저장 공간을 아낄 수 있지만 식별자 간에 충돌 위험성이 높아진다는 큰 단점도 있습니다.
 따라서 식별자의 길이를 줄일 때는 이러한 trade-off를 반드시 고려해야겠습니다.</p>
 <p>NanoID는 기본적으로 URL-safe 문자열을 사용하여 ID를 생성하는데요.
 그러나 사용자는 <code>customAlphabet()</code> 함수를 통해서 이를 커스터마이징할 수 있습니다.</p>
