@@ -242,7 +242,7 @@ Play CDN에서는 이 역시도 스크립트 태그로 처리가 가능합니다
   </span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>style</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span></code></pre></div>
 <h2 id="실습-코드" style="position:relative;"><a href="#%EC%8B%A4%EC%8A%B5-%EC%BD%94%EB%93%9C" aria-label="실습 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실습 코드</h2>
-<p>코드펜(CodePen)에서 Play CDN을 실제로 사용하여 간단한 카드 UI를 구현해보았습니다.
+<p>지금까지 다룬 내용을 토대로 코드펜(CodePen)에서 Play CDN을 실제로 사용하여 간단한 카드 UI를 구현해보았습니다.
 CSS 코드 한 줄없이 순수하게 HTML 코드 내에서 Tailwind의 유틸리티 클래스만을 사용하여 스타일링하고 있는 것을 볼 수 있습니다.</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="tailwind-play" src="https://codepen.io/daleseo/embed/mdzxdNP?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/daleseo/pen/mdzxdNP">
@@ -265,7 +265,7 @@ CSS 코드 한 줄없이 순수하게 HTML 코드 내에서 Tailwind의 유틸�
 그래서 눈깜찍할 사이에 스타일링이 되지 않은 웹페이지가 잠깐 보일 수도 있답니다.</p>
 <p>이 것이 개발용으로는 큰 문제가 되지 않지만 상용 환경에서는 사용자 경험에 악영향을 줄 수 있습니다.
 그러므로 Play CDN은 Tailwind의 단순환 체험이나 간단한 테스트, 시제품 프로토타이핑(prototyping), PoC(proof of concept) 용으로만 사용하셔야합니다.
-상용 배포를 위해서는 프로젝트의 빌드(build) 프로세스에 Tailwind를 PostCSS의 플러그인으로 적절히 통합하여 최적화를 해줘야 겠습니다.
+상용 환경에서는 프로젝트의 빌드(build) 프로세스에 Tailwind를 PostCSS의 플러그인으로 통합하여 최종 생성된 CSS 코드를 최적화하여 배포해야겠습니다.
 (이 부분은 추후 기회가 되면 다루도록 하겠습니다.)</p>
 <h2 id="마치면서" style="position:relative;"><a href="#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C" aria-label="마치면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마치면서</h2>
 <p>지금까지 Tailwind를 시작하는 가장 간편한 방법인 Play CDN에 대해서 살펴보았습니다.</p>
