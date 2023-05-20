@@ -305,7 +305,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 
     <span class="token keyword">return</span> result<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>스트림 오퍼레이션을 통해서 이 것을 어떻게 해결하는지 보시죠.</p>
+<p>스트림 오퍼레이션을 통해서 이것을 어떻게 해결하는지 보시죠.</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">Set</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> <span class="token function">getDistinctTags</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> articles<span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
         <span class="token punctuation">.</span><span class="token function">flatMap</span><span class="token punctuation">(</span>article <span class="token operator">-></span> article<span class="token punctuation">.</span><span class="token function">getTags</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>

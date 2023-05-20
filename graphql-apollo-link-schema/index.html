@@ -206,7 +206,7 @@ client<span class="token punctuation">.</span><span class="token function">query
 <h2 id="apollo-link" style="position:relative;"><a href="#apollo-link" aria-label="apollo link permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Apollo Link</h2>
 <p>Apollo Client에는 Network Layer를 담당하는 Apollo Link라고 불리는 중요한 개념이 있습니다.
 이 Apollo Link를 통해 Apollo Client는 GraphQL 요청을 어떤 과정을 거처 어떤 방식으로 처리할지에 대해서 유연하게 제어가 가능하도록 설계되어 있습니다.
-이 것이 <code>ApolloClient</code> 생성자가 <code>link</code> 옵션을 통해 다른 Apollo Link 객체를 받을 수 있는 이유입니다.</p>
+이것이 <code>ApolloClient</code> 생성자가 <code>link</code> 옵션을 통해 다른 Apollo Link 객체를 받을 수 있는 이유입니다.</p>
 <p>예를 들어, 방금 살펴본 <code>HttpLink</code>는 원격 GraphQL Server와 HTTP 프로토콜을 통해 데이터를 송수신하도록 구현된 Apollo Link입니다.
 Apollo Client는 HTTP 프로토콜이 아닌 WebSocket을 통해서 GraphQL Server와 연동할 수 있도록 <code>WebSocketLink</code>도 제공합니다.
 또한, 이제부터 자세히 살펴볼 <code>SchemaLink</code>는 GraphQL Server 없이도 GraphQL API를 호출이 가능하도록 구현되어 있습니다.</p>

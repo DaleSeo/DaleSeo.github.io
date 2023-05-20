@@ -242,7 +242,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
   (<a href='https://codepen.io/daleseo'>@daleseo</a>) on <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 <p>하지만 여기서 한가지 문제가 발생하는데요. 자세히 보면 메인 영역의 윗 부분이 헤더 영역의 뒤로 들어가서 일부 컨텐츠가 보이지 않습니다.
-이 것은 <code>&#x3C;header></code> 엘리먼트가 부모인 <code>&#x3C;body></code> 엘리먼트로 부터 완전히 독립되면서, <code>&#x3C;body></code> 엘리먼트에서 점유하고 있던 <code>&#x3C;header></code> 엘리먼트 공간이 사라져버렸기 때문입니다.</p>
+이것은 <code>&#x3C;header></code> 엘리먼트가 부모인 <code>&#x3C;body></code> 엘리먼트로 부터 완전히 독립되면서, <code>&#x3C;body></code> 엘리먼트에서 점유하고 있던 <code>&#x3C;header></code> 엘리먼트 공간이 사라져버렸기 때문입니다.</p>
 <h2 id="가려진-컨텐츠-보이게-하기" style="position:relative;"><a href="#%EA%B0%80%EB%A0%A4%EC%A7%84-%EC%BB%A8%ED%85%90%EC%B8%A0-%EB%B3%B4%EC%9D%B4%EA%B2%8C-%ED%95%98%EA%B8%B0" aria-label="가려진 컨텐츠 보이게 하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>가려진 컨텐츠 보이게 하기</h2>
 <p>위 문제는 상단 고정 메뉴바 사용할 때 흔히 겪은 문제이며, <code>&#x3C;body></code> 엘리먼트의 상단에 메뉴바 높이 만큼 패딩(padding)을 주면 쉽게 해결할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">body</span> <span class="token punctuation">{</span>

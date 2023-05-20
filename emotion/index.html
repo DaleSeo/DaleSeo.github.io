@@ -236,7 +236,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 특히 타입스크립트(TypeScript)를 사용하면 타입 체킹(type checking)을 통해 오타를 줄일 수 있기 때문입니다.</p>
 <h2 id="jsx-pragma" style="position:relative;"><a href="#jsx-pragma" aria-label="jsx pragma permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSX pragma</h2>
 <p>눈썰미가 좋으신 분들은 위 예제 코드에서 <code>/** @jsxImportSource @emotion/react */</code> 부분이 눈에 띄셨을 거 같은데요.
-이 것을 소위 JSX pragma라고 하는데 쉽게 설명하면 Babel 트랜스파일러한테 JSX 코드를 변환할 때, React의 <code>jsx()</code> 함수를 사용하지 말고, Emotion의 <code>jsx()</code> 함수를 대신 사용하라고 알려주기 위함입니다.</p>
+이것을 소위 JSX pragma라고 하는데 쉽게 설명하면 Babel 트랜스파일러한테 JSX 코드를 변환할 때, React의 <code>jsx()</code> 함수를 사용하지 말고, Emotion의 <code>jsx()</code> 함수를 대신 사용하라고 알려주기 위함입니다.</p>
 <p>이렇게 해주지 않으면 <code>css</code> prop에 넘어간 스타일이 제대로 반영이 되지 않을테니 주의바라겠습니다.</p>
 <p>만약에 React v16 이하의 오래된 버전을 사용하는 프로젝트에서는 다음과 같이 약간 다른 형태의 JSX pragma를 사용하셔야 하고, <code>jsx()</code> 함수도 불러와야 합니다.</p>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token comment">/** @jsx jsx */</span>
@@ -253,7 +253,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>이 것은 React v17부터 JSX 코드를 작성할 때 굳이 <code>react</code> 패키지에서 <code>React</code>를 불러오지 않더라도 Babel이 트랜스파일을 할 수 있도록 사용성이 개선되었기 때문인데요.
+<p>이것은 React v17부터 JSX 코드를 작성할 때 굳이 <code>react</code> 패키지에서 <code>React</code>를 불러오지 않더라도 Babel이 트랜스파일을 할 수 있도록 사용성이 개선되었기 때문인데요.
 이 부분은 본 포스팅에서 다루고자 하는 범위에서 크게 벚어나기 때문에 관심이 있으신 분들은 따로 검색을 해보시면 좋을 것 같습니다.</p>
 <p>참고로 이렇게 매번 JSX pragma를 사용하기가 번거로우시다면 Emotion에서 제공하는 Babel 플러그인이나 프리셋을 사용하시는 것을 고려 바랍니다.</p>
 <h2 id="고정-스타일링" style="position:relative;"><a href="#%EA%B3%A0%EC%A0%95-%EC%8A%A4%ED%83%80%EC%9D%BC%EB%A7%81" aria-label="고정 스타일링 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>고정 스타일링</h2>

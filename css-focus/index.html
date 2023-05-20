@@ -209,7 +209,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <span class="token punctuation">}</span></code></pre></div>
 <p>그런데 <code>:focus</code>를 사용하여 포커스 상태 스타일했을 때 널리 알려진 한 가지 문제점이 있는데요.
 바로 마우스 포인터가 클릭했던 요소를 떠나더라도 페이지 상에서 상호작용한 다른 요소를 클릭하기 전까지는 먼저 클릭한 요소에 적용한 스타일이 그대로 남는 것입니다.
-이 것은 마우스 사용자들에게는 다소 혼란스러운 경험이 될 수 있죠.</p>
+이것은 마우스 사용자들에게는 다소 혼란스러운 경험이 될 수 있죠.</p>
 <p>예를 들어, 아래 세개의 버튼(button)은 <code>:focus</code>를 사용하여 포커스를 받으면 그 주변으로 링(ring)이 생기도록 스타일을 했는데요.
 이 중 하나의 버튼을 클릭 후에 다른 버튼을 클릭하기 전에까지 먼저 클릭 한 버튼에 포커스 링이 사라지지 않는 것을 보실 수 있으실 거에요.
 이러한 문제는 키보드의 탭 키를 이용해서 포커스를 이동하실 때는 발생하지 않을 것입니다.</p>
@@ -256,7 +256,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">div:focus-within</span> <span class="token punctuation">{</span>
   <span class="token property">outline</span><span class="token punctuation">:</span> 2px solid red<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>이 것은 <code>&#x3C;input></code> 요소와 <code>&#x3C;button></code> 요소를 감싸고 있는 <code>&#x3C;div></code> 요소가 <code>:focus-within</code>를 사용하여 스타일되었기 때문인데요.
+<p>이것은 <code>&#x3C;input></code> 요소와 <code>&#x3C;button></code> 요소를 감싸고 있는 <code>&#x3C;div></code> 요소가 <code>:focus-within</code>를 사용하여 스타일되었기 때문인데요.
 <code>&#x3C;input></code> 요소가 됐든 <code>&#x3C;button></code> 요소가 됐든 <code>&#x3C;div></code> 요소 내부에 있기 때문에 포커스를 받는 순간 <code>&#x3C;div></code> 요소에 포커스 링이 생기는 것이지요.</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="css-focus-within" src="https://codepen.io/daleseo/embed/ExdeeJL?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/daleseo/pen/ExdeeJL">

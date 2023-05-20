@@ -300,7 +300,7 @@ GitHub에서 제공하는 Setup Node 액션을 사용하면 CI 서버의 운영�
 <h2 id="npm-패키지-캐싱" style="position:relative;"><a href="#npm-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%BA%90%EC%8B%B1" aria-label="npm 패키지 캐싱 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>npm 패키지 캐싱</h2>
 <p>워크플로우 로그를 확인해보면 npm 패키지를 설치하는 단계에서 시간이 가장 많이 소모되는 것을 눈치챌 수 있는데요.
 개발자들은 계속 같은 컴퓨터를 사용하므로 npm 패키지를 최초에 한 번만 설치해주면 되지만, 항상 새롭게 셋업되는 CI 서버에서는 모든 npm 패키지를 매번 설치해야하는 비효율이 발생합니다.</p>
-<p>특히 프로젝트의 규모가 커지고 더욱 많은 npm 패키지가 설치됨에 따라 이 것은 프로젝트의 개발 생산성에도 부정적인 영향을 줄 수 있는데요.
+<p>특히 프로젝트의 규모가 커지고 더욱 많은 npm 패키지가 설치됨에 따라 이것은 프로젝트의 개발 생산성에도 부정적인 영향을 줄 수 있는데요.
 다행이도 GitHub Actions에서는 캐싱(caching)을 지원하기 때문에 CI 서버에서 npm 패키지를 설치할 때 성능 향상을 꾀할 수 있습니다.</p>
 <p>GitHub의 Setup Node을 사용하면 매우 간편하게 이러한 npm 패키지 캐싱도 설정할 수 있는데요.
 <code>actions/setup-node@v3</code> 액션의 <code>cache</code> 입력 옵션을 통해 <code>npm</code>, <code>yarn</code>, <code>pnpm</code>과 같은 패키지 매니저를 넘길 수 있습니다.
@@ -347,7 +347,7 @@ GitHub에서 제공하는 Setup Node 액션을 사용하면 CI 서버의 운영�
 <p>이 번에는 패키지를 설치하는 속도가 훨씬 빨라졌는데요.
 기존에는 약 30초가 걸렸었는데 이번에는 약 10초가 걸리네요.</p>
 <p><code>Run actions/setup-node@v3</code> 단계를 보면 GitHub의 캐시에서 npm 패키지가 들어있는 약 37 MB의 압축 파일을 읽어와서 CI 서버에 압축을 풀고 있는 것을 볼 수 있습니다.</p>
-<p>참고로 이 것보다 좀 더 세밀한 캐싱 설정이 필요하다면 GitHub의 Cache 액션을 사용할 수도 있는데요.
+<p>참고로 이것보다 좀 더 세밀한 캐싱 설정이 필요하다면 GitHub의 Cache 액션을 사용할 수도 있는데요.
 GitHub의 Cache 액션에 대해서는 <a href="/github-actions-cache/">별도의 포스팅</a>에서 다루었으니 참고 바랍니다.</p>
 <h2 id="실습-코드" style="position:relative;"><a href="#%EC%8B%A4%EC%8A%B5-%EC%BD%94%EB%93%9C" aria-label="실습 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실습 코드</h2>
 <p>본 포스팅에서 작성한 YAML 파일과 워크플로우 실행 결과는 아래 코드 저장소에서 확인하실 수 있습니다.</p>

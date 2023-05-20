@@ -206,7 +206,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>OurComponent<span class="token operator">></span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token operator">&lt;</span>span<span class="token operator">></span><span class="token punctuation">{</span>data<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">></span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>OurComponent<span class="token operator">></span></code></pre></div>
 <p>아니면 아무 것도 넘어오지 않을 수도 있습니다. (null)</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>OurComponent <span class="token operator">/</span><span class="token operator">></span></code></pre></div>
-<p>심지어 이 것들이 뒤죽박죽 섞인 배열일 수도 있죠 😆</p>
+<p>심지어 이것들이 뒤죽박죽 섞인 배열일 수도 있죠 😆</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>OurComponent<span class="token operator">></span>
   <span class="token operator">&lt;</span>input <span class="token operator">/</span><span class="token operator">></span>
   Text
@@ -215,7 +215,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <span class="token operator">&lt;</span><span class="token operator">/</span>OurComponent<span class="token operator">></span></code></pre></div>
 <p>이처럼 React는 컴포넌트의 자식으로 무엇인든지 사용할 수 있도록 상당히 유연하게 설계되어 있기 때문에 우리는 <code>children</code> prop의 자료형(data type)을 예상할 수 없습니다.
 그러므로 <code>children</code> prop을 상대로 직접 프로그래밍하게 되면 버그가 발생하기 쉬워집니다.</p>
-<p>이 것이 React에서 <code>Children</code>이라는 별도의 API를 제공하는 이유이며, 우리는 <code>Children</code> API를 통해서 <code>children</code> prop을 좀 더 안전하게 다룰 수 있습니다.</p>
+<p>이것이 React에서 <code>Children</code>이라는 별도의 API를 제공하는 이유이며, 우리는 <code>Children</code> API를 통해서 <code>children</code> prop을 좀 더 안전하게 다룰 수 있습니다.</p>
 <h2 id="children-api-접근-방법" style="position:relative;"><a href="#children-api-%EC%A0%91%EA%B7%BC-%EB%B0%A9%EB%B2%95" aria-label="children api 접근 방법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Children API 접근 방법</h2>
 <p>React의 Children API는 크게 두 가지 방법으로 접근할 수 있습니다.
 (당연히 본인 프로젝트에 <code>react</code> 패키지가 이미 설치되어 있어야겠죠?)</p>

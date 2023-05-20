@@ -251,7 +251,7 @@ $ path.resolve<span class="token punctuation">(</span><span class="token string"
 $ path.resolve<span class="token punctuation">(</span><span class="token string">'/a'</span>, <span class="token string">'/b'</span>, <span class="token string">'/c'</span><span class="token punctuation">)</span>
 <span class="token string">'C:\c'</span></code></pre></div>
 <p>여기서 눈 여겨 볼 부분은 개발자가 경로 구분자로 <code>/</code> 문자와 <code>\</code> 문자 중 어떤 것을 사용하든 크게 상관이 없다는 것입니다.
-이 것이 <code>path</code> 모듈을 사용해서 경로 처리를 할 때의 가장 큰 이점이되겠습니다.</p>
+이것이 <code>path</code> 모듈을 사용해서 경로 처리를 할 때의 가장 큰 이점이되겠습니다.</p>
 <h2 id="디렉토리-얻기" style="position:relative;"><a href="#%EB%94%94%EB%A0%89%ED%86%A0%EB%A6%AC-%EC%96%BB%EA%B8%B0" aria-label="디렉토리 얻기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>디렉토리 얻기</h2>
 <p><code>dirname()</code> 함수를 사용하면 주어진 경로에서 파일 이름을 제외한 디렉토리 부분은 얻을 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">></span> path<span class="token punctuation">.</span><span class="token function">dirname</span><span class="token punctuation">(</span><span class="token string">"/Users/daleseo/test.txt"</span><span class="token punctuation">)</span>

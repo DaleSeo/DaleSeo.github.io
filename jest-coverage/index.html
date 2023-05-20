@@ -217,7 +217,7 @@ Time:        <span class="token number">26.702</span> s</code></pre></div>
 <p>예를 들어, 커버리지를 리포트를 웹페이지 형태로 보고 싶다면 브라우저에서 <code>coverage/lcov-report/index.html</code> 파일을 열어보면 됩니다.</p>
 <h2 id="커버리지-수집-범위-설정" style="position:relative;"><a href="#%EC%BB%A4%EB%B2%84%EB%A6%AC%EC%A7%80-%EC%88%98%EC%A7%91-%EB%B2%94%EC%9C%84-%EC%84%A4%EC%A0%95" aria-label="커버리지 수집 범위 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>커버리지 수집 범위 설정</h2>
 <p>위와 같이 별도의 추가 설정없이 Jest로 커버리지 데이터를 수집하면 예상했던 것보다 커버리지 결과가 높게 나와서 놀라는 경우가 있는데요.
-이 것은 Jest가 기본적으로 프로젝트의 전체 코드를 대상으로 커버리지를 수집하는 것이 아니라, 이미 테스트가 있는 코드만을 대상으로 커버리지를 수집하기 때문입니다.</p>
+이것은 Jest가 기본적으로 프로젝트의 전체 코드를 대상으로 커버리지를 수집하는 것이 아니라, 이미 테스트가 있는 코드만을 대상으로 커버리지를 수집하기 때문입니다.</p>
 <p>따라서 좀 더 정확한 커버리지 분석 결과를 얻으려면 <code>collectCoverageFrom</code> 옵션을 사용하여 커버리지 수집 범위를 설정해줘야 합니다.</p>
 <div class="gatsby-code-title">jest.config.js</div>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json">module.exports = <span class="token punctuation">{</span>

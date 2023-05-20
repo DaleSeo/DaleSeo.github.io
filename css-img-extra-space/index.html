@@ -200,10 +200,10 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <p>이미지 아래에 이러한 공백이 생기는 이유는 <code>&#x3C;img></code> 요소의 <code>display</code> 속성이 기본적으로 <code>inline</code>이기 때문인데요.
 다시 말해서, HTML에서 <code>&#x3C;img></code> 요소에 담긴 이미지는 <code>&#x3C;span></code>이나 <code>&#x3C;strong></code> 요소에 담긴 텍스트처럼 좌우로 나란히 배치되게 되어 있습니다.</p>
 <p>이러한 인라인(inline) 요소는 좌우로 배치되었을 때 상하 정렬을 맞추기 위해서 보이지 않는 가상의 가로선이 존재하는데요.
-이 것을 보통 베이스라인(baseline)이라고도 하죠.
+이것을 보통 베이스라인(baseline)이라고도 하죠.
 기본적으로 이미지든 텍스트든 인라인 요소에 들어있는 내용은 이 베이스라인 바로 위에 딱 달라 붙게됩니다.</p>
 <p>여기서 문제는 웹의 기본 언어는 좋은 싫든 영어이고, 영어는 알파벳으로 되어 있으며 베이스라인 아래까지 내려갈 수 있는 소문자 알파벳(ex. <code>g</code>, <code>p</code>, <code>y</code>) 때문에 베이스라인 아래에 여분의 공간이 있다는 것이죠.</p>
-<p>하지만 이미지의 경우, 항상 대문자 알파벳처럼 취급뒤어 어쩔 수 없이 베이스라인 아래가 항상 비어있게 되며, 바로 이 것이 의도치 않는 공백의 원인이 됩니다.</p>
+<p>하지만 이미지의 경우, 항상 대문자 알파벳처럼 취급뒤어 어쩔 수 없이 베이스라인 아래가 항상 비어있게 되며, 바로 이것이 의도치 않는 공백의 원인이 됩니다.</p>
 <p>이러한 공백은 없애고 싶다면 가장 쉽게 생각할 수 있는 방법이 <code>vertical-align</code> 속성을 사용해서 상하 정렬 기준을 베이스라인(<code>baseline</code>)에서 요소의 하단(<code>bottom</code>) 또는 상단(<code>top</code>) 변경하는 것입니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">img</span> <span class="token punctuation">{</span>
   <span class="token property">vertical-align</span><span class="token punctuation">:</span> bottom<span class="token punctuation">;</span>

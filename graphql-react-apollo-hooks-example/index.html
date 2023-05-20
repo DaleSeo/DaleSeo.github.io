@@ -298,7 +298,7 @@ Apollo Client 객체를 생성하는 방법은 이번 포스팅에서 다루고�
 <code>useMutation()</code> 함수의 경우 <code>useQuery()</code>처럼 객체를 리턴하는 것이 아니라, 배열을 리턴합니다.
 배열의 첫번째 원소는 mutation을 호출해야하는 순간에 호출해야하는 함수이고, 두번째 원소는 <code>useQuery()</code>가 리턴하던 것과 같은 형태의 객체입니다.</p>
 <p>여기서는 첫번째 원소를 <code>addNote</code>에 할당해놓고, <code>추가</code> 버튼이 클릭되었을 때 <code>handleClick()</code> 함수 내에서 호출되게 하였습니다.
-유저는 입력 필드에 추가할 노트의 내용을 작성할 수 있으며, 이 것은 <code>content</code>라는 state에 바인딩되어 있습니다.
+유저는 입력 필드에 추가할 노트의 내용을 작성할 수 있으며, 이것은 <code>content</code>라는 state에 바인딩되어 있습니다.
 그리고 이 <code>content</code>는 <code>addNote()</code> 함수를 호출할 때, 입력 변수로 넘어갑니다.</p>
 <p>여기서 쿼리와 달리 mutation의 경우, <code>loading</code>과 <code>error</code>를 어디에다 써야할지 궁금하신 분들이 있으실텐데요.
 <code>loading</code>은 유저가 mutation 실행 중에 입력 필드나 버튼을 사용할 수 없도록 disabled처리할 때 쓸 수 있고, <code>error</code>는 mutation 실행이 실패했을 경우 입력 필드 주변에 오류 정보를 보여주기 위해서 쓸 수 있습니다.</p>

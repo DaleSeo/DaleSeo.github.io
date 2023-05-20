@@ -281,7 +281,7 @@ Web Socket을 사용하면 클라이언트는 서버와 연결 채널을 유지�
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>p<span class="token operator">></span>New message<span class="token operator">:</span> <span class="token punctuation">{</span>messageAdded<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">></span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>앱을 실행해보면 화면에 메시지가 1초에 한 번씩 계속 업데이트되는 것을 보실 수 있을 것입니다.
-이 것은 GraphQL의 일반적인 query 호출과 달리, subscription은 서버와의 연결을 유지한체로 계속해서 데이터를 수신하기 때문입니다.</p>
+이것은 GraphQL의 일반적인 query 호출과 달리, subscription은 서버와의 연결을 유지한체로 계속해서 데이터를 수신하기 때문입니다.</p>
 <h2 id="전체-코드" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EC%BD%94%EB%93%9C" aria-label="전체 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 코드</h2>
 <p>화면에 계속 <code>Loading...</code> 이라고만 뜬다면 <code>https://3wqzw.sse.codesandbox.io</code>를 먼저 호출하여 GraphQL 서버를 활성화시켜주시기 바랍니다.</p>
 <iframe src="https://stackblitz.com/edit/graphql-react-apollo-subscriptions?embed=1&file=Timeline.js"
