@@ -292,7 +292,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>눈썰미가 좋으신 분들은 컴파일된 코드에서 <code>let</code>이 <code>var</code>로 바뀌고 <code>=></code>이 <code>function</code>으로 바뀌는 현상을 눈치채셨을 텐데요.
 이것은 타입스크립트 컴파일러가 자동으로 오래된 문법의 자바스크립트 코드로 변환해주기 때문입니다.
 인터넷 익스플로러와 같이 구식 브라우저에서도 컴파일된 코드가 잘 돌아가게 해주기 위함이죠.</p>
-<p><a href="http://localhost:8000/?tag=Babel">Babel</a>과 같은 트랜스파일러(transfiler)가 최신 문법의 자바스크립트로 작성된 코드를 브라우저 하위 호완성 보장을 위해서 예전 문법으로 변환해주는 것과 비슷한 이치라고 볼 수 있겠습니다.</p>
+<p><a href="/?tag=Babel">Babel</a>과 같은 트랜스파일러(transfiler)가 최신 문법의 자바스크립트로 작성된 코드를 브라우저 하위 호완성 보장을 위해서 예전 문법으로 변환해주는 것과 비슷한 이치라고 볼 수 있겠습니다.</p>
 <p>만약에 이렇게 구식 브라우저를 지원할 필요가 없다면 <code>tsc</code> 커맨드의 <code>target</code> 옵션을 줘서 좀 더 최근 문법의 자바스크립트로 변환해줄 수 있는데요.</p>
 <p>예를 들어, 동일한 소스 코드를 ES6(ES2015) 문법으로 컴파일을 해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ npx tsc --target es6 hello.ts</code></pre></div>
