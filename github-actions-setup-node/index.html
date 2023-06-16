@@ -297,6 +297,24 @@ GitHub에서 제공하는 Setup Node 액션을 사용하면 CI 서버의 운영�
 ☑️ Post Run actions/checkout@v3
 ☑️ Complete Job</code></pre></div>
 <p>워크플로우의 로그를 통해 Node.js의 정확히 16.14.2 버전이 CI 서버에 설치되는 것을 확인할 수 있습니다.</p>
+<h2 id="nvm-파일에-저장된-노드-버전-설치" style="position:relative;"><a href="#nvm-%ED%8C%8C%EC%9D%BC%EC%97%90-%EC%A0%80%EC%9E%A5%EB%90%9C-%EB%85%B8%EB%93%9C-%EB%B2%84%EC%A0%84-%EC%84%A4%EC%B9%98" aria-label="nvm 파일에 저장된 노드 버전 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>.nvm 파일에 저장된 노드 버전 설치</h2>
+<p>만약에서 프로젝트에서 nvm을 사용하고 있다면 특정 버전의 노드를 설치하기 보다는 <code>.nvmrc</code> 파일에 저장되어 있는 버전을 설치하는 게 좋을텐데요.
+그러면 개발자가 사용하는 노드 버전과 CI 서버에서 사용되는 노드 버전이 항상 일치시킬 수 있을테니까요.</p>
+<p>이 때는 <code>actions/setup-node@v3</code> 액션에서 <code>node-version-file</code> 옵션으로 <code>.nvmrc</code>을 명시해주기면 하면 됩니다.</p>
+<div class="gatsby-code-title">.github/workflows/ci.yml</div>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our CI
+<span class="token key atrule">on</span><span class="token punctuation">:</span> push
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/checkout@v3
+<span class="gatsby-highlight-code-line">      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> actions/setup<span class="token punctuation">-</span>node@v3</span><span class="gatsby-highlight-code-line">        <span class="token key atrule">with</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">          <span class="token key atrule">node-version-file</span><span class="token punctuation">:</span> <span class="token string">'.nvmrc'</span></span>      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm ci
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm test
+      <span class="token punctuation">-</span> <span class="token key atrule">run</span><span class="token punctuation">:</span> npm run build</code></pre></div>
+<blockquote>
+<p>nvm(Node Version Manager)에 대한 자세한 내용은 <a href="/js-nvm/">관련 포스팅</a>을 참고 바랍니다.</p>
+</blockquote>
 <h2 id="npm-패키지-캐싱" style="position:relative;"><a href="#npm-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%BA%90%EC%8B%B1" aria-label="npm 패키지 캐싱 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>npm 패키지 캐싱</h2>
 <p>워크플로우 로그를 확인해보면 npm 패키지를 설치하는 단계에서 시간이 가장 많이 소모되는 것을 눈치챌 수 있는데요.
 개발자들은 계속 같은 컴퓨터를 사용하므로 npm 패키지를 최초에 한 번만 설치해주면 되지만, 항상 새롭게 셋업되는 CI 서버에서는 모든 npm 패키지를 매번 설치해야하는 비효율이 발생합니다.</p>

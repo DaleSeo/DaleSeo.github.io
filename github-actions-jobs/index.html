@@ -192,7 +192,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 워크플로우는(workflow)는 작업(job)의 상위 개념이고, 단계(step)는 하위 개념이라고 볼 수 있겠습니다.
 즉, 하나 이상의 작업(job)이 하나의 워크플로우(workflow)를 구성하며, 하나의 작업(job)은 순차적으로 수행되는 여러 개의 단계(step)로 이뤄집니다.</p>
 <p>워크플로우 YAML 파일 기준으로 보면 작업은 <code>jobs</code> 속성 아래에서 하나의 해시 테이블(hash table)의 타입으로 정의되며, 모든 작업에는
-필수적으로 작업 식졀자(ID)가 키(key)로 명시되야하고, 그 밖에 세부 내용(실행 환경, 작업 단계 등)은 값(value)으로 또 다시 해시 테이블 형태로 명시가 됩니다. (중첩 해시 테이블라고 볼 수 있겠죠?)</p>
+필수적으로 작업 식별자(ID)와 키(key)로 명시되야하고, 그 밖에 세부 내용(실행 환경, 작업 단계 등)은 값(value)으로 또 다시 해시 테이블 형태로 명시가 됩니다. (중첩 해시 테이블라고 볼 수 있겠죠?)</p>
 <p>아래는 2개의 작업으로 이루어진 전형적인 워크플로우 파일의 모습입니다.</p>
 <div class="gatsby-code-title">.github/workflows/jobs.yml</div>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Jobs
@@ -261,7 +261,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <span class="gatsby-highlight-code-line">▶ Run <span class="token function">cat</span> hello.txt</span><span class="gatsby-highlight-code-line">Hello, GitHub Actions<span class="token operator">!</span></span>☑️ Complete Job</code></pre></div>
 <h2 id="작업-간에-실행-순서-제어하기" style="position:relative;"><a href="#%EC%9E%91%EC%97%85-%EA%B0%84%EC%97%90-%EC%8B%A4%ED%96%89-%EC%88%9C%EC%84%9C-%EC%A0%9C%EC%96%B4%ED%95%98%EA%B8%B0" aria-label="작업 간에 실행 순서 제어하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>작업 간에 실행 순서 제어하기</h2>
 <p>워크플로우에 여러 개의 작업이 정의되어 있을 경우 기본적으로 모든 작업은 동시에 처리가 됩니다.
-작업의 독립성을 상기해보면 어떻게 보면 여러 작업이 병렬 처리가 되는 게 당연하게 느껴지죠?
+위에서 설명드린 작업의 독립성을 상기해보면 여러 작업이 병렬 처리가 되는 게 당연하겠죠?
 하나의 컴퓨터를 재사용하는 게 아니고 여러 대의 컴퓨터를 동시에 돌릴 수 있는데 굳이 기다릴 필요가 없는 것이지요.</p>
 <p>간단한 실습을 위해 작업 식별자(ID)를 콘솔에 출력하기 위한 동일한 작업 3개로 이루어진 워크플로우를 작성해보겠습니다.</p>
 <div class="gatsby-code-title">.github/workflows/jobs.yml</div>
