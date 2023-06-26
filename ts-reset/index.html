@@ -290,7 +290,7 @@ charSet<span class="token punctuation">.</span><span class="token function">has<
 <span class="token comment">//      ^? (method) Map&lt;"A" | "B" | "C", "a" | "b" | "c">.has(value: string): boolean</span></code></pre></div>
 <h2 id="jsonparse-함수의-위험성" style="position:relative;"><a href="#jsonparse-%ED%95%A8%EC%88%98%EC%9D%98-%EC%9C%84%ED%97%98%EC%84%B1" aria-label="jsonparse 함수의 위험성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JSON.parse() 함수의 위험성</h2>
 <p>타입스크립트에서 <code>JSON</code> 내장 객체의 <code>parse()</code> 함수가 <code>any</code> 타입을 반환한다는 것을 알고 계셨나요?
-이 것은 타입 안전한(type-safe) 코드를 작성하는데 큰 문제가 될 수 있는데요.</p>
+이것은 타입 안전한(type-safe) 코드를 작성하는데 큰 문제가 될 수 있는데요.</p>
 <p>예를 들어, 다음 예제 코드를 보면 <code>JSON.parse()</code>의 반환 결과를 <code>user</code> 변수에 저장하고 있는데요.
 <code>user</code> 변수의 타입이 <code>any</code>가 되기 때문에 아무 속성이나 막 접근해도 아무런 타입 에러가 발생하지 않습니다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token comment">/* 어떤 문자열 */</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -336,7 +336,7 @@ charSet<span class="token punctuation">.</span><span class="token function">has<
 따라서 <code>ts-reset</code> 라이브러리는 애플리케이션 개발할 때만 사용하셔야 합니다.</p>
 <h2 id="마치면서" style="position:relative;"><a href="#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C" aria-label="마치면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마치면서</h2>
 <p>굳게 믿었던 타입스크립트에 논리적으로 납득이 어려운 이러한 자잘한 문제들이 여기저기 숨어 있다는 게 재미있지 않나요?</p>
-<p>제가 이 것을 타입스크립트의 버그라고 표현한 부분에 대해서는 오해가 있을 수 있을 것 같아서 첨언드리고 싶은데요.
+<p>제가 이것을 타입스크립트의 버그라고 표현한 부분에 대해서는 오해가 있을 수 있을 것 같아서 첨언드리고 싶은데요.
 사실 제가 본 포스팅에서 다룬 문제 하나 하나를 깊게 파고 들어가시면 타입스크립트가 그렇게 동작하는데는 다 나름의 그럴뜻한 이유가 있다는 것을 알 수 있습니다.</p>
 <p>타입스크립트가 현재 v5로 나온지가 벌써 10년이 넘었고 워낙 대중적으로 사용되는 자바스크립트 컴파일러다 보니 이미 이러한 동작에 의존하고 있는 코드가 너무나도 방대하죠.
 따라서 과거에 했던 결정이 실수든 아니든 하위 호환성을 보장하려면 쉽게 번복하기가 쉽지가 않다는 부분을 감안할 필요가 있겠습니다.</p>

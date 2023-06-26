@@ -190,7 +190,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <p>이번 포스팅에서는 이러한 타입스크립트에 대한 오해를 풀어보는 시간을 갖도록 하겠습니다.</p>
 <h2 id="타입스크립트의-역할" style="position:relative;"><a href="#%ED%83%80%EC%9E%85%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%EC%97%AD%ED%95%A0" aria-label="타입스크립트의 역할 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>타입스크립트의 역할</h2>
 <p>이해를 돕기 위해서 타입스크립트로 간단한 코드를 함께 짜볼까요?
-사용자 계정을 나타내는 <code>Account</code> 인터페이스를 선언하고 이 것을 입력으로 받는 <code>processAccount()</code> 함수를 작성해보겠습니다.</p>
+사용자 계정을 나타내는 <code>Account</code> 인터페이스를 선언하고 이것을 입력으로 받는 <code>processAccount()</code> 함수를 작성해보겠습니다.</p>
 <div class="gatsby-code-title">account.ts</div>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">interface</span> <span class="token class-name">Account</span> <span class="token punctuation">{</span>
   id<span class="token operator">:</span> <span class="token builtin">string</span><span class="token punctuation">;</span>
@@ -244,7 +244,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 </ol>
 <p>여기서 “컴파일”은 항상 빌드나 배포 과정에서만 일어나는 과정은 아니라는 것에 주의하셔야 하는데요.
 VSCode와 같은 코드 편집기에서도 흔하게 타입 에러를 확인할 수 있죠?
-이 것은 우리가 코드를 편집할 때 실시간으로 코드 편집기가 알아서 컴파일을 해주기 때문입니다.</p>
+이것은 우리가 코드를 편집할 때 실시간으로 코드 편집기가 알아서 컴파일을 해주기 때문입니다.</p>
 <p>타입스크립트는 코드에 명시되어 있는 타입 구조를 정적으로 분석하여 <strong>프로그램을 실행하지 않고도</strong> 발생할 가능성이 있는 문제를 예측할 수 있는데요.
 결국 타입스크립트는 이렇게 예측 가능한 문제를 개발자에게 알려줌으로써 좀 더 견고한 코드를 짤 수 있도록 도와주는 도구일 뿐입니다.</p>
 <p>다시 한 번 정리해보면 타입 검사란 타입스크립트로 작성된 코드의 컴파일 시점에서 일어나며 오직 개발자를 위한 것입니다.
@@ -316,7 +316,7 @@ VSCode와 같은 코드 편집기에서도 흔하게 타입 에러를 확인할 
   <span class="token comment">// 어떤 로직</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>어떤가요? 생각보다 작성해야 할 코드가 많고 함수 내부가 상당히 지저분해지죠?
-여기에다가 정규식을 이용해서 이메일, URL, IP 검증까지 한다면 코드가 이 것보다 훨씬 더 복잡해질 것입니다.
+여기에다가 정규식을 이용해서 이메일, URL, IP 검증까지 한다면 코드가 이것보다 훨씬 더 복잡해질 것입니다.
 오히려 함수 내에서 비지니스 로직보다 유효성 검증 로직이 차지하는 공간이 더 커질 수도 있고요.
 소위 배보다 배꼽이 더 커질 수 있는 상황이 올 수 있거죠.</p>
 <p>그런데 이보다 더 큰 문제는 이 손수 작성한 유효성 검증 로직을 <code>Account</code> 인터페이스로 선언한 타입과 항상 일치하도록 관리해줘야 한다는 건데요.
@@ -327,7 +327,7 @@ VSCode와 같은 코드 편집기에서도 흔하게 타입 에러를 확인할 
 <p>다행히도 자바스크립트 커뮤니티에는 유효성 검증을 도와주는 여러가지 라이브러리가 있는데요.</p>
 <p>대표적으로 <a href="https://www.npmjs.com/package/joi">Joi</a>와 <a href="https://www.npmjs.com/package/yup">Yup</a> 그리고 <a href="https://www.npmjs.com/package/zod">Zod</a>를 들 수 있습니다.
 (공교롭게도 모두 이름이 3글자이네요 😆)
-이 유효성 검증 라이브러리들은 각각 특장점이 있지만 공통적으로 타입스크립트가 아닌 자바스크립트로 스키마(schema)를 정의하고 이 것을 이용하여 유효성 검증을 가능하게 해줍니다.</p>
+이 유효성 검증 라이브러리들은 각각 특장점이 있지만 공통적으로 타입스크립트가 아닌 자바스크립트로 스키마(schema)를 정의하고 이것을 이용하여 유효성 검증을 가능하게 해줍니다.</p>
 <p>예를 들어서, Zod를 통해서 위해서 작성한 <code>Account</code> 인터페이스와 <code>processAccount()</code> 함수를 재작성해보겠습니다.</p>
 <div class="gatsby-code-title">account.ts</div>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token comment">// ✅ 스키마 정의</span>

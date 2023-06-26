@@ -242,7 +242,7 @@ User<span class="token punctuation">.</span><span class="token function">parse</
     message<span class="token operator">:</span> <span class="token string">"Required"</span><span class="token punctuation">,</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
-<p>여기서 한 가지 주의할 부분은 검증이 성공했을 경우 <code>parse()</code> 함수가 반환하는 객체에는 검증이 통과한 속성만 포함된다는 것입니다.</p>
+<p>여기서 한 가지 주의할 부분은 검증이 성공했을 경우 <code>parse()</code> 함수가 반환하는 객체에는 검증에 통과한 속성만 포함된다는 것입니다.</p>
 <p>예를 들어, 다음과 같이 스키마에 정의되지 않은 <code>password</code> 속성을 입력 객체에 포함한 경우,</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">const</span> user <span class="token operator">=</span> User<span class="token punctuation">.</span><span class="token function">parse</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
   email<span class="token operator">:</span> <span class="token string">"user@test.com"</span><span class="token punctuation">,</span>
@@ -259,7 +259,7 @@ User<span class="token punctuation">.</span><span class="token function">parse</
   age<span class="token operator">:</span> <span class="token number">35</span><span class="token punctuation">,</span>
   active<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>이 것은 <code>parse()</code> 함수의 반환 타입이 정의된 스키마에 의해서 결정이 되기 때문입니다.
+<p>이것은 <code>parse()</code> 함수의 반환 타입이 정의된 스키마에 의해서 결정이 되기 때문입니다.
 타입에 <code>password</code> 속성이 없는데 값에만 <code>password</code> 속성이 들어있다면 타입 에러가 발생했을 것입니다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">//          ^? const user: { email: string; age: number; active: boolean; }</span></code></pre></div>
