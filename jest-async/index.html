@@ -340,7 +340,7 @@ Ran all <span class="token builtin class-name">test</span> suites.</code></pre><
 <span class="token punctuation">}</span></code></pre></div>
 <p>차이점은 인자로 콜백 함수를 받는 대신 0.1초를 기다렸다가 사용자 객체를 제공(resolve)하는 Promise 객체를 리턴한다는 것입니다.</p>
 <blockquote>
-<p>위 코드가 잘 이해되지 않으시는 분들은 <a href="/js-async-promise">자바스크립트의 Promise에 대한 포스팅</a>를 먼저 읽어보시면 도움이 되실 겁니다.</p>
+<p>위 코드가 잘 이해되지 않으시는 분들은 <a href="/js-async-promise/">자바스크립트의 Promise에 대한 포스팅</a>를 먼저 읽어보시면 도움이 되실 겁니다.</p>
 </blockquote>
 <p>먼저 실패하는 테스트를 작성하고 정말 실패하는지 살펴보겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"fetch a user"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -424,7 +424,7 @@ Ran all <span class="token builtin class-name">test</span> suites.</code></pre><
 <h2 id="asyncawait-테스트" style="position:relative;"><a href="#asyncawait-%ED%85%8C%EC%8A%A4%ED%8A%B8" aria-label="asyncawait 테스트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Async/Await 테스트</h2>
 <p>마지막으로 ES6의 async/await 키워드를 사용하면 더 읽기 쉬운 테스트를 작성할 수 있습니다.</p>
 <blockquote>
-<p>자바스크립트의 async/await에 대한 자세한 설명은 <a href="/js-async-async-await">관련 포스팅</a>를 참고 바랍니다.</p>
+<p>자바스크립트의 async/await에 대한 자세한 설명은 <a href="/js-async-async-await/">관련 포스팅</a>를 참고 바랍니다.</p>
 </blockquote>
 <p>다음과 같이 테스트 함수 맨 앞에 <code>async</code> 를 추가하고, Promise를 리턴하는 함수 앞에 <code>await</code>를 붙여주면 마치 동기 코드처럼 보이는 테스트를 작성할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"fetch a user"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>

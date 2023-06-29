@@ -220,7 +220,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// I will be a mock!</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <blockquote>
-<p>자바스크립트의 비동기 함수와 Promise에 대한 자세한 내용은 <a href="/js-async-promise">관련 포스팅</a>를 참고 바랍니다.</p>
+<p>자바스크립트의 비동기 함수와 Promise에 대한 자세한 내용은 <a href="/js-async-promise/">관련 포스팅</a>를 참고 바랍니다.</p>
 </blockquote>
 <p>뿐만 아니라 <code>mockImplementation(구현 코드)</code> 함수를 이용하면 아예 해당 함수를 통째로 즉석해서 재구현해버릴 수도 있습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">mockFn<span class="token punctuation">.</span><span class="token function">mockImplementation</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">I am </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>

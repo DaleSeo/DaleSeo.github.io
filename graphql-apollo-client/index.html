@@ -248,7 +248,7 @@ data: <span class="token punctuation">{</span>continents: Array<span class="toke
 <p>여기서 주의할 점은 <code>query()</code>는 Promise 객체를 리턴한다는 것입니다. 따라서, 비동기 처리를 위해 <code>async/await</code> 키워드를 사용해야합니다.
 이 Promise 객체는 <code>loading</code>, <code>error</code>, <code>data</code> 프로퍼티를 갖는 객체로 resolve 됩니다.</p>
 <blockquote>
-<p><code>async/await</code> 키워드에 대한 자세한 설명은 <a href="/js-async-async-await">관련 포스팅</a>을 참고 바랍니다.</p>
+<p><code>async/await</code> 키워드에 대한 자세한 설명은 <a href="/js-async-async-await/">관련 포스팅</a>을 참고 바랍니다.</p>
 </blockquote>
 <p>이 중, <code>data</code>가 GraphQL 서버로 부터 응답된 데이터를 담고 있습니다.
 <code>loading</code>은 데이터가 수신되는 동안 <code>true</code>였다가 <code>false</code>로 바뀌는데, 보통 UI를 구현할 때 데이터 로딩 중 메시지나 spinner 애니메이션을 보여주기 위해서 사용됩니다.
@@ -256,7 +256,7 @@ data: <span class="token punctuation">{</span>continents: Array<span class="toke
 <h2 id="참고-asyncawait-키워드를-사용할-수-없는-경우" style="position:relative;"><a href="#%EC%B0%B8%EA%B3%A0-asyncawait-%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%97%86%EB%8A%94-%EA%B2%BD%EC%9A%B0" aria-label="참고 asyncawait 키워드를 사용할 수 없는 경우 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[참고] <code>async/await</code> 키워드를 사용할 수 없는 경우</h2>
 <p><code>async/await</code> 키워드를 사용할 수 없는 경우에는 리턴된 Promise 객체의 <code>then()</code> 메서드를 사용하면 됩니다.</p>
 <blockquote>
-<p>Promise에 대한 자세한 설명은 <a href="/js-async-promise">관련 포스팅</a>를 참고 바랍니다.</p>
+<p>Promise에 대한 자세한 설명은 <a href="/js-async-promise/">관련 포스팅</a>를 참고 바랍니다.</p>
 </blockquote>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">(</span><span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   client
