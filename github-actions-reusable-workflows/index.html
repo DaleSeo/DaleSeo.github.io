@@ -284,6 +284,9 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"jfSzDr,"}/*!sc*/
 <p>워크플로우 파일이 상당히 길어졌지만 사실 이 3개의 작업 간에는 대부분의 단계는 대동소이합니다.</p>
 <p>작업 간에 다른 부분은 <code>environment</code> 속성을 통해 각 작업의 다른 배포 환경을 지정하는 것 밖에 없고요.
 <code>deploy-dev</code>, <code>deploy-qa</code>, <code>deploy-prod</code> 순으로 작업이 수행되도록 <code>needs</code> 속성을 사용하여 작업 간의 의존 관계를 설정해주고 있습니다.</p>
+<blockquote>
+<p>GitHub Actions에서 작업 간에 실행 순서 제어하는 자세한 방법은 <a href="/github-actions-jobs/">별도 포스팅</a>에서 다루고 있습니다.</p>
+</blockquote>
 <p>워크플로우 화면에 가시면 아래와 같이 3개이 작업이 순차적으로 실행된 것을 보실 수 있으실거에요.</p>
 <p><img src="https://res.cloudinary.com/daleseo/image/upload/v1688216078/github-actions-reusable-workflows-separate-job-by-env.png" alt="separate-job-by-env"></p>
 <h2 id="재사용-가능한-워크플로우-생성" style="position:relative;"><a href="#%EC%9E%AC%EC%82%AC%EC%9A%A9-%EA%B0%80%EB%8A%A5%ED%95%9C-%EC%9B%8C%ED%81%AC%ED%94%8C%EB%A1%9C%EC%9A%B0-%EC%83%9D%EC%84%B1" aria-label="재사용 가능한 워크플로우 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>재사용 가능한 워크플로우 생성</h2>
