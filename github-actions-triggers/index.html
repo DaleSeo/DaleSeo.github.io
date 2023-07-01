@@ -255,6 +255,16 @@ PR 단계에서 품질 기준에 미치치 못하는 코드가 기본 브랜치�
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Triggers
 <span class="gatsby-highlight-code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">  <span class="token key atrule">workflow_dispatch</span><span class="token punctuation">:</span></span></code></pre></div>
 <p>이 기능은 테스트하거나 디버깅할 때 상당히 유용하며 특정 이벤트에 자동으로 반응하는 워크플로우에도 비상 시 수동 실행을 위해서 설정해놓는 경우도 있습니다.</p>
+<h2 id="workflow_call" style="position:relative;"><a href="#workflow_call" aria-label="workflow_call permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>workflow_call</h2>
+<p>하나의 워크플로우 내에서 또 다른 워크플로우를 호출할 수 있다는 사실을 알고 계신가요?
+보통 이렇게 다른 워크플로우가 호출하는 워크플로우를 재사용 가능한(reusable) 워크플로우라고 하는데요.</p>
+<p>어떤 워크플로우가 재사용 가능한 워크플로우를 호출하면 <code>workflow_call</code> 이벤트가 발생합니다.
+따라서 재사용 가능한 워크플로우가 이 이벤트 반응할 수 있도록 설정해줘야 합니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Triggers
+<span class="gatsby-highlight-code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">  <span class="token key atrule">workflow_call</span><span class="token punctuation">:</span></span></code></pre></div>
+<blockquote>
+<p>재사용 가능한 워크플로우를 사용하는 방법에 대해서는 <a href="/github-actions-resable-workflows">별도 포스팅</a>에서 자세히 다루고 있습니다.</p>
+</blockquote>
 <h2 id="마치면서" style="position:relative;"><a href="#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C" aria-label="마치면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마치면서</h2>
 <p>지금까지 GitHub Actions에서 워크플로우를 실행할 수 있는 다양한 방법에 대해서 알아보았습니다.
 GitHub 저장소에서 일어나는 다양한 이벤트에 자동으로 반응하게 할 수도 있고, 특정 스케줄에 의해서 주기적으로 실행되게 할 수도 있으며, 워크플로우를 수동으로 실행할 수 있는 옵션이 있다는 것을 배웠습니다.</p>
