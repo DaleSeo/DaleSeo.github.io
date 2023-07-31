@@ -285,7 +285,7 @@ GitHub에서는 여러 종류의 엑세스 토큰이 있지만 개인적으로 �
 <p>발급받은 엑세스 토큰을 보시면 굉장히 긴 문자열이라는 것을 알 수 있는데요.
 매번 <code>curl</code> 명령어를 날릴 때 마다 넘기기에는 번거로울 수 있기 때문에 환경 변수로 저장해놓고 시작하겠습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">GH_TOKEN</span><span class="token operator">=</span>github_pat_11A<span class="token punctuation">..</span>.Jme</code></pre></div>
-<p>현재 인증되어 있는 사용자 정보를 확인할 수 있는 <code>GET /user</code> 앤드포인트를 한번 호출해볼까요?</p>
+<p>현재 인증되어 있는 사용자 정보를 확인할 수 있는 <code>GET /user</code> 엔드포인트를 한번 호출해볼까요?</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://api.github.com/user <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">$GH_TOKEN</span>"</span></code></pre></div>
 <p>그러면 깃허브에 등록되어 있는 본인의 사용자 정보가 수신이 될 것입니다.</p>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
@@ -324,7 +324,7 @@ GitHub에서는 여러 종류의 엑세스 토큰이 있지만 개인적으로 �
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="저장소-생성" style="position:relative;"><a href="#%EC%A0%80%EC%9E%A5%EC%86%8C-%EC%83%9D%EC%84%B1" aria-label="저장소 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>저장소 생성</h2>
 <p>간단한 실습을 위해서 깃허브의 REST API로 <code>Test001</code>이라는 저장소(repository)를 하나 만들어볼까요?</p>
-<p>저장소를 만들 때는 <code>POST /user/repos</code> 앤드포인트를 사용하는데요.
+<p>저장소를 만들 때는 <code>POST /user/repos</code> 엔드포인트를 사용하는데요.
 요청 바디(body)의 <code>name</code> 속성을 통해서 저장소 이름을 넘겨주면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-X</span> POST https://api.github.com/user/repos <span class="token punctuation">\</span>
   <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">$GH_TOKEN</span>"</span> <span class="token punctuation">\</span>
@@ -351,7 +351,7 @@ GitHub에서는 여러 종류의 엑세스 토큰이 있지만 개인적으로 �
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="이슈-추가" style="position:relative;"><a href="#%EC%9D%B4%EC%8A%88-%EC%B6%94%EA%B0%80" aria-label="이슈 추가 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이슈 추가</h2>
 <p>이제 실습 저장소에 새로운 이슈(issue)를 하나 만들어볼까요?</p>
-<p>이슈를 추가할 때는 <code>POST /repos/{owner}/{repo}/issues</code> 앤드포인트를 사용하는데요, 요청 바디의 <code>title</code> 속성을 통해서 이슈의 제목을 명시합니다.</p>
+<p>이슈를 추가할 때는 <code>POST /repos/{owner}/{repo}/issues</code> 엔드포인트를 사용하는데요, 요청 바디의 <code>title</code> 속성을 통해서 이슈의 제목을 명시합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-X</span> POST https://api.github.com/repos/DaleSeo/Test0001/issues <span class="token punctuation">\</span>
   <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">$GH_TOKEN</span>"</span> <span class="token punctuation">\</span>
   <span class="token parameter variable">-d</span> <span class="token string">'{"title":"버그가 있어요! 🐛"}'</span></code></pre></div>
@@ -378,7 +378,7 @@ GitHub에서는 여러 종류의 엑세스 토큰이 있지만 개인적으로 �
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="이슈-수정" style="position:relative;"><a href="#%EC%9D%B4%EC%8A%88-%EC%88%98%EC%A0%95" aria-label="이슈 수정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>이슈 수정</h2>
 <p>이슈에 본문을 추가하고 이슈를 닫으려면 어떻게 해야할까요?</p>
-<p>이슈를 수정할 때는 <code>PATCH /repos/{owner}/{repo}/issues/{issue_number}</code> 앤드포인트를 사용하면 됩니다.</p>
+<p>이슈를 수정할 때는 <code>PATCH /repos/{owner}/{repo}/issues/{issue_number}</code> 엔드포인트를 사용하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-X</span> PATCH https://api.github.com/repos/DaleSeo/Test001/issues/1 <span class="token punctuation">\</span>
   <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">$GH_TOKEN</span>"</span> <span class="token punctuation">\</span>
   <span class="token parameter variable">-d</span> <span class="token string">'{"body":"버그를 고쳤습니다. 😄","state":"closed"}'</span></code></pre></div>
@@ -419,7 +419,7 @@ GitHub에서는 여러 종류의 엑세스 토큰이 있지만 개인적으로 �
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="댓글-달기" style="position:relative;"><a href="#%EB%8C%93%EA%B8%80-%EB%8B%AC%EA%B8%B0" aria-label="댓글 달기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>댓글 달기</h2>
 <p>이번에는 이슈에 댓글을 한 번 달아볼까요?</p>
-<p>댓글을 추가할 때는 <code>POST /repos/{owner}/{repo}/issues/{issue_number}/comments</code> 앤드포인트를 사용합니다.</p>
+<p>댓글을 추가할 때는 <code>POST /repos/{owner}/{repo}/issues/{issue_number}/comments</code> 엔드포인트를 사용합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-X</span> POST https://api.github.com/repos/DaleSeo/Test001/issues/1/comments <span class="token punctuation">\</span>
   <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">$GH_TOKEN</span>"</span> <span class="token punctuation">\</span>
   <span class="token parameter variable">-d</span> <span class="token string">'{"body":"감사합니다! ❤️"}'</span></code></pre></div>
@@ -450,10 +450,10 @@ GitHub에서는 여러 종류의 엑세스 토큰이 있지만 개인적으로 �
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="저장소-삭제" style="position:relative;"><a href="#%EC%A0%80%EC%9E%A5%EC%86%8C-%EC%82%AD%EC%A0%9C" aria-label="저장소 삭제 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>저장소 삭제</h2>
 <p>마지막으로 실습 저장소를 정리하도록 하겠습니다.</p>
-<p>저장소를 삭제할 때는 <code>DELETE /repos/{owner}/{repo}</code> 앤드포인트를 사용합니다.</p>
+<p>저장소를 삭제할 때는 <code>DELETE /repos/{owner}/{repo}</code> 엔드포인트를 사용합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-I</span> <span class="token parameter variable">-X</span> DELETE https://api.github.com/repos/DaleSeo/Test001 <span class="token punctuation">\</span>
   <span class="token parameter variable">-H</span> <span class="token string">"Authorization: Bearer <span class="token variable">$GH_TOKEN</span>"</span></code></pre></div>
-<p>이 앤드포인트의 응답에는 바디가 비어있기 때문에 <code>curl</code> 명령어의 <code>-I</code> 플래그를 사용하여 대신 응답 헤더(header)를 출력하였습니다.
+<p>이 엔드포인트의 응답에는 바디가 비어있기 때문에 <code>curl</code> 명령어의 <code>-I</code> 플래그를 사용하여 대신 응답 헤더(header)를 출력하였습니다.
 아래와 같이 <code>No Content</code>를 나타내는 <code>204</code> 상태 코드가 수신되면 정상적으로 저장소가 삭제된 것입니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">HTTP/2 <span class="token number">204</span>
 server: GitHub.com
@@ -481,7 +481,7 @@ x-github-request-id: 606A:93E1:95D0AE:13240FA:649592EC</code></pre></div>
 <p>지금까지 깃허브의 REST API를 사용하여 실습 저장소를 만들고 이슈와 댓글을 조작해보았습니다.
 이번 시간에 우리가 함께 호출해본 URL들은 사실 빙산의 일각일 뿐이며 깃허브는 엄청나게 방대한 REST API를 제공하고 있습니다.
 하지만 본 포스팅에서 다룬 기본 사용법만 숙지하시면 다른 URL은 <a href="https://docs.github.com/ko/rest">공식 문서</a>를 참고히셔서 충분히 활용하실 수 있을실 거에요.</p>
-<p>그럼 깃허브의 마스코트를 출력해주는 재미있는 앤드포인트를 호출하면서 마무리하도록 하겠습니다 😸</p>
+<p>그럼 깃허브의 마스코트를 출력해주는 재미있는 엔드포인트를 호출하면서 마무리하도록 하겠습니다 😸</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://api.github.com/octocat
 
 
