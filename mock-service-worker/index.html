@@ -189,7 +189,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>MSW(Mock Service Worker)는 서비스 워커(Service Worker)를 사용하여 네트워크 호출을 가로채는 API 모킹(mocking) 라이브러리입니다.
 쉽게 말해, 브라우저에 기생(?)해서 마치 백엔드 API인 척하면서 프론트엔드의 요청에 가짜 데이터를 응답해주는 녀석이라고 볼 수 있겠네요.</p>
 <p>비교적에 최근에 도입된 웹 표준 기술인 서비스 워커(Service Worker)를 사용하면 브라우저로 부터 나가는 요청이나 들어오는 응답을 중간에서 감시하거나 변조, 캐싱과 같은 기존에 웹에서 할 수 없었던 부가적인 작업들을 할 수 있는데요.
-MSW는 이러한 서비스 워커의 능력을 백분 활용하여 웹 개발에 있어서 API 모킹의 수준을 한 단계 올려놓았다고 평가받으며 출시되지 마자 큰 호응을 얻고 있습니다.</p>
+MSW는 이러한 서비스 워커의 능력을 백분 활용하여 웹 개발에 있어서 API 모킹의 수준을 한 단계 올려놓았다고 평가받으며 출시되자 마자 큰 호응을 얻고 있습니다.</p>
 <p>MSW를 여러 가지 용도로 활용할 수 있지만 대표적으로 두가지 사례를 생각해볼 수 있는데요.</p>
 <p>첫번째는 백엔드 API 개발과 프론트엔드 UI 개발이 동시에 진행되야하는 경우, 백엔드 API 구현이 완료될 때까지 프론트엔드 팀에서 임시로 사용하기 위한 가짜(mock) API를 서비스 워커로 돌리기 위해서이고,
 두번째는 테스트를 실행 시 실제 백엔드 API에 네트워크 호출을 하는 대신에 훨씬 빠르고 안정적인 가짜 API 서버를 구축하기 위해서 입니다.</p>
@@ -212,7 +212,7 @@ MSW는 이러한 서비스 워커의 능력을 백분 활용하여 웹 개발에
 <p>MSW 라이브러리는 npm 저장소에 <code>msw</code>라는 이름의 패키지로 올라와 있습니다.
 다음과 같이 npm 커맨드로 어떤 자바스크립트 프로젝트에서도 쉽게 설치할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> i <span class="token parameter variable">-D</span> msw</code></pre></div>
-<h2 id="서비스-워커-코드-생성하기" style="position:relative;"><a href="#%EC%84%9C%EB%B9%84%EC%8A%A4-%EC%9B%8C%EC%BB%A4-%EC%BD%94%EB%93%9C-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0" aria-label="서비스 워커 코드 생성하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>서비스 워커 코드 생성하기</h2>
+<h2 id="기반-코드-자동-생성" style="position:relative;"><a href="#%EA%B8%B0%EB%B0%98-%EC%BD%94%EB%93%9C-%EC%9E%90%EB%8F%99-%EC%83%9D%EC%84%B1" aria-label="기반 코드 자동 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기반 코드 자동 생성</h2>
 <p>MSW는 브라우저에서 서비스 워커를 통해서 작동하기 때문에 서비스 워커 등록을 위한 기본적인 코드가 필요한데요.
 다행히도 서비스 워커에 대해서 잘 몰라도 MSW에서 제공하는 CLI 도구를 사용하면 이 코드를 쉽게 만들어 낼 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ npx msw init public/ <span class="token parameter variable">--save</span></code></pre></div>
@@ -355,7 +355,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
      allow="accelerometer; ambient-light-sensor; camera; encrypted-media; geolocation; gyroscope; hid; microphone; midi; payment; usb; vr; xr-spatial-tracking"
      sandbox="allow-forms allow-modals allow-popups allow-presentation allow-same-origin allow-scripts"
    ></iframe>
-<h2 id="테스트-서버-작성" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%9C%EB%B2%84-%EC%9E%91%EC%84%B1" aria-label="테스트 서버 작성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 서버 작성</h2>
+<h2 id="테스트-서버-생성" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%84%9C%EB%B2%84-%EC%83%9D%EC%84%B1" aria-label="테스트 서버 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 서버 생성</h2>
 <p>MSW는 개발에서 뿐만 아니라 테스트에서도 활용할 수 있다고 말씀드렸죠?
 <code>msw/node</code> 모듈의 <code>setupServer()</code> 함수를 이용하면 간단하게 테스트용 API 서버를 만들 수 있는데요.
 위에서 작성한 가짜 응답을 해주는 요청 핸들러를 그대로 재활용하면 됩니다. 👍</p>
