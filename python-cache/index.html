@@ -287,7 +287,7 @@ LRU는 “최근에 사용된 데이터일수록 앞으로도 사용될 가능�
 <p>이와 정반대의 접근 방법을 택하고 있는 MRU(Most Recently Used) 또는 사용 빈도를 고려한 LFU(Least Frequently Used) 등 그 밖에도 다양한 캐싱 전략이 있지만 본 포스팅에서 다루고자 하는 수준을 벗어나는 내용이므로 넘어가겠습니다.</p>
 <h2 id="lru_cache-데코레이터" style="position:relative;"><a href="#lru_cache-%EB%8D%B0%EC%BD%94%EB%A0%88%EC%9D%B4%ED%84%B0" aria-label="lru_cache 데코레이터 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>@lru_cache 데코레이터</h2>
 <p>LRU 캐시를 직접 구현해보신 분은 아시겠지만 사실 LRU 캐싱 전략을 사용하는 캐시를 직접 구현하는 것은 그리 만만한 일이 아닙니다.
-다행이도 파이썬에서는 메모리 기반 LRU 캐시를 좀 더 손쉽게 사용할 수 있도록 <code>@lru_cache</code>라는 데코레이터를 제공해주고 있습니다. 😌</p>
+다행히도 파이썬에서는 메모리 기반 LRU 캐시를 좀 더 손쉽게 사용할 수 있도록 <code>@lru_cache</code>라는 데코레이터를 제공해주고 있습니다. 😌</p>
 <p><code>@lru_cache</code> 데코레이터는 <code>@cache</code>와 마찬가지로 <code>functools</code> 내장 모듈로 부터 불러올 수 있습니다.
 <code>@lru_cache</code> 데코레이터를 어떤 함수 위에 선언하면 사용하면, 그 함수애 넘어온 인자를 키(key)로 그리고 함수의 호출 결과를 값(value)으로 LRU 캐싱이 적용됩니다.</p>
 <p>예를 들어, 위에서 작성했던 <code>get_user()</code> 함수에 <code>@lru_cache</code> 데코레이터를 적용해보겠습니다.</p>

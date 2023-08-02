@@ -319,7 +319,7 @@ GitHub에서 제공하는 Setup Node 액션을 사용하면 CI 서버의 운영�
 <p>워크플로우 로그를 확인해보면 npm 패키지를 설치하는 단계에서 시간이 가장 많이 소모되는 것을 눈치챌 수 있는데요.
 개발자들은 계속 같은 컴퓨터를 사용하므로 npm 패키지를 최초에 한 번만 설치해주면 되지만, 항상 새롭게 셋업되는 CI 서버에서는 모든 npm 패키지를 매번 설치해야하는 비효율이 발생합니다.</p>
 <p>특히 프로젝트의 규모가 커지고 더욱 많은 npm 패키지가 설치됨에 따라 이것은 프로젝트의 개발 생산성에도 부정적인 영향을 줄 수 있는데요.
-다행이도 GitHub Actions에서는 캐싱(caching)을 지원하기 때문에 CI 서버에서 npm 패키지를 설치할 때 성능 향상을 꾀할 수 있습니다.</p>
+다행히도 GitHub Actions에서는 캐싱(caching)을 지원하기 때문에 CI 서버에서 npm 패키지를 설치할 때 성능 향상을 꾀할 수 있습니다.</p>
 <p>GitHub의 Setup Node을 사용하면 매우 간편하게 이러한 npm 패키지 캐싱도 설정할 수 있는데요.
 <code>actions/setup-node@v3</code> 액션의 <code>cache</code> 입력 옵션을 통해 <code>npm</code>, <code>yarn</code>, <code>pnpm</code>과 같은 패키지 매니저를 넘길 수 있습니다.
 실습 프로젝트는 <code>npm</code>을 사용하므로 <code>package-lock.json</code> 파일을 기준으로 캐싱을 하도록 <code>cache</code> 입력 옵션을 <code>npm</code>으로 넘기겠습니다.</p>

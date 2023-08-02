@@ -341,7 +341,7 @@ GoldUser<span class="token punctuation">.</span><span class="token function">par
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <div class="gatsby-code-title">콘솔</div>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token punctuation">{</span> email<span class="token operator">:</span> <span class="token string">''</span><span class="token punctuation">,</span> image<span class="token operator">:</span> <span class="token string">'123'</span><span class="token punctuation">,</span> ips<span class="token operator">:</span> <span class="token punctuation">[</span> <span class="token string">'A'</span><span class="token punctuation">,</span> <span class="token string">'B'</span> <span class="token punctuation">]</span> <span class="token punctuation">}</span></code></pre></div>
-<p>다행이도 이러한 문제를 방지할 수 있도록 Zod는 문자열에 특화된 검증자를 제공하고 있습니다.</p>
+<p>다행히도 이러한 문제를 방지할 수 있도록 Zod는 문자열에 특화된 검증자를 제공하고 있습니다.</p>
 <p>따라서 <code>z.string()</code> 다음에 <code>.email()</code>, <code>.url()</code>, <code>.ip()</code>와 같은 검증자를 추가하여 특정 포멧에 맞는 값만 유효성 검증에 통과하도록 할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token punctuation">{</span> z <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"zod"</span><span class="token punctuation">;</span>
 

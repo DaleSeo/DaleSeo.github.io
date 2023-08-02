@@ -308,7 +308,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <h2 id="자바스크립트-모듈-지정" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%AA%A8%EB%93%88-%EC%A7%80%EC%A0%95" aria-label="자바스크립트 모듈 지정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바스크립트 모듈 지정</h2>
 <p>현재 자바스크립트 생태계에서는 안타깝게도 여러 종류의 모듈 시스템이 공존하고 있지요?
 물론 ES 모듈 시스템으로 통일하려는 움직임이 있지만 Node.js 환경에서 CommonJS를 오랫동안 사용해왔기 때문에 전환하는데 시간이 좀 걸리지 않을까 싶습니다.</p>
-<p>다행이도 타입스크립트로 코드를 작성할 때는 ES 모듈 시스템의 <code>import</code>와 <code>export</code> 키워드를 사용해서 모듈을 불러오고 내보내기를 하는데요.
+<p>다행히도 타입스크립트로 코드를 작성할 때는 ES 모듈 시스템의 <code>import</code>와 <code>export</code> 키워드를 사용해서 모듈을 불러오고 내보내기를 하는데요.
 문제는 컴파일의 결과물인 자바스크립트 코드가 어떤 모듈 시스템의 문법을 사용해느냐죠.</p>
 <p>예를 들어, <code>utils.ts</code>라는 별도의 파일을 생성 후에 <code>hello()</code> 함수를 그 파일로 옮긴 후에 내보내겠습니다.</p>
 <div class="gatsby-code-title">utils.ts</div>
