@@ -232,7 +232,7 @@ $ <span class="token builtin class-name">cd</span> webpack-example</code></pre><
 <li>브라우저 화면</li>
 </ul>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">8:55:12</code></pre></div>
-<p>위 <code>index.html</code> 파일을 크롬이나 파이어폭스와 같은 모던 브라우져에서 열어보면 현재 시간을 <code>H:m:s</code> 포멧으로 1초 마다 업데이트 하면서 화면에 보여주게 됩니다. 참고로 이 코드는 <code>const</code>, <code>=></code>, <code>${exp}</code>과 같은 ES6(ES2015) 키워드를 사용했기 때문에 익스플로러와 같이 ES6 구문 해석을 지원하지 않는 브라우저에서는 정상적으로 작동하지 않을 수 있습니다.</p>
+<p>위 <code>index.html</code> 파일을 크롬이나 파이어폭스와 같은 모던 브라우져에서 열어보면 현재 시간을 <code>H:m:s</code> 포맷으로 1초 마다 업데이트 하면서 화면에 보여주게 됩니다. 참고로 이 코드는 <code>const</code>, <code>=></code>, <code>${exp}</code>과 같은 ES6(ES2015) 키워드를 사용했기 때문에 익스플로러와 같이 ES6 구문 해석을 지원하지 않는 브라우저에서는 정상적으로 작동하지 않을 수 있습니다.</p>
 <h2 id="html과-javascript-분리하기" style="position:relative;"><a href="#html%EA%B3%BC-javascript-%EB%B6%84%EB%A6%AC%ED%95%98%EA%B8%B0" aria-label="html과 javascript 분리하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTML과 JavaScript 분리하기</h2>
 <p>HTML 태그와 JavaScript 코드를 하나의 파일에 섞어 놓는 것은 좋은 관행이 아니므로, index.html 파일에서 JavaScript 코드만 뽑아 내어 index.js 파일을 만들고 이 둘을 <code>&#x3C;script></code> 태그를 통해 연결합니다.</p>
 <ul>

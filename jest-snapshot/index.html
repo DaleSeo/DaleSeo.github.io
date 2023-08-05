@@ -331,11 +331,11 @@ Ran all <span class="token builtin class-name">test</span> suites.</code></pre><
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>테스트를 작성하다보면 함수의 반환 결과를 <code>console.log()</code>로 한 번 콘솔에 출력해보고, 그 내용을 테스트 코드로 복사하는 경우가 있는데 상당히 귀찮습니다.
 대신에 저는 개인적으로 이렇게 인라인 스냅샷을 활용해서 좀 더 편하게 테스트 코드를 작성하고 있습니다.</p>
-<p>한가짐 주의할 점은 인라인 스냅샷은 내부적으로 <code>Prettier</code> 코드 포멧터를 사용하고 있습니다.
+<p>한가짐 주의할 점은 인라인 스냅샷은 내부적으로 <code>Prettier</code> 코드 포맷터를 사용하고 있습니다.
 따라서 자신의 프로젝트의 <code>Prettier</code>가 아직 설치가 안되어 있다면 Jest와 별도로 설치를 해주셔야 합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> i <span class="token parameter variable">-D</span> prettier</code></pre></div>
 <blockquote>
-<p>코드 포멧터 Prettier에 대한 좀 더 자세한 내용은 <a href="/js-prettier">관련 포스팅</a>를 참고하시길 바랍니다.</p>
+<p>코드 포맷터 Prettier에 대한 좀 더 자세한 내용은 <a href="/js-prettier">관련 포스팅</a>를 참고하시길 바랍니다.</p>
 </blockquote>
 <h2 id="파일-스냅샷-생성" style="position:relative;"><a href="#%ED%8C%8C%EC%9D%BC-%EC%8A%A4%EB%83%85%EC%83%B7-%EC%83%9D%EC%84%B1" aria-label="파일 스냅샷 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>파일 스냅샷 생성</h2>
 <p>스냅샷이 길거나 복잡한 경우에는 테스트 파일 안에 스냅샷을 함께 두는 것보다는 별도의 파일에 관리하는 것이 용이합니다.</p>

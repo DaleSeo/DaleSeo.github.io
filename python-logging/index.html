@@ -234,9 +234,9 @@ INFO:root:정보
 WARNING:root:경고
 ERROR:root:오류
 CRITICAL:root:심각</code></pre></div>
-<h2 id="로깅-포멧-변경" style="position:relative;"><a href="#%EB%A1%9C%EA%B9%85-%ED%8F%AC%EB%A9%A7-%EB%B3%80%EA%B2%BD" aria-label="로깅 포멧 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>로깅 포멧 변경</h2>
+<h2 id="로깅-포맷-변경" style="position:relative;"><a href="#%EB%A1%9C%EA%B9%85-%ED%8F%AC%EB%A7%B7-%EB%B3%80%EA%B2%BD" aria-label="로깅 포맷 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>로깅 포맷 변경</h2>
 <p>콘솔에 출력된 로그를 보면 인자로 넘긴 메시지 외에도 그 앞에 추가적인 정보(로깅 레벨, 로거 이름)가 포함되어 있는 것을 알 수 있습니다.
-이는 기본 로깅 포멧이 <code>%(levelname)s:%(name)s:%(message)s</code>이기 때문이며, 로깅 포멧도 <code>basicConfig()</code> 메서드를 이용해서 쉽게 변경이 가능합니다.</p>
+이는 기본 로깅 포맷이 <code>%(levelname)s:%(name)s:%(message)s</code>이기 때문이며, 로깅 포맷도 <code>basicConfig()</code> 메서드를 이용해서 쉽게 변경이 가능합니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">import</span> logging
 
 logging<span class="token punctuation">.</span>basicConfig<span class="token punctuation">(</span>level<span class="token operator">=</span>logging<span class="token punctuation">.</span>DEBUG<span class="token punctuation">,</span> <span class="token builtin">format</span><span class="token operator">=</span><span class="token string">"'%(asctime)s - %(message)s'"</span><span class="token punctuation">)</span>
@@ -257,7 +257,7 @@ logging<span class="token punctuation">.</span>basicConfig<span class="token pun
 '2020-02-02 15:48:17,420 - 경고'
 '2020-02-02 15:48:17,421 - 오류'
 '2020-02-02 15:48:17,421 - 심각'</code></pre></div>
-<p>이 밖에 자세한 로깅 포멧 문법에 대해서는 <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes">공식 레퍼런스</a>를 참고바랍니다.</p>
+<p>이 밖에 자세한 로깅 포맷 문법에 대해서는 <a href="https://docs.python.org/3/library/logging.html#logrecord-attributes">공식 레퍼런스</a>를 참고바랍니다.</p>
 <h2 id="예외-로깅" style="position:relative;"><a href="#%EC%98%88%EC%99%B8-%EB%A1%9C%EA%B9%85" aria-label="예외 로깅 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>예외 로깅</h2>
 <p>예외가 발생한 경우에는 <code>exception()</code>를 사용하여 로그 메시지 뿐만 아니라 스택 트레이스에 대한 로그까지 남길 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">import</span> logging

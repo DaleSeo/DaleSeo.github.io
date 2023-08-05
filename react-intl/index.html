@@ -229,7 +229,7 @@ locale 코드는 필수적으로 2자리로 언어를 표시하고, 선택적으
 <span class="token keyword">import</span> zhMsg <span class="token keyword">from</span> <span class="token string">"./lang/zh.json"</span><span class="token punctuation">;</span></code></pre></div>
 <h2 id="intlprovider-컴포넌트" style="position:relative;"><a href="#intlprovider-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8" aria-label="intlprovider 컴포넌트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>IntlProvider 컴포넌트</h2>
 <p>다국어 지원은 일반적으로 애플리케이션의 특정 부분에서만 일어나는 것이 아니라 전역에서 일어납니다.
-React Intl 라이브러리는 내부적으로 <code>intl</code>이라는 객체를 이용해서 메시지를 포멧팅하는데요.
+React Intl 라이브러리는 내부적으로 <code>intl</code>이라는 객체를 이용해서 메시지를 포맷팅하는데요.
 따라서 반드시 <code>&#x3C;IntlProvider/></code> 컴포넌트로 애플리케이션의 최상위 컴포넌트를 감싸서 <code>intl</code> 객체가 모든 하위 컴포넌트에서 접근 가능하도록 만들어줘야 합니다.</p>
 <div class="gatsby-code-title">App.jsx</div>
 <div class="gatsby-highlight" data-language="jsx"><pre class="language-jsx"><code class="language-jsx"><span class="token keyword">import</span> <span class="token punctuation">{</span> IntlProvider <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-intl"</span><span class="token punctuation">;</span>

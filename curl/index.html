@@ -204,7 +204,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <span class="token punctuation">{</span><span class="token punctuation">}</span>%</code></pre></div>
 <h2 id="요청-바디헤더-설정" style="position:relative;"><a href="#%EC%9A%94%EC%B2%AD-%EB%B0%94%EB%94%94%ED%97%A4%EB%8D%94-%EC%84%A4%EC%A0%95" aria-label="요청 바디헤더 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>요청 바디/헤더 설정</h2>
 <p>POST나 PUT 방식으로 HTTP 호출을 할 때는 일반적으로 생성하거나 변경할 데이터를 서버에 보냅니다.
-<code>-d</code> 또는 <code>--data</code> 옵션을 사용하여 송신할 데이터를 설정해줄 수 있으며, <code>-H</code> 또는 <code>--header</code> 옵션을 통해 데이터 포멧을 명시해줄 수 있습니다.</p>
+<code>-d</code> 또는 <code>--data</code> 옵션을 사용하여 송신할 데이터를 설정해줄 수 있으며, <code>-H</code> 또는 <code>--header</code> 옵션을 통해 데이터 포맷을 명시해줄 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://jsonplaceholder.typicode.com/posts <span class="token punctuation">\</span>
   <span class="token parameter variable">-d</span> <span class="token string">'{"title": "foo", "body": "bar", "userId": 1}'</span> <span class="token punctuation">\</span>
   <span class="token parameter variable">-H</span> <span class="token string">'Content-type: application/json; charset=UTF-8'</span>
@@ -214,7 +214,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
   <span class="token string">"userId"</span><span class="token builtin class-name">:</span> <span class="token number">1</span>,
   <span class="token string">"id"</span><span class="token builtin class-name">:</span> <span class="token number">101</span>
 <span class="token punctuation">}</span>%</code></pre></div>
-<p>위 예제에서는 json 포멧의 데이터를 JSONPlaceholder 서비스의 글 생성 endpoint에 보내고 있습니다.</p>
+<p>위 예제에서는 json 포맷의 데이터를 JSONPlaceholder 서비스의 글 생성 endpoint에 보내고 있습니다.</p>
 <h2 id="응답-헤더도-출력" style="position:relative;"><a href="#%EC%9D%91%EB%8B%B5-%ED%97%A4%EB%8D%94%EB%8F%84-%EC%B6%9C%EB%A0%A5" aria-label="응답 헤더도 출력 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>응답 헤더도 출력</h2>
 <p>curl은 기본적으로 응답 바디(response body)만을 HTTP 호출 결과로 콘솔에 출력해줍니다.
 응답 헤더(response headers)까지 함께 확인하고 싶은 경우에는 <code>-i</code> 또는 <code>--include</code> 옵션을 사용하면 됩니다.</p>

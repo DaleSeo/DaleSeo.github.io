@@ -284,7 +284,7 @@ json_string <span class="token operator">=</span> json<span class="token punctua
 <span class="token keyword">assert</span> json_object<span class="token punctuation">[</span><span class="token string">'address'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string">'zipcode'</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'92998-3874'</span>
 <span class="token keyword">assert</span> json_object<span class="token punctuation">[</span><span class="token string">'admin'</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token boolean">False</span>
 <span class="token keyword">assert</span> json_object<span class="token punctuation">[</span><span class="token string">'hobbies'</span><span class="token punctuation">]</span> <span class="token keyword">is</span> <span class="token boolean">None</span></code></pre></div>
-<p>일반적으로 JSON 포멧의 HTTP 응답 전문(body)을 읽을 때도 이 방식이 사용됩니다.</p>
+<p>일반적으로 JSON 포맷의 HTTP 응답 전문(body)을 읽을 때도 이 방식이 사용됩니다.</p>
 <h2 id="dump-함수-python-객체를-json-파일에-저장하기" style="position:relative;"><a href="#dump-%ED%95%A8%EC%88%98-python-%EA%B0%9D%EC%B2%B4%EB%A5%BC-json-%ED%8C%8C%EC%9D%BC%EC%97%90-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0" aria-label="dump 함수 python 객체를 json 파일에 저장하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dump() 함수: Python 객체를 JSON 파일에 저장하기</h2>
 <p>Python 객체를 JSON 문자로 변환한 결과를 파일에 바로 쓰고(write) 싶은 경우에는 <code>dumps()</code> 대신에 <code>dump()</code> 함수를 사용합니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">import</span> json
@@ -319,7 +319,7 @@ json_object <span class="token operator">=</span> <span class="token punctuation
   <span class="token property">"admin"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token property">"hobbies"</span><span class="token operator">:</span> <span class="token null keyword">null</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>일반적으로 JSON 포멧의 HTTP 요청 전문(body)을 쓸 때도 이 방식이 사용됩니다.</p>
+<p>일반적으로 JSON 포맷의 HTTP 요청 전문(body)을 쓸 때도 이 방식이 사용됩니다.</p>
 <h2 id="전체-코드" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EC%BD%94%EB%93%9C" aria-label="전체 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 코드</h2>
 <p>본 포스팅에서 제가 작성한 전체 코드는 아래에서 직접 확인하고 실행해보실 수 있습니다.</p>
 <p><a href="https://dales.link/3qj">https://dales.link/3qj</a></p>

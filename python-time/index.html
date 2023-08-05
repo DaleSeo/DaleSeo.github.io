@@ -296,7 +296,7 @@ second: 26</code></pre></div>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">time<span class="token punctuation">.</span>gmtime<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># gmtime(time()) 와 동일</span>
 time<span class="token punctuation">.</span>localtime<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment"># localtime(time()) 와 동일</span></code></pre></div>
 <h2 id="ctime-함수-timestamp를-문자열로-변환" style="position:relative;"><a href="#ctime-%ED%95%A8%EC%88%98-timestamp%EB%A5%BC-%EB%AC%B8%EC%9E%90%EC%97%B4%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="ctime 함수 timestamp를 문자열로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ctime() 함수: timestamp를 문자열로 변환</h2>
-<p><code>ctime()</code> 함수는 주어진 timestamp를 현지 시간대 기준으로 소위 미국에서 흔히 사용되는 <code>요 월 일 시:분:초 년</code> 포멧으로 변환해줍니다.
+<p><code>ctime()</code> 함수는 주어진 timestamp를 현지 시간대 기준으로 소위 미국에서 흔히 사용되는 <code>요 월 일 시:분:초 년</code> 포맷으로 변환해줍니다.
 그냥 간단하게 timestamp가 나타내는 날짜와 시간을 확인해보는 용도로 쓰기에 좋습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">from</span> time <span class="token keyword">import</span> ctime
 
@@ -305,12 +305,12 @@ ctime<span class="token punctuation">(</span><span class="token number">15751425
 <li>출력 결과</li>
 </ul>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Sat Nov 30 14:35:26 2019</code></pre></div>
-<h2 id="strftime-함수-struct_time-객체를-특정-포멧의-문자열로-변환" style="position:relative;"><a href="#strftime-%ED%95%A8%EC%88%98-struct_time-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%ED%8A%B9%EC%A0%95-%ED%8F%AC%EB%A9%A7%EC%9D%98-%EB%AC%B8%EC%9E%90%EC%97%B4%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="strftime 함수 struct_time 객체를 특정 포멧의 문자열로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>strftime() 함수: struct_time 객체를 특정 포멧의 문자열로 변환</h2>
-<p><code>strftime()</code> 함수는 <code>ctime()</code> 함수처럼 정해진 포멧인 아닌 다양한 포멧의 문자열 변환이 가능하게 해줍니다.
-첫번째 인자로 포멧을 넘겨야 하는데, 포멧 규칙은 <a href="https://docs.python.org/3.8/library/time.html#time.strftime">파이썬 공식 레퍼러스</a>를 참고 바랍니다.
+<h2 id="strftime-함수-struct_time-객체를-특정-포맷의-문자열로-변환" style="position:relative;"><a href="#strftime-%ED%95%A8%EC%88%98-struct_time-%EA%B0%9D%EC%B2%B4%EB%A5%BC-%ED%8A%B9%EC%A0%95-%ED%8F%AC%EB%A7%B7%EC%9D%98-%EB%AC%B8%EC%9E%90%EC%97%B4%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="strftime 함수 struct_time 객체를 특정 포맷의 문자열로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>strftime() 함수: struct_time 객체를 특정 포맷의 문자열로 변환</h2>
+<p><code>strftime()</code> 함수는 <code>ctime()</code> 함수처럼 정해진 포맷인 아닌 다양한 포맷의 문자열 변환이 가능하게 해줍니다.
+첫번째 인자로 포맷을 넘겨야 하는데, 포맷 규칙은 <a href="https://docs.python.org/3.8/library/time.html#time.strftime">파이썬 공식 레퍼러스</a>를 참고 바랍니다.
 두번째 인자로는 timestamp가 아닌 <code>struct_time</code> 객체를 받으므로 주의해야 합니다.
 위에서 다룬 <code>gmttime()</code>이나 <code>localtime()</code> 같은 함수를 사용해서 <code>struct_time</code> 객체를 확보 후에 <code>strftime()</code> 함수의 두번째 인자로 넘기면 됩니다.</p>
-<p><code>strftime()</code> 함수를 이용해서 한국에서 자주 쓰이는 날짜/시간 포멧의 문자열로 변환을 해보겠습니다.</p>
+<p><code>strftime()</code> 함수를 이용해서 한국에서 자주 쓰이는 날짜/시간 포맷의 문자열로 변환을 해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">from</span> time <span class="token keyword">import</span> strftime
 
 tm <span class="token operator">=</span> localtime<span class="token punctuation">(</span><span class="token number">1575142526.500323</span><span class="token punctuation">)</span>
@@ -319,9 +319,9 @@ strftime<span class="token punctuation">(</span><span class="token string">'%Y-%
 <li>출력 결과</li>
 </ul>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">2019-11-30 02:35:26 PM</code></pre></div>
-<h2 id="strptime-함수-특정-포멧의-문자열을-struct_time-객체로-변환" style="position:relative;"><a href="#strptime-%ED%95%A8%EC%88%98-%ED%8A%B9%EC%A0%95-%ED%8F%AC%EB%A9%A7%EC%9D%98-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%84-struct_time-%EA%B0%9D%EC%B2%B4%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="strptime 함수 특정 포멧의 문자열을 struct_time 객체로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>strptime() 함수: 특정 포멧의 문자열을 struct_time 객체로 변환</h2>
-<p><code>strptime()</code> 함수는 <code>strftime()</code> 함수와 정반대로 특정 포멧의 문자열을 <code>struct_time</code> 객체로 변환을 해줍니다.
-첫번째 인자로 문자열을 받고, 두번째 인자로 날짜/시간 포멧을 받습니다.</p>
+<h2 id="strptime-함수-특정-포맷의-문자열을-struct_time-객체로-변환" style="position:relative;"><a href="#strptime-%ED%95%A8%EC%88%98-%ED%8A%B9%EC%A0%95-%ED%8F%AC%EB%A7%B7%EC%9D%98-%EB%AC%B8%EC%9E%90%EC%97%B4%EC%9D%84-struct_time-%EA%B0%9D%EC%B2%B4%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="strptime 함수 특정 포맷의 문자열을 struct_time 객체로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>strptime() 함수: 특정 포맷의 문자열을 struct_time 객체로 변환</h2>
+<p><code>strptime()</code> 함수는 <code>strftime()</code> 함수와 정반대로 특정 포맷의 문자열을 <code>struct_time</code> 객체로 변환을 해줍니다.
+첫번째 인자로 문자열을 받고, 두번째 인자로 날짜/시간 포맷을 받습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">from</span> time <span class="token keyword">import</span> strptime
 
 string <span class="token operator">=</span> <span class="token string">'2019-11-30 02:35:26 PM'</span>
