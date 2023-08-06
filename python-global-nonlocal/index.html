@@ -199,12 +199,13 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
     <span class="token comment"># inner() 함수 입장에서 비지역(nonlocal) 범위</span>
     <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
         <span class="token comment"># inner 함수 입장에서 지역(local) 범위</span></code></pre></div>
-<p>(파이썬에서는 추가적으로 내장(built-in) 범위라는 것도 있지만 <code>global</code>과 <code>nonlocal</code> 키워드를 이해햐는데 크게 도움이 되지 않으므로 다루지 않겠습니다.)</p>
+<p>(파이썬에서는 추가적으로 내장(built-in) 범위라는 것도 있지만 <code>global</code>과 <code>nonlocal</code> 키워드를 이해하는데 크게 도움이 되지 않으므로 다루지 않겠습니다.)</p>
 <p>같은 범위 내에서는 자유롭게 변수에 접근이 가능하지만 다른 범위에서 선언된 변수에 접근할 때는 정해진 제약을 따르게 됩니다.
 기본적으로 바깥 쪽 범위 내에서 선언된 변수를 안 쪽 범위에서는 접근할 수 있지만, 반대로 안 쪽 범위 내에서 선언된 변수를 바깥 쪽 범위에서 접근하는 것은 불가능합니다.
 예를 들어, <code>outer()</code> 함수 밖에서 선언한 전역 변수는 <code>outer()</code> 함수 내부와 <code>inner()</code> 함수 내부에서 접근이 가능합니다.
 하지만 <code>outer()</code> 함수 안에서 안에서는 선언한 <code>outer()</code> 함수 외부에서는 접근할 수 없으며, <code>outer()</code> 함수와 <code>inner()</code> 함수 안에서는 접근 가능이 가능합니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">global_var <span class="token operator">=</span> <span class="token string">"전역 변수"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>global_var<span class="token punctuation">)</span> <span class="token comment"># 가능</span>
 
 <span class="token keyword">def</span> <span class="token function">outer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     nonlocal_var <span class="token operator">=</span> <span class="token string">"비전역 변수"</span>
@@ -221,15 +222,27 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>nonlocal_var<span class="token punctuation">)</span> <span class="token comment"># 불가능 (NameError: name 'nonlocal_var' is not defined)</span>
 <span class="token keyword">print</span><span class="token punctuation">(</span>local_var<span class="token punctuation">)</span> <span class="token comment"># 불가능 (NameError: name 'local_var' is not defined)</span></code></pre></div>
+<h2 id="variable-shadowing" style="position:relative;"><a href="#variable-shadowing" aria-label="variable shadowing permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variable Shadowing</h2>
 <p>변수의 범위의 다른 중요한 특성은 서로 다른 범위에서는 변수 이름 충돌이 발생하지 않으며 안 쪽 범위에서 바깥 쪽 범위에서 선언된 변수와 똑같은 이름의 변수를 생성할 수 있다는 것입니다.
 예를 들어, 아래에 선언된 3개의 <code>var</code> 변수는 이름만 같을 뿐 서로 다른 값을 저장할 수 있는 엄연히 다른 변수입니다.</p>
-<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">var <span class="token operator">=</span> <span class="token string">"지역 변수"</span>
+<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">var <span class="token operator">=</span> <span class="token string">"전역 변수"</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>var<span class="token punctuation">)</span>
 
 <span class="token keyword">def</span> <span class="token function">outer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     var <span class="token operator">=</span> <span class="token string">"비지역 변수"</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span>var<span class="token punctuation">)</span>
 
     <span class="token keyword">def</span> <span class="token function">inner</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        var <span class="token operator">=</span> <span class="token string">"지역 변수"</span></code></pre></div>
+        var <span class="token operator">=</span> <span class="token string">"지역 변수"</span>
+        <span class="token keyword">print</span><span class="token punctuation">(</span>var<span class="token punctuation">)</span>
+
+    inner<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+outer<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-code-title">결과</div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">전역 변수
+비지역 변수
+지역 변수</code></pre></div>
 <p>이러한 현상을 소위 variable shadowing이라고 부르기도 하는데요.
 코드 가독성을 해치기 때문에 일반적으로 피해야하는 코딩 관행으로 여겨지고 있지만 지금부터 설명드릴 <code>global</code>과 <code>nonlocal</code> 키워드가 왜 필요한지 이해하는데 중요한 개념입니다.</p>
 <h2 id="global-키워드" style="position:relative;"><a href="#global-%ED%82%A4%EC%9B%8C%EB%93%9C" aria-label="global 키워드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>global 키워드</h2>
@@ -241,6 +254,9 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 change_num<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-code-title">결과</div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token number">0</span>
+<span class="token number">0</span></code></pre></div>
 <p><code>0</code>이 두 번 연속으로 출력이 될 것입니다.
 <code>num</code>는 전역 변수이기 함수 안에서 접근하든 밖에서 접근하든 동일한 값을 담고 있습니다.</p>
 <p>그러면 아래와 같이 <code>num</code>를 함수 안에서 갱신하면 무엇이 출력이 될까요?</p>
@@ -252,29 +268,35 @@ change_num<span class="token punctuation">(</span><span class="token punctuation
 change_num<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-code-title">결과</div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token number">100</span>
+<span class="token number">0</span></code></pre></div>
 <p>많은 분들이 <code>100</code>이 두 번 연속으로 출력될 것이라고 생각하시지만, 실제로 실행을 해보면 <code>100</code>과 <code>0</code>이 출력이 됩니다.
-위에서 설명드린 소위 variable shadowing 현상 때문에 함수 내부에 있는 <code>num</code>이라는 지역 변수는 함수 외부에 있는 <code>num</code>이라는 전역 변수와 엄연히 다른 변수입니다.</p>
+위에서 설명드린 variable shadowing 현상 때문에 함수 내부에 있는 <code>num</code>이라는 지역 변수는 함수 외부에 있는 <code>num</code>이라는 전역 변수와 엄연히 다른 변수입니다.</p>
 <p>그러면 이와 같이 동일한 이름의 지역 변수를 생성하지 않고, 전역 변수의 값을 함수 내부에서 변경하고 싶다면 어떻게 해야할까요❓
 네, 이럴 때 사용하는 것이 <code>global</code> 키워드입니다❗</p>
-<p>함수 안에서 변수 앞에 <code>global</code> 키워드를 붙여주면 해당 변수는 새로운 지역 변수가 되지 않고 함수 밖에서 이미 선언된 전역 변수를 가리키게 됩니다.</p>
+<p>함수 안에서 변수 앞에 <code>global</code> 키워드를 붙여주면 해당 변수는 함수 내에서 값을 변경하더라도 새로운 지역 변수가 되지 않고 함수 밖에서 이미 선언된 전역 변수를 가리키게 됩니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">num <span class="token operator">=</span> <span class="token number">0</span>
 
-<span class="token keyword">def</span> <span class="token function">chnage_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<span class="token keyword">def</span> <span class="token function">change_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
 <span class="gatsby-highlight-code-line">    <span class="token keyword">global</span> num</span>    num <span class="token operator">=</span> <span class="token number">100</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
 
-chnage_num<span class="token punctuation">(</span><span class="token punctuation">)</span>
+change_num<span class="token punctuation">(</span><span class="token punctuation">)</span>
 
 <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span></code></pre></div>
-<p>위 코드를 실행하면 처음에 예상했던 데로 <code>100</code>이 두 번 연속으로 출력되는 것을 불 수 있습니다.</p>
+<div class="gatsby-code-title">결과</div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token number">100</span>
+<span class="token number">100</span></code></pre></div>
+<p>위 코드를 실행하면 처음에 예상했던 데로 <code>100</code>이 두 번 연속으로 출력되는 것을 볼 수 있습니다.</p>
 <h2 id="nonlocal-키워드" style="position:relative;"><a href="#nonlocal-%ED%82%A4%EC%9B%8C%EB%93%9C" aria-label="nonlocal 키워드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>nonlocal 키워드</h2>
 <p><code>nonlocal</code> 키워드도 <code>global</code> 키워드와 같이 동일한 이름의 새로운 변수가 생성되는 것을 방지하기 위해서 사용됩니다.
 이 두 키워드의 차이점은 <code>global</code> 키워드는 <strong>일반 함수</strong> 내에서 <strong>전역(global/module) 변수</strong>를 대상으로 사용하는 반면에 <code>nonlocal</code> 키워드는 <strong>중첩 함수</strong> 내에서 <strong>비지역(nonlocal/closing) 변수</strong>를 대상으로 사용한다는 것입니다.</p>
 <p>글로만 설명하면 이해가 어려울 수 있으니 예제 코드를 한번 같이 볼까요?</p>
 <p>아래 두 개의 함수는 중첩이 되어 있습니다.
-여기서 <code>num</code> 변수는 <code>print_nums()</code> 함수의 안 쪽, <code>change_num()</code> 함수의 바깥 쪽에서 선언이 되어 있는데요.
-따라서 이 변수는 <code>print_nums()</code> 함수 입장에서 보면 지역 변수이고, <code>change_num()</code> 함수 입장에서 보면 비지역 변수입니다.</p>
-<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_nums</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+여기서 <code>num</code> 변수는 <code>print_num()</code> 함수의 안 쪽, <code>change_num()</code> 함수의 바깥 쪽에서 선언이 되어 있는데요.
+따라서 이 변수는 <code>print_num()</code> 함수 입장에서 보면 지역 변수이고, <code>change_num()</code> 함수 입장에서 보면 비지역 변수입니다.</p>
+<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     num <span class="token operator">=</span> <span class="token number">0</span> <span class="token comment"># 비지역 변수</span>
 
     <span class="token keyword">def</span> <span class="token function">change_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -283,12 +305,15 @@ chnage_num<span class="token punctuation">(</span><span class="token punctuation
 
     <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
 
-print_nums<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+print_num<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-code-title">결과</div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token number">0</span>
+<span class="token number">0</span></code></pre></div>
 <p>이 코드를 실행해보면 <code>0</code>이 연속으로 두 번 출력되는데요.
-위에서 설명드린 변수 범위의 특징에 따라서 <code>print_nums()</code> 함수에서 선언된 <code>num</code> 변수를 <code>change_num()</code> 함수 안에서 그대로 접근하기 때문입니다.</p>
+위에서 설명드린 변수 범위의 특징에 따라서 <code>print_num()</code> 함수에서 선언된 <code>num</code> 변수를 <code>change_num()</code> 함수 안에서 그대로 접근하기 때문입니다.</p>
 <p>이 번에는 <code>change_num()</code> 함수 내에서 <code>num</code> 변수의 값을 변경해보았는데요.
 무엇이 출력될까요?</p>
-<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_nums</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     num <span class="token operator">=</span> <span class="token number">0</span>
 
     <span class="token keyword">def</span> <span class="token function">change_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -298,12 +323,15 @@ print_nums<span class="token punctuation">(</span><span class="token punctuation
 
     <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
 
-print_nums<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+print_num<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-code-title">결과</div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token number">100</span>
+<span class="token number">0</span></code></pre></div>
 <p>이 번에는 <code>100</code>과 <code>0</code>이 출력이 됩니다.
 이는 variable shadowing 현상으로 인해서 <code>change_num()</code> 함수 안에서 <code>num</code>이라는 새로운 지역 변수가 생성되었기 때문입니다.</p>
 <p>만약에 <code>change_num()</code> 함수 바깥에서 선언된 <code>num</code>이라는 비지역 변수의 값을 <code>change_num()</code> 함수 안에서 갱신하고 싶은 경우에는 어떻게 해야할까요❓
 <code>num</code> 변수 앞에 <code>nonlocal</code> 키워드만 붙여주면 됩니다❗</p>
-<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_nums</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+<div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     num <span class="token operator">=</span> <span class="token number">0</span>
 
     <span class="token keyword">def</span> <span class="token function">change_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
@@ -314,11 +342,14 @@ print_nums<span class="token punctuation">(</span><span class="token punctuation
 
     <span class="token keyword">print</span><span class="token punctuation">(</span>num<span class="token punctuation">)</span>
 
-print_nums<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
-<p>변수 앞에 <code>nonlocal</code> 키워드를 붙여주면 해당 변수는 새로운 지역 변수가 되지 않고 함수 밖에서 이미 선언된 비전역 변수를 가리키게 됩니다.</p>
+print_num<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre></div>
+<div class="gatsby-code-title">결과</div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token number">100</span>
+<span class="token number">100</span></code></pre></div>
+<p>변수 앞에 <code>nonlocal</code> 키워드를 붙여주면 해당 변수는 중첩 함수 내에서 값을 변경하더라도 새로운 지역 변수가 되지 않고 함수 밖에서 이미 선언된 비전역 변수를 가리키게 됩니다.</p>
 <p>위 코드를 실행하면 처음에 의도했던 데로 <code>100</code>이 두 번 연속으로 출력되는 것을 불 수 있습니다.</p>
 <h2 id="실전-예제" style="position:relative;"><a href="#%EC%8B%A4%EC%A0%84-%EC%98%88%EC%A0%9C" aria-label="실전 예제 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실전 예제</h2>
-<p><code>global</code> 키워드나 <code>nonlocal</code> 키워드를 사용하지 않아서 실제로 파이썬으로 코딩할 때 겪을 수 있는 대표적인 문제에 대해서 다루면 좋을 것 같습니다.</p>
+<p><code>global</code> 키워드나 <code>nonlocal</code> 키워드를 사용하지 않아서 실제로 파이썬으로 코딩할 때 흔히 겪을 수 있는 문제에 대해서 살펴보겠습니다.</p>
 <p>아래 <code>counter()</code> 함수는 <code>cnt</code> 변수 값을 변경하기 위해서 내부에 선언된 <code>_increment()</code> 함수를 반환하고 있습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">counter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     cnt <span class="token operator">=</span> <span class="token number">0</span>
