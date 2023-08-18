@@ -219,6 +219,10 @@ history<span class="token punctuation">.</span><span class="token function">go</
 왜냐하면 이 3개의 메서드를 호출하면 브라우저는 해당 페이지를 리로드(reload)하게 되는데요.
 서문에서 말씀드렸듯이 SPA에서는 일반적으로 URL이 바뀌더라도 전체 페이지를 다시 로딩하지 않기 때문입니다.
 대신 업데이트가 필요한 부분만 클라이언트에서 다시 그리죠.</p>
+<blockquote>
+<p>참고로 세션 히스토리 내에서 페이지를 이동하는 것이 아니라 완전히 새로운 페이지로 이동해야하는 경우에는 자바스크립트의 Location API를 사용해야합니다.
+이 부분에 대해서는 <a href="/js-location/">별도 포스팅</a>에서 자세히 다루고 있으니 참고 바랍니다.</p>
+</blockquote>
 <h2 id="브라우저의-현재-url-조작" style="position:relative;"><a href="#%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EC%9D%98-%ED%98%84%EC%9E%AC-url-%EC%A1%B0%EC%9E%91" aria-label="브라우저의 현재 url 조작 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>브라우저의 현재 URL 조작</h2>
 <p>History API는 브라우저의 현재 URL 조작할 수 있도록 <code>pushState()</code>와 <code>replaceState()</code> 메서드를 제공하는데요.
 위에서 다룬 실제로 페이지가 이동하는 메서드와 다르게 이 2개의 메서드는 브라우저 주소 표시줄의 URL만 갱신되고 실제로 해당 페이지가 다시 불러오지는 않습니다.</p>
