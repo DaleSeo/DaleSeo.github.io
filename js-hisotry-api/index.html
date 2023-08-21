@@ -293,37 +293,37 @@ React Router v6부터는 <code>navigate()</code>라는 통합된 메서드를 �
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>h1</span><span class="token punctuation">></span></span>HOME<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>h1</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>main</span><span class="token punctuation">></span></span></code></pre></div>
 <p>그 다음 자바스크립트로 클라이언트 단에서 라우팅을 처리하기 위한 함수를 작성할께요.
-이 <code>route()</code> 함수는 상태 객체를 인자로 받고, 상태 객체 안에 담겨있는 <code>path</code>(경로) 속성을 읽어서 대문자로 변환한 후 <code>&#x3C;h1></code> 요소의 내용으로 설정합니다.
+이 <code>navigate()</code> 함수는 상태 객체를 인자로 받고, 상태 객체 안에 담겨있는 <code>path</code>(경로) 속성을 읽어서 대문자로 변환한 후 <code>&#x3C;h1></code> 요소의 내용으로 설정합니다.
 따라서 이 함수를 호출하면 HTML에서 <code>&#x3C;h1></code> 요소의 내용이 바뀌는 효과가 나겠죠?</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">route</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">navigate</span><span class="token punctuation">(</span><span class="token parameter">state</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> h1 <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"h1"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   h1<span class="token punctuation">.</span>textContent <span class="token operator">=</span> state<span class="token punctuation">.</span>path<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p>이제 3개의 버튼에 클릭 이벤트 핸들러를 설정해줄 차례인데요.
 사용자가 각 버튼을 클릭하면 브라우저의 주소 표시줄의 URL이 바뀔 수 있도록 <code>history.pushState()</code> 메서드를 호출해줍니다.
 첫 번째 인자에는 경로 정보가 담겨있는 상태 객체를 넘기고, 세 번째 인자로는 브라우저의 주소 표시줄에 표시할 경로를 문자열로 넘김니다.
-마지막으로 위에서 작성한 <code>route()</code> 함수에 동일한 상태 객체를 넘겨서 <code>&#x3C;h1></code> 요소의 내용이 바뀌게 해주겠습니다.</p>
+마지막으로 위에서 작성한 <code>navigate()</code> 함수에 동일한 상태 객체를 넘겨서 <code>&#x3C;h1></code> 요소의 내용이 바뀌게 해주겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">[</span><span class="token string">"home"</span><span class="token punctuation">,</span> <span class="token string">"about"</span><span class="token punctuation">,</span> <span class="token string">"contact"</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">path</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token keyword">const</span> button <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">querySelector</span><span class="token punctuation">(</span><span class="token string">"#"</span> <span class="token operator">+</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
   button<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"click"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
     <span class="token keyword">const</span> state <span class="token operator">=</span> <span class="token punctuation">{</span> path <span class="token punctuation">}</span><span class="token punctuation">;</span>
     history<span class="token punctuation">.</span><span class="token function">pushState</span><span class="token punctuation">(</span>state<span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">,</span> path<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token function">route</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">navigate</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>여기까지만 해주면 사용자가 버튼을 클릭할 때는 <code>&#x3C;h1></code> 요소의 내용이 잘 변경이 될 거에요.
 하지만 브라우저에서 뒤로 가기나 앞으로 가기를 해보면 주소 표시줄의 URL만 바뀌고 <code>&#x3C;h1></code> 요소의 내용은 그대로 변하지 않을 것입니다.</p>
 <p>이 문제를 해결하기 위해서 윈도우에서 발생하는 <code>popstate</code> 이벤트를 감지해서 라우팅 처리해줄 건데요.
 위에서 <code>history.pushState()</code> 첫 번째 인자로 상태 객체를 넘겨주었기 때문에, 해당 페이지로 뒤로 가기나 앞으로 가기가 되면, 이벤트 핸들러에 매개 변수로 해당 상태 객체가 넘어오게 됩니다.
-따라서 우리는 이 상태 객체를 그대로 <code>route()</code> 함수에 인자로 넘겨주기만 하면 됩니다.</p>
+따라서 우리는 이 상태 객체를 그대로 <code>navigate()</code> 함수에 인자로 넘겨주기만 하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">window<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"popstate"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token function">route</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token function">navigate</span><span class="token punctuation">(</span>event<span class="token punctuation">.</span>state<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>실제로 웹 개발에 많이 쓰이고 있는 라우팅 라이브러리의 코드를 읽어보시면 대부분 이러한 메커니즘으로 구현되어 있다는 것을 확인해보실 수 있으실 것입니다.</p>
 <h2 id="전체-코드" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EC%BD%94%EB%93%9C" aria-label="전체 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 코드</h2>
 <p>본 포스팅에서 작성한 코드는 아래에서 확인하고 직접 실행해보실 수 있습니다.
 코드펜에 들어가셔서 “Debug mode”에 들어가시면 실제로 브라우저의 주소 표시줄에서 URL이 변경되는 것 까지 볼 수 있으실 겁니다.</p>
-<iframe height="300" style="width: 100%;" scrolling="no" title="js-history-api-2" src="https://codepen.io/daleseo/embed/JjwPBwv?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+<iframe height="300" style="width: 100%;" scrolling="no" title="js-history-api-2" src="https://codepen.io/daleseo/embed/JjwPBwv?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/daleseo/pen/JjwPBwv">
   js-history-api-2</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
   on <a href="https://codepen.io">CodePen</a>.
