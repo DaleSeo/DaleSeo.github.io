@@ -193,8 +193,8 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>작업(job)은 어떤 이벤트가 발생했을 때 독립된 환경에서 실행되야 하는 일련의 일을 나타내는 매우 중요한 개념인데요.
 워크플로우는(workflow)는 작업(job)의 상위 개념이고, 단계(step)는 하위 개념이라고 볼 수 있겠습니다.
 즉, 하나 이상의 작업(job)이 하나의 워크플로우(workflow)를 구성하며, 하나의 작업(job)은 순차적으로 수행되는 여러 개의 단계(step)로 이뤄집니다.</p>
-<p>워크플로우 YAML 파일 기준으로 보면 작업은 <code>jobs</code> 속성 아래에서 하나의 해시 테이블(hash table)의 타입으로 정의되며, 모든 작업에는
-필수적으로 작업 식별자(ID)와 키(key)로 명시되야하고, 그 밖에 세부 내용(실행 환경, 작업 단계 등)은 값(value)으로 또 다시 해시 테이블 형태로 명시가 됩니다. (중첩 해시 테이블라고 볼 수 있겠죠?)</p>
+<p>워크플로우 YAML 파일 기준으로 보면 작업은 <code>jobs</code> 속성 아래에서 하나의 맵(map)의 타입으로 정의되며, 모든 작업에는
+필수적으로 작업 식별자(ID)와 키(key)로 명시되야하고, 그 밖에 세부 내용(실행 환경, 작업 단계 등)은 값(value)으로 또 다시 맵 형태로 명시가 됩니다. (중첩된 맵 구조라고 볼 수 있겠죠?)</p>
 <p>아래는 2개의 작업으로 이루어진 전형적인 워크플로우 파일의 모습입니다.</p>
 <div class="gatsby-code-title">.github/workflows/jobs.yml</div>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Jobs
