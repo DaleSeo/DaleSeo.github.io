@@ -205,7 +205,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 </iframe>
 <p>위에 보이는 것과 같이 한글 “자”와 “리” 사이에서는 줄바꿈이 일어나지만, 알파벳 “m”과 “i” 사이에서는 줄바꿈이 일어나지 않는 것을 알 수 있습니다.</p>
 <h2 id="shy-기호" style="position:relative;"><a href="#shy-%EA%B8%B0%ED%98%B8" aria-label="shy 기호 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shy 기호</h2>
-<p>밖으로 삐져나오는 영단어를 방지하는 가장 간단한 방법은 soft hyphen, 흔히 줄여서 shy라고 불리는 <code>-</code> 기호를 사용하는 것인데요.
+<p>밖으로 삐져나오는 영단어를 방지하는 가장 간단한 방법은 soft hyphen, 흔히 줄여서 shy라고 불리는 <code>-</code> 기호 또는 <code>&#x26;shy;</code> 엔티티(entity) 사용하는 것인데요.
 영어에서 <code>-</code> 기호는 마치 공백 기호처럼 취급되기 때문입니다.
 사실 책이나 잡지와 같은 활자 매체에서 많이 사용되는 방법이죠.</p>
 <p>예를 들어, 가장 긴 영어 단어 사이의 중간 중간에 3개의 <code>-</code> 기호를 추가해보겠습니다.</p>
@@ -216,6 +216,16 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 </iframe>
 <p>그런데 이 전통적인 방법은 요즘과 같이 웹이 다양한 화면 크기에서 소비되고 유동형(fluid)이나 반응형(responsive) 웹디자인이 대세인 상황에서는 적용이 좀 난감해지는데요.
 왜냐하면 부모 요소의 폭이 변함에 따라서 <code>-</code> 기호를 찍어야하는 지점에 계속해서 달라져야하기 때문입니다.</p>
+<h2 id="wbr-요소" style="position:relative;"><a href="#wbr-%EC%9A%94%EC%86%8C" aria-label="wbr 요소 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>wbr 요소</h2>
+<p>만약에 <code>-</code> 기호가 화면에 표시되지 않기를 바란다면 대신에 <code>&#x3C;wbr></code> 요소를 사용할 수도 있습니다.
+브라우저는 <code>&#x3C;wbr></code> 요소를 사용한 지점에서 우선적으로 줄바꿈을 하게 됩니다.</p>
+<iframe height="400" style="width: 100%;" scrolling="no" title="css-long-words-wbr" src="https://codepen.io/daleseo/embed/vYvgZda?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/daleseo/pen/vYvgZda">
+  css-long-words-wbr</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+<p><code>&#x3C;wbr></code> 요소는 shy 기호보다 유동형/반응형 웹디자인을 할 때 좀 더 유리합니다.
+가용 공간이 충분하여 줄바꿈이 일어나지 않을 때도 티가 나지 않기 때문입니다.</p>
 <h2 id="overflow-wrap-속성" style="position:relative;"><a href="#overflow-wrap-%EC%86%8D%EC%84%B1" aria-label="overflow wrap 속성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>overflow-wrap 속성</h2>
 <p>자 그럼 지금부터 CSS를 이용해서 삐져나오는 영단어를 좀 더 근본적으로 해결할 수 있는지 알아볼까요?</p>
 <p>첫 번째 방법은 부모 요소의 <code>overflow-wrap</code> 속성을 <code>break-word</code>로 스타일해주는 것인데요.
