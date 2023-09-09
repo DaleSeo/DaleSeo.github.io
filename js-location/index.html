@@ -262,7 +262,7 @@ location<span class="token punctuation">.</span>href <span class="token operator
 예전처럼 컴퓨터가 느릴 때면 몰라도 요즘에는 유의미한 성능 차이가 있다고 보기는 힘들 것 같습니다.</p>
 <p>프로퍼티를 할당하는 것보다는 이렇게 메서드를 호출하는 편이 더 명시적이고, 특히 타입스크립트를 사용한다면 정신 건강에 더 이로울 것입니다.</p>
 <h2 id="locationreplace-메서드-호출" style="position:relative;"><a href="#locationreplace-%EB%A9%94%EC%84%9C%EB%93%9C-%ED%98%B8%EC%B6%9C" aria-label="locationreplace 메서드 호출 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>location.replace() 메서드 호출</h2>
-<p>웹 페이지를 이동하는 세 번째 방법은 <code>location</code> 객체의 <code>assign()</code> 메서드를 호출하는 것입니다.</p>
+<p>웹 페이지를 이동하는 세 번째 방법은 <code>location</code> 객체의 <code>replace()</code> 메서드를 호출하는 것입니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">location<span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token string">"https://www.daleseo.com"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>이 방법은 첫 번째 방법과 두 번째 방법과 달리 현재 방문 기록을 덮어써버리기 때문에 이전 페이지로 돌아가는 것이 불가능합니다.
 만약에 사용자가 뒤로 가기 버튼으로 이전 페이지의 이전 페이지로 이동할 것입니다.</p>
