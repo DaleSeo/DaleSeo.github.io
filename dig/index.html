@@ -256,7 +256,7 @@ daleseo.com.		<span class="token number">86400</span>	IN	NS	fortaleza.ns.porkbun
 <span class="token punctuation">;</span><span class="token punctuation">;</span> WHEN: Mon Sep <span class="token number">18</span> <span class="token number">18</span>:14:04 EDT <span class="token number">2023</span>
 <span class="token punctuation">;</span><span class="token punctuation">;</span> MSG SIZE  rcvd: <span class="token number">142</span></code></pre></div>
 <p>그러면 4개의 NS 유형의 레코드가 조회되는데요.
-이를 통해 <code>daleseo.com</code> 도메인 네임은 이 4개의 네임 서버에서 관리되고 있다는 것을 알 수 있습니다.</p>
+이를 통해 <code>daleseo.com</code> 도메인 네임의 권한은 이 4개의 네임 서버에서 관리되고 있다는 것을 알 수 있습니다.</p>
 <p>만약에 레코드 유형을 따지지 않고 모든 레코드를 조회하고 싶다면, 레코드 유형을 <code>ANY</code>라고 명시해주면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">dig</span> daleseo.com ANY
 
@@ -346,7 +346,7 @@ daleseo.com.		<span class="token number">600</span>	IN	A	<span class="token numb
 이 것은 제가 자체 서버를 구축하고 있는 것이 아니라 GitHub Pages라는 호스팅 서비스를 사용하고 있기 때문입니다.</p>
 <h2 id="전체-경로-옵션" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EA%B2%BD%EB%A1%9C-%EC%98%B5%EC%85%98" aria-label="전체 경로 옵션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 경로 옵션</h2>
 <p><code>dig</code> 명령어의 <code>+trace</code> 옵션을 사용하시면 해당 도메인 네임의 IP 주소가 결정되기 위해서 거치게 되는 모든 네임 서버를 추적할 수 있습니다.
-즉, 13개의 루트(root) 네임 서버부터 시작해서, TLD(Top-level Domain) 네임 서버를 거쳐, 어떤 Authoritative 네임 서버를 거치는지 전체 DNS 질의 경로를 확인할 수 있습니다.</p>
+즉, 13개의 루트(root) 네임 서버부터 시작해서, TLD(Top-level Domain) 네임 서버를 거쳐, 내 도메인 네임의 관리 권한을 가지는 Authoritative 네임 서버로 도달하는 전체 DNS 질의 경로를 확인할 수 있습니다.</p>
 <p>주로 DNS 설정에 문제가 있을 때 정확히 어디에서 문제가 발생하고 있는지 파악하기 위해서 사용합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">dig</span> daleseo.com +trace
 
