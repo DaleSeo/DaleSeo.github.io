@@ -242,7 +242,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <span class="token operator">>></span><span class="token operator">></span> fruits
 <span class="token punctuation">[</span><span class="token string">'Mongo'</span><span class="token punctuation">,</span> <span class="token string">'Orange'</span><span class="token punctuation">,</span> <span class="token string">'Apple'</span><span class="token punctuation">,</span> <span class="token string">'Banana'</span><span class="token punctuation">,</span> <span class="token string">'Cherry'</span><span class="token punctuation">]</span></code></pre></div>
 <p>여기서 <code>append()</code> 대신에 <code>insert()</code>를 사용할 실 때는 꼭 염두하실 부분이 있는데요.
-파이썬의 리스트는 다른 언어의 배열처럼 무작위 접근(random access)에 최적화된 자료 구조이기 때문에
+파이썬의 리스트는 다른 언어의 배열처럼 무작위 접근(random access)에 최적화된 자료구조이기 때문에
 <code>insert()</code> 메서드를 사용하게 되면 기존에 배열 내에 있던 많은 원소를 뒤로 한 칸씩 밀어야 되서 성능상 불리합니다.</p>
 <p>따라서 많은 데이터가 저장된 리스트를 다루거나 성능에 민감한 프로그램에서는 가급적 <code>insert()</code> 메서드의 사용을 피하는 것이 좋으며,
 원소를 리스트의 앞에서 넣을 일이 많다면 <code>deque</code>나 <code>Queue</code>와 같은 자료형을 고려해보시는 것이 좋습니다.</p>

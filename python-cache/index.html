@@ -368,7 +368,7 @@ CacheInfo<span class="token punctuation">(</span>hits<span class="token operator
 이것은 줄어든 캐시 사이즈로 인해서 가장 오랫동안 사용되지 않은 데이터가 캐시에서 제거되기 때문입니다.</p>
 <h2 id="보너스-lru-캐시-구현" style="position:relative;"><a href="#%EB%B3%B4%EB%84%88%EC%8A%A4-lru-%EC%BA%90%EC%8B%9C-%EA%B5%AC%ED%98%84" aria-label="보너스 lru 캐시 구현 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>[보너스] LRU 캐시 구현</h2>
 <p>제가 위에서 LRU 캐시를 직접 구현하는 것이 만만치 않은 일이라고 언급했었는데요.
-사실 파이썬의 <code>collections</code> 내장 모듈에서 제공하는 <code>OrderedDict</code>라는 자료 구조를 이용하면 그나마 비교적 쉽게 LRU 캐시를 흉내 내볼 수는 있을 것 같습니다.</p>
+사실 파이썬의 <code>collections</code> 내장 모듈에서 제공하는 <code>OrderedDict</code>라는 자료구조를 이용하면 그나마 비교적 쉽게 LRU 캐시를 흉내 내볼 수는 있을 것 같습니다.</p>
 <p>예를 들어, 최대 2개의 아이템만 저장할 수 있는 캐시를 구현해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">from</span> collections <span class="token keyword">import</span> OrderedDict
 
