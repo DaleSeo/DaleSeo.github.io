@@ -204,9 +204,9 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <h2 id="스크립트-등록" style="position:relative;"><a href="#%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-%EB%93%B1%EB%A1%9D" aria-label="스크립트 등록 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>스크립트 등록</h2>
 <p>Node.js 기반 프로젝트에서는 프로젝트의 메타 데이터를 관리하기 위해서 <code>package.json</code> 파일을 사용합니다.
 이 <code>package.json</code> 파일의 <code>scripts</code> 부분에 반복적으로 수행해야하는 스크립트를 등록해놓을 수 있습니다.</p>
-<p>스크립트를 등록할 때는 <code>package.json</code>을 열고 직접 편집할 수도 있으나 그러면 오타의 위험이 있어서 가급적 <code>npm set-script {스크립트 이름} {명령어}</code> 명령어를 사용하시는 것을 추천드립니다.</p>
+<p>스크립트를 등록할 때는 <code>package.json</code>을 열고 직접 편집할 수도 있으나 그러면 오타의 위험이 있어서 가급적 <code>npm pkg set scripts.{스크립트 이름}={명령어}</code> 명령어를 사용하시는 것을 추천드립니다.</p>
 <p>예를 들어, 콘솔에 <code>Hi!</code>를 출력해주는 명령어를 실행해주는 <code>hi</code>라는 스크립트를 추가해보겠습니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> set-script hi <span class="token string">"echo 'Hi!'"</span></code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> pkg <span class="token builtin class-name">set</span> scripts.hi <span class="token string">"echo 'Hi!'"</span></code></pre></div>
 <p>이제 <code>package.json</code> 파일을 열어보시면 다음과 같이 <code>hi</code> 스크립트가 추가되어 있는 것을 확인하실 수 있을거에요.</p>
 <div class="gatsby-code-title">package.json</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
@@ -249,8 +249,8 @@ Time:        <span class="token number">0.1</span> s, estimated <span class="tok
 Ran all <span class="token builtin class-name">test</span> suites.</code></pre></div>
 <p>테스트를 실행할 때 마다 매번 이 긴 경로를 타이핑하려면 힘들겠죠?
 다행히도 스크립트에 커맨드를 등록할 때는 <code>node_modules/.bin</code>를 생략할 수 있습니다. 😌</p>
-<p>그럼 <code>npm set-script</code> 명령어를 이용해서 <code>test</code>라는 스크립트를 추가해보겠습니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> set-script <span class="token builtin class-name">test</span> <span class="token string">"jest"</span></code></pre></div>
+<p>그럼 <code>npm pkg set</code> 명령어를 이용해서 <code>test</code>라는 스크립트를 추가해보겠습니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> pkg <span class="token builtin class-name">set</span> <span class="token assign-left variable">scripts.test</span><span class="token operator">=</span><span class="token string">"jest"</span></code></pre></div>
 <div class="gatsby-code-title">package.json</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
   <span class="token comment">// 생략</span>
@@ -301,7 +301,7 @@ Watch Usage
 <p>만약 프로젝트의 많은 개발자들이 관찰모드로 테스트를 한다면 어떨까요?
 그럴 때는 <code>jest</code> 명령어에 <code>--watch</code> 옵션을 붙여서 별도의 스크립트로 등록해주면 됩니다.</p>
 <p>예를 들어, 다음과 같이 <code>test:watch</code> 스크립트를 추가해서 사용할 수 있습니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> set-script test:watch <span class="token string">"jest --watch"</span></code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> pkg <span class="token builtin class-name">set</span> scripts.test:watch<span class="token operator">=</span><span class="token string">"jest --watch"</span></code></pre></div>
 <div class="gatsby-code-title">package.json</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">{</span>
   <span class="token comment">// 생략</span>
