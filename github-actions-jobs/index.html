@@ -219,7 +219,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 우선 이렇게 작업 간에 완전히 격리되면 병렬 처리가 가능해져 성능 측면에서 유리합니다.
 또한 하나의 워크플로우를 다양한 실행 환경에서 실행할 수 있게 됩니다.
 다시 말해, 일부 작업은 리눅스에서 돌리고, 다른 작업은 윈도우즈에서 돌릴 수 있는 것이지요.</p>
-<p>이러한 작업의 특징을 고려하지 않고 워크플로우를 만들 게 되면 의도치 않은 문제를 겪을 수 있는데요.
+<p>이러한 작업의 특징을 고려하지 않고 워크플로우를 만들게 되면 의도치 않은 문제를 겪을 수 있는데요.
 예를 들어, 다음과 같이 하나의 파일을 두 개의 작업을 통해서 쓰고 읽는 워크플로우를 생각해보겠습니다.</p>
 <div class="gatsby-code-title">.github/workflows/jobs.yml</div>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Jobs
@@ -303,10 +303,10 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <span class="gatsby-highlight-code-line">▶ Run <span class="token builtin class-name">echo</span> job3</span><span class="gatsby-highlight-code-line">job3</span>☑️ Complete Job</code></pre></div>
 <p>여기서 문제는 우리가 언제나 병렬 처리를 원하는 것은 아니라는 건데요.</p>
 <p>대표적인 경우로 CI/CD를 들 수 있죠?
-보통 테스트 작업이나 빌드 작업이 작업이 종료된 다음에 배포 작업을 시작할 수 있습니다.</p>
+보통 테스트 작업이나 빌드 작업이 종료된 다음에 배포 작업을 시작할 수 있습니다.</p>
 <p>그러면 작업 간에 실행 순서를 제어하고 싶다면 어떻게 해야할까요?
 이럴 때는 작업의 <code>needs</code> 속성을 사용해서 작업 간에 의존 관계를 설정해줄 수 있습니다.</p>
-<p>예를 들어 <code>job2</code>가 실행되기 전에 <code>job2</code>이 먼저 완료되야 하고, <code>job3</code>가 실행되기 전에 <code>job1</code>과 <code>job2</code>가 먼저 완료되도록 실습 워크플로우를 수정해보겠습니다.</p>
+<p>예를 들어 <code>job2</code>가 실행되기 전에 <code>job1</code>이 먼저 완료되야 하고, <code>job3</code>가 실행되기 전에 <code>job1</code>과 <code>job2</code>가 먼저 완료되도록 실습 워크플로우를 수정해보겠습니다.</p>
 <div class="gatsby-code-title">.github/workflows/jobs.yml</div>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Jobs
 <span class="token key atrule">on</span><span class="token punctuation">:</span> push
