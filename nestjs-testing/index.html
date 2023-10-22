@@ -280,7 +280,7 @@ NestJS의 테스팅 유틸리티가 우리 대신에 이 클래스들의 인스�
 <p>단위 테스트를 작성할 때는 모킹(mocking)을 통해 테스트하려는 클래스를 적절히 격리시켜주는 것이 중요합니다.
 예제 테스트에서는 Jest의 <code>spyOn()</code> 함수를 호출하여 <code>AppService</code> 클래스의 <code>getHello()</code> 메서드가 적절한 문자열을 반환하도록 모킹하고 있습니다.</p>
 <blockquote>
-<p>Jest에서 <code>fn()</code>이나 <code>spyOn()</code>을 사용하여 함수를 모킹하는 방법에 대해서 <a href="https://www.daleseo.com/jest-fn-spy-on/">별도 글</a>에서 자세히 다루고 있으니 참고 바랍니다.</p>
+<p>Jest에서 fn()이나 spyOn()을 사용하여 함수를 모킹하는 방법에 대해서 <a href="https://www.daleseo.com/jest-fn-spy-on/">별도 글</a>에서 자세히 다루고 있으니 참고 바랍니다.</p>
 </blockquote>
 <p>이제 작성한 단위 테스트를 실행해보면 다음과 같이 모두 통과하는 것을 볼 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token builtin class-name">test</span> app.controller
