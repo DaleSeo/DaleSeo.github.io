@@ -218,11 +218,16 @@ clonedFruits<span class="token punctuation">.</span><span class="token function"
 clonedFruits<span class="token punctuation">.</span><span class="token function">unshift</span><span class="token punctuation">(</span><span class="token string">"Lemon"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 5</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>fruits<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['Apple', 'Banana', 'Coconut']</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>clonedFruits<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ['Lemon', 'Apple', 'Banana', 'Coconut', 'Orange']</span></code></pre></div>
+<p><code>push()</code> 메서드와 <code>unshift()</code> 메서드는 성능 측면에서 중요한 차이점이 있는데요.
+<code>push()</code> 메서드는 시간 복잡도는 <code>O(1)</code>이기 때문에 배열의 크기에 관계없이 상수 시간이 소모가 됩니다.
+반면에 <code>unshift()</code> 메서드는 새로운 요소를 위해 기존에 배열에 있던 모든 요소를 한 자리씩 오른쪽으로 이동시켜야 하기 때문에 시간 복잡도가 <code>O(n)</code>입니다.
+따라서 배열에 저장되어 있는 값의 개수가 많을수록, 그에 비례하여 시간이 오래 걸리게 됩니다.</p>
+<p>성능에 민감한 프로그램을 작성하시거나 크기가 아주 큰 배열을 다루는 상황에서는 이러한 성능 차이를 반드시 고려되야겠습니다.</p>
 <h2 id="splice-메서드" style="position:relative;"><a href="#splice-%EB%A9%94%EC%84%9C%EB%93%9C" aria-label="splice 메서드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>splice() 메서드</h2>
 <p>그럼, <strong>배열의 중간</strong>에 원소를 추가하고 싶을 때는 어떻게 해야할까요?
 이 때는 바로 <code>splice()</code>라는 배열의 다목적 메서드를 활용할 수 있습니다.
 (<code>slice()</code>가 아니고 <code>splice()</code>이오니 주의 바랍니다.)</p>
-<p><code>splice()</code> 메서드는 첫 번째 인자로 시작 인덱스(index), 두 번째 인자로 몇개의 값을 삭제할지, 그리고 세번째 인자부터는 추가할 값을 가변 인자로 넘길 수 있으며, 삭제된 값을 담고 있는 배열을 반환하는데요.
+<p><code>splice()</code> 메서드는 첫 번째 인자로 시작 인덱스(index), 두 번째 인자로 몇개의 값을 삭제할지, 그리고 세 번째 인자부터는 추가할 값을 가변 인자로 넘길 수 있으며, 삭제된 값을 담고 있는 배열을 반환하는데요.
 단순히 배열에 원소를 추가할 때는 추가할 위치를 첫 번째 인자로 넘기고, 두 번째 인자로는 <code>0</code>을 넘겨서 아무 것도 삭제하지 않으면 됩니다.</p>
 <p>그럼 배열의 인덱스 <code>1</code>, 즉 두 번째 위치에 원소를 추가해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> fruits <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">"Apple"</span><span class="token punctuation">,</span> <span class="token string">"Banana"</span><span class="token punctuation">,</span> <span class="token string">"Coconut"</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
