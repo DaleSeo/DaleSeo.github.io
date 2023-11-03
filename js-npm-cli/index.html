@@ -259,13 +259,16 @@ Available on:
   http://127.0.0.1:8080
   http://192.168.0.3:8080
 Hit CTRL-C to stop the server</code></pre></div>
-<p>하지만 <code>node_modules</code> 디렉터리나 <code>package.json</code> 파일에는 아무 변화가 일어나지 않습니다. 이 패키지는 전역으로 설치했기 때문에 이 프로젝트에만 국한되지 않기 때문입니다. 참고로 전역 패키지들은 보통 노드JS가 설치된 디렉터리 내의 <code>lib/node_modules</code>에서 찾을 수 있습니다. (또는 터미널에 <code>npm bin -g</code>라고 입력하면 정확한 패키지 전역 설치 디렉터리 경로가 출력됩니다.)</p>
+<p>하지만 <code>node_modules</code> 디렉터리나 <code>package.json</code> 파일에는 아무 변화가 일어나지 않습니다. 이 패키지는 전역으로 설치했기 때문에 이 프로젝트에만 국한되지 않기 때문입니다. 참고로 전역 패키지들은 보통 노드JS가 설치된 디렉터리 내의 <code>lib/node_modules</code>에서 찾을 수 있습니다. (또는 터미널에 <code>npm root -g</code>라고 입력하면 정확한 패키지 전역 설치 디렉터리 경로가 출력됩니다.)</p>
 <h2 id="기존-패키지-일괄-설치" style="position:relative;"><a href="#%EA%B8%B0%EC%A1%B4-%ED%8C%A8%ED%82%A4%EC%A7%80-%EC%9D%BC%EA%B4%84-%EC%84%A4%EC%B9%98" aria-label="기존 패키지 일괄 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기존 패키지 일괄 설치</h2>
 <p>위에서 잠깐 언급했던 것 처럼 Git과 같은 소스 관리 시스템에 npm 프로젝트를 올려놓을 때 일반적으로 <code>node_modules</code> 디렉터리는 제외시키는 경우가 일반적입니다. 그래서 Git 리파지토리를 클론 후에는 최초 1회 기존에 설치된 패키지들을 설치해줘야 합니다. 위에서 살펴본 것 처럼 <code>package.json</code> 파일에 설치된 패키지에 대한 메타 데이터가 담겨있기 때문에 기존에 설치되어 있던 모든 패키지를 한 번에 설치할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">$ git clone &lt;패키지 이름>
 $ cd &lt;패키지 이름>
 $ npm i</code></pre></div>
 <p>위와 같이 <code>npm i</code> 커맨드 뒤에 패키지명을 붙이지 않으면 <code>package.json</code> 파일에 등록되어 있는 모든 패키지를 설치해줍니다.</p>
+<blockquote>
+<p>npm install 명령어 대해서는 <a href="/js-npm-install/">별도 포스팅</a>에서 더 깊게 다루고 있으니 참고 바랍니다.</p>
+</blockquote>
 <h2 id="설치된-패키지-확인" style="position:relative;"><a href="#%EC%84%A4%EC%B9%98%EB%90%9C-%ED%8C%A8%ED%82%A4%EC%A7%80-%ED%99%95%EC%9D%B8" aria-label="설치된 패키지 확인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>설치된 패키지 확인</h2>
 <p>기존에 설치된 패키지를 확인할 때는 보통 <code>package.json</code> 파일을 열어 <code>dependencies</code>와 <code>devDependencies</code> 항목을 확인하게 됩니다. 하지만 많은 패키지들이 내부적으로 또 다른 패키지들에 의존하고 있기 때문에 가끔 전체적인 의존성 트리를 확인하고 싶을 때가 생깁니다. 이럴 때는 <code>npm ls</code> 커맨드를 사용하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> <span class="token function">ls</span>
