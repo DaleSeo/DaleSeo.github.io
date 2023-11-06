@@ -371,7 +371,7 @@ npm 웹사이트에서 패키지 상세 페이지에 들어가면 homepage와 re
 <p>이렇게 해주면 외부 패키지를 설치할 때는 npm 패키지 저장소를 사용하지만, 해당 프로젝트를 발행할 때는 GitHub 패키지 저장소를 사용하게 됩니다.</p>
 <h2 id="비표준-필드" style="position:relative;"><a href="#%EB%B9%84%ED%91%9C%EC%A4%80-%ED%95%84%EB%93%9C" aria-label="비표준 필드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>비표준 필드</h2>
 <p>많은 자바스크립트 도구들이 <code>package.json</code> 파일의 특정 필드를 통해 설정을 가능하도록 지원하고 있습니다.</p>
-<p>예를 들어, Prettier 포멧터는 <code>prettier</code> 필드를 통해 설정할 수 있고, ESLint 린터는 <code>eslintConfig</code> 필드를 통해 설정할 수 있으며, Babel 트랜스파일러는 <code>babel</code> 필드를 통해 설정할 수 있습니다.</p>
+<p>예를 들어, Prettier 포맷터는 <code>prettier</code> 필드를 통해 설정할 수 있고, ESLint 린터는 <code>eslintConfig</code> 필드를 통해 설정할 수 있으며, Babel 트랜스파일러는 <code>babel</code> 필드를 통해 설정할 수 있습니다.</p>
 <p>이렇게 <code>package.json</code> 파일에 각종 개발 도구의 설정까지 저장하면 여러 설정 파일을 관리하지 않아도 되서 편리할 수 있지만, 프로젝트의 규모가 커지게 되면 <code>package.json</code> 파일이 너무 복잡해지고 개발자 간에 변경 충돌(conflict) 가능성도 커지는 문제가 발생할 수 있습니다.
 따라서 프로젝트의 규모에 따라서 적절한 시점에 <code>package.json</code> 파일로 부터 개발 도구의 설정을 별도의 설정 파일로 분리하는 것을 고려바랍니다.</p>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
