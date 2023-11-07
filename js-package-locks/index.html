@@ -233,6 +233,9 @@ npm은 <code>package-lock.json</code> 파일을, Yrn은 <code>yarn.lock</code> �
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">ls</span> node_modules
 js-tokens     loose-envify  object-assign prop-types    react         react-dom     react-is      scheduler</code></pre></div>
 <p>이렇게 <code>package.json</code> 파일만 있으면 해당 프로젝트가 의존하고 있는 모든 패키지를 설치할 수 있기 때문에, <code>node_modules</code> 디렉터리는 Git 저장소에 올라가지 않도록 보통 <code>.gitignore</code> 파일에 추가합니다.</p>
+<blockquote>
+<p>자바스크립트 패키지를 설치할 때 사옹되는 npm install 명령어에 대해서는 <a href="/js-npm-install/">별도 포스팅</a>에서 더 깊게 다루고 있으니 참고 바랍니다.</p>
+</blockquote>
 <h2 id="설치-시점에-따라-달라지는-패키지-버전" style="position:relative;"><a href="#%EC%84%A4%EC%B9%98-%EC%8B%9C%EC%A0%90%EC%97%90-%EB%94%B0%EB%9D%BC-%EB%8B%AC%EB%9D%BC%EC%A7%80%EB%8A%94-%ED%8C%A8%ED%82%A4%EC%A7%80-%EB%B2%84%EC%A0%84" aria-label="설치 시점에 따라 달라지는 패키지 버전 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>설치 시점에 따라 달라지는 패키지 버전</h2>
 <p>그렇다면 <code>package.json</code> 파일만 있으면 프로젝트의 모든 개발자가 패키지 매니저를 이용해서 항상 동일한 버전의 패키지를 설치할 수 있을까요?
 안타깝게도 모든 개발자가 정확히 같은 시각 동시에 패키지를 설치하지 않는 이상 개발자들은 서로 상이한 버전의 패키지를 설치할 확률이 발생하게 됩니다.
