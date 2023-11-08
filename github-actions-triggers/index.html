@@ -231,7 +231,8 @@ PR 단계에서 품질 기준에 미치치 못하는 코드가 기본 브랜치�
   <span class="token key atrule">test</span><span class="token punctuation">:</span>
     <span class="token comment"># ...</span></code></pre></div>
 <p>PR에는 여러가지 세부 활동(activity)들을 발생할 수 있기 때문에 <code>types</code> 키를 통해서 반응 범위를 특정 활동으로 제한할 수 있는데요.
-<code>types</code> 키를 명시하지 않으면 기본적으로 <code>opened</code>, <code>synchronize</code>, <code>reopened</code> 활동에만 워크플로우가 반응하게 됩니다.</p>
+<code>types</code> 키를 명시하지 않으면 기본적으로 <code>opened</code>, <code>synchronize</code>, <code>reopened</code> 활동에만 워크플로우가 반응하게 됩니다.
+<code>synchronize</code> 활동은 PR 브랜치에 새로운 커밋(commit)이 추가되었거나 최상위(head) 커밋이 변경되었음을 의미합니다.</p>
 <p><code>types</code> 키의 대표적인 활용 사례로 PR이 닫혔을 때 GitHub 저장소에서 관련 브랜츠를 삭제하는 등의 정리 작업을 자동화하고 싶을 때를 들 수 있는데요.
 이 때는 <code>types</code> 키에 <code>closed</code> 활동을 명시하여 PR이 기본 브랜치로 머지되었거나 제출자가 닫았을 때만 해당 워크플로우가 실행되게 할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Triggers
@@ -243,6 +244,14 @@ PR 단계에서 품질 기준에 미치치 못하는 코드가 기본 브랜치�
 이슈에 자동으로 태그를 붙여주는 등의 자동화를 할 때 유용하겠죠?</p>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Triggers
 <span class="gatsby-highlight-code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">  <span class="token key atrule">issues</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>opened<span class="token punctuation">]</span></span></code></pre></div>
+<h2 id="issue_comment-이벤트" style="position:relative;"><a href="#issue_comment-%EC%9D%B4%EB%B2%A4%ED%8A%B8" aria-label="issue_comment 이벤트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>issue_comment 이벤트</h2>
+<p><code>issue_comment</code> 이벤트를 사용하면 GitHub 저장소에서 이슈나 PR에 댓글을 달렸을 때 자동으로 반응하는 워크플로우를 구성할 수 있는데요.
+코멘트가 생성(created), 삭제(deleted), 수정(edited)되었을 때 반응이 일어나게 되며
+기본적으로 하나의 코멘트 일어나는 모든 활동에 대해서 반응이 일어나게 되며 <code>types</code> 키로 활동을 제한해줄 수 있습니다.</p>
+<p>예를 들어, 누군가가 댓글을 달거나 수정할 시에만 실행하고 싶은 워크플로우에는 <code>types</code> 키를 <code>created</code>와 <code>edited</code> 지정해주면 됩니다.
+보통 PR에 변경이 발생할 때 마다 매번 실행하기 시간이나 비용적으로 부담스럽거나 작업을 선택적으로 특정 댓글을 달았을 때만 실행되도록 하고 싶을 때 활용하면 좋습니다.</p>
+<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Triggers
+<span class="gatsby-highlight-code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">  <span class="token key atrule">issue_comment</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>created<span class="token punctuation">,</span> edited<span class="token punctuation">]</span></span></code></pre></div>
 <h2 id="schedule" style="position:relative;"><a href="#schedule" aria-label="schedule permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>schedule</h2>
 <p>GitHub Actions를 리눅스의 크론탭(crontab)처럼 일정 주기에 맞춰서 반복적으로 실행할 수 있다는 사실을 아시나요?</p>
 <p><code>on</code> 키를 이벤트 대신에 <code>schedule</code>로 설정해주고 그 하위에 <code>cron</code> 키로 반복 주기를 명시해주면 되는데요.
