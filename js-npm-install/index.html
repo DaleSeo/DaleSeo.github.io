@@ -219,9 +219,10 @@ npm 초창기 버전에서는 이 옵션없이 <code>npm install</code> 명령�
     <span class="token property">"zod"</span><span class="token operator">:</span> <span class="token string">"^3.22.4"</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>오히려 반대로 옛날처럼 <code>package.json</code> 파일을 변경하지 않고 패키지만 내려받고 싶으면 요즘에는 <code>--no-save</code>라는 옵션을 써야합니다.
-(그런데 그럴 일은 거의 없으실 것 같아요.)</p>
+<p>오히려 반대로 옛날처럼 <code>package.json</code> 파일을 변경하지 않고 패키지만 내려받고 싶으면 요즘에는 <code>--no-save</code>라는 옵션을 써야합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">npm</span> i --no-save zod</code></pre></div>
+<p>하지만 일회성으로 패키지를 사용하는 게 아니라면 그럴 일은 거의 없겠죠?
+항상 내려받은 패키지를 <code>package.json</code> 파일에 반영하여 같은 프로젝트에서 협업하는 다른 개발자에게 문제가 생기지 않도록 해야겠습니다.</p>
 <blockquote>
 <p>package.json 파일에 대해서는 <a href="/js-package-json/">별도 포스팅</a>에서 자세히 다루고 있으니 참고 바랍니다.</p>
 </blockquote>
