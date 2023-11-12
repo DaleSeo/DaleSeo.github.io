@@ -193,7 +193,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>Node.js에서 내무 모듈을 불러올 때 가장 흔히 사용되는 방법은 상대 경로를 사용하는 것입니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> add <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"../../../common/utilities/math"</span><span class="token punctuation">;</span></code></pre></div>
 <p>위에서 보시는 것 처럼 상대 경로를 사용해서 모듈을 불러오면 모듈이 어느 경로에 위치하는지 파악하기가 난해해지는 경우가 생깁니다.
-뿐만 아니라, 이 자바스크립트 파일을 다른 디렉토리로 옮기려면 상대 경로를 그에 따라 모두 수정해줘야 해서 코드 리펙토링(refactoring)이 상당히 불편합니다.
+뿐만 아니라, 이 자바스크립트 파일을 다른 디렉토리로 옮기려면 상대 경로를 그에 따라 모두 수정해줘야 해서 코드 리펙토링(refactoring)이 상당히 불편해지죠.
 왜냐하면, 상대 경로는 현재 파일이 어디에 위치하느냐에 따라서 변해야 하기 때문입니다.</p>
 <h2 id="절대-경로" style="position:relative;"><a href="#%EC%A0%88%EB%8C%80-%EA%B2%BD%EB%A1%9C" aria-label="절대 경로 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>절대 경로</h2>
 <p>Node.js는 내무 모듈을 불러올 때 절대 경로도 지원하기 때문에 다음과 같이 코드를 변경하면 되지 않을까 생각하는 분들도 있을 것입니다.</p>
@@ -231,8 +231,8 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// import { add } from "../../../../common/utilities/math";</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> add <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"@/common/utilities/math"</span><span class="token punctuation">;</span></code></pre></div>
 <p>어떤가요? 모듈울 불러올 때 경로 부분이 참 깔끔해졌죠? ✨
-게다가 이제는 이 파일을 프로젝트 내에서 자유롭게 디렉토리 변경을 할 수 있습니다.
-왜냐하면, 별칭 경로를 이용하면 절대 경로처럼 해당 모듈을 어디에서 불러오더라도 동일한 위치를 가리키기 때문입니다.</p>
+게다가 이제는 프로젝트 내에서 이 파일의 위치를 자유롭게 변경할 수 있습니다.
+별칭 경로를 이용하면 절대 경로처럼 해당 모듈을 어디에서 불러오더라도 동일한 위치를 가리키기 때문입니다.</p>
 <h2 id="경로-축약" style="position:relative;"><a href="#%EA%B2%BD%EB%A1%9C-%EC%B6%95%EC%95%BD" aria-label="경로 축약 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>경로 축약</h2>
 <p>별칭 경로를 이용하면 모듈 경로를 좀 더 파격적으로 축약시킬 수도 있습니다.
 예를 들어, 다음과 같이 <code>./src/common/utilities/math</code> 상대 경로를 <code>#utils-math</code>로 맵핑해주면,</p>
