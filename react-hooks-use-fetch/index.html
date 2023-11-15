@@ -286,7 +286,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
     </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>ul</span><span class="token punctuation">></span></span>
   <span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>전체 코드의 양에서는 기존과 크게 달라지지는 않았지만, 복잡한 컴포넌트의 경우 이렇게 리펙토링을 하면 코드를 유지보수하기가 쉬워집니다.</p>
+<p>전체 코드의 양에서는 기존과 크게 달라지지는 않았지만, 복잡한 컴포넌트의 경우 이렇게 리팩토링을 하면 코드를 유지보수하기가 쉬워집니다.</p>
 <h2 id="커스텀-훅-함수를-일반화-시키기" style="position:relative;"><a href="#%EC%BB%A4%EC%8A%A4%ED%85%80-%ED%9B%85-%ED%95%A8%EC%88%98%EB%A5%BC-%EC%9D%BC%EB%B0%98%ED%99%94-%EC%8B%9C%ED%82%A4%EA%B8%B0" aria-label="커스텀 훅 함수를 일반화 시키기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>커스텀 훅 함수를 일반화 시키기</h2>
 <p>원격 API를 호출하는 것은 웹 애플리케이션에서는 빈번한 작업이므로 다른 컴포넌트에서도 필요한 코드일 것입니다.
 다른 컨포넌트가 뽑아낸 커스텀 훅 함수를 사용하기 수월하도록 코드를 좀 더 일반화 시켜보겠습니다.</p>
