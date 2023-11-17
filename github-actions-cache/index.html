@@ -357,10 +357,7 @@ jobs:
 예를 들어, 사설 패키지 저장소를 사용하는 경우 GitHub의 캐시에 패키지가 이미 존재한다면 굳이 해당 저장소에 접근하기 위한 인증 단계를 거칠 필요가 없을 것입니다.</p>
 <h2 id="실습-코드" style="position:relative;"><a href="#%EC%8B%A4%EC%8A%B5-%EC%BD%94%EB%93%9C" aria-label="실습 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실습 코드</h2>
 <p>본 포스팅에서 작성한 YAML 파일과 워크플로우 실행 결과는 아래 코드 저장소에서 확인하실 수 있습니다.</p>
-<ul>
-<li>Code: <a href="https://github.com/DaleSchool/github-actions-cache">https://github.com/DaleSchool/github-actions-cache</a></li>
-<li>Actions: <a href="https://github.com/DaleSchool/github-actions-cache/actions">https://github.com/DaleSchool/github-actions-cache/actions</a></li>
-</ul>
+<p><a href="https://github.com/DaleSchool/github-actions-cache">https://github.com/DaleSchool/github-actions-cache</a></p>
 <h2 id="마치면서" style="position:relative;"><a href="#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C" aria-label="마치면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마치면서</h2>
 <p>지금까지 깃허브 캐시에 잘 바뀌지 않는 파일들을 저장하기 위해서 사용되는 캐시(Cache) 액션을 워크플로우에 어떻게 설정하고 사용하는지에 대해서 살펴보았습니다.
 참고로 하나의 코드 저장소(repository)에는 총 10 GB 캐시 용량이 주어지며 일주일이 넘게 접근이 되지 않은 파일들을 자동으로 캐시에서 삭제됩니다.

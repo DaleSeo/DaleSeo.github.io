@@ -195,7 +195,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>단순하게 하나의 이벤트에 반응하게 하려면 <code>on</code> 키에 이벤트 이름을 넘깁니다.</p>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Triggers
 <span class="gatsby-highlight-code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span> push</span></code></pre></div>
-<p>여려 개의 이벤트에 반응하게 하려면 <code>on</code> 키에 이벤트 이름을 배열의 형태로 넘깁니다.</p>
+<p>여러 개의 이벤트에 반응하게 하려면 <code>on</code> 키에 이벤트 이름을 배열의 형태로 넘깁니다.</p>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our Triggers
 <span class="gatsby-highlight-code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>push<span class="token punctuation">,</span> pull_request<span class="token punctuation">]</span></span></code></pre></div>
 <p>좀 더 세밀한 조정을 위해서는 <code>on</code> 키에 이벤트 이름과 추가 옵션을 객체의 형태로 넘길 수도 있습니다.</p>
@@ -250,8 +250,7 @@ PR 단계에서 품질 기준에 미치치 못하는 코드가 기본 브랜치�
 <span class="gatsby-highlight-code-line"><span class="token key atrule">on</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">  <span class="token key atrule">issues</span><span class="token punctuation">:</span></span><span class="gatsby-highlight-code-line">    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>opened<span class="token punctuation">]</span></span></code></pre></div>
 <h2 id="issue_comment-이벤트" style="position:relative;"><a href="#issue_comment-%EC%9D%B4%EB%B2%A4%ED%8A%B8" aria-label="issue_comment 이벤트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>issue_comment 이벤트</h2>
 <p><code>issue_comment</code> 이벤트를 통해서 GitHub 저장소에서 이슈나 PR에 댓글을 달렸을 때 자동으로 반응하는 워크플로우를 구성할 수 있는데요.
-코멘트가 생성(created), 삭제(deleted), 수정(edited)되었을 때 반응이 일어나게 되며
-기본적으로 하나의 코멘트 일어나는 모든 활동에 대해서 반응이 일어나게 되며 <code>types</code> 키로 활동을 제한해줄 수 있습니다.</p>
+기본적으로 댓글이 생성(created), 삭제(deleted), 수정(edited)되었을 때 반응이 일어나게 되며 <code>types</code> 키로 활동을 제한해줄 수 있습니다.</p>
 <p>예를 들어, 누군가가 댓글을 달거나 수정할 시에만 실행하고 싶은 워크플로우에는 <code>types</code> 키를 <code>created</code>와 <code>edited</code> 지정해주면 됩니다.
 보통 PR에 변경이 발생할 때 마다 매번 실행하기 시간이나 비용적으로 부담스럽거나 작업을 선택적으로 특정 댓글을 달았을 때만 실행되도록 하고 싶을 때 활용하면 좋습니다.</p>
 <div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Our IC
@@ -286,6 +285,9 @@ PR 단계에서 품질 기준에 미치치 못하는 코드가 기본 브랜치�
 <blockquote>
 <p>재사용 가능한 워크플로우를 사용하는 방법에 대해서는 <a href="/github-actions-resable-workflows">별도 포스팅</a>에서 자세히 다루고 있습니다.</p>
 </blockquote>
+<h2 id="실습-코드" style="position:relative;"><a href="#%EC%8B%A4%EC%8A%B5-%EC%BD%94%EB%93%9C" aria-label="실습 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실습 코드</h2>
+<p>본 포스팅에서 작성한 YAML 파일과 워크플로우 실행 결과는 아래 코드 저장소에서 확인하실 수 있습니다.</p>
+<p><a href="https://github.com/DaleSchool/github-actions-triggers">https://github.com/DaleSchool/github-actions-triggers</a></p>
 <h2 id="마치면서" style="position:relative;"><a href="#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C" aria-label="마치면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마치면서</h2>
 <p>지금까지 GitHub Actions에서 워크플로우를 실행할 수 있는 다양한 방법에 대해서 알아보았습니다.
 GitHub 저장소에서 일어나는 다양한 이벤트에 자동으로 반응하게 할 수도 있고, 특정 스케줄에 의해서 주기적으로 실행되게 할 수도 있으며, 워크플로우를 수동으로 실행할 수 있는 옵션이 있다는 것을 배웠습니다.
