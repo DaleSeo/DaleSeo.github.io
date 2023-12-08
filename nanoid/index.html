@@ -194,7 +194,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">a9714803<span class="token operator">-</span>f8d4<span class="token operator">-</span><span class="token number">4660</span><span class="token operator">-</span>b00b<span class="token operator">-</span>87324c2ae7aa <span class="token comment">// UUID</span>
 8Fn2JgUWUn57lPGk7L2b3 <span class="token comment">// NanoID</span></code></pre></div>
 <p>따라서 자연스럽게 좀 더 작고 빠른 고유 식별자 생성기에 대한 수요가 있었으면 이를 충족시키기 위해 등장한 것이 바로 NanoID입니다.
-NanoID는 21바이트 길이로 UUID보다 적은 비용으로 계산이 가능하기 때문에 최근에는 많은 프로젝트에서는 UUID 대신에 NanoID를 식별자 생성기로 채택하고 있습니다.</p>
+NanoID는 21 바이트 길이로 UUID보다 적은 비용으로 계산이 가능하기 때문에 최근에는 많은 프로젝트에서는 UUID 대신에 NanoID를 식별자 생성기로 채택하고 있습니다.</p>
 <p>NanoID는 다음과 같이 다양한 언어에서 라이브러리 패키지의 형태로 제공되기 때문에 설치해서 사용할 수 있습니다.</p>
 <ul>
 <li>자바스크립트: <a href="https://www.npmjs.com/package/nanoid">https://www.npmjs.com/package/nanoid</a></li>
@@ -202,6 +202,9 @@ NanoID는 21바이트 길이로 UUID보다 적은 비용으로 계산이 가능�
 <li>자바: <a href="https://mvnrepository.com/artifact/com.aventrix.jnanoid/jnanoid">https://mvnrepository.com/artifact/com.aventrix.jnanoid/jnanoid</a></li>
 </ul>
 <p>본 포스팅에서는 이 중에서 현재 GitHub에서 ⭐을 제일 많은 받은 <a href="https://github.com/ai/nanoid">자바스크립트 용 라이브러리</a>로 실습을 진행해보겠습니다.</p>
+<blockquote>
+<p>UUID에 대한 자세한 설명은 <a href="/js-uuid/">별도 포스팅</a>을 참고 바랍니다.</p>
+</blockquote>
 <h2 id="nanoid의-기본-사용법" style="position:relative;"><a href="#nanoid%EC%9D%98-%EA%B8%B0%EB%B3%B8-%EC%82%AC%EC%9A%A9%EB%B2%95" aria-label="nanoid의 기본 사용법 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>NanoID의 기본 사용법</h2>
 <p>NanoID 패키지의 사용법은 정말 간단한데요.</p>
 <p>우선 npm으로 <code>nanoid</code>라는 패키지를 설치합니다.</p>
