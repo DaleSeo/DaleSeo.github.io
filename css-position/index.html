@@ -237,7 +237,7 @@ DOM 트리를 따라 올라가다가 <code>position</code> 속성이 <code>stati
 만약에 해당 요소 상위에 <code>position</code> 속성이 <code>static</code>이 아닌 요소가 없다면, DOM 트리에 최상위에 있는 <code>&#x3C;body></code> 요소가 배치 기준이 됩니다.</p>
 <p>알고리즘이 상당히 복잡하게 느껴지죠? 하지만 실제로 <code>absolute</code> 속성값을 사용할 때 이러한 복잡한 특성을 활용하는 경우는 드뭅니다.
 대부분의 경우, 부모 요소(가장 가까운 상위 요소)를 기준으로 <code>top</code>, <code>left</code>, <code>bottom</code>, <code>right</code> 속성을 적용해야하기 때문입니다.
-따라서 어떤 요소의 <code>display</code> 속성을 <code>absolute</code>로 설정하면, 부모 요소의 <code>display</code> 속성을 <code>relative</code>로 지정해주는 것이 관례입니다.</p>
+따라서 어떤 요소의 <code>position</code> 속성을 <code>absolute</code>로 설정하면, 부모 요소의 <code>position</code> 속성을 <code>relative</code>로 지정해주는 것이 관례입니다.</p>
 <p>예제 CSS 코드에서 두 번째 <code>&#x3C;div></code> 요소의 부모인 <code>&#x3C;main></code> 요소의 <code>position</code> 속성을 <code>relative</code>로 변경해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">main</span> <span class="token punctuation">{</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span>  <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
