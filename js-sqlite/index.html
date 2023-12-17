@@ -249,7 +249,7 @@ Prepared Statement를 사용하면 SQL 구문으로 부터 사용자 입력값�
   <span class="token punctuation">{</span> <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token string">"CN"</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"China"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">]</span><span class="token punctuation">;</span></code></pre></div>
 <p>Prepared Statement는 Database 객체의 <code>prepare()</code> 함수에 파라미터화(parameterized)된 SQL 구문을 넘기면 만들어집니다.
-예를 들어, <code>INSERT</code> 쿼리 내에 <code>$code</code>와 <code>$name</code>을 파라미터화(parameterized) 해보겠습니다.</p>
+예를 들어, <code>INSERT</code> 쿼리 내에 <code>$code</code>와 <code>$name</code>을 파라미터로 정의해 보겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> insert <span class="token operator">=</span> db<span class="token punctuation">.</span><span class="token function">prepare</span><span class="token punctuation">(</span>
   <span class="token string">"INSERT INTO countries (code, name) VALUES ($code, $name)"</span>
 <span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
