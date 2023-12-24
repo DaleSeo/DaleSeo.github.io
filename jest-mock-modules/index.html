@@ -211,9 +211,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 이렇게 외부 매체를 통해 메시지를 보내는 작업은 애플리케이션에서 수시로 일어날 수 있지만, 단위 테스트 측면에서는 모킹 기법 없이는 처리가 매우 끼다로운 대표적인 케이스 중 하나입니다.
 왜냐하면, 일반적으로 이메일과 문자는 외부 서비스를 이용하는 경우가 많아서 테스트 실행 시 마다 불필요한 과금 발생할 수 있고, 해당 외부 서비스에 장애가 발생하면 관련 테스트가 모두 깨지는 불상사가 발생할 수 있기 때문입니다.</p>
 <p>따라서 어차피 앞으로 테스트를 작성하면서 이 모듈은 모킹을 할 것이기 때문에, <code>messageService</code> 모듈의 내 함수의 실제 구현은 주석 처리 하겠습니다.</p>
-<ul>
-<li>messageService.js</li>
-</ul>
+<div class="gatsby-code-title">messageService.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">sendEmail</span><span class="token punctuation">(</span><span class="token parameter">email<span class="token punctuation">,</span> message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token comment">/* 이메일 보내는 코드 */</span>
 <span class="token punctuation">}</span>
@@ -224,9 +222,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>그리고 위 모듈을 사용해서 회원 가입 또는 탈퇴 시 이메일과 문자를 보내는 <code>userService</code>라는 자바스크립트 모듈이 있다고 가정해보겠습니다.
 DB에 회원 레코드를 추가하거나 삭제하는 부분은 본 포스팅에서 관심을 두는 부분이 아니기 때문에 주석 처리 하였습니다.
 중요한 것은 <code>userService</code> 모듈에서 <code>messageService</code> 모듈의 <code>sendEmail</code>과 <code>sendSMS</code>을 임포트하여 사용하고 있다는 점입니다.</p>
-<ul>
-<li>userService.js</li>
-</ul>
+<div class="gatsby-code-title">userService.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> sendEmail<span class="token punctuation">,</span> sendSMS <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./messageService"</span><span class="token punctuation">;</span>
 
 <span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">register</span><span class="token punctuation">(</span><span class="token parameter">user</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -247,7 +243,7 @@ DB에 회원 레코드를 추가하거나 삭제하는 부분은 본 포스팅�
 <p>이제 <code>userService</code>가 회원 가입 또는 탈퇴 처리 시, 이메일과 문자를 보내기 위해서 <code>messageService</code> 모듈의 함수를 호출하는지 검증하는 테스트 코드를 작성하려고 합니다.
 여기서 우리는 <code>messageService</code> 모듈의 <code>sendEmail</code> 함수와 <code>sendSMS</code> 함수를 목(mock) 함수로 대체를 해야합니다.
 왜냐하면 실제로 이메일이나 문자를 보낼 의도가 없고, 단순히 <code>userService</code>가 제대로 호출을 하는지 여부만 알면 되기 때문입니다.</p>
-<p>이 상황에서 테스트를 작성할 때 흔이 많은 나오는 실수가 임포트한 함수를 저장하고 있는 변수에 목(mock) 함수를 바로 할당하려고 하는 것입니다.</p>
+<p>이 상황에서 테스트를 작성할 때 많이 하는 실수가 임포트한 함수를 저장하고 있는 변수에 목(mock) 함수를 바로 할당하려고 하는 것입니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> sendEmail<span class="token punctuation">,</span> sendSMS <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./messageService"</span><span class="token punctuation">;</span>
 
 sendEmail <span class="token operator">=</span> jest<span class="token punctuation">.</span><span class="token function">fn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// "sendEmail" is read-only.</span>
@@ -255,9 +251,7 @@ sendSMS <span class="token operator">=</span> jest<span class="token punctuation
 <p>이 방법은 자바스크립트 문법을 위반하기 때문에 컴파일 에러가 발생하는 것을 볼 수 있으실 겁니다.
 왜냐하면 <code>import</code> 키워드로 불러오기 된 함수들은 기본적으로 <code>const</code> 변수이기 때문에 한 번 초기화되면 다른 값으로 변경이 불가능하기 때문입니다.</p>
 <p>조금은 억지스럽지만 차선책으로 <code>messageService</code> 모듈의 모든 함수를 하나의 객체로 불러오면, 객체의 속성으로 목(mock) 함수를 할당할 수 있습니다.</p>
-<ul>
-<li>userService1.test.js</li>
-</ul>
+<div class="gatsby-code-title">userService1.test.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> register<span class="token punctuation">,</span> deregister <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./userService"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> messageService <span class="token keyword">from</span> <span class="token string">"./messageService"</span><span class="token punctuation">;</span>
 
@@ -277,7 +271,7 @@ messageService<span class="token punctuation">.</span>sendSMS <span class="token
   <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">"012-345-6789"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"register sends messeges"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"register sends messages"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token function">register</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token function">expect</span><span class="token punctuation">(</span>sendEmail<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalledTimes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -287,7 +281,7 @@ messageService<span class="token punctuation">.</span>sendSMS <span class="token
   <span class="token function">expect</span><span class="token punctuation">(</span>sendSMS<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalledWith</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>phone<span class="token punctuation">,</span> <span class="token string">"회원 가입을 환영합니다!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"deregister sends messaes"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"deregister sends messages"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token function">deregister</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token function">expect</span><span class="token punctuation">(</span>sendEmail<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalledTimes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -305,9 +299,7 @@ messageService<span class="token punctuation">.</span>sendSMS <span class="token
 이 함수는 자동으로 모듈을 모킹을 해주기 때문에 위와 같이 직접 일일이 모킹을 해줄 필요가 없습니다.</p>
 <p>예를 들어, 이전 섹션에서 작성했던 테스트 코드를 <code>jest.mock()</code>을 이용해서 작성하면 다음과 같습니다.
 <code>jest.mock()</code> 함수는 첫 번째 인자로 넘어온 모듈 내의 모든 함수를 자동으로 목(mock) 함수로 바꿔줍니다.</p>
-<ul>
-<li>userService2.test.js</li>
-</ul>
+<div class="gatsby-code-title">userService2.test.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> register<span class="token punctuation">,</span> deregister <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./userService"</span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> sendEmail<span class="token punctuation">,</span> sendSMS <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./messageService"</span><span class="token punctuation">;</span>
 
@@ -323,7 +315,7 @@ jest<span class="token punctuation">.</span><span class="token function">mock</s
   <span class="token literal-property property">phone</span><span class="token operator">:</span> <span class="token string">"012-345-6789"</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"register sends messeges"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"register sends messages"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token function">register</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token function">expect</span><span class="token punctuation">(</span>sendEmail<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalledTimes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -333,7 +325,7 @@ jest<span class="token punctuation">.</span><span class="token function">mock</s
   <span class="token function">expect</span><span class="token punctuation">(</span>sendSMS<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalledWith</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>phone<span class="token punctuation">,</span> <span class="token string">"회원 가입을 환영합니다!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
-<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"deregister sends messaes"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+<span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"deregister sends messages"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   <span class="token function">deregister</span><span class="token punctuation">(</span>user<span class="token punctuation">)</span><span class="token punctuation">;</span>
 
   <span class="token function">expect</span><span class="token punctuation">(</span>sendEmail<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toBeCalledTimes</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
