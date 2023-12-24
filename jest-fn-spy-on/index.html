@@ -261,6 +261,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>자 그럼 이제 위에서 배운 <code>jest.fn()</code>와 <code>jest.spyOn()</code> 사용해서 어떻게 테스트를 작성할 수 있는지 알아보겠습니다.</p>
 <p>다음 예제 코드는 <code>axios</code> 라이브러리를 이용해서 REST API를 호출하여 사용자 데이터를 조회해주는 함수를 선언하고 있는 모듈입니다.
 이번 포스팅에서는 이 <code>findOne()</code> 함수에 대한 테스트를 한 번 작성해보도록 하겠습니다.</p>
+<div class="gatsby-code-title">userService.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> axios <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"axios"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> <span class="token constant">API_ENDPOINT</span> <span class="token operator">=</span> <span class="token string">"https://jsonplaceholder.typicode.com"</span><span class="token punctuation">;</span>
 
@@ -272,6 +273,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span></code></pre></div>
 <p>먼저 mocking 없이 <code>findOne()</code>의 결과 값에 대한 단순한 테스트를 작성합니다.</p>
+<div class="gatsby-code-title">userService.test.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> userService <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./userService"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 <span class="token function">test</span><span class="token punctuation">(</span><span class="token string">"findOne returns a user"</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
@@ -281,6 +283,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>만약에 <code>findOne()</code> 함수가 외부 API 연동을 통해서 사용자 정보를 조회해야하는지를 테스트하려면 어떻게 해야할까요?
 이 함수는 내부적으로 <code>axios</code> 객체의 <code>get</code> 함수를 사용하고 있기 때문에, 여기에 스파이를 붙이면 쉽게 알아낼 수 있습니다.</p>
+<div class="gatsby-code-title">userService.test.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> axios <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"axios"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> userService <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./userService"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
@@ -295,6 +298,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 왜냐하면 단위 테스트가 단독으로 고립되어 있지 않고, 외부 환경에 의존하기 때문입니다.</p>
 <p>이 문제를 해결하려면, <code>axios</code> 객체의 <code>get</code> 함수가 항상 안정적으로 결과를 반환하도록 mocking 해야 합니다.
 즉, 다음과 같이 <code>axios.get</code>를 어떤 고정된 결과값을 리턴하는 가짜 함수로 대체해주면 됩니다.</p>
+<div class="gatsby-code-title">userService.test.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> axios <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"axios"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> userService <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./userService"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
