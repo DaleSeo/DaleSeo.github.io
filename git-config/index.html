@@ -249,6 +249,16 @@ $ <span class="token function">git</span> config user.email john@business.com
 $ <span class="token function">git</span> config user.email
 john@business.com</code></pre></div>
 <p>이렇게 로컬 범위에서 이메일을 설정을 해주면 해당 저장소에서만 <code>john@business.com</code>으로 커밋이 되고, 그 밖에 저장소에서는 여전히 <code>john@personal.com</code>이 사용됩니다.</p>
+<h2 id="항상-동일한-브랜치-명으로-푸쉬하기" style="position:relative;"><a href="#%ED%95%AD%EC%83%81-%EB%8F%99%EC%9D%BC%ED%95%9C-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%AA%85%EC%9C%BC%EB%A1%9C-%ED%91%B8%EC%89%AC%ED%95%98%EA%B8%B0" aria-label="항상 동일한 브랜치 명으로 푸쉬하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>항상 동일한 브랜치 명으로 푸쉬하기</h2>
+<p><code>git push</code> 명령어를 실행할 때는 기본적으로 저장소명과 브랜치명을 명시해줘야하는데요.
+그런데 생각해보면 우리는 대부분의 경우 로컬 저장소와 원격 저장소에서 동일한 브랜치 이름을 사용하는데 이렇게 매번 똑같은 저장소명과 브랜치명을 타이핑하는 것이 상당히 귀찮게 느껴집니다.</p>
+<p>이럴 때는 다음과 같이 <code>push.default</code> 설정을 <code>current</code>로 설정해주면 <code>git push</code> 명령어어가 항상 현재 브랜치를 기준으로 작동하게 됩니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> config <span class="token parameter variable">--global</span> push.default current</code></pre></div>
+<p>자, 이제부터는 어느 브랜치에서 작업을 하든 <code>git push</code>만 날리면 원격 저장소에 동일한 브랜치로 코드 변경분이 업로드됩니다. 🤗</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> push</code></pre></div>
+<blockquote>
+<p>원격 저장소에 코드 변경분을 업로드하기 위해서 사용하는 Git 명령어인 git push에 대해서는 <a href="/git-push/">별도 포스팅</a>에서 자세히 다루고 있습니다.</p>
+</blockquote>
 <h2 id="기본-브랜치-변경" style="position:relative;"><a href="#%EA%B8%B0%EB%B3%B8-%EB%B8%8C%EB%9E%9C%EC%B9%98-%EB%B3%80%EA%B2%BD" aria-label="기본 브랜치 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기본 브랜치 변경</h2>
 <p>최근에는 기본 브랜치명을 GitHub부터 시작해서 과거 노예 역사의 잔재가 남아있는 단어인 <code>master</code> 대신에 <code>main</code>을 사용하는 추세죠?</p>
 <p>사실 Git 저장소 생성할 때마다 기본 브랜치명을 바꿔주는 것은 번거롭고 까먹기 쉽죠?</p>

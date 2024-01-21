@@ -201,8 +201,18 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> remote
 origin</code></pre></div>
 <h2 id="인자-생략-하기-1" style="position:relative;"><a href="#%EC%9D%B8%EC%9E%90-%EC%83%9D%EB%9E%B5-%ED%95%98%EA%B8%B0-1" aria-label="인자 생략 하기 1 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>인자 생략 하기 1</h2>
-<p><code>git push</code> 명령어를 날릴 때 마다 매번 저장소명과 브랜치명을 입력하는 게 귀찮게 느껴질 수 있습니다. 😫
-이럴 경우, <code>-u</code> 옵션을 사용하면 최초에 한 번만 저장소명과 브랜치명을 입력하고 그 이후에는 모든 인자를 생략할 수 있습니다.</p>
+<p>로컬에서 새롭게 만든 브랜치를 <code>git push</code> 명령어를 사용하여 원격으로 올리려고 하면 아래와 같은 오류를 접하게 됩니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> push
+fatal: The current branch my-feature has no upstream branch.
+To push the current branch and <span class="token builtin class-name">set</span> the remote as upstream, use
+
+    <span class="token function">git</span> push --set-upstream origin my-feature
+
+To have this happen automatically <span class="token keyword">for</span> branches without a tracking
+upstream, see <span class="token string">'push.autoSetupRemote'</span> <span class="token keyword">in</span> <span class="token string">'git help config'</span><span class="token builtin class-name">.</span></code></pre></div>
+<p><code>git push</code> 명령어 뒤에 저장소명과 브랜치명을 명시해주지 않아서 발생하는 오류인데요.
+<code>git push</code> 명령어를 실행할 때 마다 매번 똑같은 저장소명과 브랜치명을 입력하는 게 귀찮게 느껴질 수 있습니다. 😫</p>
+<p>이럴 경우, <code>-u</code> 옵션 또는 <code>--set-upstream</code> 사용하면 최초에 한 번만 저장소명과 브랜치명을 입력하고 그 이후에는 모든 인자를 생략할 수 있습니다.</p>
 <p>예를 들어, 다음과 같이 저장소명과 브랜치명을 넘기면서 <code>-u</code> 옵션과 함께 <code>git push</code> 명령어를 날리면,</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> push <span class="token parameter variable">-u</span> origin my-feature</code></pre></div>
 <p>그 이후에 커밋한 코드 변경분을 원격 저장소에 올릴 때는 인자없이 <code>git push</code> 명령어만 날리면 됩니다.</p>
