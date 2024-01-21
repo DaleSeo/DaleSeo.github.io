@@ -234,7 +234,7 @@ x<span class="token punctuation">;</span> <span class="token comment">// undefin
 <h2 id="null-자료형" style="position:relative;"><a href="#null-%EC%9E%90%EB%A3%8C%ED%98%95" aria-label="null 자료형 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Null 자료형</h2>
 <p><code>Null</code>은 많은 분들이 <code>Undefined</code>와 헛갈려하시는 자료형인데요.
 자바스크립트에서 <code>null</code>이 <code>Null</code> 자료형에 속하는 유일한 값입니다.</p>
-<p>자바스크립트에서 <code>null</code>은 <strong>의도적으로</strong> 누락한 값을 나타내기 위해서 주로 사용되는데요.
+<p>자바스크립트에서 <code>null</code>은 <code>undefined</code>와 반대로 <strong>의도적으로</strong> 누락한 값을 나타내기 위해서 주로 사용되는데요.
 그래서 개발자가 명시적으로 변수에 <code>null</code>로 할당하는 경우를 자주 볼 수 있죠.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">let</span> x <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
 x<span class="token punctuation">;</span> <span class="token comment">// null</span>
@@ -242,6 +242,7 @@ x<span class="token punctuation">;</span> <span class="token comment">// null</s
 <p>그런데 <code>null</code>이 진짜 골 때리는 부분은 <code>typeof</code> 연산자의 결과가 <code>null</code>이 아니라 <code>object</code>가 나온다는 것입니다. 🤯</p>
 <p>이것은 사실 굉장히 오래된 자바스크립트의 버그인데요.
 명백한 버그 임에도 불구하고 이것에 의존하고 있는 레거시(legacy) 코드가 워낙 많아서 알고도 고칠 수 없다고 합니다. 😂</p>
+<p>따라서 프로그래밍을 하시다가 소위, 널 체크를 하실 때는 <code>typeof</code> 연산자를 사용하기 보다는 그냥 값 자체가 <code>null</code> 인지 아닌지를 직접 확인하는 것이 안전하겠습니다.</p>
 <p><code>null</code>과 관련된 이 웃픈 역사에 대해서는 <a href="https://2ality.com/2013/10/typeof-null.html">여기</a>에서 자세히 다루고 있으니 궁금하신 분들은 참고바랍니다.</p>
 <h2 id="boolean-자료형" style="position:relative;"><a href="#boolean-%EC%9E%90%EB%A3%8C%ED%98%95" aria-label="boolean 자료형 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Boolean 자료형</h2>
 <p>자바스크립트에서 논리 자료형인 <code>Boolean</code>은 <code>true</code>와 <code>false</code> 이렇게 두 개의 값으로 이루어진 자료형인데요.
@@ -273,7 +274,7 @@ x<span class="token punctuation">;</span> <span class="token comment">// null</s
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">typeof</span> <span class="token string">"a"</span><span class="token punctuation">;</span> <span class="token comment">// 'string'</span>
 <span class="token keyword">typeof</span> <span class="token string">"abc"</span><span class="token punctuation">;</span> <span class="token comment">// 'string'</span></code></pre></div>
 <h2 id="symbol-자료형" style="position:relative;"><a href="#symbol-%EC%9E%90%EB%A3%8C%ED%98%95" aria-label="symbol 자료형 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Symbol 자료형</h2>
-<p><code>Symbol</code> 자료형 역시 비교적 최근에 자바스크립트에 추가된 자료형인데요.
+<p><code>Symbol</code> 자료형 역시 자바스크립트에 추가된 지가 그렇게까지 오래되지는 않았는데요.
 보통 어떤 객체의 특정 속성에 대한 접근을 통제하기 위해서 많이 사용됩니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">typeof</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'symbol'</span>
 <span class="token keyword">typeof</span> <span class="token function">Symbol</span><span class="token punctuation">(</span><span class="token string">"foo"</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'symbol'</span></code></pre></div>
