@@ -243,7 +243,7 @@ Ran all <span class="token builtin class-name">test</span> suites matching /1.te
 Jest에서는 파라미터화 테스트를 지원하기 위해서 <code>test.each()</code>와 <code>describe.each()</code> 함수를 제공하고 있습니다.</p>
 <h2 id="testeach-함수" style="position:relative;"><a href="#testeach-%ED%95%A8%EC%88%98" aria-label="testeach 함수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>test.each() 함수</h2>
 <p>먼저 <code>test.each()</code> 함수를 사용해서 파라미터화 테스트를 작성해보겠습니다.</p>
-<p>테스트 데이터를 2차원 배열에 담에서 <code>test.each()</code> 함수의 인자로 넘기면, 배열을 루프 돌면서 각 테스트 데이터를 대상으로 테스트 함수를 호출해줍니다.
+<p>테스트 데이터를 2차원 배열에 담아서 <code>test.each()</code> 함수의 인자로 넘기면, 배열을 루프 돌면서 각 테스트 데이터를 대상으로 테스트 함수를 호출해줍니다.
 뿐만 아니라, 테스트 이름에도 테스트 데이터 값을 삽입해주기 때문에 여러 테스트 간에 구분을 용이하게 하는데 활용할 수 있습니다.</p>
 <div class="gatsby-code-title">2.test.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> areAnagrams <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"./"</span><span class="token punctuation">;</span>
