@@ -190,12 +190,12 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <h2 id="인증-정보-개념" style="position:relative;"><a href="#%EC%9D%B8%EC%A6%9D-%EC%A0%95%EB%B3%B4-%EA%B0%9C%EB%85%90" aria-label="인증 정보 개념 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>인증 정보 개념</h2>
 <p>AWS도 기본적으로 일반적인 웹사이트처럼 아이디와 비밀번호와 같은 인증 정보를 사용자로 부터 받아 검증하는 방식으로 인증을 처리합니다. 단지 차이는 AWS에서는 이 인증 정보를 다소 생소한 용어로 부르고 있기 때문에 이를 숙지해 놓으면 도움이 됩니다.</p>
 <ul>
-<li>Access Key ID: 일반 웹사이트의 아이디에 해당. 줄여서 Acceess Key(접근키)라고 부르기도 함.</li>
+<li>Access Key ID: 일반 웹사이트의 아이디에 해당. 줄여서 Access Key(접근키)라고 부르기도 함.</li>
 <li>Secret Access Key: 일반 웹사이트의 비밀번호에 해당. 줄여서 Secret Key(보안키)라고 부르기도 함.</li>
 </ul>
 <p>하나의 AWS 계정은 여러 개의 Access Key ID와 Secret Access Key 쌍을 생성해서 사용할 수 있습니다. AWS에서는 보안을 위해서 IAM 사용자에 대한 Access Key ID와 Secret Access Key를 생성하여 쓰도록 가이드하고 있습니다. IAM이 생소하시고 당장 IAM을 공부할 시간이 없으신 분들은 <a href="https://docs.aws.amazon.com/ko_kr/IAM/latest/UserGuide/id_root-user.html#id_root-user_manage_add-key">관련 개발자 가이드</a>를 참조하셔서 루트 사용자에 대한 Access Key ID와 Secret Access Key를 생성하신 후 다음 섹션을 따라오시기 바랍니다.</p>
 <blockquote>
-<p>AWS IAM을 통해서 접근 통제의 기본 개념에 대해서는 [별도 포스팅(/aws-iam/)]에서 다루고 있으니 참고 바랍니다.</p>
+<p>AWS IAM을 통해서 접근 통제의 기본 개념에 대해서는 <a href="/aws-iam/">별도 포스팅</a>에서 다루고 있으니 참고 바랍니다.</p>
 </blockquote>
 <h2 id="인증-정보-설정" style="position:relative;"><a href="#%EC%9D%B8%EC%A6%9D-%EC%A0%95%EB%B3%B4-%EC%84%A4%EC%A0%95" aria-label="인증 정보 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>인증 정보 설정</h2>
 <p>매번 AWS을 호출할 때 마다 위에서 생성한 Access Key ID와 Secret Access Key를 보내려면 클라이언트 측에서 설정이 필요합니다. AWS CLI은 간편하게 인증 정보 설정이 가능하도록 <code>aws configure</code> 커맨드를 제공해주고 있습니다. 예를 들어, 다음 커맨드는 Access Key ID는 <code>ABCDEF</code>로 Secret Access Key는 <code>GHIJKL</code>로 설정해줍니다. (실제값은 이보다 훨씬 깁니다.)</p>
