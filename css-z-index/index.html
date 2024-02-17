@@ -191,7 +191,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>이번 포스팅에서는 이렇게 웹에서 요소의 Z축 방향의 깊이를 결정하는 CSS의 <code>z-index</code> 속성에 대해서 배워보겠습니다.</p>
 <h2 id="z-index가-없을-때-요소-간-상대적-깊이" style="position:relative;"><a href="#z-index%EA%B0%80-%EC%97%86%EC%9D%84-%EB%95%8C-%EC%9A%94%EC%86%8C-%EA%B0%84-%EC%83%81%EB%8C%80%EC%A0%81-%EA%B9%8A%EC%9D%B4" aria-label="z index가 없을 때 요소 간 상대적 깊이 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>z-index가 없을 때 요소 간 상대적 깊이</h2>
 <p><code>z-index</code> 속성에 대해서 배우기 전에 먼저 <code>z-index</code>가 없을 때 어떻게 요소(element) 간의 상대적 깊이가 결정되는지에 대해서 이해하는 것이 중요한데요.
-<code>z-index</code> 속성을 너무 많이 사용하면 유지보수가 매우 힘들어질 수 있기 때문에 가급적이면 <code>z-index</code> 속성을 아예 사용하지 않는 편이 낫기 때문입니다.</p>
+<code>z-index</code> 속성을 너무 많이 사용하면 스타일 유지보수가 매우 힘들어질 수 있기 때문에 될 수 있다면 <code>z-index</code> 속성을 아예 사용하지 않는 편이 낫기 때문입니다.</p>
 <p>기본적으로 <code>z-index</code> 속성이 적용되지 않은 요소 간에는 HTML 문서 상에서 나중에 나오는 요소가 먼저 나오는 요소보다 위로 올라오도록 되어 있는데요.
 따라서 다음과 같이 두 개의 <code>div</code> 요소가 겹쳐지면, 두 번째 상자가 첫 번째 상자 위에 올라오게 됩니다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>first box<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
@@ -233,7 +233,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
   <span class="token property">background</span><span class="token punctuation">:</span> yellow<span class="token punctuation">;</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">  <span class="token property">top</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span></span><span class="gatsby-highlight-code-line">  <span class="token property">left</span><span class="token punctuation">:</span> 50px<span class="token punctuation">;</span></span><span class="token punctuation">}</span></code></pre></div>
 <p>여기서 만약에 제가 두 번째 상자의 <code>position</code> 속성도 <code>relative</code>로 바꿔주면 어떻게 될까요?
-그럼 다시 두 번째 상자가 첫 번째 상자 위로 올라오게 됩니다.</p>
+그럼 상황이 역전되어 다시 두 번째 상자가 첫 번째 상자 위로 올라오게 됩니다.</p>
 <div class="gatsby-highlight has-highlighted-lines" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.second.box</span> <span class="token punctuation">{</span>
   <span class="token property">background</span><span class="token punctuation">:</span> tomato<span class="token punctuation">;</span>
 <span class="gatsby-highlight-code-line">  <span class="token property">position</span><span class="token punctuation">:</span> relative<span class="token punctuation">;</span></span><span class="token punctuation">}</span></code></pre></div>
@@ -308,7 +308,8 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <li><code>z-index</code> 속성이 설정된 요소 간에는 크면 클 수록 앞으로 올라오고, 작으면 작을수록 뒤로 내려갑니다. (예: <code>z-index: 1</code>인 요소보다 <code>z-index: 2</code>인 요소가 더 앞에 나오고 <code>z-index: -1</code>인 요소보다 <code>z-index: -2</code>인 요소가 더 뒤로 들어감)</li>
 </ul>
 <h2 id="stacking-context-z-index가-비교되는-범위" style="position:relative;"><a href="#stacking-context-z-index%EA%B0%80-%EB%B9%84%EA%B5%90%EB%90%98%EB%8A%94-%EB%B2%94%EC%9C%84" aria-label="stacking context z index가 비교되는 범위 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stacking context: z-index가 비교되는 범위</h2>
-<p><code>z-index</code>와 관련되서 가장 오해하기 쉬운 부분은 <code>z-index</code>가 HTML 문서 전체 범위에서 비교된다고 생각하는 것인데요.
+<p><code>z-index</code>와 관련되서 많은 분들이 오해하시는 부분이 있는데요.
+바로 <code>z-index</code>가 HTML 문서 전체 범위에서 비교된다고 생각하는 것이에요.
 사실 <code>z-index</code>는 특정 범위 내에서 비교되며, 이것을 CSS에는 stacking context라고 부릅니다.</p>
 <p>예를 들어, 첫 번째 상자의 <code>z-index</code>를 <code>100</code>이라고 설정하고 두 번째 상자의 <code>z-index</code>를 <code>2</code>로 설정하면 당연히 첫 번째 상자가 두 번째 상자 앞으로 올라오겠죠?
 여기서 첫 번째 상자를 다른 <code>&#x3C;div></code> 요소로 감싸고, 그 감싸는 <code>div</code> 요소의 <code>z-index</code>를 한번 <code>1</code>로 줘 볼까요?</p>
@@ -337,7 +338,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>비밀은 바로 stacking context에 있는데요.
 다시 말해서, 이 두 상자의 <code>z-index</code> 값이 서로 다른 범위에서 비교되기 때문입니다.</p>
 <p>첫 번째 상자는 <code>z-index</code> 값이 <code>1</code>인 <code>&#x3C;div></code> 요소에 감싸져있기 때문에, 두 번째 상자의 <code>z-index</code> 값과 직접 비교되지 않습니다.
-따라서 첫 번째 상자의 <code>z-index</code> 값이 아무리 크더라도 절대 부모인 <code>&#x3C;div></code> 요소의 외부에 있는 다른 요소의 <code>z-index</code> 값과 경쟁할 수가 없는 것이지요.</p>
+따라서 첫 번째 상자의 <code>z-index</code> 값이 아무리 크더라도 절대 부모인 <code>&#x3C;div class="wrapper"></code> 요소의 외부에 있는 다른 요소의 <code>z-index</code> 값과 경쟁할 수가 없는 것이지요.</p>
 <p>다음과 같이 부모 요소에 설정된 <code>z-index</code> 값이 자식 요소의 <code>z-index</code> 값 앞에 붙어있다고 상상하시면 좀 더 이해가 쉬우실 겁니다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token comment">&lt;!-- z-index: 1 --></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>wrapper<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
@@ -357,7 +358,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
   z-index-stacking-context-2</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
-<p>이번 경우에는 <code>&#x3C;div></code> 요소에 별도로 <code>z-index</code> 속성을 설정해주지 않았기 때문에, 부모 단계에서 stacking context가 형성되지 않았습니다.
+<p>이번 경우에는 두 상자를 감싸고 있는 <code>&#x3C;div></code> 요소에 <code>z-index</code> 속성을 설정해주지 않았기 때문에, 부모 단계에서 stacking context가 형성되지 않았습니다.
 따라서 부모 요소가 있든 없든 상관없이 두 상자의 <code>z-index</code> 값이 같은 범위 내에서 비교가 된 것입니다.</p>
 <div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span><span class="token punctuation">></span></span>
