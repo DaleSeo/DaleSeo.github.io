@@ -190,10 +190,10 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <h2 id="curl-커맨드" style="position:relative;"><a href="#curl-%EC%BB%A4%EB%A7%A8%EB%93%9C" aria-label="curl 커맨드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>curl 커맨드</h2>
 <p>1998년에 만들어진 curl 커맨드는 <a href="https://www.postman.com/">Postman</a>이나 <a href="https://insomnia.rest/">Insomnia</a>와 같이 다양한 기능과 화려한 UI를 제공하는 GUI 기반 HTTP 클라이언트가 계속해서 출시되는 와중에도 아직까지 꾸준히 사랑받고 있는 CLI 도구입니다.</p>
 <p>curl 커맨드는 리눅스나 macOS에 대부분의 경우 기본으로 탑재되어 있으며, 몇 가지 주요 옵션만 숙지하면 매우 간편하게 사용할 수 있습니다.
-특히 어떤 서버에 SSH를 통해서 원격 접속을 했을 때, 별도의 HTTP 클라이언트를 설치하기는 귀찮고, 빠르게 간단한 HTTP 호출을 해보고 싶을 때 매우 유용합니다.</p>
+특히, 어떤 서버에 SSH를 통해서 원격 접속을 했을 때, 별도의 HTTP 클라이언트를 설치하기는 귀찮고, 빠르게 간단한 HTTP 호출을 해보고 싶을 때 매우 유용합니다.</p>
 <h2 id="기본-http-호출" style="position:relative;"><a href="#%EA%B8%B0%EB%B3%B8-http-%ED%98%B8%EC%B6%9C" aria-label="기본 http 호출 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기본 HTTP 호출</h2>
 <p>웹 브라우저에서 어떤 사이트에 접속하듯이, GET 방식으로 HTTP 호출을 할 때는 아무런 옵션없이 <code>curl</code> 커맨드를 사용할 수 있습니다.</p>
-<p>예를 들어, 공개된 REST API 서비스인 <a href="https://jsonplaceholder.typicode.com/">JSONPlaceholder</a>의 글 상세 조회 endpoint를 호출해보겠습니다.</p>
+<p>예를 들어, 인테넷에 공개된 REST API 서비스인 <a href="https://jsonplaceholder.typicode.com/">JSONPlaceholder</a>의 글 상세 조회 endpoint를 호출해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://jsonplaceholder.typicode.com/posts/1</code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">{</span>
   <span class="token string">"userId"</span><span class="token builtin class-name">:</span> <span class="token number">1</span>,
@@ -207,7 +207,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://jsonplaceholder.typicode.com/posts/1 <span class="token parameter variable">-X</span> DELETE</code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">{</span><span class="token punctuation">}</span>%</code></pre></div>
 <h2 id="요청-바디헤더-설정" style="position:relative;"><a href="#%EC%9A%94%EC%B2%AD-%EB%B0%94%EB%94%94%ED%97%A4%EB%8D%94-%EC%84%A4%EC%A0%95" aria-label="요청 바디헤더 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>요청 바디/헤더 설정</h2>
-<p>POST나 PUT 방식으로 HTTP 호출을 할 때는 일반적으로 생성하거나 변경할 데이터를 서버에 보냅니다.
+<p>POST나 PUT, PATCH 방식으로 HTTP 호출을 할 때는 일반적으로 생성하거나 변경할 데이터를 서버에 보냅니다.
 <code>-d</code> 또는 <code>--data</code> 옵션을 사용하여 송신할 데이터를 설정해줄 수 있으며, <code>-H</code> 또는 <code>--header</code> 옵션을 통해 데이터 포맷을 명시해줄 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://jsonplaceholder.typicode.com/posts <span class="token punctuation">\</span>
   <span class="token parameter variable">-d</span> <span class="token string">'{"title": "foo", "body": "bar", "userId": 1}'</span> <span class="token punctuation">\</span>
@@ -222,7 +222,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <h2 id="쿼리-문자열-설정" style="position:relative;"><a href="#%EC%BF%BC%EB%A6%AC-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%84%A4%EC%A0%95" aria-label="쿼리 문자열 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>쿼리 문자열 설정</h2>
 <p>GET 방식으로 데이터를 송신할 때는 URL의 쿼리 문자열(Query String)에 담아야하는데요.
 이 때는 <code>-G</code> 또는 <code>--get</code> 옵션을 주고, 쿼리 문자열을 <code>-d</code> 옵션을 통해 설정해줍니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token string">"https://jsonplaceholder.typicode.com/posts"</span> <span class="token parameter variable">-G</span> <span class="token parameter variable">-d</span> <span class="token string">"userId=1"</span></code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://jsonplaceholder.typicode.com/posts <span class="token parameter variable">-G</span> <span class="token parameter variable">-d</span> <span class="token string">"userId=1"</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
     <span class="token string">"userId"</span><span class="token builtin class-name">:</span> <span class="token number">1</span>,
@@ -426,7 +426,7 @@ alt-svc: h3-27<span class="token operator">=</span><span class="token string">":
 <p>일시적이든 영구적이든 리소스가 다른 URL로 이동했을 경우, 서버에서는 Location 헤더에 변경된 URL을 응답해서 보냅니다.
 마치 웹 브라우저처럼 이 URL을 따라가고 싶다면 <code>-L</code> 또는 <code>--location</code> 옵션을 사용하면 됩니다.</p>
 <p>예를 들어, 제가 구글의 URL에서 <code>www.</code>을 생략하고 호출을 하면 301 상태 코드와 함께 Location 헤더에 <code>www.</code>가 붙어있는 온전한 URL이 수신됩니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> https://google.com <span class="token parameter variable">-i</span></code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://google.com <span class="token parameter variable">-i</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">HTTP/2 <span class="token number">301</span>
 location: https://www.google.com/
 content-type: text/html<span class="token punctuation">;</span> <span class="token assign-left variable">charset</span><span class="token operator">=</span>UTF-8
@@ -447,7 +447,7 @@ The document has moved
 <span class="token operator">&lt;</span>A <span class="token assign-left variable">HREF</span><span class="token operator">=</span><span class="token string">"https://www.google.com/"</span><span class="token operator">></span>here<span class="token operator">&lt;</span>/A<span class="token operator">></span>.
 <span class="token operator">&lt;</span>/BODY<span class="token operator">></span><span class="token operator">&lt;</span>/HTML<span class="token operator">></span></code></pre></div>
 <p><code>-L</code> 옵션을 사용하면 Location 헤더로 넘어온 변경된 URL을 추가로 호출하는 것을 볼 수 있습니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">curl</span> https://google.com <span class="token parameter variable">-I</span> <span class="token parameter variable">-L</span></code></pre></div>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://google.com <span class="token parameter variable">-I</span> <span class="token parameter variable">-L</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">HTTP/2 <span class="token number">301</span>
 location: https://www.google.com/
 content-type: text/html<span class="token punctuation">;</span> <span class="token assign-left variable">charset</span><span class="token operator">=</span>UTF-8
