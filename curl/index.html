@@ -222,6 +222,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <h2 id="쿼리-문자열-설정" style="position:relative;"><a href="#%EC%BF%BC%EB%A6%AC-%EB%AC%B8%EC%9E%90%EC%97%B4-%EC%84%A4%EC%A0%95" aria-label="쿼리 문자열 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>쿼리 문자열 설정</h2>
 <p>GET 방식으로 데이터를 송신할 때는 URL의 쿼리 문자열(Query String)에 담아야하는데요.
 이 때는 <code>-G</code> 또는 <code>--get</code> 옵션을 주고, 쿼리 문자열을 <code>-d</code> 옵션을 통해 설정해줍니다.</p>
+<p>예를 들어, 글 목록을 조회할 때 쿼리 문자열로 <code>userId=1</code>을 넘기면, 해당 사용자의 글만 필터링되어서 응답이 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://jsonplaceholder.typicode.com/posts <span class="token parameter variable">-G</span> <span class="token parameter variable">-d</span> <span class="token string">"userId=1"</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
@@ -447,7 +448,7 @@ alt-svc: <span class="token assign-left variable">h3</span><span class="token op
 The document has moved
 <span class="token operator">&lt;</span>A <span class="token assign-left variable">HREF</span><span class="token operator">=</span><span class="token string">"https://www.google.com/"</span><span class="token operator">></span>here<span class="token operator">&lt;</span>/A<span class="token operator">></span>.
 <span class="token operator">&lt;</span>/BODY<span class="token operator">></span><span class="token operator">&lt;</span>/HTML<span class="token operator">></span></code></pre></div>
-<p><code>-L</code> 옵션을 사용하면 Location 헤더로 넘어온 변경된 URL을 추가로 호출하는 것을 볼 수 있습니다.</p>
+<p><code>-L</code> 옵션을 사용하면 Location 헤더로 넘어온 변경된 URL이 연달아 호출되는 것을 볼 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> https://google.com <span class="token parameter variable">-I</span> <span class="token parameter variable">-L</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">HTTP/2 <span class="token number">301</span>
 location: https://www.google.com/
