@@ -194,7 +194,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 패키지를 프로젝트에 설치하거나 갱신 또는 삭제하는데 사용되는 도구를 패키지 매니저라고 하는데요.
 현재 자바스크립트 커뮤니티는 npm과 Yarn이라는 두 가지 도구로 양분되어 있으며, Pnpm이나 <a href="/bun/">Bun</a>과 같은 새로운 패키지 매니저도 최근에 인기를 끌고 있습니다.</p>
 <p>기본적으로 이러한 패키지 매니저는 모두 앞으로 설명드릴 패키지 잠금 기능을 지원하고 있는데요.
-npm은 <code>package-lock.json</code> 파일을, Yrn은 <code>yarn.lock</code> 파일을, Pnpm은 <code>pnpm-lock.yaml</code> 파일을, Bun은 <code>bun.lockb</code>를 패키지 잠금 파일로 사용합니다.
+npm은 <code>package-lock.json</code> 파일을, Yarn은 <code>yarn.lock</code> 파일을, Pnpm은 <code>pnpm-lock.yaml</code> 파일을, Bun은 <code>bun.lockb</code>를 패키지 잠금 파일로 사용합니다.
 즉, 패키지 잠금 파일은 자신이 개발을 하는 프로젝트에서 어떤 패키지 매니저를 사용하느냐에 따라 달라지게 됩니다.</p>
 <h2 id="패키지-관리-매커니즘" style="position:relative;"><a href="#%ED%8C%A8%ED%82%A4%EC%A7%80-%EA%B4%80%EB%A6%AC-%EB%A7%A4%EC%BB%A4%EB%8B%88%EC%A6%98" aria-label="패키지 관리 매커니즘 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>패키지 관리 매커니즘</h2>
 <p>패키지 잠금을 이해하려면 먼저 패키지 매니저가 프로젝트가 의존하는 패키지를 어떻게 관리해주는지 이해하는 것이 좋습니다.</p>
