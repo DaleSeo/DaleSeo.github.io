@@ -228,10 +228,10 @@ Sec-WebSocket-Accept: <span class="token assign-left variable">cSwSSKmz0BgynEvfO
 <h2 id="웹소켓-클라이언트" style="position:relative;"><a href="#%EC%9B%B9%EC%86%8C%EC%BC%93-%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8" aria-label="웹소켓 클라이언트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>웹소켓 클라이언트</h2>
 <p>대부분의 경우 웹소켓 클라이언트는 자바스크립트를 실행할 수 있는 사용자의 브라우저 환경이 될 것입니다.
 따라서 우리는 WebSocket 웹 표준 API를 사용하여 브라우저에 작동하는 클라이언트 코드를 작성할 수 있습니다.</p>
-<p>서버와 웹소켓 통신을 하려면 우선 <code>WebSocket</code> 클래스를 사용해서 웹소켓 인스턴스를 하나 만들어야 합니다.
+<p>서버와 웹소켓 통신을 하려면 우선 <code>WebSocket</code> 클래스를 사용해서 웹소켓 객체를 하나 만들어야 합니다.
 <code>ws</code>나 <code>wss</code> 프로토콜을 사용하는 서버의 URL을 <code>WebSocket</code> 클래스의 생성자에 넘기면 됩니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">"ws://www.test.com/socket"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>웹소켓 인스턴스를 통해 우리는 서버에서 발생하는 4종류의 이벤트, <code>open</code>, <code>message</code>, <code>error</code>, <code>close</code>를 처리할 수 있습니다.
+<p>웹소켓 객체를 통해 우리는 서버에서 발생하는 4종류의 이벤트, <code>open</code>, <code>message</code>, <code>error</code>, <code>close</code>를 처리할 수 있습니다.
 <code>addEventListener</code> 메서드를 통해서 각 이벤트가 발생하였을 때 실행할 함수를 설정해주면 됩니다.</p>
 <p>이 중에서도 가장 빈번하게 발생하는 <code>message</code> 이벤트를 통해서 서버에서 보낸 메시지를 처리할 수 있습니다.</p>
 <blockquote>
@@ -252,7 +252,7 @@ socket<span class="token punctuation">.</span><span class="token function">addEv
 socket<span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">"close"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">event</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"서버와 연결을 끊었습니다."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>서버로 어떤 메시지를 보내고 싶을 때는 웹소켓 인스턴스의 <code>send()</code> 메서드를 사용하면 됩니다.</p>
+<p>서버로 어떤 메시지를 보내고 싶을 때는 웹소켓 객체의 <code>send()</code> 메서드를 사용하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">socket<span class="token punctuation">.</span><span class="token function">send</span><span class="token punctuation">(</span><span class="token string">"하이 웹소켓!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <h2 id="웹소켓-서버" style="position:relative;"><a href="#%EC%9B%B9%EC%86%8C%EC%BC%93-%EC%84%9C%EB%B2%84" aria-label="웹소켓 서버 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>웹소켓 서버</h2>
 <p>아무래도 서버 측에서는 다양한 프로그래밍 언어가 사용되므로 사용하는 언어와 프레임워크에 따라 사용하는 API가 상이합니다.</p>
