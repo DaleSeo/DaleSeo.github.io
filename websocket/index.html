@@ -212,14 +212,16 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>실제로 웹소켓 연결을 맺으려면 일반 HTTP 통신과 마찬가지로 클라이언트는 서버로 GET 방식으로 요청을 보내야하는데요.
 이 때, <code>Connection</code>과 <code>Upgrade</code>와 같이 웹소켓에서만 쓰이는 조금 특별한 헤더를 함께 보내게 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">GET /chat HTTP/1.1
+Host: www.test.com
 Connection: Upgrade
 Upgrade: websocket
-Sec-WebSocket-Key: <span class="token assign-left variable">cSwSSKmz0BgynEvfOdO2TA</span><span class="token operator">==</span></code></pre></div>
+Sec-WebSocket-Key: <span class="token assign-left variable">dGhlIHNhbXBsZSBub25jZQ</span><span class="token operator">==</span>
+Sec-WebSocket-Version: <span class="token number">13</span></code></pre></div>
 <p>웹소켓 연결을 지원하는 서버라면 이 경우 <code>101 Switching Protocols</code> 상태 코드를 응답해주는데요.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">HTTP/1.1 <span class="token number">101</span> Switching Protocols
 Connection: Upgrade
 Upgrade: websocket
-Sec-WebSocket-Accept: <span class="token assign-left variable">cSwSSKmz0BgynEvfOdO2TA</span><span class="token operator">==</span></code></pre></div>
+Sec-WebSocket-Accept: s3pPLMBiTxaQ9kYGzzhZRbK+xOo<span class="token operator">=</span></code></pre></div>
 <p>이렇게 본격적인 웹소켓 통신을 시작하기 전에 클라이언트와 서버가 간단히 HTTP로 메시지를 주고 받는 것을 보통 핸드쉐이크(handshake)라고도 합니다.</p>
 <p>이 핸드쉐이크 과정이 끝나면 클라이언트와 서버는 이제 웹소켓 프로토콜을 통해서 양방향으로 메시지를 주고 받을 수 있게 됩니다.</p>
 <blockquote>
@@ -230,7 +232,7 @@ Sec-WebSocket-Accept: <span class="token assign-left variable">cSwSSKmz0BgynEvfO
 따라서 우리는 WebSocket 웹 표준 API를 사용하여 브라우저에 작동하는 클라이언트 코드를 작성할 수 있습니다.</p>
 <p>서버와 웹소켓 통신을 하려면 우선 <code>WebSocket</code> 클래스를 사용해서 웹소켓 객체를 하나 만들어야 합니다.
 <code>ws</code>나 <code>wss</code> 프로토콜을 사용하는 서버의 URL을 <code>WebSocket</code> 클래스의 생성자에 넘기면 됩니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">"ws://www.test.com/socket"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> socket <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WebSocket</span><span class="token punctuation">(</span><span class="token string">"ws://www.test.com/chat"</span><span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>웹소켓 객체가 성공적으로 만들어졌다면 위에서 설명드린 핸드쉐이크 과정이 끝나고 웹소켓을 통해서 서버와 메시지를 주고 받을 수 있는 상태가 됐다는 얘기입니다.</p>
 <p>웹소켓 객체를 통해 우리는 서버에서 발생하는 4종류의 이벤트, <code>open</code>, <code>message</code>, <code>error</code>, <code>close</code>를 처리할 수 있습니다.
 이 중에서도 가장 빈번하게 발생하는 <code>message</code> 이벤트를 통해서 서버에서 보낸 메시지를 처리할 수 있습니다.</p>
