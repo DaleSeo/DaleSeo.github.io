@@ -263,7 +263,7 @@ React Router를 사용하면 앱에서 발생하는 라우팅이 <code>location<
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">import</span> <span class="token punctuation">{</span> Link<span class="token punctuation">,</span> Route<span class="token punctuation">,</span> BrowserRouter <span class="token keyword">as</span> Router <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">"react-router-dom"</span><span class="token punctuation">;</span></code></pre></div>
 <p>사실 React Router가 제공하는 <code>&#x3C;Router></code> 컴포넌트가 여러 종류가 있는데, 여기서는 대게 일반적은 라우팅을 위해 사용되는 <code>&#x3C;BrowserRouter></code>를 사용하였습니다.
 다른 라우터들은 추후 기회가 되면 다른 포스팅를 통해서 다루도록 하겠습니다.</p>
-<p>먼저, 헤더 부분을 <code>&#x3C;Link></code> 컴포넌트를 사용해서 리팩토링 합니다. <code>to</code> prop에 해당 메뉴 클릭 시 이동해야할 경로를 지정합니다.</p>
+<p>먼저, 헤더 부분을 <code>&#x3C;Link></code> 컴포넌트를 사용해서 리팩토링 합니다. <code>to</code> prop에 해당 메뉴 클릭 시 이동해야 할 경로를 지정합니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token operator">&lt;</span>header<span class="token operator">></span>
   <span class="token operator">&lt;</span>Link to<span class="token operator">=</span><span class="token string">"/"</span><span class="token operator">></span>
     <span class="token operator">&lt;</span>button<span class="token operator">></span>Home<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>

@@ -247,7 +247,7 @@ DB_PASS: <span class="token number">1234</span></code></pre></div>
 <p>Node.js에서 ES 모듈(import/export) 사용하는 방법은 <a href="/js-node-es-modules/">관련 포스팅</a>을 참고 바랍니다.</p>
 </blockquote>
 <h2 id="다른-파일에-환경-변수-저장하기" style="position:relative;"><a href="#%EB%8B%A4%EB%A5%B8-%ED%8C%8C%EC%9D%BC%EC%97%90-%ED%99%98%EA%B2%BD-%EB%B3%80%EC%88%98-%EC%A0%80%EC%9E%A5%ED%95%98%EA%B8%B0" aria-label="다른 파일에 환경 변수 저장하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다른 파일에 환경 변수 저장하기</h2>
-<p>만약에 <code>.env</code>가 아닌 다른 경로에 있는 파일에 환경 변수를 저장해야 한다면 어떻게 해야할까요?</p>
+<p>만약에 <code>.env</code>가 아닌 다른 경로에 있는 파일에 환경 변수를 저장해야 한다면 어떻게 해야 할까요?</p>
 <div class="gatsby-code-title">.env.local</div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">DB_HOST</span><span class="token operator">=</span>localhost
 <span class="token comment"># DB_USER=root</span>
@@ -378,7 +378,7 @@ DB_PASS: 0000</code></pre></div>
 .env.local</code></pre></div>
 <p>뿐만 아니라, <code>.env.production</code>, <code>.env.staging</code>, <code>.env.qa</code>, <code>.env.development</code>, <code>.env.local</code>, <code>.env.test</code> 이런 식으로 각 배포(deploy) 환경 별로 환경 변수를 다른 파일에 저장해두고 사용하는 것도 심심치 않게 볼 수 있는데요.
 이렇게 하면 위와 마찬가지 이유로 보안 이슈에 취약할 뿐만 아니라, 일반적으로 코드(code)와 설정(config)을 한 곳에서 관리하는 것은 좋지 않은 소프트웨어 개발 관행으로 여겨집니다.</p>
-<p>따라서 <code>.env</code> 파일은 개발자가 로컬 환경에서 환경 변수를 설정해야할 때만 제한적으로 사용하는 것이 좋으며, 그 밖에 환경에서는 운영 체제 수준에서 제대로 환경 변수를 설정해줘야겠습니다.</p>
+<p>따라서 <code>.env</code> 파일은 개발자가 로컬 환경에서 환경 변수를 설정해야 할 때만 제한적으로 사용하는 것이 좋으며, 그 밖에 환경에서는 운영 체제 수준에서 제대로 환경 변수를 설정해줘야겠습니다.</p>
 <h2 id="전체-코드" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EC%BD%94%EB%93%9C" aria-label="전체 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 코드</h2>
 <p>본 포스팅에서 작성한 코드는 아래에서 직접 수정하거나 브라우저 상의 가상 터미널에서 실행해볼 수 있습니다.</p>
 <iframe src="https://stackblitz.com/edit/js-dotenv?ctl=1&embed=1&file=index.mjs" 

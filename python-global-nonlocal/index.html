@@ -276,7 +276,7 @@ change_num<span class="token punctuation">(</span><span class="token punctuation
 <span class="token number">0</span></code></pre></div>
 <p>많은 분들이 <code>100</code>이 두 번 연속으로 출력될 것이라고 생각하시지만, 실제로 실행을 해보면 <code>100</code>과 <code>0</code>이 출력이 됩니다.
 위에서 설명드린 variable shadowing 현상 때문에 함수 내부에 있는 <code>num</code>이라는 지역 변수는 함수 외부에 있는 <code>num</code>이라는 전역 변수와 엄연히 다른 변수입니다.</p>
-<p>그러면 이와 같이 동일한 이름의 지역 변수를 생성하지 않고, 전역 변수의 값을 함수 내부에서 변경하고 싶다면 어떻게 해야할까요❓
+<p>그러면 이와 같이 동일한 이름의 지역 변수를 생성하지 않고, 전역 변수의 값을 함수 내부에서 변경하고 싶다면 어떻게 해야 할까요❓
 네, 이럴 때 사용하는 것이 <code>global</code> 키워드입니다❗</p>
 <p>함수 안에서 변수 앞에 <code>global</code> 키워드를 붙여주면 해당 변수는 함수 내에서 값을 변경하더라도 새로운 지역 변수가 되지 않고 함수 밖에서 이미 선언된 전역 변수를 가리키게 됩니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py">num <span class="token operator">=</span> <span class="token number">0</span>
@@ -314,7 +314,7 @@ print_num<span class="token punctuation">(</span><span class="token punctuation"
 <span class="token number">0</span></code></pre></div>
 <p>이 코드를 실행해보면 <code>0</code>이 연속으로 두 번 출력되는데요.
 위에서 설명드린 변수 범위의 특징에 따라서 <code>print_num()</code> 함수에서 선언된 <code>num</code> 변수를 <code>change_num()</code> 함수 안에서 그대로 접근하기 때문입니다.</p>
-<p>이 번에는 <code>change_num()</code> 함수 내에서 <code>num</code> 변수의 값을 변경해보았는데요.
+<p>이번에는 <code>change_num()</code> 함수 내에서 <code>num</code> 변수의 값을 변경해보았는데요.
 무엇이 출력될까요?</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     num <span class="token operator">=</span> <span class="token number">0</span>
@@ -330,9 +330,9 @@ print_num<span class="token punctuation">(</span><span class="token punctuation"
 <div class="gatsby-code-title">결과</div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token number">100</span>
 <span class="token number">0</span></code></pre></div>
-<p>이 번에는 <code>100</code>과 <code>0</code>이 출력이 됩니다.
+<p>이번에는 <code>100</code>과 <code>0</code>이 출력이 됩니다.
 이는 variable shadowing 현상으로 인해서 <code>change_num()</code> 함수 안에서 <code>num</code>이라는 새로운 지역 변수가 생성되었기 때문입니다.</p>
-<p>만약에 <code>change_num()</code> 함수 바깥에서 선언된 <code>num</code>이라는 비지역 변수의 값을 <code>change_num()</code> 함수 안에서 갱신하고 싶은 경우에는 어떻게 해야할까요❓
+<p>만약에 <code>change_num()</code> 함수 바깥에서 선언된 <code>num</code>이라는 비지역 변수의 값을 <code>change_num()</code> 함수 안에서 갱신하고 싶은 경우에는 어떻게 해야 할까요❓
 <code>num</code> 변수 앞에 <code>nonlocal</code> 키워드만 붙여주면 됩니다❗</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">def</span> <span class="token function">print_num</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
     num <span class="token operator">=</span> <span class="token number">0</span>

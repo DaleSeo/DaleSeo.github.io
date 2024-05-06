@@ -338,7 +338,7 @@ CacheInfo<span class="token punctuation">(</span>hits<span class="token operator
 
 <span class="gatsby-highlight-code-line"><span class="token decorator annotation punctuation">@lru_cache</span><span class="token punctuation">(</span>maxsize<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span></span><span class="token keyword">def</span> <span class="token function">get_user</span><span class="token punctuation">(</span>user_id<span class="token punctuation">)</span><span class="token punctuation">:</span>
     <span class="token keyword">return</span> fetch_user<span class="token punctuation">(</span>user_id<span class="token punctuation">)</span></code></pre></div>
-<p>이 번에는 <code>get_user()</code> 함수를 10회 호출을 하는 것을 여러 차례 진행해보면 재미있을 것 같습니다. 😁</p>
+<p>이번에는 <code>get_user()</code> 함수를 10회 호출을 하는 것을 여러 차례 진행해보면 재미있을 것 같습니다. 😁</p>
 <ul>
 <li>첫번째 시도 (캐시 히트률: 60%)</li>
 </ul>

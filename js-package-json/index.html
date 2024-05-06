@@ -345,7 +345,7 @@ npm 웹사이트에서 패키지 상세 페이지에 들어가면 homepage와 re
 <p>우리가 npm에 패키지를 발행할 때는 기본적으로 프로젝트 내의 모든 파일이 포함이 되는데요.
 (<code>package-lock.json</code> 파일이나 <code>.git</code> 폴더와 같이 일부 불필요한 파일은 제외)
 만약에 프로젝트 내의 특정 파일만 발행할 패키지에 포함하고 싶다면 <code>package.json</code> 파일의 <code>files</code> 필드를 통해서 명시해줄 수 있습니다.</p>
-<p>예를 들어, 타입스크립트로 작성된 소스 코드를 제외하고, 최종 컴파일된 자바스크립트 코드만 패키지에 포함하고 싶다면 어떻게 해야할까요?
+<p>예를 들어, 타입스크립트로 작성된 소스 코드를 제외하고, 최종 컴파일된 자바스크립트 코드만 패키지에 포함하고 싶다면 어떻게 해야 할까요?
 타입스크립트의 <code>outDir</code> 설정이 <code>./dist</code>로 되어 있다고 가정하면 다음과 같이 <code>files</code> 필드를 지정해줄 수 있을 것입니다.</p>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"files"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"dist"</span><span class="token punctuation">]</span>

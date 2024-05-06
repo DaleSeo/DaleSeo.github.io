@@ -466,7 +466,7 @@ arn:aws:cloudformation:us-east-1:123456789012:stack/OurCdkStack/88fd7dc0-c6f7-11
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ aws sqs list-queues
 QUEUEURLS       https://sqs.us-east-1.amazonaws.com/233081777157/OurCdkStack-OurCdkQueue33A6ACB9-YbvCITYWwPcN</code></pre></div>
 <h2 id="cdk-스택-변경" style="position:relative;"><a href="#cdk-%EC%8A%A4%ED%83%9D-%EB%B3%80%EA%B2%BD" aria-label="cdk 스택 변경 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CDK 스택 변경</h2>
-<p>이 번에는 우리 실습 스택에 다른 AWS 서비스를 추가해볼까요?
+<p>이번에는 우리 실습 스택에 다른 AWS 서비스를 추가해볼까요?
 SQS 큐와 궁합이 딱 맞는 SNS 토픽(topic)를 추가하고, SNS 큐가 SNS 토픽을 구독(subscribe)하도록 설정해주겠습니다.</p>
 <div class="gatsby-code-title">lib/our-cdk-stack.ts</div>
 <div class="gatsby-highlight has-highlighted-lines" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> cdk <span class="token keyword">from</span> <span class="token string">"aws-cdk-lib"</span><span class="token punctuation">;</span>

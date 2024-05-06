@@ -335,7 +335,7 @@ public</code></pre></div>
 <p>만약에 ESLint가 <code>.gitignore</code> 파일에 이미 나열해놓은 경로를 무시하도록 설정하고 싶다면 ESLint 커맨드를 실행할 때 <code>--ignore-path</code> 옵션을 붙여주면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ eslint --ignore-path .gitignore <span class="token builtin class-name">.</span></code></pre></div>
 <h2 id="overrides-옵션" style="position:relative;"><a href="#overrides-%EC%98%B5%EC%85%98" aria-label="overrides 옵션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>overrides 옵션</h2>
-<p>프로젝트 내에서 일부 파일에 대해서만 살짝 다른 설정을 적용해줘야 할 때는 어떻게 해야할까요?
+<p>프로젝트 내에서 일부 파일에 대해서만 살짝 다른 설정을 적용해줘야 할 때는 어떻게 해야 할까요?
 그럴 때는 설정 파일의 <code>overrides</code> 옵션을 사용하면 됩니다.</p>
 <p>예를 들어, 프로젝트에 자바스크립트 파일과 타입스크립트 파일이 공존한다면 자바스크립트 파일을 기준으로 기본 설정을 하고, 타입스크립트 파일을 위한 설정은 <code>overrides</code> 옵션에 명시할 수 있습니다. 타입스크립트 확장자를 가진 파일에 대해서는 타입스크립트 용 파서와 플러그인과 추천 설정을 사용하도록 세팅해주고 있습니다.</p>
 <div class="gatsby-code-title">.eslintrc.json</div>

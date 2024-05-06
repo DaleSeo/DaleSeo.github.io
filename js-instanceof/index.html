@@ -258,7 +258,7 @@ arr <span class="token keyword">instanceof</span> <span class="token class-name"
 student <span class="token keyword">instanceof</span> <span class="token class-name">Object</span><span class="token punctuation">;</span> <span class="token comment">// true</span></code></pre></div>
 <h2 id="객체를-직접-생성한-클래스만-알고-싶다면" style="position:relative;"><a href="#%EA%B0%9D%EC%B2%B4%EB%A5%BC-%EC%A7%81%EC%A0%91-%EC%83%9D%EC%84%B1%ED%95%9C-%ED%81%B4%EB%9E%98%EC%8A%A4%EB%A7%8C-%EC%95%8C%EA%B3%A0-%EC%8B%B6%EB%8B%A4%EB%A9%B4" aria-label="객체를 직접 생성한 클래스만 알고 싶다면 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>객체를 직접 생성한 클래스만 알고 싶다면?</h2>
 <p><code>instanceof</code> 연산자는 객체를 생성한 클래스 뿐만 아니라 그 클래스의 모든 조상 클래스를 상대로도 참을 반환한다고 배웠는데요.
-만약에 조상 클래스를 제외하고 해당 객체를 직접적으로 생성한 클래스인지를 판별하려면 어떻게 해야할가요?</p>
+만약에 조상 클래스를 제외하고 해당 객체를 직접적으로 생성한 클래스인지를 판별하려면 어떻게 해야 할가요?</p>
 <p>이럴 때는 <code>Object.getPrototypeOf()</code> 메서드를 통해서 해당 객체의 프로토타입이 무엇인지를 확인해보면 됩니다.</p>
 <p>예를 들어서, 위에서 작성한 <code>Student</code> 클래스의 인스턴스를 상대로 테스트를 해보면,
 프로토타입이 <code>Student.prototype</code>과는 일치하지만, <code>Person.prototype</code>과는 일치하지 않는 것을 알 수 있습니다.</p>

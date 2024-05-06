@@ -298,7 +298,7 @@ A</code></pre></div>
 <p>여기서 중요한 부분은 이렇게 리스트로 부터 세트를 만들어내면 <strong>중복 값이 모두 제거</strong>된다는 것입니다.
 중복 값을 유지해야하는 상황에서는 절대로 리스트을 세트로 변환하면 안되겠죠?</p>
 <h2 id="세트를-리스트로-변환" style="position:relative;"><a href="#%EC%84%B8%ED%8A%B8%EB%A5%BC-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EB%A1%9C-%EB%B3%80%ED%99%98" aria-label="세트를 리스트로 변환 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>세트를 리스트로 변환</h2>
-<p>그럼 반대로 세트를 리스트로 변환해야할 때는 어떻게 해야할가요?
+<p>그럼 반대로 세트를 리스트로 변환해야 할 때는 어떻게 해야 할가요?
 이 때는 <code>list()</code> 생성자의 인자로 세트를 넘기면 됩니다.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token operator">>></span><span class="token operator">></span> num_set <span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">}</span>
 <span class="token operator">>></span><span class="token operator">></span> nums <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>num_set<span class="token punctuation">)</span>

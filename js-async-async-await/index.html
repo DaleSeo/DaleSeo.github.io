@@ -239,7 +239,7 @@ async/await를 제대로 시용하려면 Callback과 Promise에 대한 이해가
 </ol>
 <p>실제 프로젝트에서는 샘플 코드와 같이 간단한 구조가 아닌 복잡한 구조의 비동기 처리 코드를 작성하게 됩니다.
 따라서, <code>then()</code> 메서드의 인자로 넘기는 콜백 함수 내에서 조건문이나 반복문을 사용하거나 여러 개의 Promise를 병렬로 또는 중첩해서 호출해야하는 경우들이 발생하게 됩니다.
-이럴 경우, 다단계 들여쓰기를 해야할 확률이 높아지며 코드 가독성은 점점 떨어지게 됩니다.</p>
+이럴 경우, 다단계 들여쓰기를 해야 할 확률이 높아지며 코드 가독성은 점점 떨어지게 됩니다.</p>
 <h2 id="asyncawait-키워드를-통한-비동기-코딩" style="position:relative;"><a href="#asyncawait-%ED%82%A4%EC%9B%8C%EB%93%9C%EB%A5%BC-%ED%86%B5%ED%95%9C-%EB%B9%84%EB%8F%99%EA%B8%B0-%EC%BD%94%EB%94%A9" aria-label="asyncawait 키워드를 통한 비동기 코딩 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>async/await 키워드를 통한 비동기 코딩</h2>
 <p>Promise의 이러한 불편한 점들을 해결하기 위해 ES7(ES2017)에서 async/await 키워드가 추가되었습니다.
 async/await 키워드를 사용하면 비동기 코드를 마치 동기 코드처럼 보이게 작성할 수 있습니다.</p>

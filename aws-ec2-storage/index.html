@@ -199,7 +199,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>PC의 전원을 내리거나 다른 컴퓨터로 바꾸더라도 하드 드라이브에 저장된 데이터는 그대로 보존되는 것처럼 EBS 볼륨에 저장된 데이터는 EC2 인스턴스(instance)가 정지/소멸되거나 다른 EC2 인스턴스에 마운트된다고 해서 유실되지 않습니다.</p>
 <p>EBS의 또 다른 한계점은 하나의 가용 영역(availability zone) 범위 내에서만 유효하며 다른 가용 영역에서 필요하다면 스냅샷(snapshot)을 떠서 이전을 해줘야하는 불편함이 있습니다.</p>
 <h2 id="amazon-efs-elastic-file-system" style="position:relative;"><a href="#amazon-efs-elastic-file-system" aria-label="amazon efs elastic file system permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Amazon EFS (Elastic File System)</h2>
-<p>여러 EC2 인스턴스가 공유할 수 있는 파일 시스템이 필요할 때는 어떻게 해야할까요?
+<p>여러 EC2 인스턴스가 공유할 수 있는 파일 시스템이 필요할 때는 어떻게 해야 할까요?
 EBS는 동시에 하나의 EC2 인스턴스에만 마운트를 할 수 있기 때문에 대안이 필요한데요.</p>
 <p>Amazon Elastic File System, 줄여서 EFS는 마치 윈도우즈 운영체제의 공유 폴더나 구글 드라이브처럼 여러 컴퓨터가 동시에 접근할 수 있는 스토리지입니다.</p>
 <p>EFS 볼륨은 AWS의 한 지역(region) 내에서 여러 가용 영역에 걸쳐서 사용이 가능하기 때문에,

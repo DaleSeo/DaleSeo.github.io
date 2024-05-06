@@ -320,7 +320,7 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
 </blockquote>
 <h2 id="자바스크립트의-불러오기가-완료되기를-기다리기" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0%EA%B0%80-%EC%99%84%EB%A3%8C%EB%90%98%EA%B8%B0%EB%A5%BC-%EA%B8%B0%EB%8B%A4%EB%A6%AC%EA%B8%B0" aria-label="자바스크립트의 불러오기가 완료되기를 기다리기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바스크립트의 불러오기가 완료되기를 기다리기</h2>
 <p><code>&#x3C;script></code> 태그로 자바스크립트를 불러올 때 많은 경우 불러오기가 완료되기를 기다려야하는데요.
-특히 해당 자바스크립트 코드에서 제공하는 변수나 함수, 클래스를 사용해야할 때 그렇죠?</p>
+특히 해당 자바스크립트 코드에서 제공하는 변수나 함수, 클래스를 사용해야 할 때 그렇죠?</p>
 <p>간단한 실습을 위해 prop으로 넘어온 문자열을 낙타(camel) 케이스로 변환해주는 <code>&#x3C;CamelCase/></code> 컴포넌트를 작성해볼께요.
 컴포넌트가 반환하는 JSX 코드 내에서 Lodash 라이브러리의 <code>camelCase()</code> 함수를 사용하려고 합니다.</p>
 <div class="gatsby-code-title">CamelCase.jsx</div>
@@ -377,7 +377,7 @@ document<span class="token punctuation">.</span>body<span class="token punctuati
 그리고 컴포넌트가 언마운트(unmount)되면 해당 이벤트 핸들러를 제거하도록 해주었습니다.</p>
 <h2 id="자바스크립트의-불러오기가-실패하다면" style="position:relative;"><a href="#%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-%EB%B6%88%EB%9F%AC%EC%98%A4%EA%B8%B0%EA%B0%80-%EC%8B%A4%ED%8C%A8%ED%95%98%EB%8B%A4%EB%A9%B4" aria-label="자바스크립트의 불러오기가 실패하다면 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>자바스크립트의 불러오기가 실패하다면?</h2>
 <p>프로그래밍을 하면서 항상 행복한 경우만 생각할 수는 없겠죠?
-네트워크 문제든 스크립트 주소가 틀렸든 외부 자바스크립트를 불러오는데 문제가 생기면 어떻게 처리해야할까요?</p>
+네트워크 문제든 스크립트 주소가 틀렸든 외부 자바스크립트를 불러오는데 문제가 생기면 어떻게 처리해야 할까요?</p>
 <p>우선 <code>error</code>라는 새로운 상태를 추가하고 <code>null</code>로 초기화합니다.
 그리고 불러오기가 실패했을 때 <code>&#x3C;script></code> 요소에서는 발생하는 <code>error</code> 이벤트를 잡아서 이 <code>error</code> 상태에 저장하면 됩니다.
 마지막으로 <code>error</code> 상태에 무엇가가 저장되어 있으면 <code>오류!</code>라고 화면에 표시해주면 되겠습니다.</p>

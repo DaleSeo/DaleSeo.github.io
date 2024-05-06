@@ -282,7 +282,7 @@ Found <span class="token number">1</span> error <span class="token keyword">in</
 
 <span class="token keyword">let</span> message<span class="token operator">:</span> <span class="token builtin">string</span> <span class="token operator">=</span> <span class="token string">"안녕하세요!"</span><span class="token punctuation">;</span>
 <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>다시 동일하게 <code>strict</code> 옵션을 줘서 컴파일을 해보면 이 번에는 타입 오류없이 컴파일됩니다.</p>
+<p>다시 동일하게 <code>strict</code> 옵션을 줘서 컴파일을 해보면 이번에는 타입 오류없이 컴파일됩니다.</p>
 <div class="gatsby-code-title">hello.js</div>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token string">"use strict"</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> <span class="token function-variable function">hello</span> <span class="token operator">=</span> <span class="token keyword">function</span> <span class="token punctuation">(</span><span class="token parameter">message</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -340,7 +340,7 @@ exports<span class="token punctuation">.</span>__esModule <span class="token ope
 <span class="token keyword">var</span> utils_1 <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">"./utils"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> message <span class="token operator">=</span> <span class="token string">"안녕하세요!"</span><span class="token punctuation">;</span>
 <span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> utils_1<span class="token punctuation">.</span>hello<span class="token punctuation">)</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>컴파일된 코드를 Node.js의 구식 버전과 같이 CommonJS를 모듈 시스템으로 사용하는 실행 환경에서 돌릴 게 아니라면 표준으로 자라잡고 있는 ES 모듈의 문법을 사용해서 컴파일해야할 것입니다.</p>
+<p>컴파일된 코드를 Node.js의 구식 버전과 같이 CommonJS를 모듈 시스템으로 사용하는 실행 환경에서 돌릴 게 아니라면 표준으로 자라잡고 있는 ES 모듈의 문법을 사용해서 컴파일해야 할 것입니다.</p>
 <p><code>tsc</code> 커맨드의 <code>module</code> 옵션을 사용하면 컴파일할 때 어떤 모듈 시스템의 문법을 사용할 건지를 설정해줄 수 있습니다.</p>
 <p>예를 들어, ES 모듈의 문법을 사용하기 위해 <code>module</code> 옵션을 <code>es6</code>로 주고 다시 컴파일을 해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ npx tsc <span class="token parameter variable">--module</span> es6 hello.ts utils.ts</code></pre></div>

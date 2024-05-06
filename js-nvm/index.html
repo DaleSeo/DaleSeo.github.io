@@ -247,7 +247,7 @@ v17.0.1 is already installed.
 Now using <span class="token function">node</span> v17.0.1 <span class="token punctuation">(</span>npm v8.1.0<span class="token punctuation">)</span></code></pre></div>
 <p>위에서 이미 설치를 하였기 때문에 이미 설치가 되었다고 나오네요.</p>
 <h2 id="lts-버전-설치" style="position:relative;"><a href="#lts-%EB%B2%84%EC%A0%84-%EC%84%A4%EC%B9%98" aria-label="lts 버전 설치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>LTS 버전 설치</h2>
-<p>이 번에는 상용 환경에서 많이 사용하는 LTS(Long Term Support) 버전을 nvm으로 설치해볼까요?
+<p>이번에는 상용 환경에서 많이 사용하는 LTS(Long Term Support) 버전을 nvm으로 설치해볼까요?
 포스팅을 작성하고 있는 시점 기준으로 Node.js의 LTS 버전은 <code>16.13.0</code>입니다.</p>
 <p>최신 버전을 설치했을 때 처럼 <code>nvm install</code> 명령어 뒤에 버전을 명시해주면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ nvm <span class="token function">install</span> <span class="token number">16.13</span>.0
@@ -257,7 +257,7 @@ Downloading https://nodejs.org/dist/v16.13.0/node-v16.13.0-darwin-arm64.tar.xz<s
 Computing checksum with shasum <span class="token parameter variable">-a</span> <span class="token number">256</span>
 Checksums matched<span class="token operator">!</span>
 Now using <span class="token function">node</span> v16.13.0 <span class="token punctuation">(</span>npm v8.1.0<span class="token punctuation">)</span></code></pre></div>
-<p>다시 <code>node -v</code> 명령어를 실행해보면 이 번에는 LTS 버전이 사용되는 것이 확인됩니다.</p>
+<p>다시 <code>node -v</code> 명령어를 실행해보면 이번에는 LTS 버전이 사용되는 것이 확인됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">node</span> <span class="token parameter variable">-v</span>
 v16.13.0</code></pre></div>
 <p>LTS 버전에 한해서 편의를 위해 정확한 버전을 명시하는 대신에 사용할 수 있는 <code>--lts</code> 옵션을 제공하고 있습니다.</p>
@@ -265,7 +265,7 @@ v16.13.0</code></pre></div>
 Installing latest LTS version.
 v16.13.0 is already installed.
 Now using <span class="token function">node</span> v16.13.0 <span class="token punctuation">(</span>npm v8.1.0<span class="token punctuation">)</span></code></pre></div>
-<p>그런데, 다시 최신 버전의 Node.js를 사용하고 싶을 경우에는 어떻게 해야할까요❓</p>
+<p>그런데, 다시 최신 버전의 Node.js를 사용하고 싶을 경우에는 어떻게 해야 할까요❓</p>
 <h2 id="사용할-버전-선택" style="position:relative;"><a href="#%EC%82%AC%EC%9A%A9%ED%95%A0-%EB%B2%84%EC%A0%84-%EC%84%A0%ED%83%9D" aria-label="사용할 버전 선택 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>사용할 버전 선택</h2>
 <p><code>nvm use</code> 명령어를 사용하면 자유롭게 수시로 다른 Node.js 버전을 넘나들 수 있습니다.</p>
 <p>예를 들어, 다시 최신 버전의 Node.js를 사용하고 싶다면 터미널에서 다음 명령어를 실행합니다.</p>

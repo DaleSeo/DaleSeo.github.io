@@ -305,7 +305,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>여기서 문제는 우리가 언제나 병렬 처리를 원하는 것은 아니라는 건데요.</p>
 <p>대표적인 경우로 CI/CD를 들 수 있죠?
 보통 테스트 작업이나 빌드 작업이 종료된 다음에 배포 작업을 시작할 수 있습니다.</p>
-<p>그러면 작업 간에 실행 순서를 제어하고 싶다면 어떻게 해야할까요?
+<p>그러면 작업 간에 실행 순서를 제어하고 싶다면 어떻게 해야 할까요?
 이럴 때는 작업의 <code>needs</code> 속성을 사용해서 작업 간에 의존 관계를 설정해줄 수 있습니다.</p>
 <p>예를 들어 <code>job2</code>가 실행되기 전에 <code>job1</code>이 먼저 완료되야 하고, <code>job3</code>가 실행되기 전에 <code>job1</code>과 <code>job2</code>가 먼저 완료되도록 실습 워크플로우를 수정해보겠습니다.</p>
 <div class="gatsby-code-title">.github/workflows/jobs.yml</div>
@@ -399,7 +399,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 🚫 echo_if
 ✅ skip_ci</code></pre></div>
 <h2 id="동일-작업을-여러-실행-환경에서-실행" style="position:relative;"><a href="#%EB%8F%99%EC%9D%BC-%EC%9E%91%EC%97%85%EC%9D%84-%EC%97%AC%EB%9F%AC-%EC%8B%A4%ED%96%89-%ED%99%98%EA%B2%BD%EC%97%90%EC%84%9C-%EC%8B%A4%ED%96%89" aria-label="동일 작업을 여러 실행 환경에서 실행 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>동일 작업을 여러 실행 환경에서 실행</h2>
-<p>만약에 동일한 작업을 다양한 실행 환경에서 돌리고 싶을 때는 어떻게 해야할까요?
+<p>만약에 동일한 작업을 다양한 실행 환경에서 돌리고 싶을 때는 어떻게 해야 할까요?
 보통 범용 라이브러리 프로젝트에서는 특정 운영체제에서만 발생하는 문제를 잡기 위해서 여러 운영체제에서 테스트를 돌리기도 하는데요.</p>
 <p>본 포스팅에서는 간단하게 날짜를 출력하는 작업을 여러 운영체제에서 실행하고 싶다고 가정해보겠습니다.
 가장 쉽게 생각해낼 수 있는 접근 방법은 워크플로우에 운영체제 별로 동일한 작업을 정의하는 것일 겁니다.</p>

@@ -212,7 +212,7 @@ for 루프를 돌면서 해당 원소가 숫자인지 체크 후에 숫자이면
     letters<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 또는 letters.remove(letter);</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>이 번에는 예외는 발생하지 않는데… 리스트를 출력해보면 원하는대로 숫자 원소가 모두 삭제되지 않았음을 확인할 수 있습니다.</p>
+<p>이번에는 예외는 발생하지 않는데… 리스트를 출력해보면 원하는대로 숫자 원소가 모두 삭제되지 않았음을 확인할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="java"><pre class="language-java"><code class="language-java"><span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>letters<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token punctuation">[</span>A, B, <span class="token number">2</span>, C, D, E, <span class="token number">5</span><span class="token punctuation">]</span></code></pre></div>
 <p>왜 이런 일이 발생하는 걸까요? 원인은 리스트에서 <code>i</code> 번째 원소 삭제되면, <code>i + 1</code> 번째 원소가 그 자리에 오게되고, 리스트의 길이가 1만큼 짧아지는데서 찾을 수 있습니다.</p>

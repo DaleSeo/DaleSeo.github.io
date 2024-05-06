@@ -382,7 +382,7 @@ $ <span class="token function">git</span> push</code></pre></div>
 ☑️ Post Run actions/setup-node@v3
 <span class="gatsby-highlight-code-line">▶ Post job cleanup.</span><span class="gatsby-highlight-code-line">/opt/hostedtoolcache/node/16.14.2/x64/bin/npm config get cache</span><span class="gatsby-highlight-code-line">/home/runner/.npm</span><span class="gatsby-highlight-code-line">Cache hit occurred on the primary key node-cache-Linux-npm-0ea44dc6f6ce94ea47107f7661af88d55a05d065fdb8b953a40ff5c25151ffe7, not saving cache.</span>☑️ Post Run actions/checkout@v3
 ☑️ Complete Job</code></pre></div>
-<p>이 번에는 패키지를 설치하는 속도가 훨씬 빨라졌는데요.
+<p>이번에는 패키지를 설치하는 속도가 훨씬 빨라졌는데요.
 기존에는 약 30초가 걸렸었는데 이번에는 약 10초가 걸리네요.</p>
 <p><code>Run actions/setup-node@v3</code> 단계를 보면 npm이 패키지 캐싱해두는 <code>/home/runner/.npm</code> 경로에 깃허브의 캐시에 저장되어 있던 약 37 MB의 파일의 압축을 풀고 있는 것을 볼 수 있습니다.</p>
 <p>참고로 이것보다 좀 더 세밀한 캐싱 설정이 필요하다면 깃허브의 캐시(Cache) 액션을 사용할 수도 있는데요.

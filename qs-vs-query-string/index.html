@@ -326,7 +326,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <p>정리를 해보면 <code>qs</code>가 <code>query-string</code>보다 전반적으로 제공하는 기능이 더 많고 자연스럽게 패키지 용량도 더 큽니다.
 따라서 복잡한 쿼리 스트링을 다루어야할 때는 <code>qs</code>를 추천드리고, 단순한 쿼리 스트링만 다룰 때는 <code>query-string</code>을 추천드립니다.</p>
 <h2 id="라이브러리를-사용할-수-없다면" style="position:relative;"><a href="#%EB%9D%BC%EC%9D%B4%EB%B8%8C%EB%9F%AC%EB%A6%AC%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0-%EC%88%98-%EC%97%86%EB%8B%A4%EB%A9%B4" aria-label="라이브러리를 사용할 수 없다면 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>라이브러리를 사용할 수 없다면?</h2>
-<p>만약에 외부 라이브러리를 사용할 수 없는 환경에서 개발하는 경우라면 어떻게 해야할까요?</p>
+<p>만약에 외부 라이브러리를 사용할 수 없는 환경에서 개발하는 경우라면 어떻게 해야 할까요?</p>
 <p>사실 이러한 라이브러리에서 제공하는 함수는 웹 표준 API인 <code>URLSearchParams</code>를 사용하면 크게 어렵지 않게 직접 구현할 수 있는데요.
 왜냐하면 <code>URLSearchParams</code>가 <code>&#x26;</code>를 기준으로 문자열를 분할하거나 인코딩/디코딩같은 까다로운 작업을 내부적으로 처리해주기 때문입니다.</p>
 <blockquote>

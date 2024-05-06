@@ -219,7 +219,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <span class="token comment">// [-1, -2, -3, 0, 1, 2, 3]</span></code></pre></div>
 <p>문자열에서 마이너스 기호도 특별할 거 없는 단지 하나의 문자일 뿐이기 때문에 이러한 결과가 나오는 것이지요.</p>
 <h2 id="숫자-배열-정렬" style="position:relative;"><a href="#%EC%88%AB%EC%9E%90-%EB%B0%B0%EC%97%B4-%EC%A0%95%EB%A0%AC" aria-label="숫자 배열 정렬 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>숫자 배열 정렬</h2>
-<p>그럼 숫자 배열을 제대로 정렬하려면 어떻게 해야할까요?</p>
+<p>그럼 숫자 배열을 제대로 정렬하려면 어떻게 해야 할까요?</p>
 <p><code>sort()</code> 함수는 인자로 정렬 기준을 나타내는 콜백 함수를 함수를 받는데요.
 이 대소비교를 위한 함수에는 2개의 인자가 넘어오며 다음과 같은 규칙을 따라야 합니다.</p>
 <ul>
@@ -234,7 +234,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=></span> b <span class="token operator">-</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">// [3, 2, 1, 0, -1, -2, -3]</span></code></pre></div>
 <h2 id="객체-배열-정렬" style="position:relative;"><a href="#%EA%B0%9D%EC%B2%B4-%EB%B0%B0%EC%97%B4-%EC%A0%95%EB%A0%AC" aria-label="객체 배열 정렬 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>객체 배열 정렬</h2>
-<p>실제 웹 애플리케이션을 개발할 때는 단순한 숫자나 문자보다는 복잡한 객체 배열을 정렬해야할 때가 더 많을 텐데요.</p>
+<p>실제 웹 애플리케이션을 개발할 때는 단순한 숫자나 문자보다는 복잡한 객체 배열을 정렬해야 할 때가 더 많을 텐데요.</p>
 <p>예를 들어, 아래와 같이 번호와 코드, 이름으로 이루어진 국가 배열이 있다고 가정해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> countries <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token punctuation">{</span> <span class="token literal-property property">no</span><span class="token operator">:</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token literal-property property">code</span><span class="token operator">:</span> <span class="token string">"KR"</span><span class="token punctuation">,</span> <span class="token literal-property property">name</span><span class="token operator">:</span> <span class="token string">"Korea"</span> <span class="token punctuation">}</span><span class="token punctuation">,</span>
@@ -280,9 +280,9 @@ console<span class="token punctuation">.</span><span class="token function">log<
 ]
 */</span></code></pre></div>
 <h2 id="다중-기준-정렬" style="position:relative;"><a href="#%EB%8B%A4%EC%A4%91-%EA%B8%B0%EC%A4%80-%EC%A0%95%EB%A0%AC" aria-label="다중 기준 정렬 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>다중 기준 정렬</h2>
-<p>좀 더 큰 데이터 세트를 다룰 때는 하나의 기준이 아닌 우선 순위에 따라 여러 기준으로 배열을 정렬해야할 때도 있는데요.
+<p>좀 더 큰 데이터 세트를 다룰 때는 하나의 기준이 아닌 우선 순위에 따라 여러 기준으로 배열을 정렬해야 할 때도 있는데요.
 대표적인 사례로 정렬이 가능한 여러 칼럼으로 이루어진 테이블 UI를 들 수 있겠습니다.</p>
-<p>예를 들어 다양한 속성을 가진 사용자들을 담은 배열을 성별을 기준으로 1차 내림차순 정렬하고, 나이 기준으로 2차 오름차순 정렬을 하려면 어떻게 해야할까요?</p>
+<p>예를 들어 다양한 속성을 가진 사용자들을 담은 배열을 성별을 기준으로 1차 내림차순 정렬하고, 나이 기준으로 2차 오름차순 정렬을 하려면 어떻게 해야 할까요?</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> users <span class="token operator">=</span> <span class="token punctuation">[</span>
   <span class="token punctuation">{</span>
     <span class="token literal-property property">mail</span><span class="token operator">:</span> <span class="token string">"gregorythomas@gmail.com"</span><span class="token punctuation">,</span>
