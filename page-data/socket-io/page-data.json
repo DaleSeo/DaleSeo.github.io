@@ -1,5 +1,0 @@
-{
-    "componentChunkName": "component---src-templates-detail-template-jsx",
-    "path": "/socket-io/",
-    "result": {"pageContext":{"previous":null,"node":{"html":"","timeToRead":1,"fields":{"slug":"/socket-io/","tags":["JavaScript","WebSocket","Node.js","Bun"]},"frontmatter":{"title":"Socket IO 사용법","date":"May 8, 2024"}},"next":{"fields":{"slug":"/websocket/"},"frontmatter":{"title":"실시간 양방향 통신을 위한 웹소켓(WebSocket)"}}}},
-    "staticQueryHashes": ["2168229929","2362167539","3056348342"]}
