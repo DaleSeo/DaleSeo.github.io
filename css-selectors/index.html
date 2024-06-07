@@ -190,14 +190,14 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 이번 포스팅에서는 CSS의 선택자의 근간이 되는 기본 선택자에 대해서 알아보겠습니다.</p>
 <h2 id="type-selector" style="position:relative;"><a href="#type-selector" aria-label="type selector permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Type Selector</h2>
 <p>CSS에서 가장 쉽게 볼 수 있는 기본 선택자는 태그 이름을 그대로 사용하는 타입 선택자(Type selector) 입니다.
-타입 선택자를 사용하면 특정 태그로 마크업된 모든 요소(element)를 선택할 수 있습니다.</p>
+타입 선택자를 사용하면 HTML 문서에서 특정 태그로 마크업된 모든 요소(element)를 선택할 수 있습니다.</p>
 <p>예를 들어, 웹페이지 상의 모든 <code>&#x3C;strong></code> 요소의 글꼴 두께를 스타일하기 위한 CSS 코드는 다음과 같습니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">strong</span> <span class="token punctuation">{</span>
   <span class="token property">font-weight</span><span class="token punctuation">:</span> 500<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <h2 id="class-selector" style="position:relative;"><a href="#class-selector" aria-label="class selector permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Class Selector</h2>
 <p>타입 선택자와 더불어 가장 많이 사용되는 CSS 선택자는 클래스 선택자(Class selector) 입니다.
-<code>.</code> 기호에 클래스 이름을 붙여서 사용하며 클래스 선택자로 특정 <code>class</code> 속성값을 사용하는 모든 요소를 선택할 수 있습니다.</p>
+<code>.</code> 기호에 클래스 이름을 붙여서 사용하며 클래스 선택자로 HTML 문서에서 특정 <code>class</code> 속성값을 사용하는 모든 요소를 선택할 수 있습니다.</p>
 <p>예를 들어, 다음과 같이 <code>error</code> 클래스에 대한 스타일을 선언하면,</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.error</span> <span class="token punctuation">{</span>
   <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
@@ -220,7 +220,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 하지만 속성까지 고려해야하는 섬세한 스타일이 필요한 경우에라면 <code>[]</code> 기호를 사용하는 속성 선택자(Attribute selector)를 사용할 수 있습니다.</p>
 <p><code>[]</code> 기호 안에 속성명만 명시하면 속성값과 무방하게 해당 속성이 설정된 모든 요소를 선택합니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">input[disabled]</span> <span class="token punctuation">{</span>
-  <span class="token property">box-shadow</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+  <span class="token property">border</span><span class="token punctuation">:</span> 2px solid blue<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
 <p><code>[]</code> 기호 안에 속성명과 속성값이 함께 명시되어 있다면 해당 속성명과 속성값이 정확히 일치하면 모든 요소를 선택합니다.</p>
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">button[type="reset"]</span> <span class="token punctuation">{</span>
@@ -228,6 +228,20 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <span class="token punctuation">}</span></code></pre></div>
 <p>위 예제에서 보듯이, 속성 선택자는 타입 선택자와 함께 사용되는 경우가 많습니다.
 그렇지 않으면 너무 많은 요소가 선택될 위험이 높기 때문입니다.</p>
+<h2 id="pseudo-class" style="position:relative;"><a href="#pseudo-class" aria-label="pseudo class permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pseudo Class</h2>
+<p>일부 HTML 요소는 상태가 있는데요.
+대표적으로 링크를 만들 때 사용하는 <code>&#x3C;a></code> 엘리먼트를 들 수 있습니다.
+<code>visited</code>, <code>focus</code>, <code>hover</code> 등 다양한 상태가 있죠.</p>
+<p>이렇게 특정 상태에만 스타일을 적용하고 싶을 때는 Pseudo Class(가상 클래스)를 기본 선택자에 덧붙일 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">a:hover</span> <span class="token punctuation">{</span>
+  <span class="token property">text-decoration</span><span class="token punctuation">:</span> none<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<h2 id="pseudo-element" style="position:relative;"><a href="#pseudo-element" aria-label="pseudo element permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pseudo Element</h2>
+<p>일반적인 CSS 선택자(selector)로는 선택할 수 없는 특수한 영역을 선택하기 위해서 사용되는 Pseudo Element(가상 요소)라는 개념도 있는데요.</p>
+<p>대표적 예로, 요소 내부의 맨 앞 또는 맨 뒤에 컨텐츠만 삽입하기 위해서 사용하는 <code>::before</code>과 <code>::after</code>를 들 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">.star::before</span> <span class="token punctuation">{</span>
+  <span class="token property">content</span><span class="token punctuation">:</span> <span class="token string">"⭐"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
 <h2 id="universal-selector" style="position:relative;"><a href="#universal-selector" aria-label="universal selector permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Universal Selector</h2>
 <p>마지막으로 소개드릴 CSS의 기본 선택자는 <code>*</code> 기호를 사용하는 전체 선택자(Universal selector) 입니다.
 전체 선택자는 웹페이지의 모든 요소를 선택하고 싶을 때 사용합니다.</p>
@@ -236,6 +250,12 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">*</span> <span class="token punctuation">{</span>
   <span class="token property">box-sizing</span><span class="token punctuation">:</span> border-box<span class="token punctuation">;</span>
 <span class="token punctuation">}</span></code></pre></div>
+<h2 id="전체-코드" style="position:relative;"><a href="#%EC%A0%84%EC%B2%B4-%EC%BD%94%EB%93%9C" aria-label="전체 코드 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>전체 코드</h2>
+<iframe height="420" style="width: 100%;" scrolling="no" title="css-selectors" src="https://codepen.io/daleseo/embed/abrwPxe?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/daleseo/pen/abrwPxe">
+  css-selectors</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 <h2 id="마치면서" style="position:relative;"><a href="#%EB%A7%88%EC%B9%98%EB%A9%B4%EC%84%9C" aria-label="마치면서 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>마치면서</h2>
 <p>이상으로 CSS의 기본 선택자에는 무엇이 있는지 간단하게 살펴보았습니다.
 실제 프로젝트에서는 이러한 기본 선택자를 여러 개 조합하여 사용하는 경우가 많은데요.
