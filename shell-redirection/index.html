@@ -211,7 +211,7 @@ cat: gitignore: No such <span class="token function">file</span> or directory</c
 하지만 쉘의 이러한 기본 처리 방식은 스크립트를 실행하거나 오랫동안 떠 있는 프로그램을 실행할 때는 적합하지 않죠.</p>
 <p>일반적으로는 정상 출력과 오류 출력을 각각 별도의 파일에 저장해야 로그가 유실된 위험이 적고 디버깅이 용이할 것입니다.</p>
 <h2 id="출력-리다이렉션" style="position:relative;"><a href="#%EC%B6%9C%EB%A0%A5-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98" aria-label="출력 리다이렉션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>출력 리다이렉션</h2>
-<p><code>></code> 기호는 명령어의 출력 내용을 터미널에 보내지 않고 다른 곳으로 보낼 수 있도록 해줍니다.
+<p><code>></code> 연산자는 명령어의 출력 내용을 터미널에 보내지 않고 다른 곳으로 보낼 수 있도록 해줍니다.
 가장 흔하게 볼 수 있는 사용 사례로 출력 내용을 로그 파일에 저장하는 것을 들 수 있습니다.</p>
 <p>예를 들어, <code>cat .gitignore</code> 명령어의 실행 결과를 <code>test.log</code> 파일로 보내보겠습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> .gitignore <span class="token operator">></span> test.log</code></pre></div>
@@ -219,14 +219,14 @@ cat: gitignore: No such <span class="token function">file</span> or directory</c
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> test.log
 .idea
 .DS_Store</code></pre></div>
-<p><code>></code> 기호는 파일이 이미 존재하면 해당 파일을 덮어쓰기 때문에 주의가 필요합니다.</p>
+<p><code>></code> 연산자는 파일이 이미 존재하면 해당 파일을 덮어쓰기 때문에 주의가 필요합니다.</p>
 <p>예를 들어, 제가 이번에는 <code>cat README.md</code> 실행 결과를 <code>test.log</code> 파일로 보내보겠습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> README.md <span class="token operator">></span> test.log</code></pre></div>
 <p><code>test.log</code> 파일에 기존에 있던 <code>.gitignore</code>의 내용이 모두 사라지고, <code>README.md</code> 파일의 내용으로 완전히 대체가 된 것을 볼 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> test.log
 <span class="token comment"># README</span>
 Please <span class="token builtin class-name">read</span> me<span class="token operator">!</span></code></pre></div>
-<p>대신에 <code>>></code> 기호를 사용하면 기존 내용을 건들이지 않고 명령어 실행 결과를 파일 끝에 추가해줍니다.</p>
+<p>대신에 <code>>></code> 연산자를 사용하면 기존 내용을 건들이지 않고 명령어 실행 결과를 파일 끝에 추가해줍니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> .gitignore <span class="token operator">>></span> test.log</code></pre></div>
 <p><code>test.log</code> 파일의 내용을 다시 확인해보면 <code>README.md</code> 파일의 내용이 <code>.gitignore</code> 파일에 덧붙여진 것을 볼 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> test.log
@@ -243,8 +243,8 @@ cat: gitignore: No such <span class="token function">file</span> or directory</c
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> test.log</code></pre></div>
 <p>왜 이런 일이 발생하는 걸까요? 🤔</p>
 <p>비밀은 바로 맨 처음에 알려드린 표준 스트림을 나타내는 번호에 있습니다.
-<code>></code> 기호는 사실 <code>1></code>의 축약된 형태이기 때문에, 정상 출력만 리다이렉션해줍니다.
-그런데 우리는 오류 출력을 리다이렉션 하고 싶으므로 <code>2></code> 기호를 사용해야 합니다.</p>
+<code>></code>는 사실 <code>1></code>의 축약된 형태이기 때문에, 정상 출력만 리다이렉션해줍니다.
+그런데 우리는 오류 출력을 리다이렉션 하고 싶으므로 <code>2></code>를 사용해야 합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> gitignore <span class="token operator"><span class="token file-descriptor important">2</span>></span> test.log</code></pre></div>
 <p>이제 원했던 바와 같이 <code>test.log</code> 파일에 오류 내용이 저장되는 것을 볼 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> test.log
@@ -252,7 +252,7 @@ cat: gitignore: No such <span class="token function">file</span> or directory</c
 <h2 id="통합-리다이렉션" style="position:relative;"><a href="#%ED%86%B5%ED%95%A9-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98" aria-label="통합 리다이렉션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>통합 리다이렉션</h2>
 <p>만약에 표준 출력과 오류 출력 모두를 리다이렉션 하고 싶다면 어떻게 해야할까요?
 이럴 때는 숫자 <code>1</code>이나 <code>2</code> 대신에 <code>&#x26;</code> 기호를 사용하면 됩니다.</p>
-<p>예를 들어, 존재하지 않는 파일을 상대로 <code>cat</code> 명령어를 실행하여 오류 내용을 다시 한 번 <code>test.log</code> 파일에 사용하여 <strong>덧붙여</strong> 보겠습니다. (<code>>></code>기호 사용)</p>
+<p>예를 들어, 존재하지 않는 파일을 상대로 <code>cat</code> 명령어를 실행하여 오류 내용을 다시 한 번 <code>test.log</code> 파일에 사용하여 <strong>덧붙여</strong> 보겠습니다. (<code>>></code> 연산자 사용)</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> gitignore <span class="token operator">&amp;>></span> test.log</code></pre></div>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> test.log
 cat: gitignore: No such <span class="token function">file</span> or directory
@@ -269,10 +269,10 @@ cat: gitignore: No such <span class="token function">file</span> or directory
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ 명령어 <span class="token operator">></span> success.log <span class="token operator"><span class="token file-descriptor important">2</span>></span> error.log</code></pre></div>
 <p>쉘 프로그래밍을 하다보면 오류 출력을 표준 출력으로 결합해야할 때가 있습니다.
 보통 중요하지 않은 오류 때문에 프로그램의 실행이 멈추는 것을 방지할 수 있죠.</p>
-<p>이럴 때는 다음과 같은 형태로 <code>2>&#x26;1</code> 기호를 사용하여 오류 출력을 표준 출력으로 결합한 후에 파일로 리다이렉션하면 됩니다.</p>
+<p>이럴 때는 다음과 같은 형태로 <code>2>&#x26;1</code>를 사용하여 오류 출력을 표준 출력으로 결합한 후에 파일로 리다이렉션하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ 명령어 <span class="token operator">></span> any.log <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span></code></pre></div>
 <h2 id="입력-리다이렉션" style="position:relative;"><a href="#%EC%9E%85%EB%A0%A5-%EB%A6%AC%EB%8B%A4%EC%9D%B4%EB%A0%89%EC%85%98" aria-label="입력 리다이렉션 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>입력 리다이렉션</h2>
-<p><code>&#x3C;</code> 기호는 명령어의 입력 내용을 다른 곳으로 부터 가져올 수 있도록 해줍니다.</p>
+<p><code>&#x3C;</code> 연산자는 명령어의 입력 내용을 다른 곳으로 부터 가져올 수 있도록 해줍니다.</p>
 <p>예를 들어, <code>test.log</code> 파일의 내용을 입력으로 <code>cat</code> 명령어를 실행해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> <span class="token operator">&lt;</span> test.log
 cat: gitignore: No such <span class="token function">file</span> or directory
