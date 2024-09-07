@@ -249,8 +249,7 @@ ES6의 클래스(class) 문법을 사용하여, <code>HTMLElement</code>을 확�
 <span class="token punctuation">}</span></code></pre></div>
 <p>그 다음, <code>customElements</code> 전역 객체의 <code>define()</code> 함수를 통해서 요소 이름, <code>our-span</code>과 해당 요소를 정의하는 클래스, <code>OurSpan</code>을 연결해줍니다.</p>
 <div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"our-span"</span><span class="token punctuation">,</span> OurSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>브라우저에서 동일한 웹 페이지를 다시 열어보면, 우리가 정의한데로 <code>&#x3C;our-span></code> 요소가 나타나는 것을 볼 수 있습니다.
-그리고 그 위에 있는 <code>&#x3C;span></code> 요소의 글자색이 다시 검정색으로 돌아오는 것도 확인할 수 있으실 것입니다.</p>
+<p>브라우저에서 동일한 웹 페이지를 다시 열어보면, 우리가 정의한데로 <code>&#x3C;our-span></code> 요소가 나타나는 것을 볼 수 있습니다.</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="web-components-html-element" src="https://codepen.io/daleseo/embed/PorXRgY?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/daleseo/pen/PorXRgY">
   web-components-html-element</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
@@ -298,6 +297,7 @@ Shadow DOM의 이러한 격리성 때문에 이러한 요소들은 예전부터 
 <span class="token punctuation">}</span>
 
 customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"our-span"</span><span class="token punctuation">,</span> OurSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>이제 원했던 바와 같이 <code>&#x3C;span></code> 요소의 글자색이 다시 검정색으로 돌아오는 것을 확인할 수 있으실 겁니다.</p>
 <p>여기서 <code>&#x3C;span></code> 요소 안에 텍스트 대신에 <code>&#x3C;slot/></code>을 사용한 것을 주의깊게 봐주세요.
 이렇게 Shadow DOM을 사용하면 사용자 요소가 감싸고 있는 내용도 그대로 보여줄 수가 있게 됩니다.
 따라서 원래의 텍스트였던 <code>비표준 요소</code>가 다시 웹 페이지에 나타나는 것을 볼 수 있습니다.</p>
