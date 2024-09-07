@@ -268,9 +268,9 @@ CSS에서 타입 선택자를 사용하는 대신에 클래스 선택자나 아�
 <p>CSS의 선택자에 대해서는 <a href="/css-selectors/">별도 포스팅</a>에서 자세히 다루고 있으니 참고하세요.</p>
 </blockquote>
 <p>그런데 이렇게 전통적인 방법을 쓰지 않고 웹 컴포넌트를 마치 섬처럼 원천적으로 격리시키는 방법이 있습니다.
-바로 Shadow DOM(쉐도우 돔)을 활용하는 것인데요.</p>
+바로 Shadow DOM(쉐도우 돔)입니다.</p>
 <p>우선 웹 개발을 좀 해보셨다면 DOM(document object model)에 대해서는 다들 아실 거에요.
-HTML 문서를 JavaScript트에서 효과적으로 제어할 수 있도록 다수의 노드(node)로 이루어진 하나의 트리(tree)로 다루는 프로그래밍 모델이죠.</p>
+HTML 문서를 JavaScript에서 효과적으로 제어할 수 있도록 다수의 노드(node)로 이루어진 하나의 트리(tree)로 다루는 프로그래밍 모델이죠.</p>
 <p>Shadow DOM은 쉽게 말해서, HTML 문서 전체가 아닌 단일 웹 컴포넌트를 다루기 위한 작은 DOM입니다.
 Shadow DOM을 통해서 작성하는 HTML과 CSS, JavaScript는 문서 전체의 DOM으로 부터 완전히 분리됩니다.</p>
 <p>HTML 표준 요소 중에서 <code>&#x3C;select></code>나 <code>&#x3C;video></code>와 같은 녀석들도 Shadow DOM을 사용하고 있습니다.
@@ -298,7 +298,7 @@ Shadow DOM의 이러한 격리성 때문에 이러한 요소들은 예전부터 
 
 customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"our-span"</span><span class="token punctuation">,</span> OurSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>이제 원했던 바와 같이 <code>&#x3C;span></code> 요소의 글자색이 다시 검정색으로 돌아오는 것을 확인할 수 있으실 겁니다.</p>
-<p>여기서 <code>&#x3C;span></code> 요소 안에 텍스트 대신에 <code>&#x3C;slot/></code>을 사용한 것을 주의깊게 봐주세요.
+<p>여기서 <code>&#x3C;span></code> 요소 안에 <code>사용자 정의 요소</code> 텍스트 대신에 <code>&#x3C;slot/></code>을 사용한 것을 주의깊게 봐주세요.
 이렇게 Shadow DOM을 사용하면 사용자 요소가 감싸고 있는 내용도 그대로 보여줄 수가 있게 됩니다.
 따라서 원래의 텍스트였던 <code>비표준 요소</code>가 다시 웹 페이지에 나타나는 것을 볼 수 있습니다.</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="web-components-shadow-dom" src="https://codepen.io/daleseo/embed/xxomjGa?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
@@ -314,7 +314,7 @@ customElements<span class="token punctuation">.</span><span class="token functio
 바로 JavaScript 코드 안에 바로 HTM과 CSS 코드를 작성했다는 점인데요.
 이렇게 하면 코드 편집기에서 구문 강조(syntax highlighting)나 자동 완성(autocomplete) 기능이 잘 동작하지 않아서 개발자 경험이 별로 좋지 않을 것입니다.</p>
 <p>HTML Templates(템플릿)은 웹 컴포넌트의 이러한 단점을 보완해줄 수 있는 웹 표준 기술입니다.
-<code>&#x3C;template></code> 요소를 사용해서 작성하는 HTML 마크업을 HTML 템플릿이라고 한는데요.
+<code>&#x3C;template></code> 요소를 사용해서 작성하는 HTML 마크업을 HTML 템플릿이라고 하는데요.
 브라우저는 <code>&#x3C;template></code> 요소의 내용을 화면에 그려주지 않기 때문에, 웹 컴포넌트가 사용할 HTML 코드를 보관히기 안성맞춤입니다.</p>
 <p>실습을 위해서 <code>OurDiv</code> 클래스 안에 있던 <code>&#x3C;style></code> 요소와 <code>&#x3C;span></code> 요소를 그대로 HTML 문서의 <code>&#x3C;body></code> 태그 아래로 복사해옵니다.
 그 다음 <code>&#x3C;template></code> 요소로 감싸주시고, 웹 컴포넌트에서 참조가 가능하다록 아이디 속성을 달아주세요.</p>
