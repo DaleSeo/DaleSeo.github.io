@@ -214,8 +214,8 @@ HTML 4 시절에는 약 90개가 있었고, HTML 5 때 <code>&#x3C;article></cod
 웹 브라우저와 스크린 리더와 같은 웹 접근성 도구들은 정해진 표준에 따라서 이러한 HTML 요소들을 화면에 표시하고 구문적인 역할을 부여합니다.</p>
 <p>반면에 사용자 정의 요소(custom elements)는 웹 표준에 정의되어 있지 않는 HTML 요소를 뜻합니다.
 브라우저는 이러한 비표준 요소(nonstandard element)를 어떻게 처리해야 하는지 알지 못하기 때문에, 마치 <code>&#x3C;span></code> 요소를 그리는 것처럼 아무 스타일없이 표시해줍니다.</p>
-<p>예를 들어, 일반 <code>&#x3C;span></code> 요소와 <code>&#x3C;our-span></code>이라는 비표준 요소를 나란히 배치해볼까요?</p>
-<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>표준 요소<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>our-span</span><span class="token punctuation">></span></span>비표준 요소<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>our-span</span><span class="token punctuation">></span></span></code></pre></div>
+<p>예를 들어, 일반 <code>&#x3C;span></code> 요소와 <code>&#x3C;red-span></code>이라는 비표준 요소를 나란히 배치해볼까요?</p>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>span</span><span class="token punctuation">></span></span>표준 요소<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span> <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>red-span</span><span class="token punctuation">></span></span>비표준 요소<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>red-span</span><span class="token punctuation">></span></span></code></pre></div>
 <p>그러면 아래와 같이 브라우저는 이 두 요소를 동일하게 그려주는 것을 볼 수 있습니다.</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="web-components-custom-elements" src="https://codepen.io/daleseo/embed/poXqLVb?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/daleseo/pen/poXqLVb">
@@ -225,14 +225,14 @@ HTML 4 시절에는 약 90개가 있었고, HTML 5 때 <code>&#x3C;article></cod
 <p>참고로 사용자 정의 요소의 이름에는 반드시 하이픈(<code>-</code>) 기호가 들어가도록 되어 있습니다.
 미래에 HTML의 명세에 추가될 수 있는 표준 요소와의 이름 충돌을 원천적으로 방지하기 위합니다.</p>
 <h2 id="htmlelement-interface" style="position:relative;"><a href="#htmlelement-interface" aria-label="htmlelement interface permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTMLElement Interface</h2>
-<p>어떻게 하면 <code>&#x3C;our-span></code>과 같이 웹 표준에 정의되어 있지 않는 HTML 요소를 원하는 구조와 형태로 웹 페이지에 나타나게 할 수 있을까요?
+<p>어떻게 하면 <code>&#x3C;red-span></code>과 같이 웹 표준에 정의되어 있지 않는 HTML 요소를 원하는 구조와 형태로 웹 페이지에 나타나게 할 수 있을까요?
 다시 말해서, 사용자는 어떻게 새로운 HTML 요소를 정의할 수 있을까요?</p>
 <p>네, 바로 정답은 웹 컴포넌트입니다!</p>
 <p>웹 컴포넌트는 <code>HTMLElement</code>라는 인터페이스를 확장해서 만들 수 있습니다.
 ES6의 클래스(class) 문법을 사용하여, <code>HTMLElement</code>을 확장한 후, 해당 요소가 어떻게 생성되야하는지를 구현할 수 있습니다.</p>
-<p>예를 들어, <code>&#x3C;our-span></code> 요소를 정의하기 위해서 <code>OurSpan</code> 클래스를 작성해볼까요?
+<p>예를 들어, <code>&#x3C;red-span></code> 요소를 정의하기 위해서 <code>RedSpan</code> 클래스를 작성해볼까요?
 <code>사용자 정의 요소</code>라는 텍스트를 담고 있는 <code>span</code> 요소를 마크업하고 글자색이 빨간색이 되도록 스타일을 해보겠습니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">OurSpan</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">RedSpan</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>innerHTML <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">
@@ -247,16 +247,16 @@ ES6의 클래스(class) 문법을 사용하여, <code>HTMLElement</code>을 확�
     </span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div>
-<p>그 다음, <code>customElements</code> 전역 객체의 <code>define()</code> 함수를 통해서 요소 이름, <code>our-span</code>과 해당 요소를 정의하는 클래스, <code>OurSpan</code>을 연결해줍니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"our-span"</span><span class="token punctuation">,</span> OurSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
-<p>브라우저에서 동일한 웹 페이지를 다시 열어보면, 우리가 정의한데로 <code>&#x3C;our-span></code> 요소가 나타나는 것을 볼 수 있습니다.</p>
+<p>그 다음, <code>customElements</code> 전역 객체의 <code>define()</code> 함수를 통해서 요소 이름, <code>red-span</code>과 해당 요소를 정의하는 클래스, <code>RedSpan</code>을 연결해줍니다.</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js">customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"red-span"</span><span class="token punctuation">,</span> RedSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+<p>브라우저에서 동일한 웹 페이지를 다시 열어보면, 우리가 정의한데로 <code>&#x3C;red-span></code> 요소가 나타나는 것을 볼 수 있습니다.</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="web-components-html-element" src="https://codepen.io/daleseo/embed/PorXRgY?default-tab=js%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
   See the Pen <a href="https://codepen.io/daleseo/pen/PorXRgY">
   web-components-html-element</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
-<p>여기서 <code>&#x3C;our-span></code> 요소로 감싼 <code>비표준 요소</code> 대신에 <code>사용자 정의 요소</code>가 텍스트로 표시되는 부분에 주의 바랍니다.
-이 뜻은 <code>&#x3C;our-span></code> 요소 안에 어떤 텍스트를 넣든 무시되며, 웹 컴포넌트 내에서 마크업한 내용이 표시된다는 뜻입니다.
+<p>여기서 <code>&#x3C;red-span></code> 요소로 감싼 <code>비표준 요소</code> 대신에 <code>사용자 정의 요소</code>가 텍스트로 표시되는 부분에 주의 바랍니다.
+이 뜻은 <code>&#x3C;red-span></code> 요소 안에 어떤 텍스트를 넣든 무시되며, 웹 컴포넌트 내에서 마크업한 내용이 표시된다는 뜻입니다.
 이 부분은 바로 다음 섹션에서 개선할 것입니다.</p>
 <h2 id="shadow-dom" style="position:relative;"><a href="#shadow-dom" aria-label="shadow dom permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shadow DOM</h2>
 <p>위 웹 페이지를 유심히 보시면 한 가지 의아한 점을 발견하실 거에요.
@@ -278,8 +278,8 @@ Shadow DOM의 이러한 격리성 때문에 이러한 요소들은 예전부터 
 <p>웹 컴포넌트에서 Shadow DOM을 사용하는 방법은 매우 간단합니다.
 우선 <code>attachShadow()</code> 함수를 통해서 해당 사용자 요소에 Shadow DOM을 연결합니다.
 그 다음 <code>shadowRoot</code> 속성을 통해서 Shadow DOM 상대로 작업을 하면 됩니다.</p>
-<p>예를 들어, <code>OurSpan</code> 클래스가 Shadow DOM을 사용하도록 수정해볼까요?</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">OurSpan</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
+<p>예를 들어, <code>RedSpan</code> 클래스가 Shadow DOM을 사용하도록 수정해볼까요?</p>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">RedSpan</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">attachShadow</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"open"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -296,7 +296,7 @@ Shadow DOM의 이러한 격리성 때문에 이러한 요소들은 예전부터 
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"our-span"</span><span class="token punctuation">,</span> OurSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"red-span"</span><span class="token punctuation">,</span> RedSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>이제 원했던 바와 같이 <code>&#x3C;span></code> 요소의 글자색이 다시 검정색으로 돌아오는 것을 확인할 수 있으실 겁니다.</p>
 <p>여기서 <code>&#x3C;span></code> 요소 안에 <code>사용자 정의 요소</code> 텍스트 대신에 <code>&#x3C;slot/></code>을 사용한 것을 주의깊게 봐주세요.
 이렇게 Shadow DOM을 사용하면 사용자 요소가 감싸고 있는 내용도 그대로 보여줄 수가 있게 됩니다.
@@ -318,7 +318,7 @@ customElements<span class="token punctuation">.</span><span class="token functio
 브라우저는 <code>&#x3C;template></code> 요소의 내용을 화면에 그려주지 않기 때문에, 웹 컴포넌트가 사용할 HTML 코드를 보관히기 안성맞춤입니다.</p>
 <p>실습을 위해서 <code>OurDiv</code> 클래스 안에 있던 <code>&#x3C;style></code> 요소와 <code>&#x3C;span></code> 요소를 그대로 HTML 문서의 <code>&#x3C;body></code> 태그 아래로 복사해옵니다.
 그 다음 <code>&#x3C;template></code> 요소로 감싸주시고, 웹 컴포넌트에서 참조할 수 있도록 아이디 속성을 달아주세요.</p>
-<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>our-span<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+<div class="gatsby-highlight" data-language="html"><pre class="language-html"><code class="language-html"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>template</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>red-span<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>style</span><span class="token punctuation">></span></span><span class="token style"><span class="token language-css">
     <span class="token selector">span</span> <span class="token punctuation">{</span>
       <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
@@ -328,19 +328,19 @@ customElements<span class="token punctuation">.</span><span class="token functio
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>slot</span> <span class="token punctuation">/></span></span>
   <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>span</span><span class="token punctuation">></span></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>template</span><span class="token punctuation">></span></span></code></pre></div>
-<p>자 이제, <code>OurSpan</code> 클래스가 방금 작성한 HTML 템플릿을 사용하도록 수정해주겠습니다.
+<p>자 이제, <code>RedSpan</code> 클래스가 방금 작성한 HTML 템플릿을 사용하도록 수정해주겠습니다.
 생성자에서는 아이디로 HTML 템플릿에 접근하고, 깊은 복제를 한 후 Shadow DOM에 추가합니다.</p>
-<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">OurSpan</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
+<div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">class</span> <span class="token class-name">RedSpan</span> <span class="token keyword">extends</span> <span class="token class-name">HTMLElement</span> <span class="token punctuation">{</span>
   <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">super</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">attachShadow</span><span class="token punctuation">(</span><span class="token punctuation">{</span> <span class="token literal-property property">mode</span><span class="token operator">:</span> <span class="token string">"open"</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">const</span> template <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"our-span"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> template <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">"red-span"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">const</span> clone <span class="token operator">=</span> template<span class="token punctuation">.</span>content<span class="token punctuation">.</span><span class="token function">cloneNode</span><span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">this</span><span class="token punctuation">.</span>shadowRoot<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>clone<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 
-customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"our-span"</span><span class="token punctuation">,</span> OurSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
+customElements<span class="token punctuation">.</span><span class="token function">define</span><span class="token punctuation">(</span><span class="token string">"red-span"</span><span class="token punctuation">,</span> RedSpan<span class="token punctuation">)</span><span class="token punctuation">;</span></code></pre></div>
 <p>웹 페이지는 동일한 결과를 나타나지만, JavaScript 코드로 부터 HTML과 CSS 코드가 분리되었습니다.
 이러한 방식으로 웹 컴포넌트를 작성하는 것이 가독성과 유지 보수성 측면에서 분명 유리하겠죠?</p>
 <iframe height="300" style="width: 100%;" scrolling="no" title="web-components-html-templates" src="https://codepen.io/daleseo/embed/KKjbYwa?default-tab=html%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
