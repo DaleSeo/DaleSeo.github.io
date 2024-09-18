@@ -209,9 +209,9 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>이를 통해서 <code>is</code> 연산자를 쓰면 원치않는 결과를 얻을 수 있다는 것을 알 수 있습니다.</p>
 <p><code>is</code> 연산자와 <code>==</code> 연산자의 결과에서 왜 이러한 차이가 생길까요? 🤔</p>
 <h2 id="동일성과-동등성" style="position:relative;"><a href="#%EB%8F%99%EC%9D%BC%EC%84%B1%EA%B3%BC-%EB%8F%99%EB%93%B1%EC%84%B1" aria-label="동일성과 동등성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>동일성과 동등성</h2>
-<p>다른 프로그래밍 언어처럼 파이썬에도 동일성(Identity)와 동일성(Equality) 개념이 있는데요.
-동일성은 두 객체의 메모리 주소가 같음을 의미하고, 동일성은 두 객체의 값이 같음을 의미합니다.
-그런데 사실 엄밀히 얘기해서 동일성은 해당 객체의 <code>__eq__()</code> 메서드의 구현에 달려 있습니다.</p>
+<p>다른 프로그래밍 언어처럼 파이썬에도 동일성(Identity)와 동등성(Equality) 개념이 있는데요.
+동일성은 두 객체의 메모리 주소가 같음을 의미하고, 동등성은 두 객체의 값이 같음을 의미합니다.
+그런데 사실 엄밀히 얘기해서 동등성은 해당 객체의 <code>__eq__()</code> 메서드의 구현에 달려 있습니다.</p>
 <p>좀 극단적인 예로, <code>__eq__()</code> 메서드가 항상 참을 반환하도록 클래스를 하나 작성해볼께요.</p>
 <div class="gatsby-highlight" data-language="py"><pre class="language-py"><code class="language-py"><span class="token keyword">class</span> <span class="token class-name">AlwaysEqual</span><span class="token punctuation">:</span>
     <span class="token keyword">def</span> <span class="token function">__eq__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> other<span class="token punctuation">)</span><span class="token punctuation">:</span>
