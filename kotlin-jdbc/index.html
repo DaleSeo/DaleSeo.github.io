@@ -244,9 +244,9 @@ JDBC API는 SQL 쿼리 실행을 위해서 <code>Statement</code>와 <code>Prepa
 <div class="gatsby-highlight" data-language="kt"><pre class="language-kt"><code class="language-kt">connection<span class="token punctuation">.</span><span class="token function">createStatement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span> <span class="token punctuation">{</span> statement <span class="token operator">-></span>
     statement<span class="token punctuation">.</span><span class="token function">execute</span><span class="token punctuation">(</span>
         <span class="token string-literal multiline"><span class="token string">"""CREATE TABLE fruits (
-                id INT AUTO_INCREMENT NOT NULL,
-                name VARCHAR(128) NOT NULL,
-                price INT)"""</span></span>
+            id INT AUTO_INCREMENT NOT NULL,
+            name VARCHAR(128) NOT NULL,
+            price INT)"""</span></span>
     <span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">also</span> <span class="token punctuation">{</span>
         <span class="token function">println</span><span class="token punctuation">(</span><span class="token string-literal singleline"><span class="token string">"테이블 생성 완료"</span></span><span class="token punctuation">)</span>
     <span class="token punctuation">}</span>
