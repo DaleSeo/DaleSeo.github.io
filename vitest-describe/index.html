@@ -196,7 +196,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 게다가 디버깅을 하다보면 특정 테스트만 실행하거나 특정 테스트만 제외하고 테스트를 해야하는 경우도 생기죠.</p>
 <p>이번 포스팅에서는 이러한 상황을 효과적으로 대처하기 위해서 Vitest로 어떻게 테스트를 깔끔하게 묶어서 관리하고 테스트 별로 실행 제어를 할 수 있는지 알아보려고 합니다.</p>
 <h2 id="테스트-케이스와-스위트" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%BC%80%EC%9D%B4%EC%8A%A4%EC%99%80-%EC%8A%A4%EC%9C%84%ED%8A%B8" aria-label="테스트 케이스와 스위트 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 케이스와 스위트</h2>
-<p>테스트를 그룹화할 때 자주 사용되는 용어가 있어서 정리를 하고 넘어가겠습니다.
+<p>테스트를 그룹화할 때 자주 사용되는 용어가 있어서 간단히 정리를 하고 넘어가겠습니다.
 보통 각각의 테스트 함수를 테스트 케이스(test case)라고 하고, 서로 관련이 있는 여러 개의 테스트를 묶어주는 논리적인 단위를 테스트 스위트(test suite)라고 합니다.</p>
 <p>테스트를 담고 있는 하나의 파일이 테스트 스위트가 될 수 있으며, 하나의 파일도 아래에서 배울 <code>describe()</code> 함수를 통해서 여러 개의 테스트 스위트로 분류할 수 있습니다.
 Vitest에서는 개별 테스트 케이스를 <code>test()</code> 함수 또는 이 함수의 별칭인 <code>it()</code> 함수로 표시합니다.</p>
@@ -224,7 +224,7 @@ Vitest에서는 개별 테스트 케이스를 <code>test()</code> 함수 또는 
 <blockquote>
 <p>위 코드에서는 자바스크립트의 Intl API가 사용되고 있습니다. 이 부분에 대해서는 <a href="/js-intl-api/">별도 포스팅</a>에서 자세히 다루고 있으니 참고 바랍니다.</p>
 </blockquote>
-<h2 id="테스트-작성-하기" style="position:relative;"><a href="#%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1-%ED%95%98%EA%B8%B0" aria-label="테스트 작성 하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>테스트 작성 하기</h2>
+<h2 id="개발-테스트-작성" style="position:relative;"><a href="#%EA%B0%9C%EB%B0%9C-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1" aria-label="개발 테스트 작성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>개발 테스트 작성</h2>
 <p>이제 위에서 작성한 3개의 유틸리티 함수에 대한 테스트를 작성해보겠습니다.
 3개의 함수 모두 문자열을 반환하므로 <code>toBe()</code> 매처(Matcher) 함수만 있으면 쉽게 반환값을 검증할 수 있을 것입니다.</p>
 <div class="gatsby-code-title">utils.test.ts</div>
@@ -279,7 +279,7 @@ Vitest에서는 개별 테스트 케이스를 <code>test()</code> 함수 또는 
 <blockquote>
 <p>Vitest의 자주 쓰이는 매처 함수에 대해서는 <a href="/vitest-expect/">별도 포스팅</a>에 정리해놓았으니 참고 바랍니다.</p>
 </blockquote>
-<h2 id="describe-테스트-그룹화" style="position:relative;"><a href="#describe-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EA%B7%B8%EB%A3%B9%ED%99%94" aria-label="describe 테스트 그룹화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>describe(): 테스트 그룹화</h2>
+<h2 id="describe-관련-테스트-묶기" style="position:relative;"><a href="#describe-%EA%B4%80%EB%A0%A8-%ED%85%8C%EC%8A%A4%ED%8A%B8-%EB%AC%B6%EA%B8%B0" aria-label="describe 관련 테스트 묶기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>describe(): 관련 테스트 묶기</h2>
 <p>현재는 <code>utils.ts</code> 파일에 3개의 함수 밖에 없지만 시간이 지나면 다른 유틸리티 함수가 추가될 가능성이 높을텐데요.
 그러면 자연스럽게 <code>utils.test.ts</code> 파일 안에 있는 테스트 케이스의 개수도 점점 늘어나게 될 것입니다.</p>
 <p>Vitest에서 제공하는 <code>describe()</code> 함수와 <code>it()</code> 함수를 활용하면 서로 관련있는 테스트끼리 묶어 놓을 수 있습니다.</p>
