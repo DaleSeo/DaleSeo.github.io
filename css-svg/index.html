@@ -261,6 +261,22 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
   css-svg-stroke</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+<h2 id="css의-color-속성-활용" style="position:relative;"><a href="#css%EC%9D%98-color-%EC%86%8D%EC%84%B1-%ED%99%9C%EC%9A%A9" aria-label="css의 color 속성 활용 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CSS의 Color 속성 활용</h2>
+<p>SVG 요소의 <code>fill</code>이나 <code>stroke</code> 속성을 <code>currentColor</code>로 설정해놓은 경우, CSS의 <code>color</code> 속성으로 면색이나 선색을 제어할 수도 있습니다.</p>
+<p>이렇게 하면 CSS의 <code>color</code> 속성을 통해 텍스트와 아이콘의 색상을 동시에 바꿀 수 있기 때문에 상당히 편리합니다.</p>
+<div class="gatsby-highlight" data-language="css"><pre class="language-css"><code class="language-css"><span class="token selector">svg</span> <span class="token punctuation">{</span>
+  <span class="token property">color</span><span class="token punctuation">:</span> red<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token selector">path</span> <span class="token punctuation">{</span>
+  <span class="token comment">/* stroke: purple; */</span>
+  <span class="token property">stroke-width</span><span class="token punctuation">:</span> 3<span class="token punctuation">;</span>
+<span class="token punctuation">}</span></code></pre></div>
+<iframe height="400" style="width: 100%;" scrolling="no" title="css-svg-current-color" src="https://codepen.io/daleseo/embed/pvzBxYP?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/daleseo/pen/pvzBxYP">
+  css-svg-current-color</a> by Dale Seo (<a href="https://codepen.io/daleseo">@daleseo</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
 <h2 id="기타-조정" style="position:relative;"><a href="#%EA%B8%B0%ED%83%80-%EC%A1%B0%EC%A0%95" aria-label="기타 조정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>기타 조정</h2>
 <p>SVG 요소를 상대로 <code>fill</code>이나 <code>stroke</code>처럼 SVG에 특화된 속성 뿐만 아니라 대부분의 일반 CSS 속성도 사용할 수 있습니다.</p>
 <p>예를 들어, 사용자 아이콘의 배경색을 하늘색으로 바꾸고 테두리를 둥글게 해줄까요?</p>
