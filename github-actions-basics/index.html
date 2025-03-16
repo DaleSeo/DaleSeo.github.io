@@ -196,7 +196,8 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>이번 포스팅은 제 블로그에서 GitHub Actions에 대해서 처음 다루는 만큼 GitHub Actions를 처음 접하시는 분들을 위해서 아주 얇고 넓게 GitHub Actions에 대한 핵심 개념 위주로만 알아보려고 합니다.</p>
 <h2 id="github-actions란" style="position:relative;"><a href="#github-actions%EB%9E%80" aria-label="github actions란 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>GitHub Actions란?</h2>
 <p>GitHub Actions는 코드 저장소(repository)로 유명한 깃허브(GitHub)에서 제공하는 CI(Continuous Integration, 지속 통합)와 CD(Continuous Deployment, 지속 배포)를 위한 비교적 최근에 추가된 서비스입니다.
-당연히 GitHub에서 코드를 관리하고 있는 소프트웨어 프로젝트에서 사용할 수 있으며 개인은 누구나 GitHub에서 코드 저장소를 무료로 만들 수 있기 때문에 다른 CI/CD 서비스 대비 진입장벽이 낮은 편입니다.</p>
+깃허브에서 코드를 관리하고 있는 소프트웨어 프로젝트라면 무료로 사용할 수 있으며, 깃허브 저장소에서 Actions 탭을 통해서 쉽게 접근할 수 있습니다.
+설정 방법도 쉽고 간단해서 진입장벽이 낮은 편이죠.</p>
 <p>GitHub Actions를 사용하면 자동으로 코드 저장소에서 어떤 이벤트(event)가 발생했을 때 특정 작업이 일어나게 하거나 주기적으로 어떤 작업들을 반복해서 실행시킬 수도 있습니다.
 예를 들어, 누군가가 코드 저장소에 Pull Request를 생성하게 되면 GitHub Actions를 통해 해당 코드 변경분에 문제가 없는지 각종 검사를 진행할 수 있고요.
 어떤 새로운 코드가 기본 브랜치(master 또는 main)에 유입(push)되면 GitHub Actions를 통해 소프트웨어를 빌드(build)하고 상용 서버에 배포(deploy)할 수도 있습니다.
@@ -204,7 +205,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <p>이렇게 소프트웨어 프로젝트에서 지속적으로 수행해야하는 반복 작업들을 업계에서는 소위 CI/CD라고 많이 줄여서 부르는데요.
 사람이 매번 직접 하기에는 비효율적인데다가 실수할 위험도 있기 때문에 자동화시키는 것이 유리합니다.</p>
 <p>GitHub Actions는 기존 CI/CD 서비스 대비 간편한 설정과 높은 접근성으로 특히 개발자들 사이에서 많은 호응을 얻고 있는데요.
-예전에는 CI/CD가 DevOps 엔지니어의 전유물로만 여겨지곤 했었는데 최근에는 GitHub Actions을 통해서 일반 개발자들도 스스로 CI/CD 설정을 스스로 하는 것을 어렵지 않게 볼 수 있습니다.</p>
+예전에는 CI/CD가 DevOps 엔지니어의 전유물로만 여겨지곤 했었는데 최근에는 GitHub Actions을 통해서 일반 개발자들도 DevOps의 도움없이 스스로 CI/CD 설정을 하는 것을 어렵지 않게 볼 수 있습니다.</p>
 <p>자, 그럼 지금부터 GitHub Actions를 사용하기 전에 숙지하고 있으면 큰 도움이 되는 몇 가지 핵심 개념을 살펴보도록 하겠습니다.</p>
 <h2 id="workflows" style="position:relative;"><a href="#workflows" aria-label="workflows permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Workflows</h2>
 <p>GitHub Actions에서 가장 상위 개념인 워크플로우(Workflow, 작업 흐름)는 쉽게 말해 자동화해놓은 작업 과정이라고 볼 수 있습니다.
