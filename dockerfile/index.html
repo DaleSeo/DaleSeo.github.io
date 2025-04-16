@@ -206,7 +206,7 @@ Docker는 Dockerfile에 나열된 명령문을 차례대로 수행하여 이미�
 <h2 id="from-명령문" style="position:relative;"><a href="#from-%EB%AA%85%EB%A0%B9%EB%AC%B8" aria-label="from 명령문 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>FROM 명령문</h2>
 <div class="gatsby-highlight" data-language="dockerfile"><pre class="language-dockerfile"><code class="language-dockerfile"><span class="token instruction"><span class="token keyword">FROM</span> &lt;이미지></span>
 <span class="token instruction"><span class="token keyword">FROM</span> &lt;이미지>:&lt;태그></span></code></pre></div>
-<p>하나의 Docker 이미지는 base 이미지부터 시작해서 기존 이미지위에 새로운 이미지를 중첩해서 여러 단계의 이미지 층(layer)을 쌓아가며 만들어집니다.</p>
+<p>하나의 Docker 이미지는 base 이미지부터 시작해서 기존 이미지 위에 새로운 이미지를 중첩해서 여러 단계의 이미지 층(layer)을 쌓아가며 만들어집니다.</p>
 <p><code>FROM</code> 명령문은 이 base 이미지를 지정해주기 위해서 사용되는데, 보통 Dockerfile 내에서 최상단에 위치합니다.
 base 이미지는 일반적으로 Docker Hub와 같은 Docker repository에 올려놓은 잘 알려진 공개 이미지인 경우가 많습니다.</p>
 <ul>
@@ -233,7 +233,7 @@ base 이미지는 일반적으로 Docker Hub와 같은 Docker repository에 올�
 <div class="gatsby-highlight" data-language="dockerfile"><pre class="language-dockerfile"><code class="language-dockerfile"><span class="token instruction"><span class="token keyword">RUN</span> [<span class="token string">"&lt;커맨드>"</span>, <span class="token string">"&lt;파라미터1>"</span>, <span class="token string">"&lt;파라미터2>"</span>]</span>
 <span class="token instruction"><span class="token keyword">RUN</span> &lt;전체 커맨드></span></code></pre></div>
 <p><code>RUN</code> 명령문은 마치 쉘(shell)에서 커맨드를 실행하는 것 처럼 이미지 빌드 과정에서 필요한 커맨드를 실행하기 위해서 사용됩니다.
-쉘(shell)을 통해 거의 못하는 작업이 없는 것 처럼 <code>RUN</code> 명령문으로 할 수 있는 작업은 무궁무진하지만 보통 이미지 안에 특정 소트트웨어를 설치하기 위해서 많이 사용됩니다.</p>
+쉘(shell)을 통해 거의 못하는 작업이 없는 것 처럼 <code>RUN</code> 명령문으로 할 수 있는 작업은 무궁무진하지만 보통 이미지 안에 특정 소프트웨어를 설치하기 위해서 많이 사용됩니다.</p>
 <ul>
 <li>curl 도구 설치</li>
 </ul>
