@@ -197,8 +197,8 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <h2 id="액션의-종류" style="position:relative;"><a href="#%EC%95%A1%EC%85%98%EC%9D%98-%EC%A2%85%EB%A5%98" aria-label="액션의 종류 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>액션의 종류</h2>
 <p>GitHub Actions에서는 도커(Docker) 컨테이너 액션, 자바스크립트 액션, 복합(composite) 액션, 이렇게 3가지 형태의 액션을 만들 수 있는데요.</p>
 <p>도커 컨테이너 리눅스에서만 실행할 수 있다는 제한이 있고 도커에 대한 지식이 필요하며, 자바스크립트 액션은 관련 <a href="https://github.com/actions/toolkit">도구 키트</a>를 어떻게 쓰는지 별도로 학습해야 합니다.</p>
-<p>따라서 본 글에서는 만들기 제일 간단한 간단한 합성 액션을 한번 만들어보려고 합니다.
-합성 액션을 통해서 우리는 여러 워크플로우에서 재사용이 가능한 여러 단계로 이루어진 하나의 액션을 만들 수 있습니다.</p>
+<p>따라서 본 글에서는 만들기 제일 간단한 간단한 복합 액션을 한번 만들어보려고 합니다.
+복합 액션을 통해서 우리는 여러 워크플로우에서 재사용이 가능한 여러 단계로 이루어진 하나의 액션을 만들 수 있습니다.</p>
 <h2 id="액션의-위치" style="position:relative;"><a href="#%EC%95%A1%EC%85%98%EC%9D%98-%EC%9C%84%EC%B9%98" aria-label="액션의 위치 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>액션의 위치</h2>
 <p>액션은 사설 저장소(private repository)에도 생성할 수 있고, 공개 저장소(public repository)에도 생성할 수 있는데요.
 보통 어떤 조직에서 내부적으로 액션을 공유하고 싶을 때 사설 저장소에 액션을 두고, 액션을 조직 외부까지 공개하고 싶을 때는 공개 저장소에 액션을 올립니다.</p>
