@@ -209,10 +209,89 @@ REST API의 엔드포인트를 직접 호출하여 GraphQL의 타입(type)과 �
 새로운 GraphQL 서버를 구축하지 않고도 몇 줄의 스키마 선언만으로 REST API를 GraphQL로 바꿔버릴 수 있기 때문이죠. 🧙</p>
 <p>​Apollo Connectors의 가장 큰 장점은 기존 시스템을 대대적으로 개편하지 않고도 GraphQL을 점진적으로 도입할 수 있게 해준다는 것입니다.
 뿐만 아니라, 한 회사에서 두 가지 기술의 API를 운영하면서 발생하는 비용을 최소화할 수 있으며, 장기적으로 아키택쳐를 단순화하고 통합된 API 전략을 수립하는데 도움이 될 수 있습니다.</p>
+<h2 id="그래프-생성" style="position:relative;"><a href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EC%83%9D%EC%84%B1" aria-label="그래프 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>그래프 생성</h2>
+<p>설명은 충분히 한 것 같으니 이제 본격적으로 함께 ​Apollo Connectors를 사용해보도록 할까요?
+우선 Apollo Studio에 실습용으로 그래프를 하나 생성해야하는데요.</p>
+<p>Apollo GraphQL에서 제공하는 CLI 도구인 <a href="https://www.apollographql.com/docs/rover">Rover CLI</a>를 설치하겠습니다.
+Rover CLI를 통해서 Apollo Studio에 있는 그래프를 제어할 수 있습니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://rover.apollo.dev/nix/latest <span class="token operator">|</span> <span class="token function">sh</span></code></pre></div>
+<p>터미널에서 빈 디렉토리를 만든 후, 그 안 들어가 그래프를 생성하기 위해서 <code>rover init</code> 명령어를 실행합니다.
+처음 명령어를 실행하신다면 인증 위해 API 키를 입력하라고 나올 것입니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ rover init
+No credentials found. Please go to https://studio.apollographql.com/user-settings/api-keys and create a new Personal API key.
+
+Copy the key and <span class="token function">paste</span> it into the prompt below.
+<span class="token operator">></span></code></pre></div>
+<p>아직 <a href="https://studio.apollographql.com/">Apollo Studio</a>의 계정이 없으신 분들은 무료 플랜으로 바로 회원 가입을 하실 수 있으며,
+API 키는 <a href="https://studio.apollographql.com/user-settings/api-keys">설정 페이지</a>에서 생성할 수 있습니다.</p>
+<p>유요한 API 키를 입력하면 인증에 성공할 것입니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ rover init
+No credentials found. Please go to https://studio.apollographql.com/user-settings/api-keys and create a new Personal API key.
+
+Copy the key and <span class="token function">paste</span> it into the prompt below.
+
+· ********
+✓ Successfully saved your API key.</code></pre></div>
+<p>이제부터는 터미널에서 물어보는 질문에 차례대로 답변만 하면 됩니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ rover init
+
+Welcome<span class="token operator">!</span> This <span class="token builtin class-name">command</span> helps you initialize a federated graph <span class="token keyword">in</span> your current directory.
+
+To learn <span class="token function">more</span> about init, run <span class="token variable"><span class="token variable">`</span>rover init <span class="token parameter variable">-h</span><span class="token variable">`</span></span> or visit https://www.apollographql.com/docs/rover/commands/init
+
+? Select option: Create a new graph
+? Select an organization: DaleSchool
+? Select use case: Start a graph with one or <span class="token function">more</span> REST APIs
+? Name your graph: My API
+Confirm or modify graph ID <span class="token punctuation">(</span>start with a letter and use only letters, numbers, and dashes<span class="token punctuation">)</span>: my-api-zi31vaf
+
+<span class="token operator">==</span><span class="token operator">></span> You’re about to create a <span class="token builtin class-name">local</span> directory with the following files:
+
+- .idea/.gitignore
+- .idea/graphql-settings.xml
+- .vscode/extensions.json
+- README.md
+- connectors_debugger.png
+- getting-started.md
+- products.graphql
+- supergraph.yaml
+
+? Proceed with creation? <span class="token punctuation">[</span>Y/n<span class="token punctuation">]</span>
+y</code></pre></div>
+<p>마지막에 <code>y</code>를 입력하면 현재 디렉토리에 기본적인 프로젝트 파일이 생성됩니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">✓ Successfully created files and generated GraphOS credentials.
+
+<span class="token operator">=</span><span class="token operator">></span> All set<span class="token operator">!</span> Your graph <span class="token variable"><span class="token variable">`</span>My API<span class="token variable">`</span></span> has been created. Please review details below to see what was generated.
+
+Files created:
+✓ .idea/.gitignore
+✓ .idea/graphql-settings.xml
+✓ .vscode/extensions.json
+✓ README.md
+✓ connectors_debugger.png
+✓ getting-started.md
+✓ products.graphql
+✓ supergraph.yaml
+
+GraphOS credentials <span class="token keyword">for</span> your graph
+✓ <span class="token assign-left variable">APOLLO_GRAPH_REF</span><span class="token operator">=</span>my-api-zi31vaf@current <span class="token punctuation">(</span>Formatted graph-id@variant, references a graph <span class="token keyword">in</span> the Apollo GraphOS platform<span class="token punctuation">)</span>
+✓ <span class="token assign-left variable">APOLLO_KEY</span><span class="token operator">=</span>service:my-api-zi31vaf:VyShE1SH6WbGYch12SZhcg <span class="token punctuation">(</span>This is your graph’s API key<span class="token punctuation">)</span>
+
+▲ Before you proceed:
+- Store your graph API key securely, you won’t be able to access it again<span class="token operator">!</span>
+
+Next steps
+Run the following <span class="token builtin class-name">command</span> to start a <span class="token builtin class-name">local</span> development session:
+
+<span class="token assign-left variable">APOLLO_KEY</span><span class="token operator">=</span>service:my-api-zi31vaf:VyShE1SH6WbGYch12SZhcg rover dev --graph-ref my-api-zi31vaf@current --supergraph-config supergraph.yaml
+
+For <span class="token function">more</span> information, check out <span class="token variable"><span class="token variable">`</span>getting-started.md<span class="token variable">`</span></span><span class="token builtin class-name">.</span></code></pre></div>
+<p>그리고 Apollo Studio에 생성된 그래프의 정보와 <code>rover dev</code> 명령어로 그래프를 실행하는 방법이 나옵니다.
+이 부분은 나중에 필요하니 복사해서 메모장 같은 곳에 붙여넣기 해놓습니다.</p>
 <h2 id="스키마-작성" style="position:relative;"><a href="#%EC%8A%A4%ED%82%A4%EB%A7%88-%EC%9E%91%EC%84%B1" aria-label="스키마 작성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>스키마 작성</h2>
-<p>설명은 충분히 한 것 같으니 이제 본격적으로 함께 ​Apollo Connectors를 사용해보도록 할까요?</p>
-<p>우선 GraphQL API로 변환할 REST API가 필요한데요.
-외부에 공개되어 있는 전자 상거래 <a href="https://ecommerce.demo-api.apollo.dev/products">REST API</a>로 실습을 진행하겠습니다.
+<p>이제부터 REST API를 연결하기 위한 GraphQL 스키마를 작성하겠습니다.
+그럴려면 GraphQL API로 변환할 REST API가 필요한데요.</p>
+<p>외부에 공개되어 있는 전자 상거래 <a href="https://ecommerce.demo-api.apollo.dev/products">REST API</a>로 실습을 진행하겠습니다.
 아래와 같은 형태로 가짜 상품 정보를 응답하는 API입니다.</p>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"products"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
@@ -237,7 +316,7 @@ REST API의 엔드포인트를 직접 호출하여 GraphQL의 타입(type)과 �
 <span class="token punctuation">}</span></code></pre></div>
 <p>​Apollo Connectors는 GraphQL의 필드(field)나 타입(type)에 REST API의 엔드포인트(endpoint)를 연결할 수 있는 선언적(declarative) 방법을 제공하는데요.
 GraphQL 스키마 안에서 <code>@connect</code>와 <code>@source</code> 지시문을 통해서 GraphQL과 REST 간의 맵핑이 이뤄집니다.</p>
-<p><code>products.graphql</code> 파일을 생성하고 GraphQL 스키마를 작성하도록 하겠습니다.</p>
+<p><code>products.graphql</code> 파일을 열고 기존에 있던 예제 스키마를 지우고 처음부터 GraphQL 스키마를 함께 작성해보도록 하겠습니다.</p>
 <p>​Apollo Connectors는 <a href="https://www.apollographql.com/federation">​Apollo Federation</a> 스펙을 기반으로 합니다.
 따라서 이 부분을 스카마 파일 제일 위에 명시해줘야 하고요.</p>
 <div class="gatsby-code-title">products.graphql</div>
@@ -292,30 +371,11 @@ GraphQL 스키마 안에서 <code>@connect</code>와 <code>@source</code> 지시
 <span class="token punctuation">}</span></code></pre></div>
 <p>자, 이렇게 <code>@connect</code>와 <code>@source</code> 지시문을 사용해서 GraphQL 스키마만 작성해주면 끝입니다.
 다른 프로그래밍 언어를 사용하여 별도의 GraphQL 서버 코드를 작성할 필요가 전혀 없습니다.</p>
-<h2 id="그래프-생성" style="position:relative;"><a href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EC%83%9D%EC%84%B1" aria-label="그래프 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>그래프 생성</h2>
-<p>​Apollo Connectors 사용하려면 <a href="https://studio.apollographql.com/">GraphOS Studio</a>에서 그래프(Graph)를 하나 만들어야 합니다.
-아직 계정이 없으신 분들은 계정을 만드시고 무료 플랜으로 바로 그래프를 생성할 수 있습니다.</p>
-<p><img src="https://res.cloudinary.com/daleseo/image/upload/v1745032523/apollo-connectors-graphos-studio-1.png" alt="Apollo Connectors GraphOS 1"></p>
-<p>그래프를 생성하면 나오는 <code>supergraph.yaml</code> 파일의 내용과 환경 변수, <code>rover dev</code> 명령어를 복사해둡니다.</p>
-<p><img src="https://res.cloudinary.com/daleseo/image/upload/v1745032541/apollo-connectors-graphos-studio-2.png" alt="Apollo Connectors GraphOS 2"></p>
-<div class="gatsby-code-title">supergraph.yaml</div>
-<div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">federation_version</span><span class="token punctuation">:</span> =2.10.0
-<span class="token key atrule">subgraphs</span><span class="token punctuation">:</span>
-  <span class="token key atrule">products</span><span class="token punctuation">:</span>
-    <span class="token key atrule">routing_url</span><span class="token punctuation">:</span> http<span class="token punctuation">:</span>//ignored
-    <span class="token key atrule">schema</span><span class="token punctuation">:</span>
-      <span class="token key atrule">file</span><span class="token punctuation">:</span> products.graphql</code></pre></div>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token assign-left variable">APOLLO_KEY</span><span class="token operator">=</span>service:Our-Connectors:••••••••••••••••••••••
-<span class="token assign-left variable">APOLLO_GRAPH_REF</span><span class="token operator">=</span>Our-Connectors:@main
-rover dev --supergraph-config supergraph.yaml</code></pre></div>
 <h2 id="그래프-실행" style="position:relative;"><a href="#%EA%B7%B8%EB%9E%98%ED%94%84-%EC%8B%A4%ED%96%89" aria-label="그래프 실행 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>그래프 실행</h2>
-<p>터미널에서 그래프를 실행하려면 Apollo GraphQL에서 제공하는 CLI 도구인 <a href="https://www.apollographql.com/docs/rover">Rover CLI</a>를 설치해야합니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">curl</span> <span class="token parameter variable">-sSL</span> https://rover.apollo.dev/nix/latest <span class="token operator">|</span> <span class="token function">sh</span></code></pre></div>
-<p>그 다음, 복사해둔 <code>APOLLO_KEY</code>와 <code>APOLLO_GRAPH_REF</code> 값을 환경 변수로 설정합니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">APOLLO_KEY</span><span class="token operator">=</span>service:Our-Connectors:••••••••••••••••••••••
-$ <span class="token builtin class-name">export</span> <span class="token assign-left variable">APOLLO_GRAPH_REF</span><span class="token operator">=</span>Our-Connectors:@main</code></pre></div>
-<p>이제 복사해둔 <code>rover dev</code> 명령어를 통해서 그래프를 실행합니다.</p>
-<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ rover dev --supergraph-config supergraph.yaml
+<p>마지막으로 변환된 GraphQL API를 로컬에서 구동해볼 차례입니다.
+위에서 복사해둔 <code>rover dev</code> 명령어를 터미널에 붙여넣고 실행하면 끝입니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token assign-left variable">APOLLO_KEY</span><span class="token operator">=</span>service:my-api-zi31vaf:VyShE1SH6WbGYch12SZhcg <span class="token punctuation">\</span>
+  rover dev --graph-ref my-api-zi31vaf@current --supergraph-config supergraph.yaml
 
 ** Notice: Changes <span class="token keyword">in</span> This Release<span class="token operator">!</span> **
 This version includes significant updates to the <span class="token variable"><span class="token variable">`</span>rover dev<span class="token variable">`</span></span> command.
