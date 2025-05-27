@@ -206,14 +206,14 @@ React 뿐만 아니라 Vue, Svelte, Angular 등 거의 대부분의 자바스크
 사용자 입장에서는 단지 브라우저 화면에 <code>제목</code> 이라는 텍스트가 보일 뿐입니다.
 따라서, 사용자에게 어떤 컨텐츠가 현재 보이고, 사용자가 어떤 이벤트를 발생시켰을 때, 그에 따라 화면에 변화가 일어나는지를 테스트합니다.</p>
 <p>자 여기서, 만약에 추후 어떤 이유로 인해서 <code>&#x3C;h2></code> 태그가 <code>&#x3C;h3></code> 태그로 바뀌었을 때는 어떤 일이 날까요?
-Implementation Driven Test 방법론으로 작성된 테스트는 깨지지만, Behavior Driven Test 방밥론으로 작성된 테스트는 깨지지 않을 것입니다.
+Implementation Driven Test 방법론으로 작성된 테스트는 깨지지만, Behavior Driven Test 방법론으로 작성된 테스트는 깨지지 않을 것입니다.
 애플리케이션 입장에서 봤을 때는 구현의 디테일이 바뀐 것이지만, 사용자 입장에서는 <code>제목</code> 이라는 텍스트가 화면있다는 사실은 변함이 없기 때문입니다.</p>
 <h2 id="enzyme-vs-react-testing-library" style="position:relative;"><a href="#enzyme-vs-react-testing-library" aria-label="enzyme vs react testing library permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enzyme vs. React Testing Library</h2>
 <p>RTL이 등장하기 전에는 Airbnb에서 만든 Enzyme이라는 테스팅 라이브러리가 많이 사용되었습니다.
 이 두 라이브러리를 간단히 비교를 해보면 Enzyme은 위에서 설명드린 Implementation Driven Test 방법론을 따르는 테스트를 작성하기에 적합합니다.
 왜냐하면 Enzyme을 쓸 때는 실제 브라우저 DOM이 아닌, React가 만들어내는 가상 DOM을 기준으로 테스트를 작성하기 때문입니다.
 따라서 테스트 대상 React 컴포넌트에 어떤 prop이 넘어가고, 현재 state이 어떻게 되는지에 대해서 검증을 수행합니다.</p>
-<p>반면에, React Testing Library는 Behavior Driven Test 방밥론을 따르는 테스트를 작성하는데 적합합니다.
+<p>반면에, React Testing Library는 Behavior Driven Test 방법론을 따르는 테스트를 작성하는데 적합합니다.
 왜냐하면 React Testing Library는 <code>jsdom</code>이나 <code>happy-dom</code> 라이브러리를 통해 실제 브라우저 DOM을 기준으로 테스트를 작성하게 됩니다.
 따라서 어떤 React 컴포넌트를 사용하는지는 의미가 없으며, 결국 사용자 브라우저에서 랜더링하는 실제 HTML 마크업의 모습이 어떤지에 대해서 테스트하기 용이합니다.</p>
 <p>개인적으로 두 가지 테스팅 라이브러리 다 써보았는데, 둘 다 잘하는 영역이 있기 때문에 하나가 다른 것보다 항상 났다라고는 말하기 어려운 것 같습니다.
