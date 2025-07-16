@@ -249,8 +249,8 @@ Serde는 다양한 데이터 포맷을 지원하며, 컴파일 시점에 많은 
 <h2 id="구조체-선언" style="position:relative;"><a href="#%EA%B5%AC%EC%A1%B0%EC%B2%B4-%EC%84%A0%EC%96%B8" aria-label="구조체 선언 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>구조체 선언</h2>
 <p>Serde는 기본적으로 Rust의 <a href="/rust-primitives/">원시 자료형</a>의 데이터는 바로 변환이 가능하며, Vector와 HashMap도 지원합니다.
 하지만 우리는 보통 비지니스 로직을 구현할 때 복잡한 구조의 데이터를 <a href="/rust-struct/">구조체</a>나 <a href="/rust-enum/">열거형</a>으로 추상화하죠.</p>
-<p><code>serde</code> 크레이트는 좀 더 쉽게 사용자 정의 데이터를 직렬화할 수 있도록 <code>Serialize</code>와 <code>Deserialize</code> 트레잇(trait)을 제공합니다.
-이 두 개의 트레잇을 구조체에 파생 매크로를 애트리뷰트로 붙여주기만 하면, 컴파일 시점에 대상 구조체를 위한 트레잇이 자동으로 구현됩니다.
+<p><code>serde</code> 크레이트는 좀 더 쉽게 사용자 정의 데이터를 직렬화할 수 있도록 <code>Serialize</code>와 <code>Deserialize</code> 트레이트(trait)을 제공합니다.
+이 두 개의 트레이트을 구조체에 파생 매크로를 애트리뷰트로 붙여주기만 하면, 컴파일 시점에 대상 구조체를 위한 트레이트이 자동으로 구현됩니다.
 띠라서 아무런 코드 작성없이 이 구조체의 인스턴스를 상대로 직렬화와 역직렬화를 할 수 있게 됩니다.</p>
 <p>우선 3개의 필드로 이루어진 <code>Fruit</code>라는 간단한 구조체로 선언하고 Serde로 변환 가능하도록 설정해보겠습니다.</p>
 <div class="gatsby-highlight" data-language="rust"><pre class="language-rust"><code class="language-rust"><span class="token keyword">use</span> <span class="token namespace">serde<span class="token punctuation">::</span></span><span class="token punctuation">{</span><span class="token class-name">Serialize</span><span class="token punctuation">,</span> <span class="token class-name">Deserialize</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
