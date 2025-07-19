@@ -360,6 +360,14 @@ root <span class="token number">1234</span></code></pre></div>
 key                       value                 <span class="token builtin class-name">source</span>
 DB_USER                   root                  ~/work/daleui/mise.toml
 DB_PASS                   <span class="token number">1234</span>                  ~/work/daleui/mise.toml</code></pre></div>
+<p>환경 변수도 런타임 버전과 함께 <code>mise.toml</code> 설정 파일에 등록됩니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">cat</span> mise.toml
+<span class="token punctuation">[</span>tools<span class="token punctuation">]</span>
+<span class="token function">node</span> <span class="token operator">=</span> <span class="token string">"18"</span>
+
+<span class="token punctuation">[</span>env<span class="token punctuation">]</span>
+DB_USER <span class="token operator">=</span> <span class="token string">"root"</span>
+DB_PASS <span class="token operator">=</span> <span class="token string">"1234"</span></code></pre></div>
 <p>환경 변수를 삭제하고 싶다면 <code>mise unset</code> 명령어를 사용하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ mise <span class="token builtin class-name">unset</span> DB_PASS
 $ mise <span class="token builtin class-name">set</span>
