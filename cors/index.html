@@ -261,13 +261,6 @@ Cross-Origin Resource Sharing, 줄여서 CORS는 웹 페이지가 다른 도메�
 이 이후는 같은 Origin에 있는 리소스에 접근하는 것과 동일한 과정을 거치게 됩니다.</p>
 <p>서버가 리소스의 접근을 허용한 경우에는 브라우저는 <code>Access-Control-Max-Age</code> 헤더에 설정된 기간동안 동일한 Preflight 요청없이 다른 Origin에 있는 리소스를 바로 접근합니다.
 그리고 리소스를 요청한 자바스크립트는 본 응답에서 <code>Access-Control-Expose-Header</code>에 명시된 헤더에만 접근할 수 있습니다.</p>
-<p>참고로 동일 출저 정책을 위반했다고 해서 브라우저가 항상 CORS 프로토콜을 따라 Preflight 요청을 거치는 것은 아닙니다.
-다음과 같은 조건을 만족하면 Simple Request, 즉 단순 요청으로 간주하여 사전 단계없이 다른 Origin에 있는 리소스에 바로 접근할 수 있습니다.</p>
-<ul>
-<li>메서드: <code>GET</code>, <code>HEAD</code>, <code>POST</code> 중 하나</li>
-<li>헤더: 브라우저 기본 헤더와 <code>Accept</code>, <code>Accept-Language</code>, <code>Content-Language</code>, <code>Content-Type</code>만 사용</li>
-<li>Content-Type: <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, <code>text/plain</code> 중 하나</li>
-</ul>
 <h2 id="실제-요청-흐름-시나리오" style="position:relative;"><a href="#%EC%8B%A4%EC%A0%9C-%EC%9A%94%EC%B2%AD-%ED%9D%90%EB%A6%84-%EC%8B%9C%EB%82%98%EB%A6%AC%EC%98%A4" aria-label="실제 요청 흐름 시나리오 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>실제 요청 흐름 시나리오</h2>
 <p>React 앱 <code>https://app.example.com</code> 에서 API <code>https://api.example.com</code>에 사용자 생성 요청한다고 가정해보겠습니다.</p>
 <p>브라우저가 자동으로 사전 요청을 보냅니다.
@@ -302,6 +295,26 @@ Cross-Origin Resource Sharing, 줄여서 CORS는 웹 페이지가 다른 도메�
 <span class="token punctuation">{</span><span class="token string-property property">"id"</span><span class="token operator">:</span><span class="token number">123</span><span class="token punctuation">,</span><span class="token string-property property">"name"</span><span class="token operator">:</span><span class="token string">"Dale"</span><span class="token punctuation">,</span><span class="token string-property property">"email"</span><span class="token operator">:</span><span class="token string">"dale@example.com"</span><span class="token punctuation">}</span></span></code></pre></div>
 <p>본 응답에도 <code>Access-Control-Allow-Origin</code> 헤더가 설정되어 있는 것을 유심하게 보셔야합니다. 👀
 Cors의 응답 헤더 중에서 <code>Access-Control-Allow-Origin</code> 헤더와 <code>Access-Control-Allow-Credentials</code> 헤더는 Preflight 뿐만 아니라 실제 응답에도 포함되야 합니다.</p>
+<h2 id="cors-예외-simple-request" style="position:relative;"><a href="#cors-%EC%98%88%EC%99%B8-simple-request" aria-label="cors 예외 simple request permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>CORS 예외: Simple Request</h2>
+<p>참고로 동일 출저 정책을 위반했다고 해서 브라우저가 항상 CORS 프로토콜을 따라 Preflight 요청을 거치는 것은 아닙니다.
+다음과 같은 조건을 만족하면 Simple Request, 즉 단순 요청으로 간주하여 사전 단계없이 다른 Origin에 있는 리소스에 바로 접근을 시도합니다.</p>
+<ul>
+<li>메서드: <code>GET</code>, <code>HEAD</code>, <code>POST</code> 중 하나</li>
+<li>헤더: 브라우저 기본 헤더와 <code>Accept</code>, <code>Accept-Language</code>, <code>Content-Language</code>, <code>Content-Type</code>만 사용</li>
+<li>Content-Type: <code>application/x-www-form-urlencoded</code>, <code>multipart/form-data</code>, <code>text/plain</code> 중 하나</li>
+</ul>
+<p>만약 서버가 <code>Access-Control-Allow-Origin</code> 헤더를 응답하지 않으면, Simple Request라도 브라우저가 응답을 차단합니다.</p>
+<div class="gatsby-highlight" data-language="http"><pre class="language-http"><code class="language-http"><span class="token request-line"><span class="token method property">GET</span> <span class="token request-target url">/</span> <span class="token http-version property">HTTP/1.1</span></span>
+<span class="token header"><span class="token header-name keyword">Host</span><span class="token punctuation">:</span> <span class="token header-value">api.example.com</span></span>
+<span class="token header"><span class="token header-name keyword">Origin</span><span class="token punctuation">:</span> <span class="token header-value">https://app.example.com</span></span></code></pre></div>
+<div class="gatsby-highlight" data-language="http"><pre class="language-http"><code class="language-http"><span class="token response-status"><span class="token http-version property">HTTP/1.1</span> <span class="token status-code number">200</span> <span class="token reason-phrase string">OK</span></span>
+<span class="token header"><span class="token header-name keyword">Content-Type</span><span class="token punctuation">:</span> <span class="token header-value">application/json</span></span>
+<span class="token header"><span class="token header-name keyword">Access-Control-Allow-Origin</span><span class="token punctuation">:</span> <span class="token header-value">https://mywebsite.com</span></span></code></pre></div>
+<p>Preflight Request와 Simple Request의 차이를 정리해보면,</p>
+<ul>
+<li><strong>Simple Request</strong>: 요청이 서버에 도달하고 처리됨. 응답 차단은 브라우저에서만 발생</li>
+<li><strong>Preflight Request</strong>: OPTIONS 요청이 실패하면 본 요청 자체를 보내지 않음</li>
+</ul>
 <h2 id="클라이언트에서-cors-요청하기" style="position:relative;"><a href="#%ED%81%B4%EB%9D%BC%EC%9D%B4%EC%96%B8%ED%8A%B8%EC%97%90%EC%84%9C-cors-%EC%9A%94%EC%B2%AD%ED%95%98%EA%B8%B0" aria-label="클라이언트에서 cors 요청하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>클라이언트에서 CORS 요청하기</h2>
 <p>클라이언트에서 CORS 요청을 할 때는 브라우저가 자동으로 CORS 프로토콜을 처리해주므로, 개발자는 일반적인 HTTP 요청과 거의 동일하게 코드를 작성할 수 있습니다.
 다만 CORS 에러가 네트워크 에러로 잡히므로, 이를 적절히 처리해주면 좋습니다.</p>
