@@ -201,7 +201,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <span class="token keyword">import</span> fs <span class="token keyword">from</span> <span class="token string">"fs"</span><span class="token punctuation">;</span></code></pre></div>
 <h2 id="비동기-함수-vs-동기-함수" style="position:relative;"><a href="#%EB%B9%84%EB%8F%99%EA%B8%B0-%ED%95%A8%EC%88%98-vs-%EB%8F%99%EA%B8%B0-%ED%95%A8%EC%88%98" aria-label="비동기 함수 vs 동기 함수 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>비동기 함수 vs 동기 함수</h2>
 <p><code>fs</code> 모듈는 비동기(asynchronous) API와 동기(synchronous) API를 모두 제공하고 있습니다.
-띠라서 본인이 작성하는 프로그램의 성격을 고려하여 둘 중에 어떤 API가 적합한지 판단해야 합니다.</p>
+따라서 본인이 작성하는 프로그램의 성격을 고려하여 둘 중에 어떤 API가 적합한지 판단해야 합니다.</p>
 <p><code>fs</code> 모듈에서 제공하는 비동기 메서드는 미지막 인자로 콜백(callback) 함수를 받고 아무 값도 반환히지 않습니다.
 반면에 <code>fs</code> 모듈에서 제공하는 동기 메서드는 결과값을 반환(return)하며 예외(exception)를 일으킬 수 있습니다.
 동기 메서드의 이름은 <code>Sync</code>로 끝이 나기 때문에 쉽게 비동기 메서드인지 동기 메서드인지 구분이 가능합니다.</p>
