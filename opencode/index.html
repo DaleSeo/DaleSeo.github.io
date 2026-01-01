@@ -279,15 +279,9 @@ Plan 모드에서는 변경사항을 직접 적용하지 않고 구현 계획만
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/compact</code></pre></div>
 <p><code>/export</code> 명령어는 현재 대화를 마크다운 파일로 내보내줍니다.
 나중에 참고하거나 문서화할 때 유용합니다.</p>
-<h2 id="세션-공유" style="position:relative;"><a href="#%EC%84%B8%EC%85%98-%EA%B3%B5%EC%9C%A0" aria-label="세션 공유 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>세션 공유</h2>
-<p>OpenCode의 강력한 기능 중 하나는 대화 내용을 공유할 수 있다는 점입니다.</p>
-<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/share</code></pre></div>
-<p>이 명령어를 실행하면 현재 대화의 공유 링크가 클립보드에 복사됩니다.
-팀원에게 문제 상황을 설명하거나, 버그를 디버깅할 때 유용하게 활용할 수 있습니다.</p>
-<p><a href="https://opencode.ai/s/4XP1fce5">예시 대화 보기</a>를 통해 실제 공유된 세션이 어떻게 보이는지 확인해보세요.</p>
 <h2 id="권한-설정" style="position:relative;"><a href="#%EA%B6%8C%ED%95%9C-%EC%84%A4%EC%A0%95" aria-label="권한 설정 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>권한 설정</h2>
 <p>OpenCode가 파일을 수정하거나 명령어를 실행할 때 매번 승인을 받을지, 자동으로 실행할지 설정할 수 있습니다.
-프로젝트 루트에 <code>opencode.json</code> 파일을 만들어서 <code>permission</code> 옵션을 설정하면 됩니다.</p>
+프로젝트 루트에 <code>opencode.json</code> 또는 <code>opencode.jsonc</code> 파일을 만들어서 <code>permission</code> 옵션을 설정하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"$schema"</span><span class="token operator">:</span> <span class="token string">"https://opencode.ai/config.json"</span><span class="token punctuation">,</span>
   <span class="token property">"permission"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
@@ -308,7 +302,13 @@ Plan 모드에서는 변경사항을 직접 적용하지 않고 구현 계획만
 </ul>
 <p><code>"ask"</code>로 설정된 작업을 LLM이 시도하면 “Accept”, “Accept Always”, “Deny” 세 가지 옵션이 표시됩니다.
 “Accept Always”를 선택하면 현재 세션 동안 같은 종류의 명령어가 자동으로 허용됩니다.</p>
-<p>전역 설정은 <code>~/.config/opencode/config.json</code>에, 프로젝트별 설정은 <code>./opencode.json</code>에 저장할 수 있습니다.</p>
+<p>전역 설정은 <code>~/.config/opencode/config.json</code> 또는 <code>~/.config/opencode/config.jsonc</code>에 저장할 수 있습니다.</p>
+<h2 id="세션-공유" style="position:relative;"><a href="#%EC%84%B8%EC%85%98-%EA%B3%B5%EC%9C%A0" aria-label="세션 공유 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>세션 공유</h2>
+<p>OpenCode의 강력한 기능 중 하나는 대화 내용을 공유할 수 있다는 점입니다.</p>
+<div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/share</code></pre></div>
+<p>이 명령어를 실행하면 현재 대화의 공유 링크가 클립보드에 복사됩니다.
+팀원에게 문제 상황을 설명하거나, 버그를 디버깅할 때 유용하게 활용할 수 있습니다.</p>
+<p><a href="https://opencode.ai/s/4XP1fce5">예시 대화 보기</a>를 통해 실제 공유된 세션이 어떻게 보이는지 확인해보세요.</p>
 <h2 id="사용자화" style="position:relative;"><a href="#%EC%82%AC%EC%9A%A9%EC%9E%90%ED%99%94" aria-label="사용자화 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>사용자화</h2>
 <p>OpenCode는 다양한 커스터마이징 옵션을 제공합니다.</p>
 <ul>
