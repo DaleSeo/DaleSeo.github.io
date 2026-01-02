@@ -211,27 +211,30 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <h2 id="왜-git-worktree를-사용할까" style="position:relative;"><a href="#%EC%99%9C-git-worktree%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%A0%EA%B9%8C" aria-label="왜 git worktree를 사용할까 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>왜 git worktree를 사용할까?</h2>
 <p><code>git worktree</code>가 특히 빛을 발하는 상황들이 있습니다.</p>
 <p>우선 긴급한 핫픽스 대응 상황을 생각해볼까요?
-새로운 기능을 열심히 개발하고 있는데 갑자기 프로덕션에 버그가 발생했다면, 기존 작업을 stash하거나 커밋하지 않고도 별도의 worktree에서 즉시 핫픽스 작업을 할 수 있습니다.</p>
+새로운 기능을 열심히 개발하고 있는데 갑자기 프로덕션에 버그가 발생했다면, 기존 작업을 stash하거나 커밋하지 않고도 별도의 워크트리에서 즉시 핫픽스 작업을 할 수 있습니다.</p>
 <p>또한 코드 리뷰 시에도 유용한데요.
-동료의 PR을 리뷰할 때 실제로 코드를 실행해보고 싶다면, 현재 작업 중인 브랜치를 건드리지 않고 별도의 worktree에서 리뷰 대상 브랜치를 체크아웃할 수 있습니다.</p>
+동료의 PR을 리뷰할 때 실제로 코드를 실행해보고 싶다면, 현재 작업 중인 브랜치를 건드리지 않고 별도의 워크트리에서 리뷰 대상 브랜치를 체크아웃할 수 있습니다.</p>
 <p>그리고 서로 관련 없는 여러 기능을 동시에 개발해야 할 때도 좋습니다.
-각 기능별로 별도의 worktree를 만들어 작업하면 컨텍스트 스위칭 비용을 크게 줄일 수 있거든요.</p>
+각 기능별로 별도의 워크트리를 만들어 작업하면 컨텍스트 스위칭 비용을 크게 줄일 수 있거든요.</p>
 <p>마지막으로 서로 다른 버전의 코드를 나란히 두고 비교하거나 테스트해야 할 때도 유용합니다.</p>
-<h2 id="새-워크트리-추가하기" style="position:relative;"><a href="#%EC%83%88-%EC%9B%8C%ED%81%AC%ED%8A%B8%EB%A6%AC-%EC%B6%94%EA%B0%80%ED%95%98%EA%B8%B0" aria-label="새 워크트리 추가하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>새 워크트리 추가하기</h2>
+<h2 id="워크트리-생성" style="position:relative;"><a href="#%EC%9B%8C%ED%81%AC%ED%8A%B8%EB%A6%AC-%EC%83%9D%EC%84%B1" aria-label="워크트리 생성 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>워크트리 생성</h2>
 <p>새로운 워크트리를 추가하는 기본 명령어는 <code>git worktree add</code>입니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> worktree <span class="token function">add</span> <span class="token operator">&lt;</span>경로<span class="token operator">></span> <span class="token operator">&lt;</span>브랜치명<span class="token operator">></span></code></pre></div>
-<p>예를 들어, <code>main</code> 브랜치를 위한 worktree를 상위 디렉토리에 만들려면 다음과 같이 실행합니다.</p>
+<p>예를 들어, <code>main</code> 브랜치를 위한 워크트리를 상위 디렉토리에 만들려면 다음과 같이 실행합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> worktree <span class="token function">add</span> <span class="token punctuation">..</span>/my-project-main main</code></pre></div>
 <p>이 명령어를 실행하면 <code>../my-project-main</code> 디렉토리가 생성되고, 그 안에 <code>main</code> 브랜치가 체크아웃됩니다.</p>
-<p>새 브랜치를 생성하면서 동시에 worktree를 만들 수도 있습니다.
-<code>-b</code> 옵션을 사용하면 됩니다.</p>
+<p>새 브랜치를 생성하면서 동시에 워크트리를 만들 수도 있습니다.</p>
+<p>브랜치명을 생략하면 경로의 마지막 디렉토리 이름으로 새 브랜치가 자동 생성됩니다.</p>
+<div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> worktree <span class="token function">add</span> <span class="token punctuation">..</span>/hotfix</code></pre></div>
+<p>위 명령어는 <code>hotfix</code>라는 새 브랜치를 만들고, <code>../hotfix</code> 디렉토리에서 해당 브랜치를 체크아웃합니다.</p>
+<p>만약에 디렉토리 이름과 다른 이름의 브랜치 명을 사용하고 싶다면 <code>-b</code> 옵션을 사용하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> worktree <span class="token function">add</span> <span class="token parameter variable">-b</span> feature/new-feature <span class="token punctuation">..</span>/feature-worktree</code></pre></div>
 <p>이렇게 하면 <code>feature/new-feature</code>라는 새 브랜치가 생성되고, <code>../feature-worktree</code> 디렉토리에서 작업을 시작할 수 있습니다.</p>
 <blockquote>
-<p>worktree 디렉토리는 일반적으로 기존 저장소 디렉토리 바깥에 만드는 것이 권장됩니다.
+<p>워크트리 디렉토리는 일반적으로 기존 저장소 디렉토리 바깥에 만드는 것이 권장됩니다.
 저장소 안에 만들면 <code>.gitignore</code>에 추가해야 하는 번거로움이 생기기 때문입니다.</p>
 </blockquote>
-<h2 id="워크트리-목록-확인하기" style="position:relative;"><a href="#%EC%9B%8C%ED%81%AC%ED%8A%B8%EB%A6%AC-%EB%AA%A9%EB%A1%9D-%ED%99%95%EC%9D%B8%ED%95%98%EA%B8%B0" aria-label="워크트리 목록 확인하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>워크트리 목록 확인하기</h2>
+<h2 id="워크트리-목록-확인" style="position:relative;"><a href="#%EC%9B%8C%ED%81%AC%ED%8A%B8%EB%A6%AC-%EB%AA%A9%EB%A1%9D-%ED%99%95%EC%9D%B8" aria-label="워크트리 목록 확인 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>워크트리 목록 확인</h2>
 <p>현재 저장소에 연결된 모든 워크트리를 확인하려면 <code>list</code> 명령어를 사용합니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> worktree list</code></pre></div>
 <p>예를 들어, 다음과 같은 결과를 볼 수 있습니다.</p>
@@ -239,7 +242,7 @@ data-styled.g67[id="PostDetail__Article-sc-1bau2bk-1"]{content:"ernjSK,"}/*!sc*/
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">/Users/dale/projects/my-project       a1b2c3d <span class="token punctuation">[</span>main<span class="token punctuation">]</span>
 /Users/dale/projects/my-project-main  e4f5g6h <span class="token punctuation">[</span>feature/login<span class="token punctuation">]</span>
 /Users/dale/projects/feature-worktree i7j8k9l <span class="token punctuation">[</span>feature/new-feature<span class="token punctuation">]</span></code></pre></div>
-<p>각 라인은 worktree 경로, HEAD 커밋 해시, 그리고 현재 체크아웃된 브랜치를 보여줍니다.</p>
+<p>각 라인은 워크트리 경로, HEAD 커밋 해시, 그리고 현재 체크아웃된 브랜치를 보여줍니다.</p>
 <h2 id="워크트리-간-이동" style="position:relative;"><a href="#%EC%9B%8C%ED%81%AC%ED%8A%B8%EB%A6%AC-%EA%B0%84-%EC%9D%B4%EB%8F%99" aria-label="워크트리 간 이동 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>워크트리 간 이동</h2>
 <p>생성된 워크트리는 일반적인 디렉토리이므로 단순히 <code>cd</code> 명령어로 이동하면 됩니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token comment"># 메인 워크트리에서 작업 중</span>
@@ -254,7 +257,7 @@ $ <span class="token function">git</span> branch --show-current
 feature/new-feature</code></pre></div>
 <p>각 워크트리는 완전히 독립적인 작업 환경을 제공합니다.
 IDE나 에디터에서 각 워크트리 디렉토리를 별도의 창이나 프로젝트로 열어서 작업할 수 있습니다.</p>
-<h2 id="워크트리-삭제하기" style="position:relative;"><a href="#%EC%9B%8C%ED%81%AC%ED%8A%B8%EB%A6%AC-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0" aria-label="워크트리 삭제하기 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>워크트리 삭제하기</h2>
+<h2 id="워크트리-삭제" style="position:relative;"><a href="#%EC%9B%8C%ED%81%AC%ED%8A%B8%EB%A6%AC-%EC%82%AD%EC%A0%9C" aria-label="워크트리 삭제 permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>워크트리 삭제</h2>
 <p>더 이상 필요 없는 워크트리는 <code>remove</code> 명령어로 삭제할 수 있습니다.</p>
 <div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">$ <span class="token function">git</span> worktree remove <span class="token operator">&lt;</span>worktree-경로<span class="token operator">></span></code></pre></div>
 <p>예를 들어, 아까 만든 피쳐 워크트리를 삭제하려면 다음과 같이 입력합니다.</p>
