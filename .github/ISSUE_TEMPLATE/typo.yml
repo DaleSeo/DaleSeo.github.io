@@ -1,0 +1,30 @@
+name: 오탈자·오류 제보
+description: 블로그 글에서 발견한 오탈자나 잘못된 내용을 알려주세요
+title: "[제보] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        제보해 주셔서 감사합니다. 확인 후 블로그에 반영하고 이 이슈에 답을 남기겠습니다.
+  - type: input
+    id: url
+    attributes:
+      label: 글 주소
+      description: 문제를 발견한 페이지의 주소를 붙여넣어 주세요.
+      placeholder: https://www.daleseo.com/python-enumerate/
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: 문제되는 부분
+      description: 어느 문장이나 코드가 잘못되었는지 알려주세요. 화면을 캡처해 붙여넣으셔도 좋습니다.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: 이렇게 고치면 좋겠어요
+      description: 제안하실 내용이 있다면 적어주세요. 없으셔도 괜찮습니다.
+    validations:
+      required: false
